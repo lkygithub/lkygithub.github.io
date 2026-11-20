@@ -46,6 +46,8 @@ body {
 
 #cover img, .blog-post-content img {
     max-width: 100%;
+    max-height: 42em;
+    width: auto;
     height: auto;
 }
 
