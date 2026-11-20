@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <title>Python提取Win10锁屏Spotlight</title>
+        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+        </section>
+<section class="blog-post">
+    <h1>Python提取Win10锁屏Spotlight</h1>
+    <div class="blog-post-subheader">
+        November 27, 2019
+    </div>
+    <div class="blog-post-content">
+<p>　　刚才看见Win10锁屏界面的星空图特别好看，想要下载下来发微博。查了一下知乎上的方法：    </p>
+<p>　　<code>win + r</code>然后在弹出的运行框中运行   </p>
+<p><code>%localappdata%\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets</code></p>
+<p>　　会弹出一个文件夹，貌似锁屏图片文件就是存在这个文件夹里，只不过文件都没有后缀，想要看得手动加.jpg才能打开看。         </p>
+<p>　　使用python实现，先查了一下用python怎么得到这个<code>%localappdata%</code>路径,具体实现:</p>
+<pre><code class="language-python">    import os 
+    localappdata = os.environ[&#39;LOCALAPPDATA&#39;]
+</code></pre>
+<p>　　有了路径然后就可以用pillow把图片转存出来。这是全部代码：     </p>
+<pre><code class="language-python">    import os 
+    from PIL import Image
+    from shutil import copy2
+
+    localappdata = os.environ[&#39;LOCALAPPDATA&#39;]
+    srcPath = fr&#39;{localappdata}\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets&#39;
+    destPath = fr&#39;{os.getcwd()}\pics&#39;
+
+    fileList = os.listdir(srcPath)
+    os.makedirs(destPath, exist_ok = True)
+    for item in fileList:
+        im=Image.open(srcPath + &#39;\\&#39; + item)
+        copy2(srcPath + &#39;\\&#39; + item, destPath + &#39;\\&#39; + item + &#39;.jpg&#39;)
+        print(&#39;成功拷到一个图片~~&#39;)
+</code></pre>
+<div align=center><img src="../2019/11/PythonWin10Spotlight/1.jpg" alt=""></div>
+    </div>
+</section>
+    </body>
+</html>

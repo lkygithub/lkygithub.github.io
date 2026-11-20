@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <title>双系统Ubuntu硬盘扩容+卸载Ubuntu系统</title>
+        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+        </section>
+<section class="blog-post">
+    <h1>双系统Ubuntu硬盘扩容+卸载Ubuntu系统</h1>
+    <div class="blog-post-subheader">
+        December 2, 2019
+    </div>
+    <div class="blog-post-content">
+<p>　　开发板子需要安装Xilinx的Vivado安装环境，安装时发现需要win10专业版，家庭版不行，所以想着装到双系统的Ubuntu1604下，就去机房弄了块硬盘。</p>
+<h2>双系统给Ubuntu扩容</h2>
+<ol>
+<li><p>win10下右键“计算机”-“管理”-“磁盘管理”,压缩卷并新建卷，选择按照NFTS格式格式化。</p>
+</li>
+<li><p>重启进入ubuntu，使用<code>df -h</code>查看ubuntu下磁盘挂载点，通过磁盘大小判断备用磁盘的名称，形如<code>/dev/sda2</code></p>
+</li>
+<li><p>使用<code>sudo umount /dev/sda2</code>解挂载</p>
+</li>
+<li><p>使用<code>mkfs -t ext4 /dev/sda2</code>将磁盘格式化为ext4格式</p>
+</li>
+<li><p>使用<code>ls -l /dev/disk/by-uuid</code>查询sda2对应的UUID，假设其为“abcd”</p>
+</li>
+<li><p>使用<code>sudo vi /etc/fstab</code>编辑fstab，在最后一行添加<code>UUID=abcd /home/open ext4 defaults 0 2</code></p>
+</li>
+<li><p>重启，发现已将磁盘挂载到<code>/home/open</code>下</p>
+</li>
+</ol>
+<h2>双系统删除Ubuntu系统</h2>
+<p>　　。。。扩容了以后发现vivado只支持64位系统，之前装的时候不小心装成了32位的，还是删了Ubuntu系统直接换虚拟机算了。<br>　　但是不能直接清空硬盘分区，会导致启动后win10也进不去，需要按照步骤来。删之前先备份了下<code>/home</code>下的所有东西。</p>
+<ol>
+<li><p>首先<code>win + R</code>,然后输入<code>msinfo32</code>回车，查看系统信息中的<code>BIOS模式</code>来确认系统启动方式。(我这里是传统模式，即Legacy BIOS模式)。</p>
+</li>
+<li><p>若为Legacy模式，可以下载并运行MbrFix程序或用类似于分区助手的软件修复mbr。重启win10没有GNU GRUB的系统选择界面则说明修复成功。</p>
+</li>
+<li><p>之后就可以用分区助手或者右键&quot;计算机&quot;-“管理”-“磁盘管理”里面删除Ubuntu系统所在的硬盘分区了。</p>
+</li>
+</ol>
+
+    </div>
+</section>
+    </body>
+</html>

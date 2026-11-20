@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <title>[持续更新]Leetcode刷题笔记</title>
+        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+        </section>
+<section class="blog-post">
+    <h1>[持续更新]Leetcode刷题笔记</h1>
+    <div class="blog-post-subheader">
+        December 3, 2019
+    </div>
+    <div class="blog-post-content">
+<p>　　</p>
+<h2>1.位运算与比较运算的优先级</h2>
+<p>　　<a href="https://leetcode-cn.com/problems/can-i-win/" target="_blank" rel="noopener">题号464，我能赢吗</a>，两人轮流从给出的等差数列中取数（数列从1开始直到n，n为给出的值），取出的数之和超过某个给出的目标值游戏结束，最后一个取数的人胜利。
+作法主要是用递归模拟两个人的取数过程（因为假设两个人都足够聪明），用位运算模拟取数顺序（即两个人取数的情况一共有2^n种），由于题目规定n最大不超过20所以用一个数组来存所有可能的取数情况下的游戏结果。   </p>
+<pre><code class="language-C++">int dp[1 &lt;&lt; n] = {0};
+</code></pre>
+<p>　　按照这个思路实现了以后还是执行不对，debug最后发现是位运算和比较运算的优先级问题。问题出在这行代码：    </p>
+<pre><code class="language-C++">if (stat &amp; select != 0)
+</code></pre>
+<p>　　==和!=的优先级高于&amp;运算符，改成    </p>
+<pre><code class="language-C++">if ((stat &amp; select) != 0)
+</code></pre>
+<p>　　就好了。     </p>
+<p>　　(另外说到用位来存情况就想到了之前走心群里遇到的一道高中排列组合题，题目是10颗一样的糖，每天至少吃一颗，一共有几种吃法？
+泉哥的答案：C9_0 + C9_1 +...+ c9_9=2^9，(至今没想明白为啥= =)
+网上看到另一种思路：把10颗糖从左向右排成一列，第1天一定会吃第1颗糖，将它记为1，如果接下来的一颗糖和前一颗糖在同一天吃，就把这颗糖记为和前一颗糖相同的数字，即前一颗为1这一颗也为1，前一颗为0这一颗也为0，这样这列糖就可以表示为一个首位为1的10位二进制数，这样的数一共有2^9=512个，即为512种吃法。二进制真奇妙。:laughing:)</p>
+<h2>2.双指针法解决链表问题</h2>
+<h3>环形链表</h3>
+<p>　　检查链表有没有环推荐双指针法，因为具有O(1)的空间复杂度，也可以用其他方法比如哈希表法或者集合大小法。<br>　　<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">环形链表Ⅱ题号142</a>，双指针法的算法步骤（题解里已经有数学证明）（前半部分和环形链表Ⅰ的解法相同）：</p>
+<ol>
+<li><p>设置一快一慢两个指针，slow移动一下fast移动两下。若<code>fast == nullptr</code>说明无环，若<code>fast == slow</code>说明fast <strong>套圈</strong> 了slow，链表存在环。</p>
+</li>
+<li><p>此时将fast置为head，slow维持不变，然后两指针分别同时移动，相遇点即为成环点。</p>
+</li>
+</ol>
+<h3>相交链表</h3>
+<p>　　<a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">相交链表</a>也可以用双指针法解决，具体做法：    </p>
+<ol>
+<li>分别设置两个指针p1p2，从两个头结点headA和headB处开始遍历。</li>
+<li>若p1遍历到headA所在链表的结尾，则把p1设置为headB，继续遍历；若p2遍历到headB所在链表的结尾，则把p2设置为headA继续遍历。</li>
+<li>两指针相遇点即为相交点。</li>
+</ol>
+<p>　　原理很简单，设A、B两个链表不相交的部分分别为a、b，相交部分为merge，则<code>a + merge + b = b + merge + a</code>，等号两侧分别为两个指针按照顺序走过的路径相加，因此相遇点就是相交点。</p>
+<h2>3.Pow(x,n)</h2>
+<p>踩坑过程:     </p>
+<pre><code>-&gt; 直接递归调用自身     
+-&gt; 一些例子导致栈溢出     
+-&gt; 改用循环处理       
+-&gt; ｎ可能为负数没考虑到        
+-&gt; ｎ为负数时，ｎ变成-n，x变为1/x       
+-&gt; 一些例子会报错： `runtime error: negation of -2147483648 cannot be represented in type &#39;int&#39;`，问题出在n变为-n时，正数和负数的最大表示范围不一样。         
+-&gt; 用long long类型变量N代替n：`long long N = n;`    
+-&gt; 2.00000 -2147483648的例子还是会超出时间限制 感受到了深深的恶意      
+-&gt; 向题解低头，用二分递归实现，简洁优雅卧槽
+</code></pre>
+<p>最终代码：</p>
+<pre><code class="language-C++">class Solution {
+public:
+    double myPow(double x, int n) {
+        if (n == 0) { return 1; }
+        if (n == 1) { return x; }
+        if (n == -1) { return 1 / x; }
+        double half = myPow(x, n / 2);
+        double rest = myPow(x, n % 2);
+        return rest * half * half;
+    }
+};
+</code></pre>
+<h4>数值的整数次方： 快速幂的迭代写法</h4>
+<pre><code>class Solution {
+public:
+    double myPow(double x, int n) {
+        double res = 1;
+        int i = n;
+        while (i) {
+            if (i &amp; 1) res *= x;
+            x = x*x;
+            i /= 2;
+        }
+        return n &gt; 0 ? res : 1 / res;
+    }
+};
+</code></pre>
+<h2>4.剑指offer 剪绳子 贪心算法</h2>
+<pre><code>class Solution {
+public:
+    int cuttingRope(int n) {
+        if (n == 2 || n == 3) return n-1;
+        if (n % 3 == 0) {
+            return pow(3, n / 3);                    //全部是3
+        }
+        if (n % 3 == 1) {                            //多余一个1
+            return pow(3, n / 3 - 1) * 2 * 2;        //取出一个3，和1组成2*2，因为1*3 &lt; 2*2
+        }              
+        if (n % 3 == 2) {                            //多余一个2
+            return pow(3, n / 3) * 2;
+        }
+        return -1;
+    }
+};
+</code></pre>
+<h2>5.剑指offer 统计二进制中1的个数 (n - 1) &amp; n</h2>
+<p>将数字-1后与自己按位与，可以将最低位的1消除，可以这样操作的次数就是1的个数</p>
+<pre><code>class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int count = 0;
+        while (n) {
+            count++;
+            n = n - 1 &amp; n;
+        }
+        return count;
+    }
+};
+</code></pre>
+<h2>6.剑指offer 打印从1到最大的n位数 （大数问题，使用字符串）</h2>
+<p>看作n位数每一位从1-9的全排列，输出时不输出高位0</p>
+<h2>7.字符串实现大数加法</h2>
+<pre><code>#include&lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+using namespace std;
+ 
+char s1[200],s2[200],sum[210];
+ 
+void add()
+{
+    int lena = strlen(s1);
+    int lenb = strlen(s2);
+    int maxlen = (lena &lt; lenb)? lenb : lena;
+ 
+    int carry = 0,k = 0;
+    while (lena-- &gt; 0 &amp;&amp; lenb-- &gt; 0) {  //低位对齐相加
+        int left = s1[lena] - &#39;0&#39;;
+        int right = s2[lenb] - &#39;0&#39;;
+        int s = left + right + carry;
+        carry = s / 10;
+        s %= 10;
+        sum[k++] = s + &#39;0&#39;;
+    }
+    if (lena &lt;= 0) {                    //不对齐的部分，s1比s2长时
+        while (lenb-- &gt; 0) {
+            int left = 0;
+            int right = s2[lenb] - &#39;0&#39;;
+            int s = left + right + carry;
+            carry = s / 10;
+            s %= 10;
+            sum[k++] = s + &#39;0&#39;;
+        }
+    }
+    else if (lenb &lt;= 0) {               //不对齐的部分，s2比s1长时
+        while (lena-- &gt; 0) {
+            int left = s1[lena] - &#39;0&#39;;
+            int right = 0;
+            int s = left + right + carry;
+            carry = s / 10;
+            s %= 10;
+            sum[k++] = s + &#39;0&#39;;
+        }
+    }
+    if (carry != 0)
+        sum[k++] = carry + &#39;0&#39;;
+    sum[k] = &#39;\0&#39;;
+    strrev(sum);
+}
+ 
+int main()
+{
+    cin &gt;&gt; s1 &gt;&gt; s2;
+    add();
+    cout &lt;&lt; &quot;result is &quot; &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2>8. 删除单链表节点</h2>
+<p>　　</p>
+<h4>剑指offer O(1)时间 传入参数为<em>ListNode head和</em>ListNode pToBeDeleted</h4>
+<p>　　不用从头遍历到待删除的节点，只需要把待删除节点的下一个节点的值复制到待删除节点（覆盖），然后把待删除节点的next指向其下一个节点的下一个节点。
+　　尾节点仍需遍历。单个节点的链表需要设置头结点为空。</p>
+<h4>Leetcode O(n)时间 传入参数为*ListNode head和 int val</h4>
+<p>　　设置dummy节点</p>
+<pre><code>class Solution {
+public:
+    ListNode* deleteNode(ListNode* head, int val) {
+        ListNode* dummy = new ListNode(0);
+        dummy-&gt;next = head;
+        ListNode* p = dummy;
+        while (p-&gt;next-&gt;val != val) p = p-&gt;next;
+        p-&gt;next = p-&gt;next-&gt;next;
+        return dummy-&gt;next;
+    }
+};
+</code></pre>
+<h2>9.剑指Offer 正则表达式匹配</h2>
+<p>.匹配任意字符 *表示之前的1个字符可以出现0~任意次</p>
+<p>解法:分情况递归</p>
+<pre><code>class Solution {
+public:
+    bool isMatch(string s, string p) {
+        if (p.empty()) {            //若模式串为空，则S必须为空，反之不成立
+            return s.empty();
+        }
+        if (p.size() &gt; 1 &amp;&amp; p[1] == &#39;*&#39;) { //模式串里有*，情况1：patter后移两个字符（即*前的字符在s中出现0次）情况2：patter不变，s后移一个字符
+            return isMatch(s, p.substr(2)) || (!s.empty() &amp;&amp; (s[0] == p[0] || p[0] == &#39;.&#39;) &amp;&amp; 
+            isMatch(s.substr(1), p));
+        }
+        //模式串里没有*，若匹配则各后移一个字符
+        return !s.empty() &amp;&amp; (s[0] == p[0] || p[0] == &#39;.&#39;) &amp;&amp; isMatch(s.substr(1), p.substr(1));
+    }
+};
+</code></pre>
+<h2>10.判断一个二叉树是否对称(用递归解决)</h2>
+<p>也可以用剑指offer中比较两棵树的前序遍历和对称前序遍历(根-&gt;右节点-&gt;左节点)的序列。</p>
+<pre><code>class Solution {
+public:
+    bool isMirror(TreeNode* t1, TreeNode* t2) {
+        if (t1 == nullptr &amp;&amp; t2 == nullptr) return true;
+        if (t1 == nullptr || t2 == nullptr) return false;
+        return (t1-&gt;val == t2-&gt;val) &amp;&amp; isMirror(t1-&gt;left, t2-&gt;right) &amp;&amp; isMirror(t1-&gt;right, t2-&gt;left);
+    }
+
+    bool isSymmetric(TreeNode* root) {
+        return isMirror(root, root);
+    }
+};
+</code></pre>
+<h2>11. 包含min函数的栈</h2>
+<p>诀窍在于维护一个存放min记忆的栈,每次push都将当前时刻的最小值push进该栈.</p>
+<h2>12. 含有随机指针的链表的深拷贝</h2>
+<p>解法一: O(n)时间O(n)空间 利用哈希表</p>
+<pre><code>class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if (head == nullptr) return nullptr;
+        map&lt;Node*, Node*&gt; M;
+        Node* cur = head;
+        // 将所有节点加入Map
+        while (cur) {
+            Node* tmp = new Node(cur-&gt;val, nullptr, nullptr);
+            M[cur] = tmp;
+            cur = cur-&gt;next;
+        }
+        // 更新Map中value的所有指针
+        cur = head;
+        while (cur) {
+            M[cur]-&gt;random = M[cur-&gt;random];
+            M[cur]-&gt;next = M[cur-&gt;next];
+            cur = cur-&gt;next;
+        }
+        return M[head];
+    }
+};
+</code></pre>
+<p>解法二:O(n)时间O(1)空间 在每个节点后面紧接一个其复制</p>
+<pre><code>class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if (head == nullptr) {
+            return head;
+        }
+        Node* p = head;
+        while (p) {             // 每个节点后面插入一个值相同的节点
+            Node* q = new Node(p-&gt;val);
+            q-&gt;next = p-&gt;next;
+            p-&gt;next = q;
+            p = q-&gt;next;
+        }
+        p = head;
+        while (p) {             // 给复制进来的节点赋random值
+            p-&gt;next-&gt;random = p-&gt;random? p-&gt;random-&gt;next : nullptr;
+            p = p-&gt;next-&gt;next;
+        }
+        p = head;
+        Node* ret = head-&gt;next;
+        Node* q = ret;
+        while (q-&gt;next) {       // 奇数结点构成原始链表，偶数结点是新链表，返回偶数结点链表
+            p-&gt;next = q-&gt;next;
+            q-&gt;next = q-&gt;next-&gt;next;
+            p = p-&gt;next;
+            q = q-&gt;next;
+        }
+        p-&gt;next = nullptr;      // 退出时，将原链表尾节点置为NULL
+        return ret;
+    }
+};
+</code></pre>
+<h2>13.二叉搜索树转换为双向链表</h2>
+<p>对树进行中序遍历,同时更新指针.</p>
+<pre><code>class Solution {
+public:
+    void inTraval(Node* root) {
+        if (root == nullptr) return;
+        inTraval(root-&gt;left);
+        //-------------------------------------
+        if (last == nullptr) {          //说明此时刚刚开始进行中序遍历，遍历到最左边，最小的元素了。
+            head = root;          //找到了head
+            last = root;          //last将从这里开始向后移动
+        } else {
+            last-&gt;right = root;
+            root-&gt;left = last;
+            last = root;
+        }
+        //-------------------------------------
+        inTraval(root-&gt;right);
+
+    }
+    Node* treeToDoublyList(Node* root) {
+        if (root == nullptr) return head;
+        inTraval(root);
+        // 首尾相接
+        head-&gt;left = last;
+        last-&gt;right = head;
+        return head;
+    }
+private:
+    Node* last = nullptr;
+    Node* head = nullptr;
+};
+</code></pre>
+<h2>14.字符串的排列</h2>
+<p>用集合保存结果，将每一位字符与第一个字符交换位置，递归</p>
+<pre><code>class Solution {
+public:
+    vector&lt;string&gt; permutation(string s) {
+        set&lt;string&gt; res;
+        permutation(s, 0, res);
+        return vector&lt;string&gt;(res.begin(), res.end());
+    } 
+
+    void permutation(string s, int begin, set&lt;string&gt;&amp; res) {
+        if (s.size() == begin) {
+            res.insert(s);
+        }
+        for (int i = begin; i &lt; s.size(); i++) {
+            swap(s[i], s[begin]);
+            permutation(s, begin + 1, res);
+            swap(s[begin], s[i]);
+        }
+    }
+};
+</code></pre>
+<h2>15. 数组中出现次数超过一半的数</h2>
+<ul>
+<li>剑指offer做法 基于partition函数</li>
+</ul>
+<pre><code>排序后中间的元素一定是出现超过一半的数字
+sort(nums.begin(),nums.end());
+return nums[nums.size()/2];
+</code></pre>
+<ul>
+<li>哈希表</li>
+</ul>
+<pre><code>unordered_map&lt;int,int&gt;mp;
+        for(auto it : nums){
+            mp[it]++;
+            if(mp[it]&gt;nums.size()/2) return it;
+        }
+        return 0;
+</code></pre>
+<ul>
+<li><p>Boyer-Moore 投票算法/消除法（这个太6了）       </p>
+<p>  如果我们把众数记为 +1 ，把其他数记为 -1 ，将它们全部加起来，显然和大于 0 ，从结果本身我们可以看出众数比其他数多。<br>我们维护一个计数器，如果遇到一个我们目前的候选众数，就将计数器加一，否则减一。只要计数器等于 0 ，我们就将 nums 中之前访问的数字全部 忘记 ，并把下一个数字当做候选的众数。直观上这个算法不是特别明显为何是对的，我们先看下面这个例子（竖线用来划分每次计数器归零的情况）              </p>
+<p>  [7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 7, 7, 7, 7]                    </p>
+<p>  首先，下标为 0 的 7 被当做众数的第一个候选。在下标为 5 处，计数器会变回0 。所以下标为 6 的 5 是下一个众数的候选者。由于这个例子中 7 是真正的众数，所以通过忽略掉前面的数字，我们忽略掉了同样多数目的众数和非众数。因此， 7 仍然是剩下数字中的众数。                </p>
+<p>  [7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 5, 5, 5, 5]               </p>
+<p>  现在，众数是 5 （在计数器归零的时候我们把候选从 7 变成了 5）。此时，我们的候选者并不是真正的众数，但是我们在 遗忘 前面的数字的时候，要去掉相同数目的众数和非众数（如果遗忘更多的非众数，会导致计数器变成负数）。                </p>
+<p>  因此，上面的过程说明了我们可以放心地遗忘前面的数字，并继续求解剩下数字中的众数。最后，总有一个后缀满足计数器是大于 0 的，此时这个后缀的众数就是整个数组的众数。            </p>
+<p>  时间复杂度：O(n)           </p>
+<p>  空间复杂度：O(1)</p>
+</li>
+</ul>
+<h2>16. topK问题</h2>
+<ul>
+<li>快排 数据一次性读入内存，允许对原数组修改，时间复杂度O(n)</li>
+</ul>
+<pre><code>class Solution {
+private:
+    int partition(vector&lt;int&gt;&amp; arr,int start,int end){
+        //快速排序辅助函数
+        int l=start;
+        int r=end;
+        int q=arr[start];
+        
+        while(l&lt;r){
+            while(l&lt;r&amp;&amp;arr[r]&gt;=q)
+                r--;
+            while(l&lt;r&amp;&amp;arr[l]&lt;=q)
+                l++;
+            swap(arr[l],arr[r]);
+        }
+        swap(arr[start],arr[l]);
+        return l;
+    }
+public:
+    vector&lt;int&gt; getLeastNumbers(vector&lt;int&gt;&amp; arr, int k) {
+        vector&lt;int&gt; res;
+        if(k==0||arr.size()==0)
+            return res;       
+
+        //快速排序
+        int l=0;
+        int r=arr.size()-1;
+        int dx=partition(arr,l,r);
+        while(dx!=k-1){
+            if(dx&gt;k-1){
+                r=dx-1;
+                dx=partition(arr,l,r);
+            }
+            else if(dx&lt;k-1){
+                l=dx+1;
+                dx=partition(arr,l,r);
+            }
+        }
+        
+        for(int i=0;i&lt;k;i++){
+            res.push_back(arr[i]);
+        }
+        
+        return res;
+        
+    }
+};
+</code></pre>
+<ul>
+<li>最大堆 一次读入一个数据，时间复杂度O(nlogk),空间复杂度O(k)</li>
+</ul>
+<pre><code>class Solution {
+public:
+    vector&lt;int&gt; getLeastNumbers(vector&lt;int&gt;&amp; arr, int k) {
+        vector&lt;int&gt; res;
+        if (k == 0 || arr.size() == 0) {
+            return res;
+        }
+        priority_queue&lt;int&gt; q;
+        int i = 0;
+        for (; i &lt; k; i++) {
+            q.push(arr[i]);
+        }
+        for (; i &lt; arr.size(); i++) {
+            if (arr[i] &lt; q.top()) {
+                q.pop();
+                q.push(arr[i]);
+            }
+        }
+        while (!q.empty()) {
+            res.push_back(q.top());
+            q.pop();
+        }
+        return res;
+    }
+};
+</code></pre>
+<h2>17. 1~n中1出现的次数 剑指offer找规律</h2>
+<pre><code>class Solution {
+public:
+    int countDigitOne(int n) {
+        if(n &lt;= 0) return 0;
+        if(n &lt; 10) return 1;
+        string s = to_string(n);
+        int highNum = s[0] - &#39;0&#39;;
+        int size = s.size();
+        int withoutHigh = n - highNum * pow(10,size - 1);
+    // 1. 统计首位为1出现次数:
+    //    - 若n首位是1(如12345), 那么有 2346个
+    //    - 若n的首位U不是1(如23456), 那么有 10000个
+        int first = highNum == 1 ? withoutHigh + 1 :pow(10,size - 1);
+    // 统计其他位为1的出现次数
+    // 2. 大于 3456
+    //    - 可以划分为两个区间，例如对 23456 划分为
+    //      [10000, 19999], [3457, 9999]U[20001, 23456]
+    //    - 对任意一个区间，后面4个数字，选择其中一个为1，其他三个都可以在0~9中任意选择，因此一共有 2*4*10^3 个1 
+    int other = highNum * (size - 1) * pow(10, size - 2);
+    return first + other +countDigitOne(withoutHigh);
+    }
+};
+</code></pre>
+<h2>18. 最长不含重复字符的子字符串</h2>
+<ul>
+<li>动态规划</li>
+</ul>
+<p>定义dp[i][j]表示下标i到下标j的子串是否不含重复元素。            </p>
+<p>初始化：当i==j时，dp[i][j]是真（一个元素当然不重复）
+状态转移：dp[i][j]是真，则要求dp[i][j-1]是真，并且dp[i+1][j]也是真，这是显而易见的；
+其次还要求s[i]!=s[j]。因为当满足前两个条件时，s[i]、s[j]一定不在下标从i+1到j-1的子串中，如果这时再满足s[i]!=s[j]，那么dp[i][j]一定是真。
+因此状态转移方程为dp[i][j] = (dp[i][j-1] &amp;&amp; dp[i+1][j] &amp;&amp; s[i] != s[j]);
+动态规划代码如下：         </p>
+<pre><code>class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+    	size_t len = s.size();
+    	if (len == 0) return 0;
+    	int res = 1;
+        vector&lt;vector&lt;bool&gt; &gt; dp(len, vector&lt;bool&gt;(len, true));
+        for (int i = len - 2; i &gt;= 0; --i) {
+        	for (int j = i + 1; j &lt; len; ++j) {
+        		dp[i][j] = (dp[i][j-1] &amp;&amp; dp[i+1][j] &amp;&amp; s[i] != s[j]);
+        		if (dp[i][j] &amp;&amp; j - i + 1 &gt; res) res = j - i + 1;
+			}
+		}
+		return res;
+    }
+};
+</code></pre>
+<ul>
+<li>滑动窗口</li>
+</ul>
+<pre><code>class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int len = s.size();
+        if (len == 0) return 0;
+        int res = 1;
+        int i = 0, j = 0;   //  滑动窗口
+        map&lt;char, int&gt; m;
+        for (;j &lt; len; ++j) {
+            m[s[j]]++;
+            if (m[s[j]] == 1) {
+                if (j - i + 1 &gt; res) {
+                    res = j - i + 1;
+                    continue;
+                }
+            }
+            while(m[s[j]] &gt; 1) {  // 收缩窗口
+                m[s[i++]]--;
+            }
+        }
+        return res;
+    }
+};
+</code></pre>
+<h2>19. 数组中数字出现的次数</h2>
+<ul>
+<li><p>除2个数字外，其余数字均出现2次         </p>
+<ol>
+<li>对所有数字异或,一样的数字抵消,出现一次的两个数字异或运算后必定不为 0;</li>
+<li>用x &amp; (-x)得到一个二进制位最右边一位为1的数字mask，也就是两者出现不等的地方</li>
+<li>maskmask 和数组的每个数字做与运算，等于 0 的分为一组，等于 maskmask 的分为一组，这同时也将两个不一样的数字分开了</li>
+</ol>
+<pre><code>class Solution {
+public:
+vector&lt;int&gt; singleNumbers(vector&lt;int&gt;&amp; nums) {
+    vector&lt;int&gt; res(2, 0);
+    int number = 0;
+    for (int num : nums) {
+        number ^= num;
+    }
+    int pos = number &amp; (-number);
+    for (int num : nums) {
+        if ((num &amp; pos) == pos) res[0] ^= num;
+        else res[1] ^= num;
+    }
+    return res;
+}
+};
+</code></pre>
+</li>
+<li><p>除1个数字外，其余数字均出现3次<br>　　记录每一位不为0的数字出现的次数，如果出现的次数对3取模为1，则说明只出现一次的数字此位也是1，将所有模3为1的位想加，得到最终结果</p>
+</li>
+</ul>
+<pre><code>class Solution {
+public:
+    int singleNumber(vector&lt;int&gt;&amp; nums) {
+        int res = 0;
+        for (int i = 0; i &lt; 32; i++) {
+            int cnt = 0;
+            for (int n : nums) {
+                if ((1 &lt;&lt; i) &amp; n) {
+                    cnt++;
+                }
+            }
+            if (cnt % 3) {
+                res += (1 &lt;&lt; i);
+            } 
+        }
+        return res;
+    }
+};
+</code></pre>
+<h2>20. 剑指offer n个骰子的点数 动态规划</h2>
+<p>把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。</p>
+<p><a href="https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/</a></p>
+<h2>21. 求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</h2>
+<pre><code>class Solution {
+public:
+    int sumNums(int n) {
+        n &amp;&amp; (n += sumNums(n-1));
+        return n;
+    }
+};
+</code></pre>
+<h2>21. 位运算实现加法</h2>
+<pre><code>class Solution {
+public:
+    int add(int a, int b) {
+        int sum = 0, carry = 0;
+        do {
+            sum = a ^ b;
+            carry = (unsigned int)(a &amp; b) &lt;&lt; 1;     //C++不支持负值左移，需强制转换为无符号整数
+            a = sum;
+            b = carry;
+        } while (carry != 0);
+        return sum;
+    }
+};
+</code></pre>
+
+    </div>
+</section>
+    </body>
+</html>

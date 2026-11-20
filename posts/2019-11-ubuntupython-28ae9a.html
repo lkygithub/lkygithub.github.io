@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <title>Ubuntu16.04升级Python3.7</title>
+        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+        </section>
+<section class="blog-post">
+    <h1>Ubuntu16.04升级Python3.7</h1>
+    <div class="blog-post-subheader">
+        November 26, 2019
+    </div>
+    <div class="blog-post-content">
+<p>Ubuntu16.04默认带的Python是2.7.12和3.5，升级到Python3.7的步骤如下：   </p>
+<p>第一步，增加ppa仓库:</p>
+<p><code>$sudo add-apt-repository ppa:jonathonf/python-3.7</code></p>
+<p>第二步，升级apt索引，更新python:</p>
+<p><code>$sudo apt-get update</code></p>
+<p><code>$sudo apt-get install python3.7</code></p>
+<p>第三步，更换系统默认的软链命令Python3到新的Python3.7:</p>
+<p><code>$sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1</code></p>
+<p><code>$sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2</code></p>
+<p>最后，update-alternatives命令可以修改系统默认命令的软链指向，通过以下命令，可以切换Python3的指向:</p>
+<p><code>$sudo update-alternatives --config python3</code></p>
+<p>查看python2 和 python3的版本:</p>
+<p><code>$python2 --version</code></p>
+<p><code>$python3 --verison</code></p>
+
+    </div>
+</section>
+    </body>
+</html>

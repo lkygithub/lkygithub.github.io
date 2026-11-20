@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <title>Kubernetes学习笔记</title>
+        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+        </section>
+<section class="blog-post">
+    <h1>Kubernetes学习笔记</h1>
+    <div class="blog-post-subheader">
+        January 9, 2020
+    </div>
+    <div class="blog-post-content">
+<h1>背景</h1>
+<p>应用程序发展趋势：<br>　　单体应用 -&gt; 微服务</p>
+<p>产生需求：  　<br>　　微服务扩容、部署、软件环境需求差异、自动监控（运维）</p>
+<h1>Linux容器技术</h1>
+<p>两种隔离机制：      </p>
+<ul>
+<li><p>Linux命名空间<br>使每个进程只能看到自己的系统视图（文件、进程、网络接口、主机名等）</p>
+</li>
+<li><p>Linux控制组(cgroups)<br>限制了进程能使用的资源量（CPU、内存、网络带宽等）</p>
+</li>
+</ul>
+<h1>虚拟机与容器比较：</h1>
+<ul>
+<li>前者需要在每个隔离单元中运行系统服务，而后者不需要</li>
+<li>前者在宿主操作系统上有多个虚拟机操作系统内核，后者只需要一个宿主机系统内核</li>
+<li>前者的好处是提供完全隔离的环境，可用于隔离少量进程；后者的好处是低消耗，可用于在同一台机器上运行大量被隔离的进程</li>
+</ul>
+<h1>Docker</h1>
+<ul>
+<li>镜像（image）<br>　　镜像“层”的概念：使镜像分发更高效，减少存储空间（公用层只读，各自新的改动保存在新的层上）          </li>
+<li>镜像仓库             </li>
+<li>容器（container）</li>
+<li>Docker安装、build&amp;run、Dockerfile、ps -a、rm、tag、push</li>
+</ul>
+<h1>rkt</h1>
+<p>强调安全性、可构建性并遵从开放标准，使用OCI容器镜像，甚至可运行常规Docker镜像</p>
+<h1>Kubernetes介绍</h1>
+<p>　　用于部署和管理容器化应用的软件系统，可以提高开发者和运维的效率</p>
+<h3>Kubernetes集群架构</h3>
+<ul>
+<li><p>主节点（控制面板）</p>
+<ul>
+<li>Kubernetes API服务器</li>
+<li>Scheduler（调度器）</li>
+<li>Controller manager（执行集群级别的功能，如复制组件、持续跟踪工作节点、处理节点失败）</li>
+<li>etcd（可靠的分布式存储，持久化存储集群配置）</li>
+</ul>
+</li>
+<li><p>工作节点（运行用户实际部署的应用）</p>
+<ul>
+<li>Docker、rkt或其他的容器类型</li>
+<li>Kubelet（与API服务器通信，并管理它所在节点的容器）</li>
+<li>Kubernetes Service Proxy（kube-proxy）(负责组件之间的负载均衡网络流量)</li>
+</ul>
+</li>
+</ul>
+<h3>使用k8s的好处</h3>
+<ul>
+<li>简化应用程序部署（开发+运维）</li>
+<li>更好地利用硬件</li>
+<li>健康检查和自修复</li>
+</ul>
+<h3>Kube-Batch</h3>
+<p>　　Kube-Batch是运行在k8s上面向机器学习/大数据/HPC的批调度器（batch scheduler）。<br>　　开源仓库：<a href="https://github.com/kubernetes-sigs/kube-batch" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kube-batch</a></p>
+<h1>使用Minikube构建单节点集群</h1>
+<ul>
+<li>下载kubectl<br><code># curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl</code><br><code># mv kubectl /usr/local/bin/ &amp;&amp; chmod +x /usr/local/bin/kubectl</code><br><code># kubectl version</code></li>
+</ul>
+<p>kubectl zsh下自动补全，~/.zshrc中增加：<br><code>plugins=(kubectl)</code><br><code>source &lt;(kubectl completion zsh)</code><br>然后终端中source <code>~/.zshrc</code>             </p>
+<ul>
+<li>下载安装minikube<br><code># curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-1.5.2.rpm &amp;&amp; sudo rpm -ivh minikube-1.5.2.rpm</code><br><code># minikube config set vm-driver none</code><br><code># minikube start</code></li>
+</ul>
+<h3>报错 及 解决方式</h3>
+<p><strong>报错</strong>：</p>
+<pre><code>* Unable to pull images, which may be OK: running cmd: &quot;/bin/bash -c \&quot;sudo env PATH=/var/lib/minikube/binaries/v1.16.2:                  
+$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml\&quot;&quot;: command failed: /bin/bash -c &quot;sudo env PAT                
+H=/var/lib/minikube/binaries/v1.16.2:$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml&quot;
+stdout: 
+stderr: failed to pull image &quot;k8s.gcr.io/kube-apiserver:v1.16.2&quot;: output: Error response from daemon: Get https://k8s.gc                  
+r.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+</code></pre>
+<p><strong>解决方式</strong>：
+<code># minikube start --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</code><br>或<br><code># minikube start --image-mirror-country=cn</code></p>
+<h3>启动成功输出：</h3>
+<pre><code>➜  [/home/lky/tools] sudo minikube start --image-mirror-country=cn
+😄  minikube v1.6.2 on Ubuntu 16.04
+✨  Selecting &#39;none&#39; driver from user configuration (alternates: [])
+🤹  Running on localhost (CPUs=2, Memory=3921MB, Disk=200494MB) ...
+ℹ️   OS release is Ubuntu 16.04.6 LTS
+⚠️  VM is unable to access k8s.gcr.io, you may need to configure a proxy or set --image-repository
+🐳  Preparing Kubernetes v1.17.0 on Docker &#39;19.03.5&#39; ...
+🚜  Pulling images ...
+🚀  Launching Kubernetes ... 
+🤹  Configuring local host environment ...
+
+⚠️  The &#39;none&#39; driver provides limited isolation and may reduce system security and reliability.
+⚠️  For more information, see:
+👉  https://minikube.sigs.k8s.io/docs/reference/drivers/none/
+
+⚠️  kubectl and minikube configuration will be stored in /home/lky
+⚠️  To use kubectl or minikube commands as your own user, you may need to relocate them. For example, to overwrite your own settings, run:
+
+    ▪ sudo mv /home/lky/.kube /home/lky/.minikube $HOME
+    ▪ sudo chown -R $USER $HOME/.kube $HOME/.minikube
+
+💡  This can also be done automatically by setting the env var CHANGE_MINIKUBE_NONE_USER=true
+⌛  Waiting for cluster to come online ...
+🏄  Done! kubectl is now configured to use &quot;minikube&quot;
+</code></pre>
+<p><strong>可以使用</strong> <code>sudo kubectl cluster-info</code> <strong>查看单节点集群信息</strong>：</p>
+<pre><code>➜  [/home/lky/tools] sudo kubectl cluster-info
+[sudo] password for lky: 
+Kubernetes master is running at https://192.168.80.128:8443
+KubeDNS is running at https://192.168.80.128:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
+</code></pre>
+<h1>使用kind构建单节点k8s集群</h1>
+<p>　　Kind, Kubernetes In Docker<br>　　项目地址：<a href="https://github.com/kubernetes-sigs/kind" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kind</a>                          </p>
+<pre><code>```note
+安装运行需要下载外网镜像，可以按照[这篇教程](https://segmentfault.com/a/1190000018720465)里的方法创建一个
+kind.yaml切换一下镜像源，然后`kind create cluster --name moelove --config kind.yaml`
+或者设置终端代理（我用的是proxychains），设置好之后`proxychains zsh`即可。
+```
+</code></pre>
+<ul>
+<li>通过源码安装<br><code>go get -u sigs.k8s.io/kind</code>                   </li>
+<li>通过二进制安装<br><code>wget -O /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/0.2.0/kind-linux-amd64 &amp;&amp; chmod +x /usr/local/bin/kind</code></li>
+</ul>
+<p><strong>安装好后创建单节点k8s集群</strong></p>
+<pre><code>➜  [/home/lky/Downloads] kind --version
+kind version 0.2.0
+➜  [/home/lky/Downloads] kind create cluster --name lkytest
+Creating cluster &quot;lkytest&quot; ...
+ ✓ Ensuring node image (kindest/node:v1.13.4) 🖼 
+ ✓ Preparing nodes 📦 
+ ✓ Creating kubeadm config 📜 
+ ✓ Starting control-plane 🕹️ 
+Cluster creation complete. You can now use the cluster with:
+
+export KUBECONFIG=&quot;$(kind get kubeconfig-path --name=&quot;lkytest&quot;)&quot;
+kubectl cluster-info
+➜  [/home/lky/Downloads] export KUBECONFIG=&quot;$(kind get kubeconfig-path --name=&quot;lkytest&quot;)&quot;
+➜  [/home/lky/Downloads] kubectl cluster-info
+Kubernetes master is running at https://localhost:32727
+KubeDNS is running at https://localhost:32727/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
+➜  [/home/lky/Downloads] kubectl get nodes
+NAME                    STATUS   ROLES    AGE     VERSION
+lkytest-control-plane   Ready    master   3m23s   v1.13.4
+
+</code></pre>
+<p><strong>运行第一个应用</strong></p>
+<pre><code>➜  [/home/lky] kubectl run kubia --image=lkybuaa/kubia --port=8080 --generator=run/v1
+kubectl run --generator=run/v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
+replicationcontroller/kubia created
+➜  [/home/lky] kubectl get pods                 
+NAME          READY   STATUS              RESTARTS   AGE
+kubia-pt77q   0/1     ContainerCreating   0          24s
+➜  [/home/lky] kubectl describe pod 
+Name:           kubia-pt77q
+Namespace:      default
+Priority:       0
+Node:           lkytest-control-plane/172.17.0.2
+Start Time:     Fri, 10 Jan 2020 16:55:14 +0800
+Labels:         run=kubia
+Annotations:    &lt;none&gt;
+Status:         Running
+IP:             10.32.0.4
+IPs:            &lt;none&gt;
+Controlled By:  ReplicationController/kubia
+Containers:
+  kubia:
+    Container ID:   docker://872ef1700e9afa3573dd745599add7bc2c9f3216f0ec603710286e5f9e9b2cf2
+    Image:          lkybuaa/kubia
+    Image ID:       docker-pullable://lkybuaa/kubia@sha256:c5e35be31ea0a0440c2a3dc63741a9d6566d4bc4c3d8c219cf649b7e5361cb83
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Fri, 10 Jan 2020 16:58:27 +0800
+    Ready:          True
+    Restart Count:  0
+    Environment:    &lt;none&gt;
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-7kn4l (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-7kn4l:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-7kn4l
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  &lt;none&gt;
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From                            Message
+  ----    ------     ----  ----                            -------
+  Normal  Scheduled  4m3s  default-scheduler               Successfully assigned default/kubia-pt77q to lkytest-control-plane
+  Normal  Pulling    4m2s  kubelet, lkytest-control-plane  pulling image &quot;lkybuaa/kubia&quot;
+  Normal  Pulled     53s   kubelet, lkytest-control-plane  Successfully pulled image &quot;lkybuaa/kubia&quot;
+  Normal  Created    50s   kubelet, lkytest-control-plane  Created container
+  Normal  Started    50s   kubelet, lkytest-control-plane  Started container
+➜  [/home/lky] kubectl get pods     
+NAME          READY   STATUS    RESTARTS   AGE
+kubia-pt77q   1/1     Running   0          4m7s
+</code></pre>
+<p><strong>创建负载均衡服务对外暴露pod</strong>
+（kind和minikube都不支持LoadBalancer类型服务，所以外部ip一直为pending）</p>
+<pre><code>➜  [/home/lky] kubectl expose rc kubia --type=LoadBalancer --name kubia-http
+service/kubia-http exposed
+➜  [/home/lky] kubectl get services                                         
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP      10.96.0.1       &lt;none&gt;        443/TCP          13m
+kubia-http   LoadBalancer   10.100.184.20   &lt;pending&gt;     8080:31142/TCP   25s
+</code></pre>
+<p><strong>kind + kube-batch</strong></p>
+<p>kind创建集群        </p>
+<pre><code>➜  [/home/lky] sudo kind create cluster --name test1 --config kind-config.yaml
+Creating cluster &quot;test1&quot; ...
+ ✓ Ensuring node image (kindest/node:v1.16.3) 🖼
+ ✓ Preparing nodes 📦 
+ ✓ Writing configuration 📜 
+ ✓ Starting control-plane 🕹️ 
+ ✓ Installing CNI 🔌 
+ ✓ Installing StorageClass 💾 
+ ✓ Joining worker nodes 🚜 
+Set kubectl context to &quot;kind-test1&quot;
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-test1
+
+Thanks for using kind! 😊
+
+</code></pre>
+<p>其中kind-config.yaml内容为：            </p>
+<pre><code>kind: Cluster
+apiVersion: kind.sigs.k8s.io/v1alpha3
+
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker
+</code></pre>
+<p>即创建一个三节点的集群。<br>然后进入kube-batch项目，首先make，然后创建rfd</p>
+<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_podgroup.yaml                                                                                                
+customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.incubator.k8s.io created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha2_podgroup.yaml 
+customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.sigs.dev created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_queue.yaml 
+customresourcedefinition.apiextensions.k8s.io/queues.scheduling.incubator.k8s.io created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha2_queue.yaml 
+customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f default.yaml 
+queue.scheduling.incubator.k8s.io/default created
+</code></pre>
+<p>然后进入make生成的__output文件夹启动kube-batch</p>
+<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch -h
+Usage of ./kube-batch:
+      --alsologtostderr                  log to standard error as well as files
+      --default-queue string             The default queue name of the job (default &quot;default&quot;)
+      --kubeconfig string                Path to kubeconfig file with authorization and master location information
+      --leader-elect                     Start a leader election client and gain leadership before executing the main loop. Enable this when running replicated kube-batch for high availability
+      --listen-address string            The address to listen on for HTTP requests. (default &quot;:8080&quot;)
+      --lock-object-namespace string     Define the namespace of the lock object that is used for leader election
+      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
+      --log-dir string                   If non-empty, write log files in this directory
+      --log-flush-frequency duration     Maximum number of seconds between log flushes (default 5s)
+      --logtostderr                      log to standard error instead of files
+      --master string                    The address of the Kubernetes API server (overrides any value in kubeconfig)
+      --priority-class                   Enable PriorityClass to provide the capacity of preemption at pod group level; to disable it, set it false (default true)
+      --schedule-period duration         The period between each scheduling cycle (default 1s)
+      --scheduler-conf string            The absolute path of scheduler configuration file
+      --scheduler-name string            kube-batch will handle pods whose .spec.SchedulerName is same as scheduler-name (default &quot;kube-batch&quot;)
+      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
+  -v, --v Level                          log level for V logs
+      --version                          Show version and quit
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+pflag: help requested
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch --kubeconfig=&quot;/home/lky/.kube/config&quot; --logtostderr --schedule-period 5s --v 3 --scheduler-conf=&quot;../../config/kube-batch-conf.yaml&quot;
+I0112 16:35:11.424548   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-apiserver-test1-control-plane&gt; into cache.
+I0112 16:35:11.429708   22529 event_handlers.go:203] Added pod &lt;kube-system/etcd-test1-control-plane&gt; into cache.
+I0112 16:35:11.429736   22529 event_handlers.go:203] Added pod &lt;kube-system/coredns-5644d7b6d9-fcjsg&gt; into cache.
+I0112 16:35:11.429747   22529 event_handlers.go:203] Added pod &lt;kube-system/kindnet-qqnq5&gt; into cache.
+I0112 16:35:11.429759   22529 event_handlers.go:203] Added pod &lt;kube-system/kindnet-tgdr2&gt; into cache.
+I0112 16:35:11.429770   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-controller-manager-test1-control-plane&gt; into cache.
+I0112 16:35:11.429781   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-proxy-6bdn7&gt; into cache.
+I0112 16:35:11.429924   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-scheduler-test1-contrl-plane&gt; into cache.
+....
+...
+..
+</code></pre>
+<p>进入example文件夹启动一个job：</p>
+<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch] git:(master) ✗ cd example 
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/example] git:(master) ✗ ls
+job.yaml  kube-batch-conf.yaml  role.yaml
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/example] git:(master) ✗ k create -f job.yaml        
+job.batch/qj-1 created
+podgroup.scheduling.incubator.k8s.io/qj-1 created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/example] git:(master) ✗ k get pods           
+NAME         READY   STATUS    RESTARTS   AGE
+qj-1-5vfjw   1/1     Running   0          22s
+qj-1-6g9xk   1/1     Running   0          22s
+</code></pre>
+<p>其中，job.yaml内容为：</p>
+<pre><code>apiVersion: batch/v1
+kind: Job
+metadata:
+  name: qj-1
+spec:
+  completions: 2
+  parallelism: 2
+  template:
+    metadata:
+      annotations:
+        scheduling.k8s.io/group-name: qj-1
+    spec:
+      containers:
+      - image: busybox
+        imagePullPolicy: IfNotPresent
+        name: busybox
+        command: [&quot;sleep&quot;, &quot;9999999&quot;]
+        resources:
+          requests:
+            cpu: &quot;1&quot;
+      restartPolicy: Never
+      schedulerName: kube-batch
+---
+apiVersion: scheduling.incubator.k8s.io/v1alpha1
+kind: PodGroup
+metadata:
+  name: qj-1
+spec:
+  minMember: 2
+</code></pre>
+<p>kube-batch把一组pod看成一个pod group。</p>
+<h1>Pod</h1>
+<p>Pod是一组并置的容器，代表k8s中的基本构建模块。<br>由于一个容器中运行多个进程在实现中不可行，因此一个容器对应一个进程，然后用一种更高级的结构（pod）将多个容器绑定在一起。</p>
+
+    </div>
+</section>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <title>Python实现微博爬取+统计高频词</title>
+        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+        </section>
+<section class="blog-post">
+    <h1>Python实现微博爬取+统计高频词</h1>
+    <div class="blog-post-subheader">
+        November 23, 2019
+    </div>
+    <div class="blog-post-content">
+<p>帮小乔爬了一下共青团中央的所有微博，做了一下高频词统计。</p>
+<h2>爬取数据</h2>
+<p>爬数据用的github上别人的项目，地址是<a href="https://github.com/dataabc/weibo-crawler" target="_blank" rel="noopener">https://github.com/dataabc/weibo-crawler</a><br>爬之前需要设置好要爬的微博的微博id，以及时间范围、原创微博还是转发微博、是否爬图片、视频等选项。
+然后直接运行    </p>
+<p><code>python weibo.py</code>   </p>
+<p>这里把时间设置成1900-01-01，爬了共青团中央至2019-11-23的所有原创微博。<br>这是爬好的数据，一共有两万多条数据。   </p>
+<div align=center><img src="../2019/11/WeiboCrawler/1.png" alt=""></div>   <h2>统计高频词</h2>
+<p>使用jieba分词并统计高频词频率<br>先把微博内容提取出来   </p>
+<pre><code class="language-python">    import csv
+    with open(&#39;3937348351.csv&#39;,&#39;r&#39; , encoding=&#39;utf-8&#39;) as csvfile:
+        reader = csv.DictReader(csvfile)
+        column = [row[&#39;正文&#39;] for row in reader]
+    with open(&quot;C:\\Users\\Lenovo\\Desktop\\词频统计\\in.txt&quot;, &quot;w&quot;, encoding=&#39;utf-8&#39;) as f:
+        f.write(&#39;&#39;.join(column))
+</code></pre>
+<p>然后使用jieba处理   </p>
+<pre><code class="language-python">    stop = input(&#39;stop路径: &#39;)
+    jieba.analyse.set_stop_words(stop)
+    file = input(&#39;输入文件路径: &#39;)
+    lines = open(file,encoding= &#39;utf8&#39;).read()
+    new = input(&#39;输出文件路径: &#39;)
+    newfile = open(new,&quot;w&quot;,encoding= &#39;utf8&#39;)
+    num=int(input(&#39;高频词个数: &#39;))
+    newfile.write(&quot;  &quot;.join(analyse.extract_tags(lines, topK=num, withWeight=False, allowPOS=())))
+    newfile.close()
+</code></pre>
+<p>高频词个数输入100，就可以得到共青团中央前100的高频词了，这是结果：   </p>
+<div align=center><img src="../2019/11/WeiboCrawler/2.png" alt=""></div><h2>生成词云</h2>
+<p>得到高频词后可以使用wordcloud生成词云：</p>
+<pre><code class="language-python">    from wordcloud import WordCloud
+    wc = WordCloud(
+        scale=64, #图片规模
+        background_color=&quot;white&quot;, #背景颜色
+        max_words=500, #显示最大词数
+        font_path=&quot;./simfang.ttf&quot;,  #使用字体
+        min_font_size=15, #字体大小
+        max_font_size=50, #字体大小
+        width=400  #图幅宽度
+    )
+    wc.generate(data)
+    wc.to_file(&quot;pic.png&quot;)
+</code></pre>
+<p>这是得到的结果：</p>
+<div align=center><img src="../2019/11/WeiboCrawler/3.png" alt=""></div><p>可以修改<code>scale</code>、<code>width</code>等参数生成不一样的图。这是结果：</p>
+<div align=center><img src="../2019/11/WeiboCrawler/4.jpg" alt=""></div>
+    </div>
+</section>
+    </body>
+</html>

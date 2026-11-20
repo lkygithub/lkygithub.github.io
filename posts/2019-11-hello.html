@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        <title>Hello Again</title>
+        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+        </section>
+<section class="blog-post">
+    <h1>Hello Again</h1>
+    <div class="blog-post-subheader">
+        November 20, 2019
+    </div>
+    <div class="blog-post-content">
+<p>第三次搭博客了，从来没有养成写博客的习惯<br>今天看了<a href="https://www.xzywisdili.com/" target="_blank" rel="noopener">小徐的博客</a>很受震撼，决心向小徐学习:kissing_heart:，开始认真写博客，记录一下平时踩的坑和心路历程   </p>
+<p>博客这次用的是Hugo，先用apt-get安装了一下发现版本太老了，好多主题都用不了，发布的时候会报<code>function not found</code>的错误，所以remove后直接上github下了最新的dep包<br>下完以后可以用命令建一个网站也就是一个文件夹：   </p>
+<p><code>$hugo new site blog</code>    </p>
+<p>建好之后在content文件夹里面添加.md格式的src文件，然后改一下config文件就可以发布了   </p>
+<p><code>$hugo server --bind=0.0.0.0 --baseURL=http://www.ririshihaori.com -w -p 80</code>    </p>
+<p><code>--bind</code>好像设置成server ip 的话有点问题，因为阿里云的问题，所以设成0.0.0.0<br><code>-w</code>是监视src变化的选项，一有变化随时刷新
+<code>--baseURL</code>和<code>-p</code>设置地址和端口     </p>
+<p>主题用的是<a href="https://github.com/meibenny/elephants" target="_blank" rel="noopener">Elephants</a>，极简主义~:satisfied:</p>
+
+    </div>
+</section>
+    </body>
+</html>
