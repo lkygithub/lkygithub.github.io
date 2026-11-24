@@ -16,11 +16,16 @@
     <body>
         <section id="page-title">
             <h1><a href="../index.html">日日是好日</a></h1>
+            <nav id="site-nav">
+                <a href="../index.html">首页</a>
+                <a href="../archive.html">归档</a>
+                <a href="../tags.html">标签</a>
+            </nav>
         </section>
 <section class="blog-post">
     <h1>Barrelfish操作系统 (1)系统介绍</h1>
     <div class="blog-post-subheader">
-        November 25, 2019
+        November 25, 2019<span class="tag-list"><a href="../tags/tag-30d23e.html">操作系统</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/barrelfish.html">Barrelfish</a></span>
     </div>
     <div class="blog-post-content">
 <p>　　网上貌似没有Barrelfish的中文文档，正好最近在写文献综述，所以这里整理一下，为以后想要研究这个系统的童鞋省一点时间。  </p>
@@ -85,6 +90,25 @@ Capability可以看作是访问某种资源的令牌、凭证或票据，是提�
 <p>　　基于Capability的访问控制机制有利于实现对系统安全范畴中权限细粒度化(fine-grained privilege)和最小特权原则(least privilege)的支持，即进程所能访问到的资源范围不应大于其完成任务所需要的资源的范围。     </p>
 <p>　　Barrelfish使用了基于Capability的访问控制机制,用来控制系统中进程对系统中物理内存、内核对象的操作。关于Capabiltiy系统的设计与实现可以参考<a href="http://www.ririshihaori.com/posts/2020/7/barrelfish_capabilities/" target="_blank" rel="noopener">这篇文章</a></p>
 
+    </div>
+    <nav class="post-nav">
+        <span><a href="2019-11-ubuntupython-28ae9a.html">← Ubuntu16.04升级Python3.7</a></span>
+        <span><a href="2019-11-90247f.html">Python实现微博爬取+统计高频词 →</a></span>
+    </nav>
+    <div class="comments">
+        <script src="https://giscus.app/client.js"
+                data-repo="lkygithub/lkygithub.github.io"
+                data-repo-id="MDEwOlJlcG9zaXRvcnkxMzExNzYwODA="
+                data-category="Announcements"
+                data-category-id="DIC_kwDOB9GWkM4DL1YA"
+                data-mapping="pathname"
+                data-strict="1"
+                data-reactions-enabled="1"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async></script>
     </div>
 </section>
     </body>

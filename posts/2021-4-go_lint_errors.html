@@ -16,11 +16,16 @@
     <body>
         <section id="page-title">
             <h1><a href="../index.html">日日是好日</a></h1>
+            <nav id="site-nav">
+                <a href="../index.html">首页</a>
+                <a href="../archive.html">归档</a>
+                <a href="../tags.html">标签</a>
+            </nav>
         </section>
 <section class="blog-post">
     <h1>第一次提交golangci-lint报错</h1>
     <div class="blog-post-subheader">
-        April 28, 2021
+        April 28, 2021<span class="tag-list"><a href="../tags/go.html">Go</a><a href="../tags/tag-a95dd3.html">技术</a></span>
     </div>
     <div class="blog-post-content">
 <p>　　第一次开发的分支代码直接提交到远程后，触发了gitlab的pipeline，先是报了lint的几个错误，
@@ -37,6 +42,25 @@ cmd/server/handler.go:88:21: G601: Implicit memory aliasing in for loop. (gosec)
 <p>　　这里报的lint的错误是<code>Implicit memory aliasing in for loop</code>，刚开始以为是在for循环里的函数调用传地址会报错，后来根据<a href="https://stackoverflow.com/questions/62446118/implicit-memory-aliasing-in-for-loop" target="_blank" rel="noopener">https://stackoverflow.com/questions/62446118/implicit-memory-aliasing-in-for-loop</a> 里的说法，发现是因为for _, x range y的写法,循环里如果有传地址的操作，其实传的一直是x的地址，据说多个协程的场景下可能会有风险。</br>
 　　修改的方式很简单，把for循环的写法改成使用index遍历的方式即可，或者把函数实现从传指针改成传值的方式也可以。</p>
 
+    </div>
+    <nav class="post-nav">
+        <span><a href="2021-8-movies.html">← Time does not heal all w…</a></span>
+        <span><a href="2021-4-k8s_in_action.html">K8S In Action读书笔记 →</a></span>
+    </nav>
+    <div class="comments">
+        <script src="https://giscus.app/client.js"
+                data-repo="lkygithub/lkygithub.github.io"
+                data-repo-id="MDEwOlJlcG9zaXRvcnkxMzExNzYwODA="
+                data-category="Announcements"
+                data-category-id="DIC_kwDOB9GWkM4DL1YA"
+                data-mapping="pathname"
+                data-strict="1"
+                data-reactions-enabled="1"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async></script>
     </div>
 </section>
     </body>

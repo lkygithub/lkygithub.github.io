@@ -16,11 +16,16 @@
     <body>
         <section id="page-title">
             <h1><a href="../index.html">日日是好日</a></h1>
+            <nav id="site-nav">
+                <a href="../index.html">首页</a>
+                <a href="../archive.html">归档</a>
+                <a href="../tags.html">标签</a>
+            </nav>
         </section>
 <section class="blog-post">
     <h1>Kubernetes学习笔记</h1>
     <div class="blog-post-subheader">
-        January 9, 2020
+        January 9, 2020<span class="tag-list"><a href="../tags/k8s.html">K8S</a><a href="../tags/tag-a95dd3.html">技术</a></span>
     </div>
     <div class="blog-post-content">
 <h1>背景</h1>
@@ -358,6 +363,25 @@ spec:
 <h1>Pod</h1>
 <p>Pod是一组并置的容器，代表k8s中的基本构建模块。<br>由于一个容器中运行多个进程在实现中不可行，因此一个容器对应一个进程，然后用一种更高级的结构（pod）将多个容器绑定在一起。</p>
 
+    </div>
+    <nav class="post-nav">
+        <span><a href="2020-1-kube-batch.html">← Kube-Batch学习笔记</a></span>
+        <span><a href="2019-12-lalaland.html">Welcome to Seb's →</a></span>
+    </nav>
+    <div class="comments">
+        <script src="https://giscus.app/client.js"
+                data-repo="lkygithub/lkygithub.github.io"
+                data-repo-id="MDEwOlJlcG9zaXRvcnkxMzExNzYwODA="
+                data-category="Announcements"
+                data-category-id="DIC_kwDOB9GWkM4DL1YA"
+                data-mapping="pathname"
+                data-strict="1"
+                data-reactions-enabled="1"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async></script>
     </div>
 </section>
     </body>

@@ -58,3 +58,122 @@ body {
 .blog-post-content pre {
     overflow-x: auto;
 }
+
+/* ---- nav, archive, tags ---- */
+
+#site-nav a {
+    color: #555;
+    font-size: 0.85em;
+    margin: 0 0.6em;
+}
+
+#site-nav a:hover {
+    text-decoration: underline;
+}
+
+.entry-list {
+    list-style: none;
+    padding-left: 1em;
+}
+
+.entry-list li {
+    margin: 0.3em 0;
+}
+
+.entry-list time {
+    color: #555;
+    font-size: 0.85em;
+    display: inline-block;
+    width: 8em;
+}
+
+.entry-list a {
+    color: black;
+}
+
+.entry-list a:hover, .tag-cloud a:hover, .tag-list a:hover, .post-nav a:hover {
+    text-decoration: underline;
+}
+
+.tag-cloud {
+    line-height: 2.2;
+}
+
+.tag-cloud a {
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0.2em 0.6em;
+    margin-right: 0.4em;
+    /* Keep the name and its count on the same line as one chip. */
+    display: inline-block;
+}
+
+.tag-cloud small {
+    color: #767676;
+}
+
+.tag-list a {
+    color: #555;
+    font-size: 0.85em;
+    margin-left: 0.8em;
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    margin: 3em 0 1em;
+    padding-top: 1em;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+}
+
+.post-nav a {
+    color: #555;
+}
+
+.comments {
+    margin-top: 2em;
+}
+
+/* ---- dark mode, follows the system setting ---- */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1b1b1b;
+        color: #d8d8d8;
+    }
+
+    /* The footer copyright link has no colour of its own and would otherwise
+       fall back to the default dark blue. More specific rules still win. */
+    a {
+        color: #9a9a9a;
+    }
+
+    #page-title h1 a, .post a, .entry-list a, .tag-cloud a, .blog-post-content a {
+        color: #d8d8d8;
+    }
+
+    #site-nav a, .entry-list time, .tag-list a, .post-nav a, .blog-post-subheader,
+    .tag-cloud small {
+        color: #9a9a9a;
+    }
+
+    .tag-cloud a {
+        border-color: #3a3a3a;
+    }
+
+    .post-nav {
+        border-top-color: #333;
+    }
+
+    .blog-post-content pre, .blog-post-content code {
+        background: #262626;
+    }
+
+    .blog-post-content img, #cover img {
+        /* Take the edge off bright screenshots on a dark page. */
+        filter: brightness(0.9);
+    }
+}
