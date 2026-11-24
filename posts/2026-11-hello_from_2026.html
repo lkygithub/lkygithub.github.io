@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>Hello from 2026</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="站点挂了两个月我才发现，腾讯云那台小机器早就到期了😰 这回没再买机器，搬去了 GitHub Pages。 搬家才看见当年埋的雷：主题在仓库里是个空文件夹，图片也顺手塞进了主题仓库，那边 2021 年就停更了。有几张再也找不回来，只好换成自己存的图😓 最后干脆写了个小脚本把 m…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2026-11-hello_from_2026.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Hello from 2026">
+        <meta property="og:description" content="站点挂了两个月我才发现，腾讯云那台小机器早就到期了😰 这回没再买机器，搬去了 GitHub Pages。 搬家才看见当年埋的雷：主题在仓库里是个空文件夹，图片也顺手塞进了主题仓库，那边 2021 年就停更了。有几张再也找不回来，只好换成自己存的图😓 最后干脆写了个小脚本把 m…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2026-11-hello_from_2026.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,13 +42,14 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>Hello from 2026</h1>
     <div class="blog-post-subheader">
-        November 20, 2026<span class="tag-list"><a href="../tags/tag-c50d13.html">博客</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/github-pages.html">github-pages</a><a href="../tags/ai.html">ai</a></span>
+        November 20, 2026 · 约 205 字 · 1 分钟<span class="tag-list"><a href="../tags/tag-c50d13.html">博客</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/github-pages.html">github-pages</a><a href="../tags/ai.html">ai</a></span>
     </div>
     <div class="blog-post-content">
 <p>站点挂了两个月我才发现，腾讯云那台小机器早就到期了😰</p>
@@ -55,6 +66,14 @@
         <span></span>
         <span><a href="2021-8-movies.html">Time does not heal all w… →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Nov 20 2019</time><a href="2019-11-hello.html">Hello Again</a></li>
+            <li><time>Apr 28 2021</time><a href="2021-4-go_lint_errors.html">第一次提交golangci-lint报错</a></li>
+            <li><time>Apr 21 2021</time><a href="2021-4-k8s_in_action.html">K8S In Action读书笔记</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -97,6 +116,51 @@
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

@@ -59,6 +59,102 @@ body {
     overflow-x: auto;
 }
 
+/* ---- table of contents, long posts only ---- */
+
+.post-toc {
+    margin: 1.5em 0 2em;
+    padding: 0.2em 0 0.2em 1em;
+    border-left: 2px solid #eee;
+    font-size: 0.9em;
+}
+
+.post-toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.4em 0 0;
+}
+
+.post-toc summary {
+    color: #555;
+    cursor: pointer;
+}
+
+.post-toc li {
+    margin: 0.25em 0;
+}
+
+.post-toc a {
+    color: #555;
+}
+
+.post-toc a:hover {
+    text-decoration: underline;
+}
+
+.toc-h3 {
+    padding-left: 1.2em;
+}
+
+/* ---- related posts ---- */
+
+.related {
+    margin-top: 2em;
+}
+
+.related h3 {
+    font-size: 1em;
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 0.3em;
+}
+
+/* ---- copy button on code blocks ----
+   The button sits in a wrapper, not in <pre>, so it stays put while the code
+   scrolls sideways. The wrapper is added by the script in the page footer. */
+
+.copy-wrap {
+    position: relative;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #555;
+    font-family: inherit;
+    font-size: 0.75em;
+    padding: 0.1em 0.5em;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.copy-wrap:hover .copy-btn, .copy-btn:focus {
+    opacity: 1;
+}
+
+/* ---- search ---- */
+
+#q {
+    font-family: inherit;
+    font-size: 1em;
+    width: 100%;
+    max-width: 24em;
+    padding: 0.4em 0.6em;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #fff;
+    color: black;
+}
+
+#q:focus {
+    outline: none;
+    border-color: #999;
+}
+
 /* ---- nav, archive, tags ---- */
 
 #site-nav a {
@@ -183,8 +279,29 @@ html.dark .tag-cloud a, html.dark .blog-post-content a {
 
 html.dark #site-nav a, html.dark #theme-toggle, html.dark .entry-list time,
 html.dark .tag-list a, html.dark .post-nav a, html.dark .blog-post-subheader,
-html.dark .tag-cloud small {
+html.dark .tag-cloud small, html.dark .post-toc a, html.dark .post-toc summary,
+html.dark .related h3 {
     color: #9a9a9a;
+}
+
+html.dark .post-toc {
+    border-left-color: #333;
+}
+
+html.dark .copy-btn {
+    background: #262626;
+    border-color: #3a3a3a;
+    color: #9a9a9a;
+}
+
+html.dark #q {
+    background: #262626;
+    border-color: #3a3a3a;
+    color: #d8d8d8;
+}
+
+html.dark #q:focus {
+    border-color: #555;
 }
 
 html.dark .tag-cloud a {

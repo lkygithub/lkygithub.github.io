@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>Kube-Batch学习笔记</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="1.概述 kube batch是k8s下面向高性能计算领域的批调度器。 k8s原生的调度器会将需要启动的容器，放到一个优先队列（Priority Queue）里面，每次从队列里面取出一个容器，将其调度到一个节点上。 AI分布式训练需要所有worker都启动后，训练才能够开始进行。…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2020-1-kube-batch.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Kube-Batch学习笔记">
+        <meta property="og:description" content="1.概述 kube batch是k8s下面向高性能计算领域的批调度器。 k8s原生的调度器会将需要启动的容器，放到一个优先队列（Priority Queue）里面，每次从队列里面取出一个容器，将其调度到一个节点上。 AI分布式训练需要所有worker都启动后，训练才能够开始进行。…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2020-1-kube-batch.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,16 +42,17 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>Kube-Batch学习笔记</h1>
     <div class="blog-post-subheader">
-        January 9, 2020<span class="tag-list"><a href="../tags/k8s.html">K8S</a><a href="../tags/tag-a95dd3.html">技术</a></span>
+        January 9, 2020 · 约 2627 字 · 7 分钟<span class="tag-list"><a href="../tags/k8s.html">K8S</a><a href="../tags/tag-a95dd3.html">技术</a></span>
     </div>
     <div class="blog-post-content">
-<h1>1.概述</h1>
+<h1 id="1.-0adf3d">1.概述</h1>
 <p>　　kube-batch是k8s下面向高性能计算领域的批调度器。    </p>
 <p>　　k8s原生的调度器会将需要启动的容器，放到一个优先队列（Priority Queue）里面，每次从队列里面取出一个容器，将其调度到一个节点上。 </p>
 <p>　　AI分布式训练需要所有worker都启动后，训练才能够开始进行。但是原生的调度器的调度是以pod为粒度的，对AI任务很不利，使用原生调度器，可能会出现以下问题：      </p>
@@ -54,11 +65,11 @@
 <p>　　由此可见，原生调度器对于分布式训练的调度存在问题，影响了资源的利用率。而Kubernetes社区提供了一个批调度器kube-batch， 它能够将一个训练任务的多个worker当做一个整体进行调度，只有当任务所有worker的资源都满足，才会将容器在节点上启动。（要不全部，要不全部不，all or none）<br>　　如图所示，kube-batch定义了job和pod group的概念，一个job对应一个pod group，一个pod group里有一个或者多个pod，分别对应一个或多个task。</p>
 <div align=center><img src="../2020/1/kube-batch/1.jpg" alt=""></div>
 　　这解决了上述的问题，避免了任务间的资源死锁，提高了资源的利用率。         
-　　kube-batch还提供了队列的机制，同个队列的任务，会依次运行。不同队列直接可以设置优先级，优先级高的队列中的任务会优先得到调度。队列还可以设置权重，权重高的队列分配到的资源会更多。<h1>2.整体框架</h1>
+　　kube-batch还提供了队列的机制，同个队列的任务，会依次运行。不同队列直接可以设置优先级，优先级高的队列中的任务会优先得到调度。队列还可以设置权重，权重高的队列分配到的资源会更多。<h1 id="2.-168176">2.整体框架</h1>
 <div align=center><img src="../2020/1/kube-batch/2.jpg" alt=""></div><p>　　如图所示，kube-batch中有四个模块，分别是Cache、Session、Plugin和Action。<br>　　其中，Cache负责调用API Server的相关接口，维护整个系统内当前资源的分配状态，供调度器查询和计算。Session是调度器对pod/pod group/queue等进行调度时构建的一个对象，一次会话就是一次调度，调度时会从待调度的pod/queue中选择优先级最高的一个进行调度。<br>　　个人理解：调度时所依据的相关算法/规则/策略就是Plugin，调度产生的结果就是各种Action。</p>
-<h3>2.1 Cache</h3>
+<h3 id="2.1-cache">2.1 Cache</h3>
 <p>　　Cache模块封装了对API Server的节点、容器等对象的数据同步逻辑。Kubernetes的数据保存在分布式存储etcd中，所有对数据的查询和操作都通过调用API Server的接口，而非直接操作etcd。在调度时，需要集群中的节点和容器的使用资源和状态等信息。Cache模块通过调用Kubernetes的SDK，通过watch机制监听集群中的节点、容器的状态变化，将信息同步到自己的数据结构中。<br>　　Cache模块还封装了对API server的接口的调用。比如Cache.Bind这个接口，会去调用API Server的Bind接口，将容器绑定到指定的节点上。在kube-batch中只有cache模块需要和API Server交互，其他模块只需要调用Cache模块的接口。</p>
-<h3>2.2 Session</h3>
+<h3 id="2.2-session">2.2 Session</h3>
 <p>　　Session模块是将其他三个模块串联起来的一个模块。Kube-batch在每个调度周期开始时，都会新建一个Session对象，这个Session的初始化时，会做以下操作：  </p>
 <ol>
 <li><p>调用Cache.Snapshot接口，将Cache中节点、任务和队列的信息拷贝一份副本，之后在这个调度周期中使用这份副本进行调度。因为Cache的数据会不断变化，为了保持同个调度周期中的数据一致性，在一开始就拷贝了一份副本。</p>
@@ -249,6 +260,14 @@ for _, action := range pc.actions {
         <span><a href="2020-2-gujian1.html">← 琴心剑魄今何在</a></span>
         <span><a href="2020-1-k8s.html">Kubernetes学习笔记 →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Apr 21 2021</time><a href="2021-4-k8s_in_action.html">K8S In Action读书笔记</a></li>
+            <li><time>Apr 01 2021</time><a href="2021-4-k8s_informer.html">K8s_informer</a></li>
+            <li><time>Jan 09 2020</time><a href="2020-1-k8s.html">Kubernetes学习笔记</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -291,6 +310,51 @@ for _, action := range pc.actions {
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

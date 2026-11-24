@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>K8S In Action读书笔记</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="^ ^ : k8s in action读书笔记">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2021-4-k8s_in_action.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="K8S In Action读书笔记">
+        <meta property="og:description" content="^ ^ : k8s in action读书笔记">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2021-4-k8s_in_action.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,13 +42,14 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>K8S In Action读书笔记</h1>
     <div class="blog-post-subheader">
-        April 21, 2021<span class="tag-list"><a href="../tags/k8s.html">K8S</a><a href="../tags/tag-a95dd3.html">技术</a></span>
+        April 21, 2021 · 约 7 字 · 1 分钟<span class="tag-list"><a href="../tags/k8s.html">K8S</a><a href="../tags/tag-a95dd3.html">技术</a></span>
     </div>
     <div class="blog-post-content">
 <p>[^-^]:
@@ -49,6 +60,14 @@
         <span><a href="2021-4-go_lint_errors.html">← 第一次提交golangci-lint报错</a></span>
         <span><a href="2021-4-go_learning.html">Go语言学习资料汇总 →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Apr 01 2021</time><a href="2021-4-k8s_informer.html">K8s_informer</a></li>
+            <li><time>Jan 09 2020</time><a href="2020-1-kube-batch.html">Kube-Batch学习笔记</a></li>
+            <li><time>Jan 09 2020</time><a href="2020-1-k8s.html">Kubernetes学习笔记</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -91,6 +110,51 @@
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

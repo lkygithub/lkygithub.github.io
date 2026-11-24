@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>双系统Ubuntu硬盘扩容+卸载Ubuntu系统</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="开发板子需要安装Xilinx的Vivado安装环境，安装时发现需要win10专业版，家庭版不行，所以想着装到双系统的Ubuntu1604下，就去机房弄了块硬盘。 双系统给Ubuntu扩容 1. win10下右键“计算机” “管理” “磁盘管理”,压缩卷并新建卷，选择按照NFTS格…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2019-12-ubuntu-c2dbcd.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="双系统Ubuntu硬盘扩容+卸载Ubuntu系统">
+        <meta property="og:description" content="开发板子需要安装Xilinx的Vivado安装环境，安装时发现需要win10专业版，家庭版不行，所以想着装到双系统的Ubuntu1604下，就去机房弄了块硬盘。 双系统给Ubuntu扩容 1. win10下右键“计算机” “管理” “磁盘管理”,压缩卷并新建卷，选择按照NFTS格…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2019-12-ubuntu-c2dbcd.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,17 +42,18 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>双系统Ubuntu硬盘扩容+卸载Ubuntu系统</h1>
     <div class="blog-post-subheader">
-        December 2, 2019<span class="tag-list"><a href="../tags/linux.html">Linux</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/ubuntu.html">Ubuntu</a></span>
+        December 2, 2019 · 约 451 字 · 1 分钟<span class="tag-list"><a href="../tags/linux.html">Linux</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/ubuntu.html">Ubuntu</a></span>
     </div>
     <div class="blog-post-content">
 <p>　　开发板子需要安装Xilinx的Vivado安装环境，安装时发现需要win10专业版，家庭版不行，所以想着装到双系统的Ubuntu1604下，就去机房弄了块硬盘。</p>
-<h2>双系统给Ubuntu扩容</h2>
+<h2 id="ubuntu-5f7946">双系统给Ubuntu扩容</h2>
 <ol>
 <li><p>win10下右键“计算机”-“管理”-“磁盘管理”,压缩卷并新建卷，选择按照NFTS格式格式化。</p>
 </li>
@@ -59,7 +70,7 @@
 <li><p>重启，发现已将磁盘挂载到<code>/home/open</code>下</p>
 </li>
 </ol>
-<h2>双系统删除Ubuntu系统</h2>
+<h2 id="ubuntu-7b0a0f">双系统删除Ubuntu系统</h2>
 <p>　　。。。扩容了以后发现vivado只支持64位系统，之前装的时候不小心装成了32位的，还是删了Ubuntu系统直接换虚拟机算了。<br>　　但是不能直接清空硬盘分区，会导致启动后win10也进不去，需要按照步骤来。删之前先备份了下<code>/home</code>下的所有东西。</p>
 <ol>
 <li><p>首先<code>win + R</code>,然后输入<code>msinfo32</code>回车，查看系统信息中的<code>BIOS模式</code>来确认系统启动方式。(我这里是传统模式，即Legacy BIOS模式)。</p>
@@ -75,6 +86,14 @@
         <span><a href="2019-12-leetcode-8a1b0d.html">← [持续更新]Leetcode刷题笔记</a></span>
         <span><a href="2019-11-win10spotlight.html">Python提取Win10锁屏Spotlight →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Nov 26 2019</time><a href="2019-11-ubuntupython-28ae9a.html">Ubuntu16.04升级Python3.7</a></li>
+            <li><time>Nov 20 2026</time><a href="2026-11-hello_from_2026.html">Hello from 2026</a></li>
+            <li><time>Apr 28 2021</time><a href="2021-4-go_lint_errors.html">第一次提交golangci-lint报错</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -117,6 +136,51 @@
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

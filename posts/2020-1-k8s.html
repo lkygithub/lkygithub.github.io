@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>Kubernetes学习笔记</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="背景 应用程序发展趋势： 单体应用 微服务 产生需求： 微服务扩容、部署、软件环境需求差异、自动监控（运维） Linux容器技术 两种隔离机制： + Linux命名空间 使每个进程只能看到自己的系统视图（文件、进程、网络接口、主机名等） + Linux控制组 cgroups 限制…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2020-1-k8s.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Kubernetes学习笔记">
+        <meta property="og:description" content="背景 应用程序发展趋势： 单体应用 微服务 产生需求： 微服务扩容、部署、软件环境需求差异、自动监控（运维） Linux容器技术 两种隔离机制： + Linux命名空间 使每个进程只能看到自己的系统视图（文件、进程、网络接口、主机名等） + Linux控制组 cgroups 限制…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2020-1-k8s.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,19 +42,30 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>Kubernetes学习笔记</h1>
     <div class="blog-post-subheader">
-        January 9, 2020<span class="tag-list"><a href="../tags/k8s.html">K8S</a><a href="../tags/tag-a95dd3.html">技术</a></span>
+        January 9, 2020 · 约 1013 字 · 3 分钟<span class="tag-list"><a href="../tags/k8s.html">K8S</a><a href="../tags/tag-a95dd3.html">技术</a></span>
     </div>
+    <details class="post-toc" open>
+        <summary>目录</summary>
+        <ul>
+            <li class="toc-h3"><a href="#kubernetes-93685d">Kubernetes集群架构</a></li>
+            <li class="toc-h3"><a href="#k8s-812fd4">使用k8s的好处</a></li>
+            <li class="toc-h3"><a href="#kube-batch">Kube-Batch</a></li>
+            <li class="toc-h3"><a href="#h-830c6b">报错 及 解决方式</a></li>
+            <li class="toc-h3"><a href="#h-0c726a">启动成功输出：</a></li>
+        </ul>
+    </details>
     <div class="blog-post-content">
-<h1>背景</h1>
+<h1 id="h-8e1b94">背景</h1>
 <p>应用程序发展趋势：<br>　　单体应用 -&gt; 微服务</p>
 <p>产生需求：  　<br>　　微服务扩容、部署、软件环境需求差异、自动监控（运维）</p>
-<h1>Linux容器技术</h1>
+<h1 id="linux-356314">Linux容器技术</h1>
 <p>两种隔离机制：      </p>
 <ul>
 <li><p>Linux命名空间<br>使每个进程只能看到自己的系统视图（文件、进程、网络接口、主机名等）</p>
@@ -52,24 +73,24 @@
 <li><p>Linux控制组(cgroups)<br>限制了进程能使用的资源量（CPU、内存、网络带宽等）</p>
 </li>
 </ul>
-<h1>虚拟机与容器比较：</h1>
+<h1 id="h-5a3f58">虚拟机与容器比较：</h1>
 <ul>
 <li>前者需要在每个隔离单元中运行系统服务，而后者不需要</li>
 <li>前者在宿主操作系统上有多个虚拟机操作系统内核，后者只需要一个宿主机系统内核</li>
 <li>前者的好处是提供完全隔离的环境，可用于隔离少量进程；后者的好处是低消耗，可用于在同一台机器上运行大量被隔离的进程</li>
 </ul>
-<h1>Docker</h1>
+<h1 id="docker">Docker</h1>
 <ul>
 <li>镜像（image）<br>　　镜像“层”的概念：使镜像分发更高效，减少存储空间（公用层只读，各自新的改动保存在新的层上）          </li>
 <li>镜像仓库             </li>
 <li>容器（container）</li>
 <li>Docker安装、build&amp;run、Dockerfile、ps -a、rm、tag、push</li>
 </ul>
-<h1>rkt</h1>
+<h1 id="rkt">rkt</h1>
 <p>强调安全性、可构建性并遵从开放标准，使用OCI容器镜像，甚至可运行常规Docker镜像</p>
-<h1>Kubernetes介绍</h1>
+<h1 id="kubernetes-e61f8c">Kubernetes介绍</h1>
 <p>　　用于部署和管理容器化应用的软件系统，可以提高开发者和运维的效率</p>
-<h3>Kubernetes集群架构</h3>
+<h3 id="kubernetes-93685d">Kubernetes集群架构</h3>
 <ul>
 <li><p>主节点（控制面板）</p>
 <ul>
@@ -87,15 +108,15 @@
 </ul>
 </li>
 </ul>
-<h3>使用k8s的好处</h3>
+<h3 id="k8s-812fd4">使用k8s的好处</h3>
 <ul>
 <li>简化应用程序部署（开发+运维）</li>
 <li>更好地利用硬件</li>
 <li>健康检查和自修复</li>
 </ul>
-<h3>Kube-Batch</h3>
+<h3 id="kube-batch">Kube-Batch</h3>
 <p>　　Kube-Batch是运行在k8s上面向机器学习/大数据/HPC的批调度器（batch scheduler）。<br>　　开源仓库：<a href="https://github.com/kubernetes-sigs/kube-batch" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kube-batch</a></p>
-<h1>使用Minikube构建单节点集群</h1>
+<h1 id="minikube-b1ce4e">使用Minikube构建单节点集群</h1>
 <ul>
 <li>下载kubectl<br><code># curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl</code><br><code># mv kubectl /usr/local/bin/ &amp;&amp; chmod +x /usr/local/bin/kubectl</code><br><code># kubectl version</code></li>
 </ul>
@@ -103,7 +124,7 @@
 <ul>
 <li>下载安装minikube<br><code># curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-1.5.2.rpm &amp;&amp; sudo rpm -ivh minikube-1.5.2.rpm</code><br><code># minikube config set vm-driver none</code><br><code># minikube start</code></li>
 </ul>
-<h3>报错 及 解决方式</h3>
+<h3 id="h-830c6b">报错 及 解决方式</h3>
 <p><strong>报错</strong>：</p>
 <pre><code>* Unable to pull images, which may be OK: running cmd: &quot;/bin/bash -c \&quot;sudo env PATH=/var/lib/minikube/binaries/v1.16.2:                  
 $PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml\&quot;&quot;: command failed: /bin/bash -c &quot;sudo env PAT                
@@ -114,7 +135,7 @@ r.io/v2/: net/http: request canceled while waiting for connection (Client.Timeou
 </code></pre>
 <p><strong>解决方式</strong>：
 <code># minikube start --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</code><br>或<br><code># minikube start --image-mirror-country=cn</code></p>
-<h3>启动成功输出：</h3>
+<h3 id="h-0c726a">启动成功输出：</h3>
 <pre><code>➜  [/home/lky/tools] sudo minikube start --image-mirror-country=cn
 😄  minikube v1.6.2 on Ubuntu 16.04
 ✨  Selecting &#39;none&#39; driver from user configuration (alternates: [])
@@ -148,7 +169,7 @@ KubeDNS is running at https://192.168.80.128:8443/api/v1/namespaces/kube-system/
 
 To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
 </code></pre>
-<h1>使用kind构建单节点k8s集群</h1>
+<h1 id="kindk8s-047df9">使用kind构建单节点k8s集群</h1>
 <p>　　Kind, Kubernetes In Docker<br>　　项目地址：<a href="https://github.com/kubernetes-sigs/kind" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kind</a>                          </p>
 <pre><code>```note
 安装运行需要下载外网镜像，可以按照[这篇教程](https://segmentfault.com/a/1190000018720465)里的方法创建一个
@@ -373,7 +394,7 @@ spec:
   minMember: 2
 </code></pre>
 <p>kube-batch把一组pod看成一个pod group。</p>
-<h1>Pod</h1>
+<h1 id="pod">Pod</h1>
 <p>Pod是一组并置的容器，代表k8s中的基本构建模块。<br>由于一个容器中运行多个进程在实现中不可行，因此一个容器对应一个进程，然后用一种更高级的结构（pod）将多个容器绑定在一起。</p>
 
     </div>
@@ -381,6 +402,14 @@ spec:
         <span><a href="2020-1-kube-batch.html">← Kube-Batch学习笔记</a></span>
         <span><a href="2019-12-lalaland.html">Welcome to Seb's →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Apr 21 2021</time><a href="2021-4-k8s_in_action.html">K8S In Action读书笔记</a></li>
+            <li><time>Apr 01 2021</time><a href="2021-4-k8s_informer.html">K8s_informer</a></li>
+            <li><time>Jan 09 2020</time><a href="2020-1-kube-batch.html">Kube-Batch学习笔记</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -423,6 +452,51 @@ spec:
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>Barrelfish操作系统(2) capability系统实现代码分析</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="1、Capability系统设计实现概述 一个capability其实就是一个指针，但又是指针的一个超集，一个capability往往含有两个成员，一个是指向某块内存的地址addr，另一个是权限rights，权限用以说明某进程可以对 通过该capability寻址得到的内存 进行…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2020-7-barrelfish_capabilities.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Barrelfish操作系统(2) capability系统实现代码分析">
+        <meta property="og:description" content="1、Capability系统设计实现概述 一个capability其实就是一个指针，但又是指针的一个超集，一个capability往往含有两个成员，一个是指向某块内存的地址addr，另一个是权限rights，权限用以说明某进程可以对 通过该capability寻址得到的内存 进行…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2020-7-barrelfish_capabilities.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,16 +42,17 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>Barrelfish操作系统(2) capability系统实现代码分析</h1>
     <div class="blog-post-subheader">
-        July 11, 2020<span class="tag-list"><a href="../tags/tag-30d23e.html">操作系统</a><a href="../tags/tag-a95dd3.html">技术</a></span>
+        July 11, 2020 · 约 2840 字 · 7 分钟<span class="tag-list"><a href="../tags/tag-30d23e.html">操作系统</a><a href="../tags/tag-a95dd3.html">技术</a></span>
     </div>
     <div class="blog-post-content">
-<h1>1、Capability系统设计实现概述</h1>
+<h1 id="1capability-20b7c8">1、Capability系统设计实现概述</h1>
 <p>　　一个capability其实就是一个指针，但又是指针的一个超集，一个capability往往含有两个成员，一个是指向某块内存的地址addr，另一个是权限rights，权限用以说明某进程可以对 <strong>通过该capability寻址得到的内存</strong> 进行哪种操作（如只读、读写、只写）。   </p>
 <p>　　因此，可以把capability理解为一种<strong>带有权限的指针</strong> ，我在后文中提到“capability”时，既有可能是指保存该“capability”本身的那块内存，也有可能是指该“capability”所指向的那块内存。大家需要根据语境自行判断。举一个例子，比如后文提到的“l1_CNode用来存储l2_CNode”，这句话中的“l1_CNode”就是指类型为l1_CNode类型的capability所指向的某一段内存，而这句话中的“l2_CNode”是指保存l2_CNode类型的capability本身的那块内存，即该内存中的数据为地址+权限。</p>
 <p>　　Barrelfish内核为每一个dispatcher维护其CSpace（<strong>某进程拥有的所有capability构成该进程的CSpace</strong>）,沿用seL4中CNode及两级寻址的方式设计，具体方式为在dcb（dispatcher control block,进程控制块）中保存Root_CNode的地址。         </p>
@@ -138,7 +149,7 @@ struct cte {
 				struct  Domain domain;};
 </code></pre>
 <p>　　可以看到这个联合体包含了Barrelfish系统中可能出现的<strong>所有类型</strong>的capability的结构体定义。由于不同体系结构的CPU的内核所需要的capability类型是不同的（比如可以看到上面很多名字中带x86、ARM、aarch64的cap类型），所以Barrelfish的开发者选择用Hamlet DSL来自动生成这部分代码。<br>　　下面对capability的类型系统作说明。</p>
-<h3>对capability类型系统的解释：</h3>
+<h3 id="capability-f4ba85">对capability类型系统的解释：</h3>
 <p>不同类型的capability代表不同类型的系统资源，比如:</p>
 <ul>
 <li>dispatcher类型的cap就指向内核中一个dispatcher的dcb（dispatcher control block）      </li>
@@ -223,7 +234,7 @@ enum cnode_cmd {
 <p>　　如果一个capA经过retype操作转型为capB，那么capA就是capB的“祖先”，capB就是capA的“后代”。“副本”关系则由copy操作产生。      </p>
 <p>　　在系统的运行中常常需要查询这些关系，从而保证上述针对cap的操作能够正确地完成，（举个例子，比如一个ram类型的capability（我们称其为capA）已经经过一次retype操作，得到了一个dispatcher类型的capB，那么之后就不能再对capA进行retype操作，将其retype成别的类型的cap，（因为capA所指向的那段内存，也就是capB所指向的内存，我们已经用来存dcb了，不能再存别的），所以我们在对一个cap进行类型转换即retype操作前，往往要查询其是否已经有后代了）。为此，Barrelfish使用了一个叫做mdb的数据库（<strong>mapping database</strong>）来存储capability之间这样的关系，以便系统运行时动态地查询、更新cap之间的关系。             </p>
 <p>　　后面会详细介绍mdb。           </p>
-<h3>mdb简介</h3>
+<h3 id="mdb-7be6ce">mdb简介</h3>
 <p>　　Barrelfish的mdb实现为AA树，是红黑树的一个变种。AA树和红黑树都是搜索树，即树中的节点是存在一定的偏序关系的。          </p>
 <p>　　Barrelfish将capability按照cap类型、内存基地址、内存大小等因素排序，从而产生cap之间的偏序关系。比如 父类型 &gt; 子类型 基址低 &gt; 基址高 size大 &gt; size小。        </p>
 <p>　　互为副本的两个cap, 其类型、基址、大小等相同，因此在树中的位置也相邻。而互为祖先后代的两个cap,在树中的位置一定是祖先在前，后代在后，满足上述的自定义偏序。</p>
@@ -365,6 +376,14 @@ if/monitor_blocking.if
         <span><a href="2020-8-donggeniubi.html">← 2020秋招提前上岸啦！</a></span>
         <span><a href="2020-4-comments_tag.html">[转载]代码注释中的NOTE/XXX/HACK/… →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Nov 26 2019</time><a href="2019-11-ubuntupython-28ae9a.html">Ubuntu16.04升级Python3.7</a></li>
+            <li><time>Nov 25 2019</time><a href="2019-11-barrelfish-overview.html">Barrelfish操作系统 (1)系统介绍</a></li>
+            <li><time>Nov 20 2026</time><a href="2026-11-hello_from_2026.html">Hello from 2026</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -407,6 +426,51 @@ if/monitor_blocking.if
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

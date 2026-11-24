@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>MIT 6.824 Lab1实现</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="本文实现MIT的分布式系统课程（6.824）的配套实验一。 本实验将用go语言实现一个MapReduce库，MapReduce的概念可以参考Google的这篇论文。 首先拉取实验代码的仓库 git clone git://g.csail.mit.edu/6.824 golabs …">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2019-11-6.824lab1.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="MIT 6.824 Lab1实现">
+        <meta property="og:description" content="本文实现MIT的分布式系统课程（6.824）的配套实验一。 本实验将用go语言实现一个MapReduce库，MapReduce的概念可以参考Google的这篇论文。 首先拉取实验代码的仓库 git clone git://g.csail.mit.edu/6.824 golabs …">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2019-11-6.824lab1.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,13 +42,14 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>MIT 6.824 Lab1实现</h1>
     <div class="blog-post-subheader">
-        November 26, 2019<span class="tag-list"><a href="../tags/tag-c760fd.html">分布式系统</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/go.html">Go</a></span>
+        November 26, 2019 · 约 73 字 · 1 分钟<span class="tag-list"><a href="../tags/tag-c760fd.html">分布式系统</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/go.html">Go</a></span>
     </div>
     <div class="blog-post-content">
 <p>　　本文实现MIT的<a href="https://pdos.csail.mit.edu/6.824/index.html" target="_blank" rel="noopener">分布式系统课程（6.824）</a>的配套实验一。<br>　　本实验将用go语言实现一个MapReduce库，MapReduce的概念可以参考<a href="http://static.googleusercontent.com/media/research.google.com/zh-CN//archive/mapreduce-osdi04.pdf" target="_blank" rel="noopener">Google的这篇论文</a>。　　　　　</p>
@@ -51,6 +62,14 @@
         <span><a href="2019-11-win10spotlight.html">← Python提取Win10锁屏Spotlight</a></span>
         <span><a href="2019-11-ubuntupython-28ae9a.html">Ubuntu16.04升级Python3.7 →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Apr 28 2021</time><a href="2021-4-go_lint_errors.html">第一次提交golangci-lint报错</a></li>
+            <li><time>Apr 02 2021</time><a href="2021-4-go_learning.html">Go语言学习资料汇总</a></li>
+            <li><time>Apr 01 2020</time><a href="2020-4-go_sets.html">Go实现String Set</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -93,6 +112,51 @@
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

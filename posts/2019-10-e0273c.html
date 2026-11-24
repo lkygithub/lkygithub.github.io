@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>寒武纪实习总结</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="在寒武纪的实习结束已经快一个月了，在这总结记录一下3个月的实习生活。 实习前 大概六月份左右，操作系统课程终于结束，不用每周再去沙河监考。同寝旺财从3月份开始每日加350的生活就让人羡慕嫉妒恨，终于可以在暑假心man安zhe理dao得shi实习一波了。 因为不想每天坐地铁通勤就投…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2019-10-e0273c.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="寒武纪实习总结">
+        <meta property="og:description" content="在寒武纪的实习结束已经快一个月了，在这总结记录一下3个月的实习生活。 实习前 大概六月份左右，操作系统课程终于结束，不用每周再去沙河监考。同寝旺财从3月份开始每日加350的生活就让人羡慕嫉妒恨，终于可以在暑假心man安zhe理dao得shi实习一波了。 因为不想每天坐地铁通勤就投…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2019-10-e0273c.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,26 +42,36 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>寒武纪实习总结</h1>
     <div class="blog-post-subheader">
-        October 24, 2019<span class="tag-list"><a href="../tags/tag-727190.html">实习</a><a href="../tags/tag-aefcbf.html">生活</a></span>
+        October 24, 2019 · 约 1467 字 · 4 分钟<span class="tag-list"><a href="../tags/tag-727190.html">实习</a><a href="../tags/tag-aefcbf.html">生活</a></span>
     </div>
+    <details class="post-toc" open>
+        <summary>目录</summary>
+        <ul>
+            <li class="toc-h2"><a href="#h-1926fd">实习前</a></li>
+            <li class="toc-h2"><a href="#h-b706cb">实习中</a></li>
+            <li class="toc-h2"><a href="#h-6bf97e">实习后</a></li>
+            <li class="toc-h2"><a href="#update">Update</a></li>
+        </ul>
+    </details>
     <div class="blog-post-content">
 <p>　　在寒武纪的实习结束已经快一个月了，在这总结记录一下3个月的实习生活。</p>
-<h2>实习前</h2>
+<h2 id="h-1926fd">实习前</h2>
 <p>　　大概六月份左右，操作系统课程终于结束，不用每周再去沙河监考。同寝旺财从3月份开始每日加350的生活就让人羡慕嫉妒恨，终于可以在暑假心man安zhe理dao得shi实习一波了。<br>　　因为不想每天坐地铁通勤就投了致真大厦的寒武纪，还有量子银座的一家小无人机公司。事实证明这个决定是非常正确滴，每天十点起床，十点二十左右就能到公司打卡，甚至还能在路上7-11买个包子吃美滋滋。    </p>
 <div align=center><img src="../2019/10/Cambricon/1.jpg" alt=""></div><p>　　面试的过程十分不堪回首，苏老师问的问题很多都没有回答上来，感觉自己确实准备得不是很充分，也算是长了一个教训，以后一定要先把Leetcode刷一遍再出来丢人。感谢寒武纪收留这么菜的我🙏    </p>
-<h2>实习中</h2>
+<h2 id="h-b706cb">实习中</h2>
 <p>　　实习的岗位是软件部编译器组，负责人就是之前面试我的苏老师，组里的气氛很好，通过相处发现同事们都很优秀而且人很好，尤其是我们gdb小组的两位师兄和lcx同学，不仅永远耐心地回答我的萌新三连，还带我吃饭玩桌游，给我各种学习的建议，感恩🙏<br>　　虽然是中途加入gdb项目里来的，但这次也算是完整的参与了一个产品的一个功能版本的开发和发布，也是第一次实际在外面公司里实习，学到了很多新的工具和知识。日常使用的git、wiki就不说了，像jira、vnc、devdocs这些工具都是第一次接触，也是第一次在服务器环境中开发，总之磕磕绊绊踩了很多坑才算慢慢上路。<br>　　因为git命令使用不熟练有一次险些把本地的改动全丢掉了，幸好咏哲哥救我狗命说有<code>git reflog</code>可以回退命令到前几条命令的状态，可以说是吃一堑长一智了，git大法好，吃不完的后悔药。<br>　　还有，提交代码的时候才意识到代码的提交和review原来这么麻烦，要在jenkins上跑过全部例子没问题才可以给苏老师看，注释原来要写得这么规范(不仅要过lint还要过doxygen)，加上苏老师对代码性能的执着，可怜的我第一个patch交了两个星期才Merge进去 😓 不过有了第一次，之后的提交也就轻车熟路了~       </p>
 <div align=center><img src="../2019/10/Cambricon/2.jpg" alt=""></div><p>　　具体的工作内容是这样的，寒武纪对标nv的CUDA推出了自己的BangC语言，两者的编译器都是在llvm的基础上开发，nv的叫nvcc，寒武纪的叫cncc。寒武纪还有自己的汇编器cnas，用来把cncc输出的中间级汇编代码MLISA(Machine Learning ISA)翻译成自己研发的板卡上跑的二进制。cngdb也是对标cuda gdb推出的调试工具，二者都是基于gdb开发出来的，之前的cngdb只能进行MLISA层面的调试，因为之前只有从MLISA代码经过cnas汇编器到casm指令这一过程的调试信息，没有从BangC代码到MLISA的调试信息。因此我需要把llvm(编译时开启<code>-g</code>和<code>-dwarf2</code>选项)吐出到.s文件里的调试信息(即从Bangc到MLISA的调试信息)与MLISA到指令的调试信息<strong>级联</strong>起来。类似于将某个变量在C代码中的名字与在汇编代码中的虚拟寄存器地址以及在底层指令的真实寄存器地址做一个级联。<br>　　听起来似乎挺简单的，但是实际实现起来有很多麻烦的事情，首先要实现一个parser把.s中的调试信息都读进来，做法是在cnas的parser里加东西(lex .ll文件里加词法规则，yacc .yy文件里加语法规则，梦回本科做编译的日子)，然后把读进来的调试信息按照从DWARF标准里抽象出来的数据结构存起来，好在有lcx大佬的dwarf框架可以复用。<br>　　DWARF是一种调试信息的组织形式的标准，可以被gdb识别并直接使用，里面的数据以一个个DIE(Debug Info Entry)的形式组织，这里不再赘述，感兴趣的话可以google一下dwarf。<br>　　实现的过程也遇到了各种坑，比如LEB128的编码格式的bug，以及与cx同学没沟通好导致的bug。总之一个刚开始写C++的人可能写出的各种奇妙bug我几乎都写出来过了hhhh。这是lcx的小黄鸭，每次我有bug了他会都用这个鸭子的口吻说『你改悔罢』</p>
 <div align=center><img src="../2019/10/Cambricon/3.png" alt=""></div><p>　　总之，功夫不负有心人，到了八月中cngdb终于能够调试bangc程序辣。之后就是各种改bug、写测试、写PPT、写文档、改文档、写专利。每天和大哥们一起努力，日子过得十分充实。</p>
-<h2>实习后</h2>
+<h2 id="h-6bf97e">实习后</h2>
 <p>　　感觉实习真的很锻炼人，不仅要求看代码、查资料的学习能力，还要求和别人沟通合作，统筹谋划的能力，这三个月真的学到了很多，也结识了很多优秀且善良的人，感恩各位，以后也要继续努力，争取早日成为能够独当一面的可靠的人~</p>
-<h2>Update</h2>
+<h2 id="update">Update</h2>
 <p>　　cngdb在github开源啦，lcx把我也加到Readme了😝。<br>　　上周师兄得了金键盘奖还请大家吃了饭，真好。            </p>
 <div align=center style='display: none'><img src="https://ftp.bmp.ovh/imgs/2019/12/32611c6950b7b0f9.jpg" alt=""></div>
     </div>
@@ -59,6 +79,14 @@
         <span><a href="2019-11-hello.html">← Hello Again</a></span>
         <span><a href="2018-6-a259bd.html">看完了「血色浪漫」 →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Aug 08 2021</time><a href="2021-8-movies.html">Time does not heal all wounds.It merely softens the pain and blurs the memories.</a></li>
+            <li><time>Aug 02 2020</time><a href="2020-8-donggeniubi.html">2020秋招提前上岸啦！</a></li>
+            <li><time>Feb 17 2020</time><a href="2020-2-gujian1.html">琴心剑魄今何在</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -101,6 +129,51 @@
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

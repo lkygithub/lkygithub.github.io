@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>Python实现微博爬取+统计高频词</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="帮小乔爬了一下共青团中央的所有微博，做了一下高频词统计。 爬取数据 爬数据用的github上别人的项目，地址是https://github.com/dataabc/weibo crawler 爬之前需要设置好要爬的微博的微博id，以及时间范围、原创微博还是转发微博、是否爬图片、视…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2019-11-90247f.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Python实现微博爬取+统计高频词">
+        <meta property="og:description" content="帮小乔爬了一下共青团中央的所有微博，做了一下高频词统计。 爬取数据 爬数据用的github上别人的项目，地址是https://github.com/dataabc/weibo crawler 爬之前需要设置好要爬的微博的微博id，以及时间范围、原创微博还是转发微博、是否爬图片、视…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2019-11-90247f.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,22 +42,31 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>Python实现微博爬取+统计高频词</h1>
     <div class="blog-post-subheader">
-        November 23, 2019<span class="tag-list"><a href="../tags/python.html">Python</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/tag-fdd054.html">爬虫</a></span>
+        November 23, 2019 · 约 258 字 · 1 分钟<span class="tag-list"><a href="../tags/python.html">Python</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/tag-fdd054.html">爬虫</a></span>
     </div>
+    <details class="post-toc" open>
+        <summary>目录</summary>
+        <ul>
+            <li class="toc-h2"><a href="#h-686420">爬取数据</a></li>
+            <li class="toc-h2"><a href="#h-63b682">统计高频词</a></li>
+            <li class="toc-h2"><a href="#h-909d1d">生成词云</a></li>
+        </ul>
+    </details>
     <div class="blog-post-content">
 <p>帮小乔爬了一下共青团中央的所有微博，做了一下高频词统计。</p>
-<h2>爬取数据</h2>
+<h2 id="h-686420">爬取数据</h2>
 <p>爬数据用的github上别人的项目，地址是<a href="https://github.com/dataabc/weibo-crawler" target="_blank" rel="noopener">https://github.com/dataabc/weibo-crawler</a><br>爬之前需要设置好要爬的微博的微博id，以及时间范围、原创微博还是转发微博、是否爬图片、视频等选项。
 然后直接运行    </p>
 <p><code>python weibo.py</code>   </p>
 <p>这里把时间设置成1900-01-01，爬了共青团中央至2019-11-23的所有原创微博。<br>这是爬好的数据，一共有两万多条数据。   </p>
-<div align=center><img src="../2019/11/WeiboCrawler/1.png" alt=""></div>   <h2>统计高频词</h2>
+<div align=center><img src="../2019/11/WeiboCrawler/1.png" alt=""></div>   <h2 id="h-63b682">统计高频词</h2>
 <p>使用jieba分词并统计高频词频率<br>先把微博内容提取出来   </p>
 <pre><code class="language-python">    import csv
     with open(&#39;3937348351.csv&#39;,&#39;r&#39; , encoding=&#39;utf-8&#39;) as csvfile:
@@ -68,7 +87,7 @@
     newfile.close()
 </code></pre>
 <p>高频词个数输入100，就可以得到共青团中央前100的高频词了，这是结果：   </p>
-<div align=center><img src="../2019/11/WeiboCrawler/2.png" alt=""></div><h2>生成词云</h2>
+<div align=center><img src="../2019/11/WeiboCrawler/2.png" alt=""></div><h2 id="h-909d1d">生成词云</h2>
 <p>得到高频词后可以使用wordcloud生成词云：</p>
 <pre><code class="language-python">    from wordcloud import WordCloud
     wc = WordCloud(
@@ -91,6 +110,14 @@
         <span><a href="2019-11-barrelfish-overview.html">← Barrelfish操作系统 (1)系统介绍</a></span>
         <span><a href="2019-11-hello.html">Hello Again →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Dec 22 2019</time><a href="2019-12-pythoncfda-a59ef3.html">Python爬虫踩坑</a></li>
+            <li><time>Nov 27 2019</time><a href="2019-11-win10spotlight.html">Python提取Win10锁屏Spotlight</a></li>
+            <li><time>Nov 26 2019</time><a href="2019-11-ubuntupython-28ae9a.html">Ubuntu16.04升级Python3.7</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -133,6 +160,51 @@
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

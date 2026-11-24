@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>Python提取Win10锁屏Spotlight</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="刚才看见Win10锁屏界面的星空图特别好看，想要下载下来发微博。查了一下知乎上的方法： win + r 然后在弹出的运行框中运行 %localappdata%\Packages\Microsoft.Windows.ContentDeliveryManager cw5n1h2txy…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2019-11-win10spotlight.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Python提取Win10锁屏Spotlight">
+        <meta property="og:description" content="刚才看见Win10锁屏界面的星空图特别好看，想要下载下来发微博。查了一下知乎上的方法： win + r 然后在弹出的运行框中运行 %localappdata%\Packages\Microsoft.Windows.ContentDeliveryManager cw5n1h2txy…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2019-11-win10spotlight.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,13 +42,14 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>Python提取Win10锁屏Spotlight</h1>
     <div class="blog-post-subheader">
-        November 27, 2019<span class="tag-list"><a href="../tags/python.html">Python</a><a href="../tags/tag-a95dd3.html">技术</a></span>
+        November 27, 2019 · 约 156 字 · 1 分钟<span class="tag-list"><a href="../tags/python.html">Python</a><a href="../tags/tag-a95dd3.html">技术</a></span>
     </div>
     <div class="blog-post-content">
 <p>　　刚才看见Win10锁屏界面的星空图特别好看，想要下载下来发微博。查了一下知乎上的方法：    </p>
@@ -71,6 +82,14 @@
         <span><a href="2019-12-ubuntu-c2dbcd.html">← 双系统Ubuntu硬盘扩容+卸载Ubuntu系统</a></span>
         <span><a href="2019-11-6.824lab1.html">MIT 6.824 Lab1实现 →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Dec 22 2019</time><a href="2019-12-pythoncfda-a59ef3.html">Python爬虫踩坑</a></li>
+            <li><time>Nov 26 2019</time><a href="2019-11-ubuntupython-28ae9a.html">Ubuntu16.04升级Python3.7</a></li>
+            <li><time>Nov 23 2019</time><a href="2019-11-90247f.html">Python实现微博爬取+统计高频词</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -113,6 +132,51 @@
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>

@@ -7,7 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
         <title>[持续更新]Leetcode刷题笔记</title>
-        <meta name="description" content="一个记录技术、生活与思考的个人博客">
+        <meta name="description" content="1.位运算与比较运算的优先级 题号464，我能赢吗，两人轮流从给出的等差数列中取数（数列从1开始直到n，n为给出的值），取出的数之和超过某个给出的目标值游戏结束，最后一个取数的人胜利。 作法主要是用递归模拟两个人的取数过程（因为假设两个人都足够聪明），用位运算模拟取数顺序（即两个…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2019-12-leetcode-8a1b0d.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="[持续更新]Leetcode刷题笔记">
+        <meta property="og:description" content="1.位运算与比较运算的优先级 题号464，我能赢吗，两人轮流从给出的等差数列中取数（数列从1开始直到n，n为给出的值），取出的数之和超过某个给出的目标值游戏结束，最后一个取数的人胜利。 作法主要是用递归模拟两个人的取数过程（因为假设两个人都足够聪明），用位运算模拟取数顺序（即两个…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2019-12-leetcode-8a1b0d.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
@@ -32,17 +42,47 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
                 <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>[持续更新]Leetcode刷题笔记</h1>
     <div class="blog-post-subheader">
-        December 3, 2019<span class="tag-list"><a href="../tags/tag-046a89.html">算法</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/leetcode.html">Leetcode</a><a href="../tags/c.html">C++</a></span>
+        December 3, 2019 · 约 2610 字 · 7 分钟<span class="tag-list"><a href="../tags/tag-046a89.html">算法</a><a href="../tags/tag-a95dd3.html">技术</a><a href="../tags/leetcode.html">Leetcode</a><a href="../tags/c.html">C++</a></span>
     </div>
+    <details class="post-toc">
+        <summary>目录</summary>
+        <ul>
+            <li class="toc-h2"><a href="#1.-92fe18">1.位运算与比较运算的优先级</a></li>
+            <li class="toc-h2"><a href="#2.-642115">2.双指针法解决链表问题</a></li>
+            <li class="toc-h3"><a href="#h-98e9ba">环形链表</a></li>
+            <li class="toc-h3"><a href="#h-81b833">相交链表</a></li>
+            <li class="toc-h2"><a href="#3.powxn">3.Pow(x,n)</a></li>
+            <li class="toc-h2"><a href="#4.offer-bb5af2">4.剑指offer 剪绳子 贪心算法</a></li>
+            <li class="toc-h2"><a href="#5.offer-1-n-1-amp-n-b3857e">5.剑指offer 统计二进制中1的个数 (n - 1) &amp; n</a></li>
+            <li class="toc-h2"><a href="#6.offer-1n-291939">6.剑指offer 打印从1到最大的n位数 （大数问题，使用字符串）</a></li>
+            <li class="toc-h2"><a href="#7.-a27e86">7.字符串实现大数加法</a></li>
+            <li class="toc-h2"><a href="#8.-d3315f">8. 删除单链表节点</a></li>
+            <li class="toc-h2"><a href="#9.offer-cf633f">9.剑指Offer 正则表达式匹配</a></li>
+            <li class="toc-h2"><a href="#10.-ef5f59">10.判断一个二叉树是否对称(用递归解决)</a></li>
+            <li class="toc-h2"><a href="#11.-min-b3822e">11. 包含min函数的栈</a></li>
+            <li class="toc-h2"><a href="#12.-b6a3f9">12. 含有随机指针的链表的深拷贝</a></li>
+            <li class="toc-h2"><a href="#13.-1482c6">13.二叉搜索树转换为双向链表</a></li>
+            <li class="toc-h2"><a href="#14.-a9153b">14.字符串的排列</a></li>
+            <li class="toc-h2"><a href="#15.-dc29a3">15. 数组中出现次数超过一半的数</a></li>
+            <li class="toc-h2"><a href="#16.-topk-ce7190">16. topK问题</a></li>
+            <li class="toc-h2"><a href="#17.-1n1-offer-fdeda4">17. 1~n中1出现的次数 剑指offer找规律</a></li>
+            <li class="toc-h2"><a href="#18.-626674">18. 最长不含重复字符的子字符串</a></li>
+            <li class="toc-h2"><a href="#19.-e6ef44">19. 数组中数字出现的次数</a></li>
+            <li class="toc-h2"><a href="#20.-offer-n-ab4d26">20. 剑指offer n个骰子的点数 动态规划</a></li>
+            <li class="toc-h2"><a href="#21.-12...n-forwhileifelseswitchcaseabc-b3bb8d">21. 求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</a></li>
+            <li class="toc-h2"><a href="#21.-7926be">21. 位运算实现加法</a></li>
+        </ul>
+    </details>
     <div class="blog-post-content">
 <p>　　</p>
-<h2>1.位运算与比较运算的优先级</h2>
+<h2 id="1.-92fe18">1.位运算与比较运算的优先级</h2>
 <p>　　<a href="https://leetcode-cn.com/problems/can-i-win/" target="_blank" rel="noopener">题号464，我能赢吗</a>，两人轮流从给出的等差数列中取数（数列从1开始直到n，n为给出的值），取出的数之和超过某个给出的目标值游戏结束，最后一个取数的人胜利。
 作法主要是用递归模拟两个人的取数过程（因为假设两个人都足够聪明），用位运算模拟取数顺序（即两个人取数的情况一共有2^n种），由于题目规定n最大不超过20所以用一个数组来存所有可能的取数情况下的游戏结果。   </p>
 <pre><code class="language-C++">int dp[1 &lt;&lt; n] = {0};
@@ -57,8 +97,8 @@
 <p>　　(另外说到用位来存情况就想到了之前走心群里遇到的一道高中排列组合题，题目是10颗一样的糖，每天至少吃一颗，一共有几种吃法？
 泉哥的答案：C9_0 + C9_1 +...+ c9_9=2^9，(至今没想明白为啥= =)
 网上看到另一种思路：把10颗糖从左向右排成一列，第1天一定会吃第1颗糖，将它记为1，如果接下来的一颗糖和前一颗糖在同一天吃，就把这颗糖记为和前一颗糖相同的数字，即前一颗为1这一颗也为1，前一颗为0这一颗也为0，这样这列糖就可以表示为一个首位为1的10位二进制数，这样的数一共有2^9=512个，即为512种吃法。二进制真奇妙。😆)</p>
-<h2>2.双指针法解决链表问题</h2>
-<h3>环形链表</h3>
+<h2 id="2.-642115">2.双指针法解决链表问题</h2>
+<h3 id="h-98e9ba">环形链表</h3>
 <p>　　检查链表有没有环推荐双指针法，因为具有O(1)的空间复杂度，也可以用其他方法比如哈希表法或者集合大小法。<br>　　<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">环形链表Ⅱ题号142</a>，双指针法的算法步骤（题解里已经有数学证明）（前半部分和环形链表Ⅰ的解法相同）：</p>
 <ol>
 <li><p>设置一快一慢两个指针，slow移动一下fast移动两下。若<code>fast == nullptr</code>说明无环，若<code>fast == slow</code>说明fast <strong>套圈</strong> 了slow，链表存在环。</p>
@@ -66,7 +106,7 @@
 <li><p>此时将fast置为head，slow维持不变，然后两指针分别同时移动，相遇点即为成环点。</p>
 </li>
 </ol>
-<h3>相交链表</h3>
+<h3 id="h-81b833">相交链表</h3>
 <p>　　<a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">相交链表</a>也可以用双指针法解决，具体做法：    </p>
 <ol>
 <li>分别设置两个指针p1p2，从两个头结点headA和headB处开始遍历。</li>
@@ -74,7 +114,7 @@
 <li>两指针相遇点即为相交点。</li>
 </ol>
 <p>　　原理很简单，设A、B两个链表不相交的部分分别为a、b，相交部分为merge，则<code>a + merge + b = b + merge + a</code>，等号两侧分别为两个指针按照顺序走过的路径相加，因此相遇点就是相交点。</p>
-<h2>3.Pow(x,n)</h2>
+<h2 id="3.powxn">3.Pow(x,n)</h2>
 <p>踩坑过程:     </p>
 <pre><code>-&gt; 直接递归调用自身     
 -&gt; 一些例子导致栈溢出     
@@ -99,7 +139,7 @@ public:
     }
 };
 </code></pre>
-<h4>数值的整数次方： 快速幂的迭代写法</h4>
+<h4 id="h-bcb178">数值的整数次方： 快速幂的迭代写法</h4>
 <pre><code>class Solution {
 public:
     double myPow(double x, int n) {
@@ -114,7 +154,7 @@ public:
     }
 };
 </code></pre>
-<h2>4.剑指offer 剪绳子 贪心算法</h2>
+<h2 id="4.offer-bb5af2">4.剑指offer 剪绳子 贪心算法</h2>
 <pre><code>class Solution {
 public:
     int cuttingRope(int n) {
@@ -132,7 +172,7 @@ public:
     }
 };
 </code></pre>
-<h2>5.剑指offer 统计二进制中1的个数 (n - 1) &amp; n</h2>
+<h2 id="5.offer-1-n-1-amp-n-b3857e">5.剑指offer 统计二进制中1的个数 (n - 1) &amp; n</h2>
 <p>将数字-1后与自己按位与，可以将最低位的1消除，可以这样操作的次数就是1的个数</p>
 <pre><code>class Solution {
 public:
@@ -146,9 +186,9 @@ public:
     }
 };
 </code></pre>
-<h2>6.剑指offer 打印从1到最大的n位数 （大数问题，使用字符串）</h2>
+<h2 id="6.offer-1n-291939">6.剑指offer 打印从1到最大的n位数 （大数问题，使用字符串）</h2>
 <p>看作n位数每一位从1-9的全排列，输出时不输出高位0</p>
-<h2>7.字符串实现大数加法</h2>
+<h2 id="7.-a27e86">7.字符串实现大数加法</h2>
 <pre><code>#include&lt;iostream&gt;
 #include &lt;string.h&gt;
 #include &lt;stdio.h&gt;
@@ -205,12 +245,12 @@ int main()
     return 0;
 }
 </code></pre>
-<h2>8. 删除单链表节点</h2>
+<h2 id="8.-d3315f">8. 删除单链表节点</h2>
 <p>　　</p>
-<h4>剑指offer O(1)时间 传入参数为<em>ListNode head和</em>ListNode pToBeDeleted</h4>
+<h4 id="offer-o1-listnode-headlistnode-ptobedeleted-834dd2">剑指offer O(1)时间 传入参数为<em>ListNode head和</em>ListNode pToBeDeleted</h4>
 <p>　　不用从头遍历到待删除的节点，只需要把待删除节点的下一个节点的值复制到待删除节点（覆盖），然后把待删除节点的next指向其下一个节点的下一个节点。
 　　尾节点仍需遍历。单个节点的链表需要设置头结点为空。</p>
-<h4>Leetcode O(n)时间 传入参数为*ListNode head和 int val</h4>
+<h4 id="leetcode-on-listnode-head-int-val-4ac85b">Leetcode O(n)时间 传入参数为*ListNode head和 int val</h4>
 <p>　　设置dummy节点</p>
 <pre><code>class Solution {
 public:
@@ -224,7 +264,7 @@ public:
     }
 };
 </code></pre>
-<h2>9.剑指Offer 正则表达式匹配</h2>
+<h2 id="9.offer-cf633f">9.剑指Offer 正则表达式匹配</h2>
 <p>.匹配任意字符 *表示之前的1个字符可以出现0~任意次</p>
 <p>解法:分情况递归</p>
 <pre><code>class Solution {
@@ -242,7 +282,7 @@ public:
     }
 };
 </code></pre>
-<h2>10.判断一个二叉树是否对称(用递归解决)</h2>
+<h2 id="10.-ef5f59">10.判断一个二叉树是否对称(用递归解决)</h2>
 <p>也可以用剑指offer中比较两棵树的前序遍历和对称前序遍历(根-&gt;右节点-&gt;左节点)的序列。</p>
 <pre><code>class Solution {
 public:
@@ -257,9 +297,9 @@ public:
     }
 };
 </code></pre>
-<h2>11. 包含min函数的栈</h2>
+<h2 id="11.-min-b3822e">11. 包含min函数的栈</h2>
 <p>诀窍在于维护一个存放min记忆的栈,每次push都将当前时刻的最小值push进该栈.</p>
-<h2>12. 含有随机指针的链表的深拷贝</h2>
+<h2 id="12.-b6a3f9">12. 含有随机指针的链表的深拷贝</h2>
 <p>解法一: O(n)时间O(n)空间 利用哈希表</p>
 <pre><code>class Solution {
 public:
@@ -317,7 +357,7 @@ public:
     }
 };
 </code></pre>
-<h2>13.二叉搜索树转换为双向链表</h2>
+<h2 id="13.-1482c6">13.二叉搜索树转换为双向链表</h2>
 <p>对树进行中序遍历,同时更新指针.</p>
 <pre><code>class Solution {
 public:
@@ -350,7 +390,7 @@ private:
     Node* head = nullptr;
 };
 </code></pre>
-<h2>14.字符串的排列</h2>
+<h2 id="14.-a9153b">14.字符串的排列</h2>
 <p>用集合保存结果，将每一位字符与第一个字符交换位置，递归</p>
 <pre><code>class Solution {
 public:
@@ -372,7 +412,7 @@ public:
     }
 };
 </code></pre>
-<h2>15. 数组中出现次数超过一半的数</h2>
+<h2 id="15.-dc29a3">15. 数组中出现次数超过一半的数</h2>
 <ul>
 <li>剑指offer做法 基于partition函数</li>
 </ul>
@@ -402,7 +442,7 @@ return nums[nums.size()/2];
 <p>  空间复杂度：O(1)</p>
 </li>
 </ul>
-<h2>16. topK问题</h2>
+<h2 id="16.-topk-ce7190">16. topK问题</h2>
 <ul>
 <li>快排 数据一次性读入内存，允许对原数组修改，时间复杂度O(n)</li>
 </ul>
@@ -483,7 +523,7 @@ public:
     }
 };
 </code></pre>
-<h2>17. 1~n中1出现的次数 剑指offer找规律</h2>
+<h2 id="17.-1n1-offer-fdeda4">17. 1~n中1出现的次数 剑指offer找规律</h2>
 <pre><code>class Solution {
 public:
     int countDigitOne(int n) {
@@ -507,7 +547,7 @@ public:
     }
 };
 </code></pre>
-<h2>18. 最长不含重复字符的子字符串</h2>
+<h2 id="18.-626674">18. 最长不含重复字符的子字符串</h2>
 <ul>
 <li>动态规划</li>
 </ul>
@@ -561,7 +601,7 @@ public:
     }
 };
 </code></pre>
-<h2>19. 数组中数字出现的次数</h2>
+<h2 id="19.-e6ef44">19. 数组中数字出现的次数</h2>
 <ul>
 <li><p>除2个数字外，其余数字均出现2次         </p>
 <ol>
@@ -609,10 +649,10 @@ public:
     }
 };
 </code></pre>
-<h2>20. 剑指offer n个骰子的点数 动态规划</h2>
+<h2 id="20.-offer-n-ab4d26">20. 剑指offer n个骰子的点数 动态规划</h2>
 <p>把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。</p>
 <p><a href="https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/</a></p>
-<h2>21. 求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</h2>
+<h2 id="21.-12...n-forwhileifelseswitchcaseabc-b3bb8d">21. 求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</h2>
 <pre><code>class Solution {
 public:
     int sumNums(int n) {
@@ -621,7 +661,7 @@ public:
     }
 };
 </code></pre>
-<h2>21. 位运算实现加法</h2>
+<h2 id="21.-7926be">21. 位运算实现加法</h2>
 <pre><code>class Solution {
 public:
     int add(int a, int b) {
@@ -642,6 +682,14 @@ public:
         <span><a href="2019-12-pythoncfda-a59ef3.html">← Python爬虫踩坑</a></span>
         <span><a href="2019-12-ubuntu-c2dbcd.html">双系统Ubuntu硬盘扩容+卸载Ubuntu系统 →</a></span>
     </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Nov 20 2026</time><a href="2026-11-hello_from_2026.html">Hello from 2026</a></li>
+            <li><time>Apr 28 2021</time><a href="2021-4-go_lint_errors.html">第一次提交golangci-lint报错</a></li>
+            <li><time>Apr 21 2021</time><a href="2021-4-k8s_in_action.html">K8S In Action读书笔记</a></li>
+        </ul>
+    </section>
     <div class="comments">
         <script>
             // Injected rather than hard-coded so data-theme matches the theme
@@ -684,6 +732,51 @@ public:
                         );
                     }
                 });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                    })(blocks[i]);
+                }
             })();
         </script>
     </body>
