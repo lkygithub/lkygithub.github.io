@@ -12,6 +12,18 @@
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
         <link href="../favicon.ico" rel="icon" type="image/x-icon">
+
+        <script>
+            // Pick the theme before the first paint so the page never flashes.
+            (function () {
+                var saved = null;
+                try { saved = localStorage.getItem('theme'); } catch (e) {}
+                var dark = saved
+                    ? saved === 'dark'
+                    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (dark) document.documentElement.classList.add('dark');
+            })();
+        </script>
     </head>
     <body>
         <section id="page-title">
@@ -20,6 +32,7 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
@@ -29,5 +42,22 @@
         <li><time>Apr 01 2021</time><a href="../posts/2021-4-git_cmds.html">工作中常用Git操作总结</a></li>
     </ul>
 </section>
+        <script>
+            (function () {
+                var html = document.documentElement;
+                document.getElementById('theme-toggle').addEventListener('click', function () {
+                    var dark = html.classList.toggle('dark');
+                    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+                    // Keep the comment box in step with the page.
+                    var frame = document.querySelector('iframe.giscus-frame');
+                    if (frame) {
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme: dark ? 'dark' : 'light' } } },
+                            'https://giscus.app'
+                        );
+                    }
+                });
+            })();
+        </script>
     </body>
 </html>

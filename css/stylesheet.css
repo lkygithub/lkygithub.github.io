@@ -137,43 +137,69 @@ body {
     margin-top: 2em;
 }
 
-/* ---- dark mode, follows the system setting ---- */
+#theme-toggle {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    color: #555;
+    font-size: 0.85em;
+    margin: 0 0.6em;
+}
 
-@media (prefers-color-scheme: dark) {
-    body {
-        background: #1b1b1b;
-        color: #d8d8d8;
-    }
+#theme-toggle:hover {
+    text-decoration: underline;
+}
 
-    /* The footer copyright link has no colour of its own and would otherwise
-       fall back to the default dark blue. More specific rules still win. */
-    a {
-        color: #9a9a9a;
-    }
+/* The label is CSS so it is already correct on the first paint. */
+#theme-toggle::after {
+    content: '深色';
+}
 
-    #page-title h1 a, .post a, .entry-list a, .tag-cloud a, .blog-post-content a {
-        color: #d8d8d8;
-    }
+html.dark #theme-toggle::after {
+    content: '浅色';
+}
 
-    #site-nav a, .entry-list time, .tag-list a, .post-nav a, .blog-post-subheader,
-    .tag-cloud small {
-        color: #9a9a9a;
-    }
+/* ---- dark mode ----
+   The class is set in <head> from localStorage, falling back to the system
+   setting, so the toggle can override it without a flash of the wrong theme. */
 
-    .tag-cloud a {
-        border-color: #3a3a3a;
-    }
+html.dark body {
+    background: #1b1b1b;
+    color: #d8d8d8;
+}
 
-    .post-nav {
-        border-top-color: #333;
-    }
+/* The footer copyright link has no colour of its own and would otherwise
+   fall back to the default dark blue. More specific rules still win. */
+html.dark a {
+    color: #9a9a9a;
+}
 
-    .blog-post-content pre, .blog-post-content code {
-        background: #262626;
-    }
+html.dark #page-title h1 a, html.dark .post a, html.dark .entry-list a,
+html.dark .tag-cloud a, html.dark .blog-post-content a {
+    color: #d8d8d8;
+}
 
-    .blog-post-content img, #cover img {
-        /* Take the edge off bright screenshots on a dark page. */
-        filter: brightness(0.9);
-    }
+html.dark #site-nav a, html.dark #theme-toggle, html.dark .entry-list time,
+html.dark .tag-list a, html.dark .post-nav a, html.dark .blog-post-subheader,
+html.dark .tag-cloud small {
+    color: #9a9a9a;
+}
+
+html.dark .tag-cloud a {
+    border-color: #3a3a3a;
+}
+
+html.dark .post-nav {
+    border-top-color: #333;
+}
+
+html.dark .blog-post-content pre, html.dark .blog-post-content code {
+    background: #262626;
+}
+
+html.dark .blog-post-content img, html.dark #cover img {
+    /* Take the edge off bright screenshots on a dark page. */
+    filter: brightness(0.9);
 }

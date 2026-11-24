@@ -12,6 +12,18 @@
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
         <link href="../favicon.ico" rel="icon" type="image/x-icon">
+
+        <script>
+            // Pick the theme before the first paint so the page never flashes.
+            (function () {
+                var saved = null;
+                try { saved = localStorage.getItem('theme'); } catch (e) {}
+                var dark = saved
+                    ? saved === 'dark'
+                    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (dark) document.documentElement.classList.add('dark');
+            })();
+        </script>
     </head>
     <body>
         <section id="page-title">
@@ -20,12 +32,13 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
     <h1>看完了「血色浪漫」</h1>
     <div class="blog-post-subheader">
-        June 16, 2018<span class="tag-list"><a href="../tags/tag-1fb529.html">小说</a><a href="../tags/tag-aefcbf.html">生活</a><a href="../tags/life.html">life</a></span>
+        June 16, 2018<span class="tag-list"><a href="../tags/tag-1fb529.html">小说</a><a href="../tags/tag-aefcbf.html">生活</a></span>
     </div>
     <div class="blog-post-content">
 <p>　　最近写论文和毕设手册的同时，在B站看完了血色浪漫，很早以前就想看这部剧了，一方面是因为喜欢刘烨和刀郎，另一方面是最近在微博上刷到了不少北京、顽主这类题材的东西，与青春有关的日子里佟大为、羽凡他们拿过路人开涮的视频片断，还有王朔的时间轴传记。<br>　　印象中，小时候电视里很多频道都演过血色浪漫，因为每次看都是断断续续的，只看过几集，我一直以为这是一部刘烨和孙俪的感情戏，类似于后来出现的甜蜜蜜？这次有机会从头到尾看完，才发现这是一群人乃至一代人的故事。<br>　　我是开着弹幕看的，因为即使开了弹幕也不会挡到画面，没想到在B站看这么老的剧也有很多弹幕，很多弹幕对这部剧演员们的演技给了很高的评价。大部分弹幕都很有意思，傻吊网友们说话都很好玩，开着弹幕看还有一个好处，就是可以注意到很多自己忽略掉的细节，但是很容易被剧透，比如某人物刚一出场，就有弹幕说他死的时候可真感动如何如何，让人猝不及防，真的很蛋疼。另外，B站的版本是没有片头片尾的，中间好像有一集忘记剪掉片尾了，所以终于听到了熟悉的刀郎的声音。<a href="http://www.kugou.com/song/38jc577.html?frombaidu?frombaidu#hash=6B5BBB82D3DB560972B977EAA37A56B3&amp;album_id=0" target="_blank" rel="noopener">《新阿瓦尔古丽》</a>的曲子，词好像不一样，这首歌能让人回到03、04年。<br>
@@ -45,20 +58,48 @@
         <span></span>
     </nav>
     <div class="comments">
-        <script src="https://giscus.app/client.js"
-                data-repo="lkygithub/lkygithub.github.io"
-                data-repo-id="MDEwOlJlcG9zaXRvcnkxMzExNzYwODA="
-                data-category="Announcements"
-                data-category-id="DIC_kwDOB9GWkM4DL1YA"
-                data-mapping="pathname"
-                data-strict="1"
-                data-reactions-enabled="1"
-                data-input-position="top"
-                data-theme="preferred_color_scheme"
-                data-lang="zh-CN"
-                crossorigin="anonymous"
-                async></script>
+        <script>
+            // Injected rather than hard-coded so data-theme matches the theme
+            // the reader actually chose, not just the system preference.
+            (function () {
+                var s = document.createElement('script');
+                s.src = 'https://giscus.app/client.js';
+                var data = {
+                    repo: 'lkygithub/lkygithub.github.io',
+                    'repo-id': 'MDEwOlJlcG9zaXRvcnkxMzExNzYwODA=',
+                    category: 'Announcements',
+                    'category-id': 'DIC_kwDOB9GWkM4DL1YA',
+                    mapping: 'pathname',
+                    strict: '1',
+                    'reactions-enabled': '1',
+                    'input-position': 'top',
+                    lang: 'zh-CN',
+                    theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+                };
+                for (var k in data) s.setAttribute('data-' + k, data[k]);
+                s.crossOrigin = 'anonymous';
+                s.async = true;
+                document.currentScript.parentNode.appendChild(s);
+            })();
+        </script>
     </div>
 </section>
+        <script>
+            (function () {
+                var html = document.documentElement;
+                document.getElementById('theme-toggle').addEventListener('click', function () {
+                    var dark = html.classList.toggle('dark');
+                    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+                    // Keep the comment box in step with the page.
+                    var frame = document.querySelector('iframe.giscus-frame');
+                    if (frame) {
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme: dark ? 'dark' : 'light' } } },
+                            'https://giscus.app'
+                        );
+                    }
+                });
+            })();
+        </script>
     </body>
 </html>

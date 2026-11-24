@@ -12,6 +12,18 @@
         <link href="../css/stylesheet.css" rel="stylesheet" >
         <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
         <link href="../favicon.ico" rel="icon" type="image/x-icon">
+
+        <script>
+            // Pick the theme before the first paint so the page never flashes.
+            (function () {
+                var saved = null;
+                try { saved = localStorage.getItem('theme'); } catch (e) {}
+                var dark = saved
+                    ? saved === 'dark'
+                    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (dark) document.documentElement.classList.add('dark');
+            })();
+        </script>
     </head>
     <body>
         <section id="page-title">
@@ -20,6 +32,7 @@
                 <a href="../index.html">首页</a>
                 <a href="../archive.html">归档</a>
                 <a href="../tags.html">标签</a>
+                <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
             </nav>
         </section>
 <section class="blog-post">
@@ -43,20 +56,48 @@
         <span><a href="2020-1-kube-batch.html">Kube-Batch学习笔记 →</a></span>
     </nav>
     <div class="comments">
-        <script src="https://giscus.app/client.js"
-                data-repo="lkygithub/lkygithub.github.io"
-                data-repo-id="MDEwOlJlcG9zaXRvcnkxMzExNzYwODA="
-                data-category="Announcements"
-                data-category-id="DIC_kwDOB9GWkM4DL1YA"
-                data-mapping="pathname"
-                data-strict="1"
-                data-reactions-enabled="1"
-                data-input-position="top"
-                data-theme="preferred_color_scheme"
-                data-lang="zh-CN"
-                crossorigin="anonymous"
-                async></script>
+        <script>
+            // Injected rather than hard-coded so data-theme matches the theme
+            // the reader actually chose, not just the system preference.
+            (function () {
+                var s = document.createElement('script');
+                s.src = 'https://giscus.app/client.js';
+                var data = {
+                    repo: 'lkygithub/lkygithub.github.io',
+                    'repo-id': 'MDEwOlJlcG9zaXRvcnkxMzExNzYwODA=',
+                    category: 'Announcements',
+                    'category-id': 'DIC_kwDOB9GWkM4DL1YA',
+                    mapping: 'pathname',
+                    strict: '1',
+                    'reactions-enabled': '1',
+                    'input-position': 'top',
+                    lang: 'zh-CN',
+                    theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+                };
+                for (var k in data) s.setAttribute('data-' + k, data[k]);
+                s.crossOrigin = 'anonymous';
+                s.async = true;
+                document.currentScript.parentNode.appendChild(s);
+            })();
+        </script>
     </div>
 </section>
+        <script>
+            (function () {
+                var html = document.documentElement;
+                document.getElementById('theme-toggle').addEventListener('click', function () {
+                    var dark = html.classList.toggle('dark');
+                    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+                    // Keep the comment box in step with the page.
+                    var frame = document.querySelector('iframe.giscus-frame');
+                    if (frame) {
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme: dark ? 'dark' : 'light' } } },
+                            'https://giscus.app'
+                        );
+                    }
+                });
+            })();
+        </script>
     </body>
 </html>
