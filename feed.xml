@@ -16,14 +16,16 @@
         <category>技术</category>
         <category>github-pages</category>
         <category>ai</category>
-        <description><![CDATA[<p>站点挂了两个月我才发现，腾讯云那台小机器早就到期了😰</p>
-<p>这回没再买机器，搬去了 GitHub Pages。</p>
-<p>搬家才看见当年埋的雷：主题在仓库里是个空文件夹，图片也顺手塞进了主题仓库，那边 2021 年就停更了。有几张再也找不回来，只好换成自己存的图😓</p>
-<p>最后干脆写了个小脚本把 md 渲染成 html，顺手配了自动发布，以后写完 push 一下就行。</p>
-<p>这些基本是我说一句、agent 做一件，我只负责挑毛病。<a href="/posts/2019-11-hello.html">七年前</a>我还在一个个试 <code>--bind</code> 参数，今天一下午就把荒废好几年的站点捞了回来。</p>
-<p>欢迎来到 AI 时代😆</p>
+        <description><![CDATA[<p>腾讯云的机器到期了，这回没再续，用agent帮忙搬去了 GitHub Pages。</p>
+<p>很多图片以为找不到了，是agent在fork的elephant主题仓库的static目录里发现了。感谢AI。</p>
+<p>后来又让agent写脚本把 md 渲染成 html，顺手配了自动发布，以后写完 push 一下就行。然后又陆陆续续加了很多功能：评论、深色模式、标签页、搜索框，还有订阅、长文目录和相关文章。。。</p>
+<p><a href="/posts/2019-11-hello.html">N年前</a>我还在一个个试 <code>--bind</code> 参数，今天一下午就把荒废好几年的站点捞了回来。再次感谢AI。</p>
+<p>想起14年上熊璋和王静远老师的《计算机导论与伦理学》，布置的小论文作业，主题大概是“畅想一种未来的程序”。</p>
+<p>苦于当时的C语言作业，我幻想“未来会有一种自动写程序的程序，把代码逻辑，输入输出格式描述给它，由这个程序自动在codeblocks里生成可运行且通过所有case的程序”。</p>
+<div align=middle><img src="https://ririshihaori.com/2026/11/hello2026/usaco.jpg" alt=""></div><p>几年之间，幻想变成了日常，AI浪潮继续向前，实在令人感慨。</p>
+<div align=middle><img src="https://ririshihaori.com/2026/11/hello2026/yocsef.jpg" alt=""></div><p>欢迎来到 AI 时代</p>
 <p>也欢迎回来，日日是好日</p>
-<p>（本篇也是 agent 写的）</p>
+<p>（本篇也是 agent 发布）</p>
 ]]></description>
     </item>
     <item>
