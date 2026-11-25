@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
+
+        <title>RLark：专为具身场景打造的云原生平台开源啦</title>
+        <meta name="description" content="专为具身场景打造的云原生平台开源啦 🎉🎉 开源地址：github.com/RLinf/RLark 项目文档：rlark.readthedocs.io 求 star，求 PR ☀️ 详细介绍见这篇文章：无问芯穹 × 清华大学开源 RLark 具身infra开源狂欢月 RLark">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2026-9-rlark_opensource.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="RLark：专为具身场景打造的云原生平台开源啦">
+        <meta property="og:description" content="专为具身场景打造的云原生平台开源啦 🎉🎉 开源地址：github.com/RLinf/RLark 项目文档：rlark.readthedocs.io 求 star，求 PR ☀️ 详细介绍见这篇文章：无问芯穹 × 清华大学开源 RLark 具身infra开源狂欢月 RLark">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2026-9-rlark_opensource.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+
+        <script>
+            // Pick the theme before the first paint so the page never flashes.
+            (function () {
+                var saved = null;
+                try { saved = localStorage.getItem('theme'); } catch (e) {}
+                var dark = saved
+                    ? saved === 'dark'
+                    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (dark) document.documentElement.classList.add('dark');
+            })();
+        </script>
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+            <nav id="site-nav">
+                <a href="../index.html">首页</a>
+                <a href="../archive.html">归档</a>
+                <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
+                <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
+            </nav>
+        </section>
+<section class="blog-post">
+    <h1>RLark：专为具身场景打造的云原生平台开源啦</h1>
+    <div class="blog-post-subheader">
+        September 24, 2026 · 约 65 字 · 1 分钟<span class="tag-list"><a href="../tags/tag-e6b070.html">具身智能</a><a href="../tags/tag-6f1765.html">开源</a><a href="../tags/tag-a95dd3.html">技术</a></span>
+    </div>
+    <div class="blog-post-content">
+<p>专为具身场景打造的云原生平台开源啦 🎉🎉</p>
+<p>开源地址：<a href="https://github.com/RLinf/RLark" target="_blank" rel="noopener">github.com/RLinf/RLark</a></p>
+<p>项目文档：<a href="https://rlark.readthedocs.io" target="_blank" rel="noopener">rlark.readthedocs.io</a></p>
+<p>求 star，求 PR ☀️</p>
+<p>详细介绍见这篇文章：<a href="https://mp.weixin.qq.com/s/vKDtmdhxX3kRFEyd4Gkr7Q" target="_blank" rel="noopener">无问芯穹 × 清华大学开源 RLark</a></p>
+<p>#具身infra开源狂欢月 #RLark</p>
+
+    </div>
+    <nav class="post-nav">
+        <span><a href="2026-11-hello_from_2026.html">← Hello from 2026</a></span>
+        <span><a href="2021-8-movies.html">Time does not heal all w… →</a></span>
+    </nav>
+    <section class="related">
+        <h3>相关文章</h3>
+        <ul class="entry-list">
+            <li><time>Nov 20 2026</time><a href="2026-11-hello_from_2026.html">Hello from 2026</a></li>
+            <li><time>Apr 28 2021</time><a href="2021-4-go_lint_errors.html">第一次提交golangci-lint报错</a></li>
+            <li><time>Apr 21 2021</time><a href="2021-4-k8s_in_action.html">K8S In Action读书笔记</a></li>
+        </ul>
+    </section>
+    <div class="comments">
+        <script>
+            // Injected rather than hard-coded so data-theme matches the theme
+            // the reader actually chose, not just the system preference.
+            (function () {
+                var s = document.createElement('script');
+                s.src = 'https://giscus.app/client.js';
+                var data = {
+                    repo: 'lkygithub/lkygithub.github.io',
+                    'repo-id': 'MDEwOlJlcG9zaXRvcnkxMzExNzYwODA=',
+                    category: 'Announcements',
+                    'category-id': 'DIC_kwDOB9GWkM4DL1YA',
+                    mapping: 'pathname',
+                    strict: '1',
+                    'reactions-enabled': '1',
+                    'input-position': 'top',
+                    lang: 'zh-CN',
+                    theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+                };
+                for (var k in data) s.setAttribute('data-' + k, data[k]);
+                s.crossOrigin = 'anonymous';
+                s.async = true;
+                document.currentScript.parentNode.appendChild(s);
+            })();
+        </script>
+    </div>
+</section>
+        <script>
+            (function () {
+                var html = document.documentElement;
+                document.getElementById('theme-toggle').addEventListener('click', function () {
+                    var dark = html.classList.toggle('dark');
+                    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+                    // Keep the comment box in step with the page.
+                    var frame = document.querySelector('iframe.giscus-frame');
+                    if (frame) {
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme: dark ? 'dark' : 'light' } } },
+                            'https://giscus.app'
+                        );
+                    }
+                });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
+                    })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
+                }
+            })();
+        </script>
+    </body>
+</html>
