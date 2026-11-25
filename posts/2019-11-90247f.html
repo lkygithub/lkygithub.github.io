@@ -166,14 +166,15 @@
         <script>
             // The webfont uses font-display: optional, so the browser never
             // swaps fonts mid-view and the layout cannot jitter. The trade-off
-            // is that a hard refresh (cold cache) renders with the fallback
-            // and stays there. Recover here: load every slice the page needs
-            // in the background, then switch families once, in one clean step.
+            // is that a hard refresh (cold cache) renders with the fallback —
+            // and Chrome then refuses to ever apply that optional font on this
+            // page, even once loaded. So recovery goes through 'LXGW WenKai
+            // Late', a duplicate family over the same files: load every slice
+            // the page needs, then switch families once, in one clean step.
             (function () {
                 if (!(document.fonts && document.fonts.check && document.fonts.load)) return;
-                var probe = '1em "LXGW WenKai Screen"';
-                if (document.fonts.check(probe, '永a')) return;
-                document.fonts.load(probe, document.body.textContent).then(function () {
+                if (document.fonts.check('1em "LXGW WenKai Screen"', '永a')) return;
+                document.fonts.load('1em "LXGW WenKai Late"', document.body.textContent).then(function () {
                     document.documentElement.classList.add('wenkai');
                 });
             })();

@@ -14,7 +14,7 @@ body {
    refresh): once every slice the page needs is in memory, this re-runs font
    matching and the whole page switches in a single step. */
 html.wenkai body {
-    font-family: 'LXGW WenKai Screen', 'LXGW Fallback', sans-serif;
+    font-family: 'LXGW WenKai Late', 'LXGW Fallback', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
 #page-title {
