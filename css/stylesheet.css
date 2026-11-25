@@ -1,6 +1,9 @@
 /* elephants — the original theme stylesheet (lkygithub/elephant-lky) */
 body {
-    font-family: 'Ubuntu', sans-serif;
+    /* LXGW WenKai Screen (霞鹜文楷 屏显版) comes from the jsDelivr subset build
+       linked in the page head. It covers both Latin and CJK, so the fallbacks
+       below only matter while the font is still in flight. */
+    font-family: 'LXGW WenKai Screen', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     color: black;
     margin: auto;
     max-width: 50em;

@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
 
         <title>Barrelfish操作系统(2) capability系统实现代码分析</title>
         <meta name="description" content="1、Capability系统设计实现概述 一个capability其实就是一个指针，但又是指针的一个超集，一个capability往往含有两个成员，一个是指向某块内存的地址addr，另一个是权限rights，权限用以说明某进程可以对 通过该capability寻址得到的内存 进行…">
