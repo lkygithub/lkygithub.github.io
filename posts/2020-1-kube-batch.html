@@ -99,8 +99,8 @@
 </ol>
 <p>　　Plugin不需要注册上面所有的函数，而是可以根据自己的需要，注册某几个函数。比如Predict plugin就只注册了predicateFns这个函数到Session中。         </p>
 <p>　　而某些plugin的使用与否（包括某些action使用与否）都由配置文件决定:(<code>kube-batch/pkg/scheduler/util.go</code>)</p>
-<pre><code>var defaultSchedulerConf = `
-actions: &quot;allocate, backfill&quot;
+<pre><code class="hljs">var defaultSchedulerConf = `
+actions: <span class="hljs-string">&quot;allocate, backfill&quot;</span>
 tiers:
 - plugins:
   - name: priority
@@ -117,13 +117,13 @@ tiers:
 (`kube-batch/pkg/scheduler/framework/framework.go`)和
 (`kube-batch/pkg/scheduler/framework/session.go`)
 
-### 2.3 Plugin
+<span class="hljs-comment">### 2.3 Plugin</span>
 
 　　Plugin模块顾名思义，提供了一种可插拔的方式，向调度提供不同的策略的实现。
 
 　　如整体框架中所示，目前有7个Plugin，它们分别是：   
 
-+ for Jobs
++ <span class="hljs-keyword">for</span> Jobs
     + drf：实现了Dominant Resouce Fairenss算法，这个算法能够有效对多种“主要资源”（CPU、Memory、GPU）进行调度。
     + gang：实现了gang scheduling的逻辑，即保证任务所需worker同时被启动。
     + predict：判断某个节点是否满足容器的基本要求。
@@ -131,15 +131,15 @@ tiers:
     + node order：决定满足调度要求的节点中，哪个节点优先被选择。
     + conformance：
 
-+ for Queues:
++ <span class="hljs-keyword">for</span> Queues:
     + proportion： 根据队列设置的权重决定每个队列分配到的资源。
 
 　　下面对部分plugin进行说明。
 
-#### 2.3.1 drf
+<span class="hljs-comment">#### 2.3.1 drf</span>
 
 
-&lt;div align=center&gt;&lt;img src = '/2020/1/kube-batch/3.png' style=&quot;zoom:70%&quot; title=&quot;drf&quot;/&gt;&lt;/div&gt;
+&lt;div align=center&gt;&lt;img src = <span class="hljs-string">&#x27;/2020/1/kube-batch/3.png&#x27;</span> style=<span class="hljs-string">&quot;zoom:70%&quot;</span> title=<span class="hljs-string">&quot;drf&quot;</span>/&gt;&lt;/div&gt;
 
 　　目的是尽量避免集群内某一类资源使用比例偏高，而其他类型资源使用比例却很低的不良状态。在调度时，让具有最低资源占用比例的任务具有高优先级。
 
@@ -150,23 +150,23 @@ tiers:
 3. 注册Job排序函数，根据资源占比进行排序，主要资源占比越低job优先级越高
 4. 注册事件处理函数，包括分配函数以及驱逐函数，函数实现比较简单，就是当task发生变化时，增加（分配）/减少（驱逐）Job资源申请总量，并且更新资源占比。
 
-　　drf注册2个function，分别是:
+　　drf注册2个<span class="hljs-keyword">function</span>，分别是:
 
 + `jobOrderFn` 是job的排序函数，会让share值越小的job排在最前面，即拥有最高的优先级，这个是实现drf的关键。           
 +  `preemptableFn`返回可抢占的job列表，job的筛选规则是：如果待选job的share值大于将被调度的job的share值，则选中该待选job。      
 
-#### 2.3.2 gang
+<span class="hljs-comment">#### 2.3.2 gang</span>
 
 　　gang需要实现的策略是只有当job中的全部pod，或者用户指定的某几个pod都分配到资源后，才真正将pod调度到node上。（即先从逻辑上分配资源给pod，等满足条件后才真正进行调度。）                
 
-　　gang注册3个function，分别是：         
+　　gang注册3个<span class="hljs-keyword">function</span>，分别是：         
 
 + `preemptableFn` 为避免gang的策略被preempt和reclaiｍ干扰，定义了preemptableFn,排除那些还未准备就绪的job，避免其被抢占。（虽然实际上这些job未真正调度到node上去，但是确实从逻辑上把资源分配给它了）
 + `jobOrderFn` 为让已经就绪的job尽快被调度到节点，定义了jobOrderFn ,让已经就绪的job拥有更高的优先级
-+ `jobReadyFn` 用来判断一个job是否已经就绪。`jobReady`会调用所有注册了的 plugin的Ready判定函数，只有都判定为ready ,才返回true
++ `jobReadyFn` 用来判断一个job是否已经就绪。`jobReady`会调用所有注册了的 plugin的Ready判定函数，只有都判定为ready ,才返回<span class="hljs-literal">true</span>
 
 
-#### 2.3.3 predicates
+<span class="hljs-comment">#### 2.3.3 predicates</span>
 
 　　predicates注册预测函数,用来判断某个节点是否满足容器的基本要求，如         
 
@@ -177,14 +177,14 @@ tiers:
 + Toleration/Taint Predicate        
 + ...
 
-#### 2.3.4 priority
+<span class="hljs-comment">#### 2.3.4 priority</span>
 
 　　priority注册         
 
 + task排序函数，根据pod优先级排序
 + job排序函数，根据job优先级排序
 
-#### 2.3.5 proportion
+<span class="hljs-comment">#### 2.3.5 proportion</span>
 
 　　针对队列。</code></pre>
 <p>type queueAttr struct {
@@ -227,26 +227,26 @@ tiers:
 <p>// Run runs the Scheduler
 func (pc *Scheduler) Run(stopCh &lt;-chan struct{}) {
 	var err error</p>
-<pre><code>// Start cache for policy.
-go pc.cache.Run(stopCh)
+<pre><code class="hljs"><span class="hljs-comment">// Start cache for policy.</span>
+<span class="hljs-keyword">go</span> pc.cache.Run(stopCh)
 pc.cache.WaitForCacheSync(stopCh)
 
-// Load configuration of scheduler
+<span class="hljs-comment">// Load configuration of scheduler</span>
 schedConf := defaultSchedulerConf
-if len(pc.schedulerConf) != 0 {
-	if schedConf, err = readSchedulerConf(pc.schedulerConf); err != nil {
-		glog.Errorf(&quot;Failed to read scheduler configuration '%s', using default configuration: %v&quot;,
+<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(pc.schedulerConf) != <span class="hljs-number">0</span> {
+	<span class="hljs-keyword">if</span> schedConf, err = readSchedulerConf(pc.schedulerConf); err != <span class="hljs-literal">nil</span> {
+		glog.Errorf(<span class="hljs-string">&quot;Failed to read scheduler configuration &#x27;%s&#x27;, using default configuration: %v&quot;</span>,
 			pc.schedulerConf, err)
 		schedConf = defaultSchedulerConf
 	}
 }
 
 pc.actions, pc.plugins, err = loadSchedulerConf(schedConf)
-if err != nil {
-	panic(err)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+	<span class="hljs-built_in">panic</span>(err)
 }
 
-go wait.Until(pc.runOnce, pc.schedulePeriod, stopCh)
+<span class="hljs-keyword">go</span> wait.Until(pc.runOnce, pc.schedulePeriod, stopCh)
 </code></pre>
 <p>}</p>
 <p>func (pc *Scheduler) runOnce() {

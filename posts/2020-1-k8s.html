@@ -135,39 +135,39 @@
 </ul>
 <h3 id="h-830c6b">报错 及 解决方式</h3>
 <p><strong>报错</strong>：</p>
-<pre><code>* Unable to pull images, which may be OK: running cmd: &quot;/bin/bash -c \&quot;sudo env PATH=/var/lib/minikube/binaries/v1.16.2:                  
-$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml\&quot;&quot;: command failed: /bin/bash -c &quot;sudo env PAT                
-H=/var/lib/minikube/binaries/v1.16.2:$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml&quot;
+<pre><code class="hljs">* Unable to pull images, <span class="hljs-built_in">which</span> may be OK: running cmd: <span class="hljs-string">&quot;/bin/bash -c \&quot;sudo env PATH=/var/lib/minikube/binaries/v1.16.2:                  
+<span class="hljs-variable">$PATH</span> kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml\&quot;&quot;</span>: <span class="hljs-built_in">command</span> failed: /bin/bash -c <span class="hljs-string">&quot;sudo env PAT                
+H=/var/lib/minikube/binaries/v1.16.2:<span class="hljs-variable">$PATH</span> kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml&quot;</span>
 stdout: 
-stderr: failed to pull image &quot;k8s.gcr.io/kube-apiserver:v1.16.2&quot;: output: Error response from daemon: Get https://k8s.gc                  
-r.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</code></pre>
+stderr: failed to pull image <span class="hljs-string">&quot;k8s.gcr.io/kube-apiserver:v1.16.2&quot;</span>: output: Error response from daemon: Get https://k8s.gc                  
+r.io/v2/: net/http: request canceled <span class="hljs-keyword">while</span> waiting <span class="hljs-keyword">for</span> connection (Client.Timeout exceeded <span class="hljs-keyword">while</span> awaiting headers)</code></pre>
 <p><strong>解决方式</strong>：
 <code># minikube start --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</code><br>或<br><code># minikube start --image-mirror-country=cn</code></p>
 <h3 id="h-0c726a">启动成功输出：</h3>
-<pre><code>➜  [/home/lky/tools] sudo minikube start --image-mirror-country=cn
+<pre><code class="hljs">➜  [/home/lky/tools] <span class="hljs-built_in">sudo</span> minikube start --image-mirror-country=cn
 😄  minikube v1.6.2 on Ubuntu 16.04
-✨  Selecting 'none' driver from user configuration (alternates: [])
+✨  Selecting <span class="hljs-string">&#x27;none&#x27;</span> driver from user configuration (alternates: [])
 🤹  Running on localhost (CPUs=2, Memory=3921MB, Disk=200494MB) ...
 ℹ️   OS release is Ubuntu 16.04.6 LTS
-⚠️  VM is unable to access k8s.gcr.io, you may need to configure a proxy or set --image-repository
-🐳  Preparing Kubernetes v1.17.0 on Docker '19.03.5' ...
+⚠️  VM is unable to access k8s.gcr.io, you may need to configure a proxy or <span class="hljs-built_in">set</span> --image-repository
+🐳  Preparing Kubernetes v1.17.0 on Docker <span class="hljs-string">&#x27;19.03.5&#x27;</span> ...
 🚜  Pulling images ...
 🚀  Launching Kubernetes ... 
-🤹  Configuring local host environment ...
+🤹  Configuring <span class="hljs-built_in">local</span> host environment ...
 
-⚠️  The 'none' driver provides limited isolation and may reduce system security and reliability.
+⚠️  The <span class="hljs-string">&#x27;none&#x27;</span> driver provides limited isolation and may reduce system security and reliability.
 ⚠️  For more information, see:
 👉  https://minikube.sigs.k8s.io/docs/reference/drivers/none/
 
-⚠️  kubectl and minikube configuration will be stored in /home/lky
+⚠️  kubectl and minikube configuration will be stored <span class="hljs-keyword">in</span> /home/lky
 ⚠️  To use kubectl or minikube commands as your own user, you may need to relocate them. For example, to overwrite your own settings, run:
 
-    ▪ sudo mv /home/lky/.kube /home/lky/.minikube $HOME
-    ▪ sudo chown -R $USER $HOME/.kube $HOME/.minikube
+    ▪ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mv</span> /home/lky/.kube /home/lky/.minikube <span class="hljs-variable">$HOME</span>
+    ▪ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> -R <span class="hljs-variable">$USER</span> <span class="hljs-variable">$HOME</span>/.kube <span class="hljs-variable">$HOME</span>/.minikube
 
-💡  This can also be done automatically by setting the env var CHANGE_MINIKUBE_NONE_USER=true
-⌛  Waiting for cluster to come online ...
-🏄  Done! kubectl is now configured to use &quot;minikube&quot;</code></pre>
+💡  This can also be <span class="hljs-keyword">done</span> automatically by setting the <span class="hljs-built_in">env</span> var CHANGE_MINIKUBE_NONE_USER=<span class="hljs-literal">true</span>
+⌛  Waiting <span class="hljs-keyword">for</span> cluster to come online ...
+🏄  Done! kubectl is now configured to use <span class="hljs-string">&quot;minikube&quot;</span></code></pre>
 <p><strong>可以使用</strong> <code>sudo kubectl cluster-info</code> <strong>查看单节点集群信息</strong>：</p>
 <pre><code>➜  [/home/lky/tools] sudo kubectl cluster-info
 [sudo] password for lky: 
@@ -188,88 +188,88 @@ kind.yaml切换一下镜像源，然后`kind create cluster --name moelove --con
 <li>通过二进制安装<br><code>wget -O /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/0.2.0/kind-linux-amd64 &amp;&amp; chmod +x /usr/local/bin/kind</code></li>
 </ul>
 <p><strong>安装好后创建单节点k8s集群</strong></p>
-<pre><code>➜  [/home/lky/Downloads] kind --version
+<pre><code class="hljs">➜  [/home/lky/Downloads] kind --version
 kind version 0.2.0
 ➜  [/home/lky/Downloads] kind create cluster --name lkytest
-Creating cluster &quot;lkytest&quot; ...
+Creating cluster <span class="hljs-string">&quot;lkytest&quot;</span> ...
  ✓ Ensuring node image (kindest/node:v1.13.4) 🖼 
  ✓ Preparing nodes 📦 
  ✓ Creating kubeadm config 📜 
  ✓ Starting control-plane 🕹️ 
 Cluster creation complete. You can now use the cluster with:
 
-export KUBECONFIG=&quot;$(kind get kubeconfig-path --name=&quot;lkytest&quot;)&quot;
+<span class="hljs-built_in">export</span> KUBECONFIG=<span class="hljs-string">&quot;<span class="hljs-subst">$(kind get kubeconfig-path --name=<span class="hljs-string">&quot;lkytest&quot;</span>)</span>&quot;</span>
 kubectl cluster-info
-➜  [/home/lky/Downloads] export KUBECONFIG=&quot;$(kind get kubeconfig-path --name=&quot;lkytest&quot;)&quot;
+➜  [/home/lky/Downloads] <span class="hljs-built_in">export</span> KUBECONFIG=<span class="hljs-string">&quot;<span class="hljs-subst">$(kind get kubeconfig-path --name=<span class="hljs-string">&quot;lkytest&quot;</span>)</span>&quot;</span>
 ➜  [/home/lky/Downloads] kubectl cluster-info
 Kubernetes master is running at https://localhost:32727
 KubeDNS is running at https://localhost:32727/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+To further debug and diagnose cluster problems, use <span class="hljs-string">&#x27;kubectl cluster-info dump&#x27;</span>.
 ➜  [/home/lky/Downloads] kubectl get nodes
 NAME                    STATUS   ROLES    AGE     VERSION
 lkytest-control-plane   Ready    master   3m23s   v1.13.4
 
 </code></pre>
 <p><strong>运行第一个应用</strong></p>
-<pre><code>➜  [/home/lky] kubectl run kubia --image=lkybuaa/kubia --port=8080 --generator=run/v1
-kubectl run --generator=run/v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
-replicationcontroller/kubia created
-➜  [/home/lky] kubectl get pods                 
-NAME          READY   STATUS              RESTARTS   AGE
-kubia-pt77q   0/1     ContainerCreating   0          24s
-➜  [/home/lky] kubectl describe pod 
-Name:           kubia-pt77q
-Namespace:      default
-Priority:       0
-Node:           lkytest-control-plane/172.17.0.2
-Start Time:     Fri, 10 Jan 2020 16:55:14 +0800
-Labels:         run=kubia
-Annotations:    &lt;none&gt;
-Status:         Running
-IP:             10.32.0.4
-IPs:            &lt;none&gt;
-Controlled By:  ReplicationController/kubia
-Containers:
-  kubia:
-    Container ID:   docker://872ef1700e9afa3573dd745599add7bc2c9f3216f0ec603710286e5f9e9b2cf2
-    Image:          lkybuaa/kubia
-    Image ID:       docker-pullable://lkybuaa/kubia@sha256:c5e35be31ea0a0440c2a3dc63741a9d6566d4bc4c3d8c219cf649b7e5361cb83
-    Port:           8080/TCP
-    Host Port:      0/TCP
-    State:          Running
-      Started:      Fri, 10 Jan 2020 16:58:27 +0800
-    Ready:          True
-    Restart Count:  0
-    Environment:    &lt;none&gt;
-    Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from default-token-7kn4l (ro)
-Conditions:
-  Type              Status
-  Initialized       True 
-  Ready             True 
-  ContainersReady   True 
-  PodScheduled      True 
-Volumes:
-  default-token-7kn4l:
-    Type:        Secret (a volume populated by a Secret)
-    SecretName:  default-token-7kn4l
-    Optional:    false
-QoS Class:       BestEffort
-Node-Selectors:  &lt;none&gt;
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-Events:
-  Type    Reason     Age   From                            Message
-  ----    ------     ----  ----                            -------
-  Normal  Scheduled  4m3s  default-scheduler               Successfully assigned default/kubia-pt77q to lkytest-control-plane
-  Normal  Pulling    4m2s  kubelet, lkytest-control-plane  pulling image &quot;lkybuaa/kubia&quot;
-  Normal  Pulled     53s   kubelet, lkytest-control-plane  Successfully pulled image &quot;lkybuaa/kubia&quot;
-  Normal  Created    50s   kubelet, lkytest-control-plane  Created container
-  Normal  Started    50s   kubelet, lkytest-control-plane  Started container
-➜  [/home/lky] kubectl get pods     
-NAME          READY   STATUS    RESTARTS   AGE
-kubia-pt77q   1/1     Running   0          4m7s</code></pre>
+<pre><code class="hljs"><span class="hljs-string">➜</span>  [<span class="hljs-string">/home/lky</span>] <span class="hljs-string">kubectl</span> <span class="hljs-string">run</span> <span class="hljs-string">kubia</span> <span class="hljs-string">--image=lkybuaa/kubia</span> <span class="hljs-string">--port=8080</span> <span class="hljs-string">--generator=run/v1</span>
+<span class="hljs-string">kubectl</span> <span class="hljs-string">run</span> <span class="hljs-string">--generator=run/v1</span> <span class="hljs-string">is</span> <span class="hljs-string">DEPRECATED</span> <span class="hljs-string">and</span> <span class="hljs-string">will</span> <span class="hljs-string">be</span> <span class="hljs-string">removed</span> <span class="hljs-string">in</span> <span class="hljs-string">a</span> <span class="hljs-string">future</span> <span class="hljs-string">version.</span> <span class="hljs-string">Use</span> <span class="hljs-string">kubectl</span> <span class="hljs-string">run</span> <span class="hljs-string">--generator=run-pod/v1</span> <span class="hljs-string">or</span> <span class="hljs-string">kubectl</span> <span class="hljs-string">create</span> <span class="hljs-string">instead.</span>
+<span class="hljs-string">replicationcontroller/kubia</span> <span class="hljs-string">created</span>
+<span class="hljs-string">➜</span>  [<span class="hljs-string">/home/lky</span>] <span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">pods</span>                 
+<span class="hljs-string">NAME</span>          <span class="hljs-string">READY</span>   <span class="hljs-string">STATUS</span>              <span class="hljs-string">RESTARTS</span>   <span class="hljs-string">AGE</span>
+<span class="hljs-string">kubia-pt77q</span>   <span class="hljs-number">0</span><span class="hljs-string">/1</span>     <span class="hljs-string">ContainerCreating</span>   <span class="hljs-number">0</span>          <span class="hljs-string">24s</span>
+<span class="hljs-string">➜</span>  [<span class="hljs-string">/home/lky</span>] <span class="hljs-string">kubectl</span> <span class="hljs-string">describe</span> <span class="hljs-string">pod</span> 
+<span class="hljs-attr">Name:</span>           <span class="hljs-string">kubia-pt77q</span>
+<span class="hljs-attr">Namespace:</span>      <span class="hljs-string">default</span>
+<span class="hljs-attr">Priority:</span>       <span class="hljs-number">0</span>
+<span class="hljs-attr">Node:</span>           <span class="hljs-string">lkytest-control-plane/172.17.0.2</span>
+<span class="hljs-attr">Start Time:</span>     <span class="hljs-string">Fri,</span> <span class="hljs-number">10</span> <span class="hljs-string">Jan</span> <span class="hljs-number">2020 16:55:14</span> <span class="hljs-string">+0800</span>
+<span class="hljs-attr">Labels:</span>         <span class="hljs-string">run=kubia</span>
+<span class="hljs-attr">Annotations:</span>    <span class="hljs-string">&lt;none&gt;</span>
+<span class="hljs-attr">Status:</span>         <span class="hljs-string">Running</span>
+<span class="hljs-attr">IP:</span>             <span class="hljs-number">10.32</span><span class="hljs-number">.0</span><span class="hljs-number">.4</span>
+<span class="hljs-attr">IPs:</span>            <span class="hljs-string">&lt;none&gt;</span>
+<span class="hljs-attr">Controlled By:</span>  <span class="hljs-string">ReplicationController/kubia</span>
+<span class="hljs-attr">Containers:</span>
+  <span class="hljs-attr">kubia:</span>
+    <span class="hljs-attr">Container ID:</span>   <span class="hljs-string">docker://872ef1700e9afa3573dd745599add7bc2c9f3216f0ec603710286e5f9e9b2cf2</span>
+    <span class="hljs-attr">Image:</span>          <span class="hljs-string">lkybuaa/kubia</span>
+    <span class="hljs-attr">Image ID:</span>       <span class="hljs-string">docker-pullable://lkybuaa/kubia@sha256:c5e35be31ea0a0440c2a3dc63741a9d6566d4bc4c3d8c219cf649b7e5361cb83</span>
+    <span class="hljs-attr">Port:</span>           <span class="hljs-number">8080</span><span class="hljs-string">/TCP</span>
+    <span class="hljs-attr">Host Port:</span>      <span class="hljs-number">0</span><span class="hljs-string">/TCP</span>
+    <span class="hljs-attr">State:</span>          <span class="hljs-string">Running</span>
+      <span class="hljs-attr">Started:</span>      <span class="hljs-string">Fri,</span> <span class="hljs-number">10</span> <span class="hljs-string">Jan</span> <span class="hljs-number">2020 16:58:27</span> <span class="hljs-string">+0800</span>
+    <span class="hljs-attr">Ready:</span>          <span class="hljs-literal">True</span>
+    <span class="hljs-attr">Restart Count:</span>  <span class="hljs-number">0</span>
+    <span class="hljs-attr">Environment:</span>    <span class="hljs-string">&lt;none&gt;</span>
+    <span class="hljs-attr">Mounts:</span>
+      <span class="hljs-string">/var/run/secrets/kubernetes.io/serviceaccount</span> <span class="hljs-string">from</span> <span class="hljs-string">default-token-7kn4l</span> <span class="hljs-string">(ro)</span>
+<span class="hljs-attr">Conditions:</span>
+  <span class="hljs-string">Type</span>              <span class="hljs-string">Status</span>
+  <span class="hljs-string">Initialized</span>       <span class="hljs-literal">True</span> 
+  <span class="hljs-string">Ready</span>             <span class="hljs-literal">True</span> 
+  <span class="hljs-string">ContainersReady</span>   <span class="hljs-literal">True</span> 
+  <span class="hljs-string">PodScheduled</span>      <span class="hljs-literal">True</span> 
+<span class="hljs-attr">Volumes:</span>
+  <span class="hljs-attr">default-token-7kn4l:</span>
+    <span class="hljs-attr">Type:</span>        <span class="hljs-string">Secret</span> <span class="hljs-string">(a</span> <span class="hljs-string">volume</span> <span class="hljs-string">populated</span> <span class="hljs-string">by</span> <span class="hljs-string">a</span> <span class="hljs-string">Secret)</span>
+    <span class="hljs-attr">SecretName:</span>  <span class="hljs-string">default-token-7kn4l</span>
+    <span class="hljs-attr">Optional:</span>    <span class="hljs-literal">false</span>
+<span class="hljs-attr">QoS Class:</span>       <span class="hljs-string">BestEffort</span>
+<span class="hljs-attr">Node-Selectors:</span>  <span class="hljs-string">&lt;none&gt;</span>
+<span class="hljs-attr">Tolerations:</span>     <span class="hljs-string">node.kubernetes.io/not-ready:NoExecute</span> <span class="hljs-string">for</span> <span class="hljs-string">300s</span>
+                 <span class="hljs-string">node.kubernetes.io/unreachable:NoExecute</span> <span class="hljs-string">for</span> <span class="hljs-string">300s</span>
+<span class="hljs-attr">Events:</span>
+  <span class="hljs-string">Type</span>    <span class="hljs-string">Reason</span>     <span class="hljs-string">Age</span>   <span class="hljs-string">From</span>                            <span class="hljs-string">Message</span>
+  <span class="hljs-string">----</span>    <span class="hljs-string">------</span>     <span class="hljs-string">----</span>  <span class="hljs-string">----</span>                            <span class="hljs-string">-------</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Scheduled</span>  <span class="hljs-string">4m3s</span>  <span class="hljs-string">default-scheduler</span>               <span class="hljs-string">Successfully</span> <span class="hljs-string">assigned</span> <span class="hljs-string">default/kubia-pt77q</span> <span class="hljs-string">to</span> <span class="hljs-string">lkytest-control-plane</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Pulling</span>    <span class="hljs-string">4m2s</span>  <span class="hljs-string">kubelet,</span> <span class="hljs-string">lkytest-control-plane</span>  <span class="hljs-string">pulling</span> <span class="hljs-string">image</span> <span class="hljs-string">&quot;lkybuaa/kubia&quot;</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Pulled</span>     <span class="hljs-string">53s</span>   <span class="hljs-string">kubelet,</span> <span class="hljs-string">lkytest-control-plane</span>  <span class="hljs-string">Successfully</span> <span class="hljs-string">pulled</span> <span class="hljs-string">image</span> <span class="hljs-string">&quot;lkybuaa/kubia&quot;</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Created</span>    <span class="hljs-string">50s</span>   <span class="hljs-string">kubelet,</span> <span class="hljs-string">lkytest-control-plane</span>  <span class="hljs-string">Created</span> <span class="hljs-string">container</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Started</span>    <span class="hljs-string">50s</span>   <span class="hljs-string">kubelet,</span> <span class="hljs-string">lkytest-control-plane</span>  <span class="hljs-string">Started</span> <span class="hljs-string">container</span>
+<span class="hljs-string">➜</span>  [<span class="hljs-string">/home/lky</span>] <span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">pods</span>     
+<span class="hljs-string">NAME</span>          <span class="hljs-string">READY</span>   <span class="hljs-string">STATUS</span>    <span class="hljs-string">RESTARTS</span>   <span class="hljs-string">AGE</span>
+<span class="hljs-string">kubia-pt77q</span>   <span class="hljs-number">1</span><span class="hljs-string">/1</span>     <span class="hljs-string">Running</span>   <span class="hljs-number">0</span>          <span class="hljs-string">4m7s</span></code></pre>
 <p><strong>创建负载均衡服务对外暴露pod</strong>
 （kind和minikube都不支持LoadBalancer类型服务，所以外部ip一直为pending）</p>
 <pre><code>➜  [/home/lky] kubectl expose rc kubia --type=LoadBalancer --name kubia-http
@@ -307,7 +307,7 @@ nodes:
   - role: worker</code></pre>
 <p>即创建一个三节点的集群。         </p>
 <p>然后进入kube-batch项目，首先make，然后创建rfd</p>
-<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_podgroup.yaml                                                                                                
+<pre><code class="hljs">➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_podgroup.yaml                                                                                                
 customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.incubator.k8s.io created
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha2_podgroup.yaml 
 customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.sigs.dev created
@@ -318,37 +318,37 @@ customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f default.yaml 
 queue.scheduling.incubator.k8s.io/default created</code></pre>
 <p>然后进入make生成的__output文件夹启动kube-batch</p>
-<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch -h
+<pre><code class="hljs">➜  [/home/lky/<span class="hljs-keyword">go</span>/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch -h
 Usage of ./kube-batch:
-      --alsologtostderr                  log to standard error as well as files
-      --default-queue string             The default queue name of the job (default &quot;default&quot;)
-      --kubeconfig string                Path to kubeconfig file with authorization and master location information
-      --leader-elect                     Start a leader election client and gain leadership before executing the main loop. Enable this when running replicated kube-batch for high availability
-      --listen-address string            The address to listen on for HTTP requests. (default &quot;:8080&quot;)
-      --lock-object-namespace string     Define the namespace of the lock object that is used for leader election
-      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
-      --log-dir string                   If non-empty, write log files in this directory
-      --log-flush-frequency duration     Maximum number of seconds between log flushes (default 5s)
-      --logtostderr                      log to standard error instead of files
-      --master string                    The address of the Kubernetes API server (overrides any value in kubeconfig)
-      --priority-class                   Enable PriorityClass to provide the capacity of preemption at pod group level; to disable it, set it false (default true)
-      --schedule-period duration         The period between each scheduling cycle (default 1s)
-      --scheduler-conf string            The absolute path of scheduler configuration file
-      --scheduler-name string            kube-batch will handle pods whose .spec.SchedulerName is same as scheduler-name (default &quot;kube-batch&quot;)
-      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
-  -v, --v Level                          log level for V logs
+      --alsologtostderr                  log to standard <span class="hljs-type">error</span> as well as files
+      --<span class="hljs-keyword">default</span>-queue <span class="hljs-type">string</span>             The <span class="hljs-keyword">default</span> queue name of the job (<span class="hljs-keyword">default</span> <span class="hljs-string">&quot;default&quot;</span>)
+      --kubeconfig <span class="hljs-type">string</span>                Path to kubeconfig file with authorization and master location information
+      --leader-elect                     Start a leader election client and gain leadership before executing the main loop. Enable this when running replicated kube-batch <span class="hljs-keyword">for</span> high availability
+      --listen-address <span class="hljs-type">string</span>            The address to listen on <span class="hljs-keyword">for</span> HTTP requests. (<span class="hljs-keyword">default</span> <span class="hljs-string">&quot;:8080&quot;</span>)
+      --lock-object-namespace <span class="hljs-type">string</span>     Define the namespace of the lock object that is used <span class="hljs-keyword">for</span> leader election
+      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (<span class="hljs-keyword">default</span> :<span class="hljs-number">0</span>)
+      --log-dir <span class="hljs-type">string</span>                   If non-empty, write log files in this directory
+      --log-flush-frequency duration     Maximum number of seconds between log flushes (<span class="hljs-keyword">default</span> <span class="hljs-number">5</span>s)
+      --logtostderr                      log to standard <span class="hljs-type">error</span> instead of files
+      --master <span class="hljs-type">string</span>                    The address of the Kubernetes API server (overrides any value in kubeconfig)
+      --priority-class                   Enable PriorityClass to provide the capacity of preemption at pod group level; to disable it, set it <span class="hljs-literal">false</span> (<span class="hljs-keyword">default</span> <span class="hljs-literal">true</span>)
+      --schedule-period duration         The period between each scheduling cycle (<span class="hljs-keyword">default</span> <span class="hljs-number">1</span>s)
+      --scheduler-conf <span class="hljs-type">string</span>            The absolute path of scheduler configuration file
+      --scheduler-name <span class="hljs-type">string</span>            kube-batch will handle pods whose .spec.SchedulerName is same as scheduler-name (<span class="hljs-keyword">default</span> <span class="hljs-string">&quot;kube-batch&quot;</span>)
+      --stderrthreshold severity         logs at or above this threshold <span class="hljs-keyword">go</span> to stderr (<span class="hljs-keyword">default</span> <span class="hljs-number">2</span>)
+  -v, --v Level                          log level <span class="hljs-keyword">for</span> V logs
       --version                          Show version and quit
-      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+      --vmodule moduleSpec               comma-separated list of pattern=N settings <span class="hljs-keyword">for</span> file-filtered logging
 pflag: help requested
-➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch --kubeconfig=&quot;/home/lky/.kube/config&quot; --logtostderr --schedule-period 5s --v 3 --scheduler-conf=&quot;../../config/kube-batch-conf.yaml&quot;
-I0112 16:35:11.424548   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-apiserver-test1-control-plane&gt; into cache.
-I0112 16:35:11.429708   22529 event_handlers.go:203] Added pod &lt;kube-system/etcd-test1-control-plane&gt; into cache.
-I0112 16:35:11.429736   22529 event_handlers.go:203] Added pod &lt;kube-system/coredns-5644d7b6d9-fcjsg&gt; into cache.
-I0112 16:35:11.429747   22529 event_handlers.go:203] Added pod &lt;kube-system/kindnet-qqnq5&gt; into cache.
-I0112 16:35:11.429759   22529 event_handlers.go:203] Added pod &lt;kube-system/kindnet-tgdr2&gt; into cache.
-I0112 16:35:11.429770   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-controller-manager-test1-control-plane&gt; into cache.
-I0112 16:35:11.429781   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-proxy-6bdn7&gt; into cache.
-I0112 16:35:11.429924   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-scheduler-test1-contrl-plane&gt; into cache.
+➜  [/home/lky/<span class="hljs-keyword">go</span>/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch --kubeconfig=<span class="hljs-string">&quot;/home/lky/.kube/config&quot;</span> --logtostderr --schedule-period <span class="hljs-number">5</span>s --v <span class="hljs-number">3</span> --scheduler-conf=<span class="hljs-string">&quot;../../config/kube-batch-conf.yaml&quot;</span>
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.424548</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kube-apiserver-test1-control-plane&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429708</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/etcd-test1-control-plane&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429736</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/coredns<span class="hljs-number">-5644</span>d7b6d9-fcjsg&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429747</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kindnet-qqnq5&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429759</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kindnet-tgdr2&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429770</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kube-controller-manager-test1-control-plane&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429781</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kube-proxy<span class="hljs-number">-6</span>bdn7&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429924</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kube-scheduler-test1-contrl-plane&gt; into cache.
 ....
 ...
 ..</code></pre>
@@ -364,35 +364,35 @@ NAME         READY   STATUS    RESTARTS   AGE
 qj-1-5vfjw   1/1     Running   0          22s
 qj-1-6g9xk   1/1     Running   0          22s</code></pre>
 <p>其中，job.yaml内容为：</p>
-<pre><code>apiVersion: batch/v1
-kind: Job
-metadata:
-  name: qj-1
-spec:
-  completions: 2
-  parallelism: 2
-  template:
-    metadata:
-      annotations:
-        scheduling.k8s.io/group-name: qj-1
-    spec:
-      containers:
-      - image: busybox
-        imagePullPolicy: IfNotPresent
-        name: busybox
-        command: [&quot;sleep&quot;, &quot;9999999&quot;]
-        resources:
-          requests:
-            cpu: &quot;1&quot;
-      restartPolicy: Never
-      schedulerName: kube-batch
----
-apiVersion: scheduling.incubator.k8s.io/v1alpha1
-kind: PodGroup
-metadata:
-  name: qj-1
-spec:
-  minMember: 2</code></pre>
+<pre><code class="hljs"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">batch/v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Job</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">qj-1</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">completions:</span> <span class="hljs-number">2</span>
+  <span class="hljs-attr">parallelism:</span> <span class="hljs-number">2</span>
+  <span class="hljs-attr">template:</span>
+    <span class="hljs-attr">metadata:</span>
+      <span class="hljs-attr">annotations:</span>
+        <span class="hljs-attr">scheduling.k8s.io/group-name:</span> <span class="hljs-string">qj-1</span>
+    <span class="hljs-attr">spec:</span>
+      <span class="hljs-attr">containers:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">image:</span> <span class="hljs-string">busybox</span>
+        <span class="hljs-attr">imagePullPolicy:</span> <span class="hljs-string">IfNotPresent</span>
+        <span class="hljs-attr">name:</span> <span class="hljs-string">busybox</span>
+        <span class="hljs-attr">command:</span> [<span class="hljs-string">&quot;sleep&quot;</span>, <span class="hljs-string">&quot;9999999&quot;</span>]
+        <span class="hljs-attr">resources:</span>
+          <span class="hljs-attr">requests:</span>
+            <span class="hljs-attr">cpu:</span> <span class="hljs-string">&quot;1&quot;</span>
+      <span class="hljs-attr">restartPolicy:</span> <span class="hljs-string">Never</span>
+      <span class="hljs-attr">schedulerName:</span> <span class="hljs-string">kube-batch</span>
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">scheduling.incubator.k8s.io/v1alpha1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">PodGroup</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">qj-1</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">minMember:</span> <span class="hljs-number">2</span></code></pre>
 <p>kube-batch把一组pod看成一个pod group。</p>
 <h1 id="pod">Pod</h1>
 <p>Pod是一组并置的容器，代表k8s中的基本构建模块。          </p>

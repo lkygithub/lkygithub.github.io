@@ -56,216 +56,216 @@
     </div>
     <div class="blog-post-content">
 <p>基于map实现sets.go</p>
-<pre><code>package sets
+<pre><code class="hljs"><span class="hljs-keyword">package</span> sets
 
-// An Empty struct does not take up any memory
-type Empty struct{}
+<span class="hljs-comment">// An Empty struct does not take up any memory</span>
+<span class="hljs-keyword">type</span> Empty <span class="hljs-keyword">struct</span>{}
 
-// sets.String is a set of strings, implemented via map[string]struct{} for minimal memory consumption.
-type String map[string]Empty
+<span class="hljs-comment">// sets.String is a set of strings, implemented via map[string]struct{} for minimal memory consumption.</span>
+<span class="hljs-keyword">type</span> String <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]Empty
 
 
-func NewString(items ...string) String {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewString</span><span class="hljs-params">(items ...<span class="hljs-type">string</span>)</span></span> String {
 	s := String{}
 	s.Insert(items...)
-	return s
+	<span class="hljs-keyword">return</span> s
 }
 
-func (s String) Insert(items ...string) {
-	for _, item := range items {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Insert(items ...<span class="hljs-type">string</span>) {
+	<span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> items {
 		s[item] = Empty{}
 	}
 }
 
-func (s String) Delete(items ...string) {
-	for _, item := range items {
-		delete(s, item)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Delete(items ...<span class="hljs-type">string</span>) {
+	<span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> items {
+		<span class="hljs-built_in">delete</span>(s, item)
 	}
 }
 
-func (s String) Has(item string) bool {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Has(item <span class="hljs-type">string</span>) <span class="hljs-type">bool</span> {
 	_, res := s[item]
-	return res
+	<span class="hljs-keyword">return</span> res
 }
 
-// HasAll returns true if and only if all items are contained in the set.
-func (s String) HasAll(items ...string) bool {
-	for _, item := range items {
-		if !s.Has(item) {
-			return false
+<span class="hljs-comment">// HasAll returns true if and only if all items are contained in the set.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> HasAll(items ...<span class="hljs-type">string</span>) <span class="hljs-type">bool</span> {
+	<span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> items {
+		<span class="hljs-keyword">if</span> !s.Has(item) {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
 		}
 	}
-	return true
+	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 }
 
-// HasAny returns true if any items are contained in the set.
-func (s String) HasAny(items ...string) bool {
-	for _, item := range items {
-		if s.Has(item) {
-			return true
+<span class="hljs-comment">// HasAny returns true if any items are contained in the set.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> HasAny(items ...<span class="hljs-type">string</span>) <span class="hljs-type">bool</span> {
+	<span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> items {
+		<span class="hljs-keyword">if</span> s.Has(item) {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 		}
 	}
-	return false
+	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
 }
 
-// Difference returns a set of objects that are not in s2
-func (s String) Difference(s2 String) String {
+<span class="hljs-comment">// Difference returns a set of objects that are not in s2</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Difference(s2 String) String {
 	res := NewString()
-	for item := range s {
-		if !s2.Has(item) {
+	<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s {
+		<span class="hljs-keyword">if</span> !s2.Has(item) {
 			res.Insert(item)
 		}
 	}
-	return res
+	<span class="hljs-keyword">return</span> res
 }
 
-// Union returns a new set which includes items in either s1 or s2.
-func (s1 String) Union(s2 String) String {
+<span class="hljs-comment">// Union returns a new set which includes items in either s1 or s2.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s1 String)</span></span> Union(s2 String) String {
 	res := NewString()
-	for item := range s1 {
+	<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s1 {
 		res.Insert(item)
 	}
-	for item := range s2 {
+	<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s2 {
 		res.Insert(item)
 	}
-	return res
+	<span class="hljs-keyword">return</span> res
 }
 
-// Intersection returns a new set which includes the item in BOTH s1 and s2
-func (s1 String) Intersection(s2 String) String {
+<span class="hljs-comment">// Intersection returns a new set which includes the item in BOTH s1 and s2</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s1 String)</span></span> Intersection(s2 String) String {
 	res := NewString()
-	if s1.Len() &lt; s2.Len() {
-		for item := range s1 {
-			if s2.Has(item) {
+	<span class="hljs-keyword">if</span> s1.Len() &lt; s2.Len() {
+		<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s1 {
+			<span class="hljs-keyword">if</span> s2.Has(item) {
 				res.Insert(item)
 			}
 		}
-	} else {
-		for item := range s2 {
-			if s1.Has(item) {
+	} <span class="hljs-keyword">else</span> {
+		<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s2 {
+			<span class="hljs-keyword">if</span> s1.Has(item) {
 				res.Insert(item)
 			}
 		}
 	}
-	return res
+	<span class="hljs-keyword">return</span> res
 }
 
-func (s String) Len() int {
-	return len(s)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Len() <span class="hljs-type">int</span> {
+	<span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(s)
 }
 
-func (s String) List() []string {
-	res := make([]string, 0, len(s))
-	for item := range s {
-		res = append(res, item)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> List() []<span class="hljs-type">string</span> {
+	res := <span class="hljs-built_in">make</span>([]<span class="hljs-type">string</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(s))
+	<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s {
+		res = <span class="hljs-built_in">append</span>(res, item)
     }
-	return res
+	<span class="hljs-keyword">return</span> res
 }</code></pre>
 <p>单元测试 sets_test.go</p>
-<pre><code>package sets
+<pre><code class="hljs"><span class="hljs-keyword">package</span> sets
 
-import (
-    &quot;testing&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;testing&quot;</span>
 )
 
-func TestInsert(t *testing.T) {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestInsert</span><span class="hljs-params">(t *testing.T)</span></span> {
 	ss := NewString()
 	
-	// Insert 1 item\
-	ss.Insert(&quot;a&quot;)
-	if !ss.Has(&quot;a&quot;) {
-		t.Errorf(&quot;Insert failed.&quot;)
+	<span class="hljs-comment">// Insert 1 item\</span>
+	ss.Insert(<span class="hljs-string">&quot;a&quot;</span>)
+	<span class="hljs-keyword">if</span> !ss.Has(<span class="hljs-string">&quot;a&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Insert failed.&quot;</span>)
 	}
 
-	// Insert several items
-	ss.Insert(&quot;a&quot;, &quot;bb&quot;, &quot;ccc&quot;, &quot;dddd&quot;)
-	if !ss.HasAll(&quot;a&quot;, &quot;bb&quot;, &quot;ccc&quot;, &quot;dddd&quot;) || ss.Len() != 4 {
-		t.Errorf(&quot;Insert failed.&quot;)
+	<span class="hljs-comment">// Insert several items</span>
+	ss.Insert(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;bb&quot;</span>, <span class="hljs-string">&quot;ccc&quot;</span>, <span class="hljs-string">&quot;dddd&quot;</span>)
+	<span class="hljs-keyword">if</span> !ss.HasAll(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;bb&quot;</span>, <span class="hljs-string">&quot;ccc&quot;</span>, <span class="hljs-string">&quot;dddd&quot;</span>) || ss.Len() != <span class="hljs-number">4</span> {
+		t.Errorf(<span class="hljs-string">&quot;Insert failed.&quot;</span>)
 	}
 
 }
 
-func TestDelete(t *testing.T) {
-	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestDelete</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>)
 
-	// Delete 1 item
-	ss.Delete(&quot;a&quot;)
-	if ss.Has(&quot;a&quot;) {
-		t.Errorf(&quot;Delete failed.&quot;)
+	<span class="hljs-comment">// Delete 1 item</span>
+	ss.Delete(<span class="hljs-string">&quot;a&quot;</span>)
+	<span class="hljs-keyword">if</span> ss.Has(<span class="hljs-string">&quot;a&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Delete failed.&quot;</span>)
 	}
 
-	// Delete several items
-	ss.Delete(&quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
-	if ss.HasAny(&quot;b&quot;, &quot;c&quot;, &quot;d&quot;) || ss.Len() != 0 {
-		t.Errorf(&quot;Delete failed.&quot;)
+	<span class="hljs-comment">// Delete several items</span>
+	ss.Delete(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>)
+	<span class="hljs-keyword">if</span> ss.HasAny(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>) || ss.Len() != <span class="hljs-number">0</span> {
+		t.Errorf(<span class="hljs-string">&quot;Delete failed.&quot;</span>)
 	}
 }
 
-func TestHas(t *testing.T) {
-	s := &quot;abc&quot;
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestHas</span><span class="hljs-params">(t *testing.T)</span></span> {
+	s := <span class="hljs-string">&quot;abc&quot;</span>
 	ss := NewString(s)
 	_, res1 := ss[s]
 	res2 := ss.Has(s)
-	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
-		t.Errorf(&quot;Has Check failed.&quot;)
+	<span class="hljs-keyword">if</span> (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(<span class="hljs-string">&quot;Has Check failed.&quot;</span>)
 	}
 }
 
-func TestHasAny(t *testing.T) {
-	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
-	_, resA := ss[&quot;a&quot;]
-	_, resB := ss[&quot;b&quot;]
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestHasAny</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>)
+	_, resA := ss[<span class="hljs-string">&quot;a&quot;</span>]
+	_, resB := ss[<span class="hljs-string">&quot;b&quot;</span>]
 	res1 := resA || resB
-	res2 := ss.HasAny(&quot;a&quot;, &quot;b&quot;)
-	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
-		t.Errorf(&quot;HasAny Check failed.&quot;)
+	res2 := ss.HasAny(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>)
+	<span class="hljs-keyword">if</span> (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(<span class="hljs-string">&quot;HasAny Check failed.&quot;</span>)
 	}
 
 }
 
-func TestHasAll(t *testing.T) {
-	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-	_, resA := ss[&quot;a&quot;]
-	_, resB := ss[&quot;b&quot;]
-	_, resC := ss[&quot;c&quot;]
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestHasAll</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>)
+	_, resA := ss[<span class="hljs-string">&quot;a&quot;</span>]
+	_, resB := ss[<span class="hljs-string">&quot;b&quot;</span>]
+	_, resC := ss[<span class="hljs-string">&quot;c&quot;</span>]
 	res1 := resA &amp;&amp; resB &amp;&amp; resC
-	res2 := ss.HasAll(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
-		t.Errorf(&quot;HasAll Check failed.&quot;)
+	res2 := ss.HasAll(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>)
+	<span class="hljs-keyword">if</span> (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(<span class="hljs-string">&quot;HasAll Check failed.&quot;</span>)
 	}
 }
 
-func TestDifference(t *testing.T) {
-	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
-	ss2 := NewString(&quot;a&quot;, &quot;c&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestDifference</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss1 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>)
+	ss2 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>)
 	res := ss1.Difference(ss2)
-	if !res.Has(&quot;b&quot;) {
-		t.Errorf(&quot;Difference Check failed.&quot;)
+	<span class="hljs-keyword">if</span> !res.Has(<span class="hljs-string">&quot;b&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Difference Check failed.&quot;</span>)
 	}
 }
 
-func TestUnion(t *testing.T) {
-	ss1 := NewString(&quot;a&quot;)
-	ss2 := NewString(&quot;b&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestUnion</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss1 := NewString(<span class="hljs-string">&quot;a&quot;</span>)
+	ss2 := NewString(<span class="hljs-string">&quot;b&quot;</span>)
 	res := ss1.Union(ss2)
-	if !res.HasAll(&quot;a&quot;, &quot;b&quot;) {
-		t.Errorf(&quot;Union Check failed.&quot;)
+	<span class="hljs-keyword">if</span> !res.HasAll(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Union Check failed.&quot;</span>)
 	}
 }
 
-func TestIntersection(t *testing.T) {
-	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
-	ss2 := NewString(&quot;a&quot;, &quot;c&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestIntersection</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss1 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>)
+	ss2 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>)
 	res := ss1.Intersection(ss2)
-	if !res.Has(&quot;a&quot;) {
-		t.Errorf(&quot;Intersection Check failed.&quot;)
+	<span class="hljs-keyword">if</span> !res.Has(<span class="hljs-string">&quot;a&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Intersection Check failed.&quot;</span>)
 	}
 }
 
-func TestLen(t *testing.T) {
-	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
-	if ss1.Len() != 2 {
-		t.Errorf(&quot;Len Check failed.&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestLen</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss1 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>)
+	<span class="hljs-keyword">if</span> ss1.Len() != <span class="hljs-number">2</span> {
+		t.Errorf(<span class="hljs-string">&quot;Len Check failed.&quot;</span>)
 	}
 }</code></pre>
 

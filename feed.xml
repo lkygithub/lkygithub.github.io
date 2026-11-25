@@ -308,25 +308,25 @@ git diff br1 br2 /path/to/file</code></pre>
 <p>　　l1_CNode和l2_CNode也是capability所有不同类型中的两种类型，与ram | dispatcher | ... 一样也是capability，所有capbility都有如下性质：即包含指向某一段内存的信息（虚地址addr、虚拟内存大小size）以及相关权限rights。</p>
 <p>　　内核中定义实现了capability的相关数据结构，定义实现如下：         </p>
 <p>　　文件路径：kernel/include/capabilities.h      </p>
-<pre><code>/**
+<pre><code class="hljs"><span class="hljs-comment">/**
 	* \brief A CTE (Capability Table Entry).
 	*
 	* A CTE is an entry in a CNode, which in turn is an entry in CSpace, the
 	* capability space. CSpace is a guarded tree structure. Refer to the seL4
 	* reference manual for further information about how CSpace is implemented.
-	*/
-struct cte {
-	struct capability   cap;           	///&lt; The capability
-	char padding0[ROUND_UP(sizeof(struct capability), 8)- sizeof(struct capability)];
-	struct mdbnode      mdbnode;       	///&lt; MDB &quot;root&quot; node for the cap
-	char padding1[ROUND_UP(sizeof(struct mdbnode), 8) - sizeof(struct mdbnode)];
-	struct delete_list  delete_node;    ///&lt; State for in-progress delete cascades
+	*/</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">cte</span> {
+	<span class="hljs-keyword">struct</span> <span class="hljs-title class_">capability</span>   cap;           	<span class="hljs-comment">///&lt; The capability</span>
+	<span class="hljs-type">char</span> padding0[<span class="hljs-built_in">ROUND_UP</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> capability), <span class="hljs-number">8</span>)- <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> capability)];
+	<span class="hljs-keyword">struct</span> <span class="hljs-title class_">mdbnode</span>      mdbnode;       	<span class="hljs-comment">///&lt; MDB &quot;root&quot; node for the cap</span>
+	<span class="hljs-type">char</span> padding1[<span class="hljs-built_in">ROUND_UP</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> mdbnode), <span class="hljs-number">8</span>) - <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> mdbnode)];
+	<span class="hljs-keyword">struct</span> <span class="hljs-title class_">delete_list</span>  delete_node;    <span class="hljs-comment">///&lt; State for in-progress delete cascades</span>
 
-	/// Padding to fill the struct out to the size required by OBJBITS_CTE
-	char padding[(1UL &lt;&lt; OBJBITS_CTE)
-					- sizeof(struct delete_list)
-					- ROUND_UP(sizeof(struct capability), 8)
-					- ROUND_UP(sizeof(struct mdbnode), 8)];
+	<span class="hljs-comment">/// Padding to fill the struct out to the size required by OBJBITS_CTE</span>
+	<span class="hljs-type">char</span> padding[(<span class="hljs-number">1UL</span> &lt;&lt; OBJBITS_CTE)
+					- <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> delete_list)
+					- <span class="hljs-built_in">ROUND_UP</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> capability), <span class="hljs-number">8</span>)
+					- <span class="hljs-built_in">ROUND_UP</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> mdbnode), <span class="hljs-number">8</span>)];
 };</code></pre>
 <p>　　由于每个slots是固定大小，所以定义了一些padding用来对齐大小。我们首先关注第一个成员cap，后两个成员mdbnode和delete_node暂时不管，后面会详细说明。                </p>
 <p>　　注意到其中的第一个成员cap的类型为capability类型的结构体，该结构体定义如下:      </p>
@@ -342,56 +342,56 @@ struct cte {
 <li>以及该cap所对应的权限</li>
 </ul>
 <p>　　其中第一个联合体成员定义如下：</p>
-<pre><code>union capability_u {struct  Null null;
-				struct  PhysAddr physaddr;
-				struct  RAM ram;
-				struct  L1CNode l1cnode;
-				struct  L2CNode l2cnode;
-				struct  FCNode fcnode;
-				struct  Dispatcher dispatcher;
-				struct  EndPoint endpoint;
-				struct  Frame frame;
-				struct  Frame_Mapping frame_mapping;
-				struct  DevFrame devframe;
-				struct  DevFrame_Mapping devframe_mapping;
-				struct  Kernel kernel;
-				struct  VNode_x86_64_pml4 vnode_x86_64_pml4;
-				struct  VNode_x86_64_pml4_Mapping vnode_x86_64_pml4_mapping;
-				struct  VNode_x86_64_pdpt vnode_x86_64_pdpt;
-				struct  VNode_x86_64_pdpt_Mapping vnode_x86_64_pdpt_mapping;
-				struct  VNode_x86_64_pdir vnode_x86_64_pdir;
-				struct  VNode_x86_64_pdir_Mapping vnode_x86_64_pdir_mapping;
-				struct  VNode_x86_64_ptable vnode_x86_64_ptable;
-				struct  VNode_x86_64_ptable_Mapping vnode_x86_64_ptable_mapping;
-				struct  VNode_x86_32_pdpt vnode_x86_32_pdpt;
-				struct  VNode_x86_32_pdpt_Mapping vnode_x86_32_pdpt_mapping;
-				struct  VNode_x86_32_pdir vnode_x86_32_pdir;
-				struct  VNode_x86_32_pdir_Mapping vnode_x86_32_pdir_mapping;
-				struct  VNode_x86_32_ptable vnode_x86_32_ptable;
-				struct  VNode_x86_32_ptable_Mapping vnode_x86_32_ptable_mapping;
-				struct  VNode_ARM_l1 vnode_arm_l1;
-				struct  VNode_ARM_l1_Mapping vnode_arm_l1_mapping;
-				struct  VNode_ARM_l2 vnode_arm_l2;
-				struct  VNode_ARM_l2_Mapping vnode_arm_l2_mapping;
-				struct  VNode_AARCH64_l0 vnode_aarch64_l0;
-				struct  VNode_AARCH64_l0_Mapping vnode_aarch64_l0_mapping;
-				struct  VNode_AARCH64_l1 vnode_aarch64_l1;
-				struct  VNode_AARCH64_l1_Mapping vnode_aarch64_l1_mapping;
-				struct  VNode_AARCH64_l2 vnode_aarch64_l2;
-				struct  VNode_AARCH64_l2_Mapping vnode_aarch64_l2_mapping;
-				struct  VNode_AARCH64_l3 vnode_aarch64_l3;
-				struct  VNode_AARCH64_l3_Mapping vnode_aarch64_l3_mapping;
-				struct  IRQTable irqtable;
-				struct  IRQDest irqdest;
-				struct  IRQSrc irqsrc;
-				struct  IO io;
-				struct  Notify_IPI notify_ipi;
-				struct  ID id;
-				struct  PerfMon perfmon;
-				struct  KernelControlBlock kernelcontrolblock;
-				struct  IPI ipi;
-				struct  ProcessManager processmanager;
-				struct  Domain domain;};</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">union</span> <span class="hljs-title class_">capability_u</span> {<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Null</span> null;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">PhysAddr</span> physaddr;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">RAM</span> ram;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">L1CNode</span> l1cnode;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">L2CNode</span> l2cnode;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">FCNode</span> fcnode;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Dispatcher</span> dispatcher;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">EndPoint</span> endpoint;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Frame</span> frame;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Frame_Mapping</span> frame_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">DevFrame</span> devframe;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">DevFrame_Mapping</span> devframe_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Kernel</span> kernel;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pml4</span> vnode_x86_64_pml4;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pml4_Mapping</span> vnode_x86_64_pml4_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pdpt</span> vnode_x86_64_pdpt;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pdpt_Mapping</span> vnode_x86_64_pdpt_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pdir</span> vnode_x86_64_pdir;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pdir_Mapping</span> vnode_x86_64_pdir_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_ptable</span> vnode_x86_64_ptable;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_ptable_Mapping</span> vnode_x86_64_ptable_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_pdpt</span> vnode_x86_32_pdpt;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_pdpt_Mapping</span> vnode_x86_32_pdpt_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_pdir</span> vnode_x86_32_pdir;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_pdir_Mapping</span> vnode_x86_32_pdir_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_ptable</span> vnode_x86_32_ptable;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_ptable_Mapping</span> vnode_x86_32_ptable_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_ARM_l1</span> vnode_arm_l1;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_ARM_l1_Mapping</span> vnode_arm_l1_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_ARM_l2</span> vnode_arm_l2;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_ARM_l2_Mapping</span> vnode_arm_l2_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l0</span> vnode_aarch64_l0;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l0_Mapping</span> vnode_aarch64_l0_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l1</span> vnode_aarch64_l1;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l1_Mapping</span> vnode_aarch64_l1_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l2</span> vnode_aarch64_l2;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l2_Mapping</span> vnode_aarch64_l2_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l3</span> vnode_aarch64_l3;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l3_Mapping</span> vnode_aarch64_l3_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IRQTable</span> irqtable;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IRQDest</span> irqdest;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IRQSrc</span> irqsrc;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IO</span> io;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Notify_IPI</span> notify_ipi;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">ID</span> id;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">PerfMon</span> perfmon;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">KernelControlBlock</span> kernelcontrolblock;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IPI</span> ipi;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">ProcessManager</span> processmanager;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Domain</span> domain;};</code></pre>
 <p>　　可以看到这个联合体包含了Barrelfish系统中可能出现的<strong>所有类型</strong>的capability的结构体定义。由于不同体系结构的CPU的内核所需要的capability类型是不同的（比如可以看到上面很多名字中带x86、ARM、aarch64的cap类型），所以Barrelfish的开发者选择用Hamlet DSL来自动生成这部分代码。            </p>
 <p>　　下面对capability的类型系统作说明。</p>
 <h3 id="capability-f4ba85">对capability类型系统的解释：</h3>
@@ -404,17 +404,17 @@ struct cte {
 <li>...</li>
 </ul>
 <p>　　这里附上上述类型的cap的结构体定义：           </p>
-<pre><code>struct Dispatcher {struct dcb* dcb;};
-struct RAM {genpaddr_t base;		// genpaddr 指 general physical address
-			pasid_t pasid;
-			gensize_t bytes;};
-struct PhysAddr {genpaddr_t base;
-					pasid_t pasid;
-					gensize_t bytes;};
-struct L1CNode {lpaddr_t cnode;		// lpaddr 指 local physical address
+<pre><code class="hljs"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Dispatcher</span> {<span class="hljs-keyword">struct</span> <span class="hljs-title class_">dcb</span>* dcb;};
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">RAM</span> {<span class="hljs-type">genpaddr_t</span> base;		<span class="hljs-comment">// genpaddr 指 general physical address</span>
+			<span class="hljs-type">pasid_t</span> pasid;
+			<span class="hljs-type">gensize_t</span> bytes;};
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">PhysAddr</span> {<span class="hljs-type">genpaddr_t</span> base;
+					<span class="hljs-type">pasid_t</span> pasid;
+					<span class="hljs-type">gensize_t</span> bytes;};
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">L1CNode</span> {<span class="hljs-type">lpaddr_t</span> cnode;		<span class="hljs-comment">// lpaddr 指 local physical address</span>
 				CapRights rightsmask;
-				gensize_t allocated_bytes;};
-struct L2CNode {lpaddr_t cnode;
+				<span class="hljs-type">gensize_t</span> allocated_bytes;};
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">L2CNode</span> {<span class="hljs-type">lpaddr_t</span> cnode;
 				CapRights rightsmask;};</code></pre>
 <p>　　capability类型与类型之间是可以相互转换的，但是需要遵循一定的规则，barrelfish规定了一棵类似于树形的结构，来表示合法的<strong>类型转换路径</strong>,见下图：</p>
 <div align=center><img src="https://ririshihaori.com/2020/7/barrelfish_capability/retype.png" alt="" width="944" height="632" loading="lazy" decoding="async"></div><p>　　类型转换举例：</p>
@@ -427,20 +427,20 @@ struct L2CNode {lpaddr_t cnode;
 <ul>
 <li>对于dispatcher类型的cap（指向进程控制表），提供了以下类型的command：</li>
 </ul>
-<pre><code>/**
+<pre><code class="hljs"><span class="hljs-comment">/**
 * Specific commands for dispatcher capabilities.
-*/
-enum dispatcher_cmd {
-	DispatcherCmd_Setup,            ///&lt; Set dispatcher parameters
-	DispatcherCmd_Properties,       ///&lt; Set dispatcher properties
-	DispatcherCmd_PerfMon,          ///&lt; Performance monitoring
-	DispatcherCmd_SetupGuest,       ///&lt; Set up the DCB of a guest domain
-	DispatcherCmd_DumpPTables,      ///&lt; Dump hw page tables of dispatcher   比如打印维护进程虚存空间的页表
-	DispatcherCmd_DumpCapabilities, ///&lt; Dump capabilities of dispatcher·	 又比如打印该进程所拥有的所有cap（打印CSpace）
-	DispatcherCmd_Vmread,           ///&lt; Execute vmread on the current and active VMCS      
-	DispatcherCmd_Vmwrite,          ///&lt; Execute vmwrite on the current and active VMCS
-	DispatcherCmd_Vmptrld,          ///&lt; Make VMCS clear and inactive
-	DispatcherCmd_Vmclear,          ///&lt; Make VMCS current and active 
+*/</span>
+<span class="hljs-keyword">enum</span> <span class="hljs-title class_">dispatcher_cmd</span> {
+	DispatcherCmd_Setup,            <span class="hljs-comment">///&lt; Set dispatcher parameters</span>
+	DispatcherCmd_Properties,       <span class="hljs-comment">///&lt; Set dispatcher properties</span>
+	DispatcherCmd_PerfMon,          <span class="hljs-comment">///&lt; Performance monitoring</span>
+	DispatcherCmd_SetupGuest,       <span class="hljs-comment">///&lt; Set up the DCB of a guest domain</span>
+	DispatcherCmd_DumpPTables,      <span class="hljs-comment">///&lt; Dump hw page tables of dispatcher   比如打印维护进程虚存空间的页表</span>
+	DispatcherCmd_DumpCapabilities, <span class="hljs-comment">///&lt; Dump capabilities of dispatcher·	 又比如打印该进程所拥有的所有cap（打印CSpace）</span>
+	DispatcherCmd_Vmread,           <span class="hljs-comment">///&lt; Execute vmread on the current and active VMCS      </span>
+	DispatcherCmd_Vmwrite,          <span class="hljs-comment">///&lt; Execute vmwrite on the current and active VMCS</span>
+	DispatcherCmd_Vmptrld,          <span class="hljs-comment">///&lt; Make VMCS clear and inactive</span>
+	DispatcherCmd_Vmclear,          <span class="hljs-comment">///&lt; Make VMCS current and active </span>
 };</code></pre>
 <ul>
 <li>对于VNode类型的cap（指向一段虚存），提供了以下类型的command：</li>
@@ -454,19 +454,19 @@ enum dispatcher_cmd {
 <ul>
 <li>对于CNode类型的cap（指向一段用来保存capability的内存，即指向某一个cap），提供了以下类型的command：</li>
 </ul>
-<pre><code>/**
+<pre><code class="hljs"><span class="hljs-comment">/**
 	* CNode capability commands.
-	*/
-enum cnode_cmd {
-	CNodeCmd_Copy,      ///&lt; Copy capability
-	CNodeCmd_Mint,      ///&lt; Mint capability
-	CNodeCmd_Retype,    ///&lt; Retype capability         ————&gt;这就是之前说到的类型转换操作
-	CNodeCmd_Delete,    ///&lt; Delete capability
-	CNodeCmd_Revoke,    ///&lt; Revoke capability
-	CNodeCmd_Create,    ///&lt; Create capability
-	CNodeCmd_GetState,  ///&lt; Get distcap state for capability
-	CNodeCmd_GetSize,   ///&lt; Get Size of CNode, only applicable for L1 Cnode
-	CNodeCmd_Resize,    ///&lt; Resize CNode, only applicable for L1 Cnode
+	*/</span>
+<span class="hljs-keyword">enum</span> <span class="hljs-title class_">cnode_cmd</span> {
+	CNodeCmd_Copy,      <span class="hljs-comment">///&lt; Copy capability</span>
+	CNodeCmd_Mint,      <span class="hljs-comment">///&lt; Mint capability</span>
+	CNodeCmd_Retype,    <span class="hljs-comment">///&lt; Retype capability         ————&gt;这就是之前说到的类型转换操作</span>
+	CNodeCmd_Delete,    <span class="hljs-comment">///&lt; Delete capability</span>
+	CNodeCmd_Revoke,    <span class="hljs-comment">///&lt; Revoke capability</span>
+	CNodeCmd_Create,    <span class="hljs-comment">///&lt; Create capability</span>
+	CNodeCmd_GetState,  <span class="hljs-comment">///&lt; Get distcap state for capability</span>
+	CNodeCmd_GetSize,   <span class="hljs-comment">///&lt; Get Size of CNode, only applicable for L1 Cnode</span>
+	CNodeCmd_Resize,    <span class="hljs-comment">///&lt; Resize CNode, only applicable for L1 Cnode</span>
 };</code></pre>
 <p>　　上述提供的对CNode的操作，其中Resize、GetSize都是针对CNode本身进行的操作，而Copy、Mint、Retype、Delete等都是针对这个CNode中的作为叶子节点的非CNode类型capability进行的操作。
 	可见对某一个cap进行某种操作时，需要对该cap所位于的CNode调用该操作。             </p>
@@ -565,48 +565,48 @@ usr/monitor/invocations.c
 
 
 	if目录下是各种消息接口定义，是用一种叫做flounder的DSL语言实现的，flounder实现的消息接口通过haskell实现的编译器可以生成相应的c代码，和capability有关的主要是monitor部分的消息接口：        </code></pre>
-<pre><code>if/monitor.if
-	/* for UMP/BMP cap tx */
+<pre><code class="hljs"><span class="hljs-keyword">if</span>/monitor.<span class="hljs-keyword">if</span>
+	<span class="hljs-comment">/* for UMP/BMP cap tx */</span>
 	message cap_send_request(
-		uintptr mon_id,
-		cap cap,
+		<span class="hljs-type">uintptr</span> mon_id,
+		<span class="hljs-built_in">cap</span> <span class="hljs-built_in">cap</span>,
 		capid capid);
 	message cap_move_request(
-		uintptr mon_id,
-		give_away_cap cap,
+		<span class="hljs-type">uintptr</span> mon_id,
+		give_away_cap <span class="hljs-built_in">cap</span>,
 		capid capid);
 	message cap_receive_request(
-		uintptr conn_id,
+		<span class="hljs-type">uintptr</span> conn_id,
 		errval err,
-		give_away_cap cap,
+		give_away_cap <span class="hljs-built_in">cap</span>,
 		capid capid);
-if/monitor_blocking.if
-	/* Remote cap operation messages */
-	rpc remote_cap_retype(in cap src_root, in cap dest_root, in uint32 src,
-						in uint64 offset, in uint64 objtype, in uint64 objsize,
-						in uint64 count, in uint32 to, in uint32 slot,
-						in int dcn_level, out errval err);
-	rpc remote_cap_delete(in cap croot, in uint32 src, in uint8 level,
+<span class="hljs-keyword">if</span>/monitor_blocking.<span class="hljs-keyword">if</span>
+	<span class="hljs-comment">/* Remote cap operation messages */</span>
+	rpc remote_cap_retype(in <span class="hljs-built_in">cap</span> src_root, in <span class="hljs-built_in">cap</span> dest_root, in <span class="hljs-type">uint32</span> src,
+						in <span class="hljs-type">uint64</span> offset, in <span class="hljs-type">uint64</span> objtype, in <span class="hljs-type">uint64</span> objsize,
+						in <span class="hljs-type">uint64</span> count, in <span class="hljs-type">uint32</span> to, in <span class="hljs-type">uint32</span> slot,
+						in <span class="hljs-type">int</span> dcn_level, out errval err);
+	rpc remote_cap_delete(in <span class="hljs-built_in">cap</span> croot, in <span class="hljs-type">uint32</span> src, in <span class="hljs-type">uint8</span> level,
 						out errval err);
-	rpc remote_cap_revoke(in cap croot, in uint32 src, in uint8 level,
+	rpc remote_cap_revoke(in <span class="hljs-built_in">cap</span> croot, in <span class="hljs-type">uint32</span> src, in <span class="hljs-type">uint8</span> level,
 						out errval err);
 
-	rpc get_phyaddr_cap(out cap pyaddr, out errval err);
-	rpc get_io_cap(out cap io, out errval err);
+	rpc get_phyaddr_cap(out <span class="hljs-built_in">cap</span> pyaddr, out errval err);
+	rpc get_io_cap(out <span class="hljs-built_in">cap</span> io, out errval err);
 	
-	// Get a capability that is targeted at the local apic.
-	rpc get_irq_dest_cap(out cap io, out errval err);
-	// debug cap identify mechanism
-	rpc cap_identify(in cap cap, out errval err, out caprep caprep);
-	// XXX: Hack to set a cap remote until we have x-core cap management
-	rpc cap_set_remote(in cap cap, in bool remote, out errval err);
-	/* Allocate an IRQ on the arm plattform */
-	rpc arm_irq_handle(in cap ep, in uint32 irq, out errval err);
-	/* Retrieve local arch-specific core ID (e.g. APIC ID on x86)*/
-	rpc get_arch_core_id(out uintptr id);
-	/* get cap that can be used to send IPIs */
-	rpc get_ipi_cap(out cap cap);
-	rpc forward_kcb_request(in coreid destination, in cap kcb, out errval err);</code></pre>
+	<span class="hljs-comment">// Get a capability that is targeted at the local apic.</span>
+	rpc get_irq_dest_cap(out <span class="hljs-built_in">cap</span> io, out errval err);
+	<span class="hljs-comment">// debug cap identify mechanism</span>
+	rpc cap_identify(in <span class="hljs-built_in">cap</span> <span class="hljs-built_in">cap</span>, out errval err, out caprep caprep);
+	<span class="hljs-comment">// <span class="hljs-doctag">XXX:</span> Hack to set a cap remote until we have x-core cap management</span>
+	rpc cap_set_remote(in <span class="hljs-built_in">cap</span> <span class="hljs-built_in">cap</span>, in <span class="hljs-type">bool</span> remote, out errval err);
+	<span class="hljs-comment">/* Allocate an IRQ on the arm plattform */</span>
+	rpc arm_irq_handle(in <span class="hljs-built_in">cap</span> ep, in <span class="hljs-type">uint32</span> irq, out errval err);
+	<span class="hljs-comment">/* Retrieve local arch-specific core ID (e.g. APIC ID on x86)*/</span>
+	rpc get_arch_core_id(out <span class="hljs-type">uintptr</span> id);
+	<span class="hljs-comment">/* get cap that can be used to send IPIs */</span>
+	rpc get_ipi_cap(out <span class="hljs-built_in">cap</span> <span class="hljs-built_in">cap</span>);
+	rpc forward_kcb_request(in coreid destination, in <span class="hljs-built_in">cap</span> kcb, out errval err);</code></pre>
 <pre><code>
 
 
@@ -648,216 +648,216 @@ Should be used as HACK:FIXME:                                             <stron
         <category>Go</category>
         <category>技术</category>
         <description><![CDATA[<p>基于map实现sets.go</p>
-<pre><code>package sets
+<pre><code class="hljs"><span class="hljs-keyword">package</span> sets
 
-// An Empty struct does not take up any memory
-type Empty struct{}
+<span class="hljs-comment">// An Empty struct does not take up any memory</span>
+<span class="hljs-keyword">type</span> Empty <span class="hljs-keyword">struct</span>{}
 
-// sets.String is a set of strings, implemented via map[string]struct{} for minimal memory consumption.
-type String map[string]Empty
+<span class="hljs-comment">// sets.String is a set of strings, implemented via map[string]struct{} for minimal memory consumption.</span>
+<span class="hljs-keyword">type</span> String <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]Empty
 
 
-func NewString(items ...string) String {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewString</span><span class="hljs-params">(items ...<span class="hljs-type">string</span>)</span></span> String {
 	s := String{}
 	s.Insert(items...)
-	return s
+	<span class="hljs-keyword">return</span> s
 }
 
-func (s String) Insert(items ...string) {
-	for _, item := range items {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Insert(items ...<span class="hljs-type">string</span>) {
+	<span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> items {
 		s[item] = Empty{}
 	}
 }
 
-func (s String) Delete(items ...string) {
-	for _, item := range items {
-		delete(s, item)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Delete(items ...<span class="hljs-type">string</span>) {
+	<span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> items {
+		<span class="hljs-built_in">delete</span>(s, item)
 	}
 }
 
-func (s String) Has(item string) bool {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Has(item <span class="hljs-type">string</span>) <span class="hljs-type">bool</span> {
 	_, res := s[item]
-	return res
+	<span class="hljs-keyword">return</span> res
 }
 
-// HasAll returns true if and only if all items are contained in the set.
-func (s String) HasAll(items ...string) bool {
-	for _, item := range items {
-		if !s.Has(item) {
-			return false
+<span class="hljs-comment">// HasAll returns true if and only if all items are contained in the set.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> HasAll(items ...<span class="hljs-type">string</span>) <span class="hljs-type">bool</span> {
+	<span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> items {
+		<span class="hljs-keyword">if</span> !s.Has(item) {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
 		}
 	}
-	return true
+	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 }
 
-// HasAny returns true if any items are contained in the set.
-func (s String) HasAny(items ...string) bool {
-	for _, item := range items {
-		if s.Has(item) {
-			return true
+<span class="hljs-comment">// HasAny returns true if any items are contained in the set.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> HasAny(items ...<span class="hljs-type">string</span>) <span class="hljs-type">bool</span> {
+	<span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> items {
+		<span class="hljs-keyword">if</span> s.Has(item) {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 		}
 	}
-	return false
+	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
 }
 
-// Difference returns a set of objects that are not in s2
-func (s String) Difference(s2 String) String {
+<span class="hljs-comment">// Difference returns a set of objects that are not in s2</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Difference(s2 String) String {
 	res := NewString()
-	for item := range s {
-		if !s2.Has(item) {
+	<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s {
+		<span class="hljs-keyword">if</span> !s2.Has(item) {
 			res.Insert(item)
 		}
 	}
-	return res
+	<span class="hljs-keyword">return</span> res
 }
 
-// Union returns a new set which includes items in either s1 or s2.
-func (s1 String) Union(s2 String) String {
+<span class="hljs-comment">// Union returns a new set which includes items in either s1 or s2.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s1 String)</span></span> Union(s2 String) String {
 	res := NewString()
-	for item := range s1 {
+	<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s1 {
 		res.Insert(item)
 	}
-	for item := range s2 {
+	<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s2 {
 		res.Insert(item)
 	}
-	return res
+	<span class="hljs-keyword">return</span> res
 }
 
-// Intersection returns a new set which includes the item in BOTH s1 and s2
-func (s1 String) Intersection(s2 String) String {
+<span class="hljs-comment">// Intersection returns a new set which includes the item in BOTH s1 and s2</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s1 String)</span></span> Intersection(s2 String) String {
 	res := NewString()
-	if s1.Len() &lt; s2.Len() {
-		for item := range s1 {
-			if s2.Has(item) {
+	<span class="hljs-keyword">if</span> s1.Len() &lt; s2.Len() {
+		<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s1 {
+			<span class="hljs-keyword">if</span> s2.Has(item) {
 				res.Insert(item)
 			}
 		}
-	} else {
-		for item := range s2 {
-			if s1.Has(item) {
+	} <span class="hljs-keyword">else</span> {
+		<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s2 {
+			<span class="hljs-keyword">if</span> s1.Has(item) {
 				res.Insert(item)
 			}
 		}
 	}
-	return res
+	<span class="hljs-keyword">return</span> res
 }
 
-func (s String) Len() int {
-	return len(s)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> Len() <span class="hljs-type">int</span> {
+	<span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(s)
 }
 
-func (s String) List() []string {
-	res := make([]string, 0, len(s))
-	for item := range s {
-		res = append(res, item)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s String)</span></span> List() []<span class="hljs-type">string</span> {
+	res := <span class="hljs-built_in">make</span>([]<span class="hljs-type">string</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(s))
+	<span class="hljs-keyword">for</span> item := <span class="hljs-keyword">range</span> s {
+		res = <span class="hljs-built_in">append</span>(res, item)
     }
-	return res
+	<span class="hljs-keyword">return</span> res
 }</code></pre>
 <p>单元测试 sets_test.go</p>
-<pre><code>package sets
+<pre><code class="hljs"><span class="hljs-keyword">package</span> sets
 
-import (
-    &quot;testing&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;testing&quot;</span>
 )
 
-func TestInsert(t *testing.T) {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestInsert</span><span class="hljs-params">(t *testing.T)</span></span> {
 	ss := NewString()
 	
-	// Insert 1 item\
-	ss.Insert(&quot;a&quot;)
-	if !ss.Has(&quot;a&quot;) {
-		t.Errorf(&quot;Insert failed.&quot;)
+	<span class="hljs-comment">// Insert 1 item\</span>
+	ss.Insert(<span class="hljs-string">&quot;a&quot;</span>)
+	<span class="hljs-keyword">if</span> !ss.Has(<span class="hljs-string">&quot;a&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Insert failed.&quot;</span>)
 	}
 
-	// Insert several items
-	ss.Insert(&quot;a&quot;, &quot;bb&quot;, &quot;ccc&quot;, &quot;dddd&quot;)
-	if !ss.HasAll(&quot;a&quot;, &quot;bb&quot;, &quot;ccc&quot;, &quot;dddd&quot;) || ss.Len() != 4 {
-		t.Errorf(&quot;Insert failed.&quot;)
+	<span class="hljs-comment">// Insert several items</span>
+	ss.Insert(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;bb&quot;</span>, <span class="hljs-string">&quot;ccc&quot;</span>, <span class="hljs-string">&quot;dddd&quot;</span>)
+	<span class="hljs-keyword">if</span> !ss.HasAll(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;bb&quot;</span>, <span class="hljs-string">&quot;ccc&quot;</span>, <span class="hljs-string">&quot;dddd&quot;</span>) || ss.Len() != <span class="hljs-number">4</span> {
+		t.Errorf(<span class="hljs-string">&quot;Insert failed.&quot;</span>)
 	}
 
 }
 
-func TestDelete(t *testing.T) {
-	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestDelete</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>)
 
-	// Delete 1 item
-	ss.Delete(&quot;a&quot;)
-	if ss.Has(&quot;a&quot;) {
-		t.Errorf(&quot;Delete failed.&quot;)
+	<span class="hljs-comment">// Delete 1 item</span>
+	ss.Delete(<span class="hljs-string">&quot;a&quot;</span>)
+	<span class="hljs-keyword">if</span> ss.Has(<span class="hljs-string">&quot;a&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Delete failed.&quot;</span>)
 	}
 
-	// Delete several items
-	ss.Delete(&quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
-	if ss.HasAny(&quot;b&quot;, &quot;c&quot;, &quot;d&quot;) || ss.Len() != 0 {
-		t.Errorf(&quot;Delete failed.&quot;)
+	<span class="hljs-comment">// Delete several items</span>
+	ss.Delete(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>)
+	<span class="hljs-keyword">if</span> ss.HasAny(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>) || ss.Len() != <span class="hljs-number">0</span> {
+		t.Errorf(<span class="hljs-string">&quot;Delete failed.&quot;</span>)
 	}
 }
 
-func TestHas(t *testing.T) {
-	s := &quot;abc&quot;
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestHas</span><span class="hljs-params">(t *testing.T)</span></span> {
+	s := <span class="hljs-string">&quot;abc&quot;</span>
 	ss := NewString(s)
 	_, res1 := ss[s]
 	res2 := ss.Has(s)
-	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
-		t.Errorf(&quot;Has Check failed.&quot;)
+	<span class="hljs-keyword">if</span> (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(<span class="hljs-string">&quot;Has Check failed.&quot;</span>)
 	}
 }
 
-func TestHasAny(t *testing.T) {
-	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
-	_, resA := ss[&quot;a&quot;]
-	_, resB := ss[&quot;b&quot;]
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestHasAny</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>)
+	_, resA := ss[<span class="hljs-string">&quot;a&quot;</span>]
+	_, resB := ss[<span class="hljs-string">&quot;b&quot;</span>]
 	res1 := resA || resB
-	res2 := ss.HasAny(&quot;a&quot;, &quot;b&quot;)
-	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
-		t.Errorf(&quot;HasAny Check failed.&quot;)
+	res2 := ss.HasAny(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>)
+	<span class="hljs-keyword">if</span> (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(<span class="hljs-string">&quot;HasAny Check failed.&quot;</span>)
 	}
 
 }
 
-func TestHasAll(t *testing.T) {
-	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-	_, resA := ss[&quot;a&quot;]
-	_, resB := ss[&quot;b&quot;]
-	_, resC := ss[&quot;c&quot;]
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestHasAll</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>)
+	_, resA := ss[<span class="hljs-string">&quot;a&quot;</span>]
+	_, resB := ss[<span class="hljs-string">&quot;b&quot;</span>]
+	_, resC := ss[<span class="hljs-string">&quot;c&quot;</span>]
 	res1 := resA &amp;&amp; resB &amp;&amp; resC
-	res2 := ss.HasAll(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
-		t.Errorf(&quot;HasAll Check failed.&quot;)
+	res2 := ss.HasAll(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>)
+	<span class="hljs-keyword">if</span> (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(<span class="hljs-string">&quot;HasAll Check failed.&quot;</span>)
 	}
 }
 
-func TestDifference(t *testing.T) {
-	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
-	ss2 := NewString(&quot;a&quot;, &quot;c&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestDifference</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss1 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>)
+	ss2 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>)
 	res := ss1.Difference(ss2)
-	if !res.Has(&quot;b&quot;) {
-		t.Errorf(&quot;Difference Check failed.&quot;)
+	<span class="hljs-keyword">if</span> !res.Has(<span class="hljs-string">&quot;b&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Difference Check failed.&quot;</span>)
 	}
 }
 
-func TestUnion(t *testing.T) {
-	ss1 := NewString(&quot;a&quot;)
-	ss2 := NewString(&quot;b&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestUnion</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss1 := NewString(<span class="hljs-string">&quot;a&quot;</span>)
+	ss2 := NewString(<span class="hljs-string">&quot;b&quot;</span>)
 	res := ss1.Union(ss2)
-	if !res.HasAll(&quot;a&quot;, &quot;b&quot;) {
-		t.Errorf(&quot;Union Check failed.&quot;)
+	<span class="hljs-keyword">if</span> !res.HasAll(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Union Check failed.&quot;</span>)
 	}
 }
 
-func TestIntersection(t *testing.T) {
-	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
-	ss2 := NewString(&quot;a&quot;, &quot;c&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestIntersection</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss1 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>)
+	ss2 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>)
 	res := ss1.Intersection(ss2)
-	if !res.Has(&quot;a&quot;) {
-		t.Errorf(&quot;Intersection Check failed.&quot;)
+	<span class="hljs-keyword">if</span> !res.Has(<span class="hljs-string">&quot;a&quot;</span>) {
+		t.Errorf(<span class="hljs-string">&quot;Intersection Check failed.&quot;</span>)
 	}
 }
 
-func TestLen(t *testing.T) {
-	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
-	if ss1.Len() != 2 {
-		t.Errorf(&quot;Len Check failed.&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestLen</span><span class="hljs-params">(t *testing.T)</span></span> {
+	ss1 := NewString(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>)
+	<span class="hljs-keyword">if</span> ss1.Len() != <span class="hljs-number">2</span> {
+		t.Errorf(<span class="hljs-string">&quot;Len Check failed.&quot;</span>)
 	}
 }</code></pre>
 ]]></description>
@@ -2811,8 +2811,8 @@ cannot take the address of m[&quot;x&quot;]</p>
 </ol>
 <p>　　Plugin不需要注册上面所有的函数，而是可以根据自己的需要，注册某几个函数。比如Predict plugin就只注册了predicateFns这个函数到Session中。         </p>
 <p>　　而某些plugin的使用与否（包括某些action使用与否）都由配置文件决定:(<code>kube-batch/pkg/scheduler/util.go</code>)</p>
-<pre><code>var defaultSchedulerConf = `
-actions: &quot;allocate, backfill&quot;
+<pre><code class="hljs">var defaultSchedulerConf = `
+actions: <span class="hljs-string">&quot;allocate, backfill&quot;</span>
 tiers:
 - plugins:
   - name: priority
@@ -2829,13 +2829,13 @@ tiers:
 (`kube-batch/pkg/scheduler/framework/framework.go`)和
 (`kube-batch/pkg/scheduler/framework/session.go`)
 
-### 2.3 Plugin
+<span class="hljs-comment">### 2.3 Plugin</span>
 
 　　Plugin模块顾名思义，提供了一种可插拔的方式，向调度提供不同的策略的实现。
 
 　　如整体框架中所示，目前有7个Plugin，它们分别是：   
 
-+ for Jobs
++ <span class="hljs-keyword">for</span> Jobs
     + drf：实现了Dominant Resouce Fairenss算法，这个算法能够有效对多种“主要资源”（CPU、Memory、GPU）进行调度。
     + gang：实现了gang scheduling的逻辑，即保证任务所需worker同时被启动。
     + predict：判断某个节点是否满足容器的基本要求。
@@ -2843,15 +2843,15 @@ tiers:
     + node order：决定满足调度要求的节点中，哪个节点优先被选择。
     + conformance：
 
-+ for Queues:
++ <span class="hljs-keyword">for</span> Queues:
     + proportion： 根据队列设置的权重决定每个队列分配到的资源。
 
 　　下面对部分plugin进行说明。
 
-#### 2.3.1 drf
+<span class="hljs-comment">#### 2.3.1 drf</span>
 
 
-&lt;div align=center&gt;&lt;img src = '/2020/1/kube-batch/3.png' style=&quot;zoom:70%&quot; title=&quot;drf&quot;/&gt;&lt;/div&gt;
+&lt;div align=center&gt;&lt;img src = <span class="hljs-string">&#x27;/2020/1/kube-batch/3.png&#x27;</span> style=<span class="hljs-string">&quot;zoom:70%&quot;</span> title=<span class="hljs-string">&quot;drf&quot;</span>/&gt;&lt;/div&gt;
 
 　　目的是尽量避免集群内某一类资源使用比例偏高，而其他类型资源使用比例却很低的不良状态。在调度时，让具有最低资源占用比例的任务具有高优先级。
 
@@ -2862,23 +2862,23 @@ tiers:
 3. 注册Job排序函数，根据资源占比进行排序，主要资源占比越低job优先级越高
 4. 注册事件处理函数，包括分配函数以及驱逐函数，函数实现比较简单，就是当task发生变化时，增加（分配）/减少（驱逐）Job资源申请总量，并且更新资源占比。
 
-　　drf注册2个function，分别是:
+　　drf注册2个<span class="hljs-keyword">function</span>，分别是:
 
 + `jobOrderFn` 是job的排序函数，会让share值越小的job排在最前面，即拥有最高的优先级，这个是实现drf的关键。           
 +  `preemptableFn`返回可抢占的job列表，job的筛选规则是：如果待选job的share值大于将被调度的job的share值，则选中该待选job。      
 
-#### 2.3.2 gang
+<span class="hljs-comment">#### 2.3.2 gang</span>
 
 　　gang需要实现的策略是只有当job中的全部pod，或者用户指定的某几个pod都分配到资源后，才真正将pod调度到node上。（即先从逻辑上分配资源给pod，等满足条件后才真正进行调度。）                
 
-　　gang注册3个function，分别是：         
+　　gang注册3个<span class="hljs-keyword">function</span>，分别是：         
 
 + `preemptableFn` 为避免gang的策略被preempt和reclaiｍ干扰，定义了preemptableFn,排除那些还未准备就绪的job，避免其被抢占。（虽然实际上这些job未真正调度到node上去，但是确实从逻辑上把资源分配给它了）
 + `jobOrderFn` 为让已经就绪的job尽快被调度到节点，定义了jobOrderFn ,让已经就绪的job拥有更高的优先级
-+ `jobReadyFn` 用来判断一个job是否已经就绪。`jobReady`会调用所有注册了的 plugin的Ready判定函数，只有都判定为ready ,才返回true
++ `jobReadyFn` 用来判断一个job是否已经就绪。`jobReady`会调用所有注册了的 plugin的Ready判定函数，只有都判定为ready ,才返回<span class="hljs-literal">true</span>
 
 
-#### 2.3.3 predicates
+<span class="hljs-comment">#### 2.3.3 predicates</span>
 
 　　predicates注册预测函数,用来判断某个节点是否满足容器的基本要求，如         
 
@@ -2889,14 +2889,14 @@ tiers:
 + Toleration/Taint Predicate        
 + ...
 
-#### 2.3.4 priority
+<span class="hljs-comment">#### 2.3.4 priority</span>
 
 　　priority注册         
 
 + task排序函数，根据pod优先级排序
 + job排序函数，根据job优先级排序
 
-#### 2.3.5 proportion
+<span class="hljs-comment">#### 2.3.5 proportion</span>
 
 　　针对队列。</code></pre>
 <p>type queueAttr struct {
@@ -2939,26 +2939,26 @@ tiers:
 <p>// Run runs the Scheduler
 func (pc *Scheduler) Run(stopCh &lt;-chan struct{}) {
 	var err error</p>
-<pre><code>// Start cache for policy.
-go pc.cache.Run(stopCh)
+<pre><code class="hljs"><span class="hljs-comment">// Start cache for policy.</span>
+<span class="hljs-keyword">go</span> pc.cache.Run(stopCh)
 pc.cache.WaitForCacheSync(stopCh)
 
-// Load configuration of scheduler
+<span class="hljs-comment">// Load configuration of scheduler</span>
 schedConf := defaultSchedulerConf
-if len(pc.schedulerConf) != 0 {
-	if schedConf, err = readSchedulerConf(pc.schedulerConf); err != nil {
-		glog.Errorf(&quot;Failed to read scheduler configuration '%s', using default configuration: %v&quot;,
+<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(pc.schedulerConf) != <span class="hljs-number">0</span> {
+	<span class="hljs-keyword">if</span> schedConf, err = readSchedulerConf(pc.schedulerConf); err != <span class="hljs-literal">nil</span> {
+		glog.Errorf(<span class="hljs-string">&quot;Failed to read scheduler configuration &#x27;%s&#x27;, using default configuration: %v&quot;</span>,
 			pc.schedulerConf, err)
 		schedConf = defaultSchedulerConf
 	}
 }
 
 pc.actions, pc.plugins, err = loadSchedulerConf(schedConf)
-if err != nil {
-	panic(err)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+	<span class="hljs-built_in">panic</span>(err)
 }
 
-go wait.Until(pc.runOnce, pc.schedulePeriod, stopCh)
+<span class="hljs-keyword">go</span> wait.Until(pc.runOnce, pc.schedulePeriod, stopCh)
 </code></pre>
 <p>}</p>
 <p>func (pc *Scheduler) runOnce() {
@@ -3056,39 +3056,39 @@ for _, action := range pc.actions {
 </ul>
 <h3 id="h-830c6b">报错 及 解决方式</h3>
 <p><strong>报错</strong>：</p>
-<pre><code>* Unable to pull images, which may be OK: running cmd: &quot;/bin/bash -c \&quot;sudo env PATH=/var/lib/minikube/binaries/v1.16.2:                  
-$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml\&quot;&quot;: command failed: /bin/bash -c &quot;sudo env PAT                
-H=/var/lib/minikube/binaries/v1.16.2:$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml&quot;
+<pre><code class="hljs">* Unable to pull images, <span class="hljs-built_in">which</span> may be OK: running cmd: <span class="hljs-string">&quot;/bin/bash -c \&quot;sudo env PATH=/var/lib/minikube/binaries/v1.16.2:                  
+<span class="hljs-variable">$PATH</span> kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml\&quot;&quot;</span>: <span class="hljs-built_in">command</span> failed: /bin/bash -c <span class="hljs-string">&quot;sudo env PAT                
+H=/var/lib/minikube/binaries/v1.16.2:<span class="hljs-variable">$PATH</span> kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml&quot;</span>
 stdout: 
-stderr: failed to pull image &quot;k8s.gcr.io/kube-apiserver:v1.16.2&quot;: output: Error response from daemon: Get https://k8s.gc                  
-r.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</code></pre>
+stderr: failed to pull image <span class="hljs-string">&quot;k8s.gcr.io/kube-apiserver:v1.16.2&quot;</span>: output: Error response from daemon: Get https://k8s.gc                  
+r.io/v2/: net/http: request canceled <span class="hljs-keyword">while</span> waiting <span class="hljs-keyword">for</span> connection (Client.Timeout exceeded <span class="hljs-keyword">while</span> awaiting headers)</code></pre>
 <p><strong>解决方式</strong>：
 <code># minikube start --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</code><br>或<br><code># minikube start --image-mirror-country=cn</code></p>
 <h3 id="h-0c726a">启动成功输出：</h3>
-<pre><code>➜  [/home/lky/tools] sudo minikube start --image-mirror-country=cn
+<pre><code class="hljs">➜  [/home/lky/tools] <span class="hljs-built_in">sudo</span> minikube start --image-mirror-country=cn
 😄  minikube v1.6.2 on Ubuntu 16.04
-✨  Selecting 'none' driver from user configuration (alternates: [])
+✨  Selecting <span class="hljs-string">&#x27;none&#x27;</span> driver from user configuration (alternates: [])
 🤹  Running on localhost (CPUs=2, Memory=3921MB, Disk=200494MB) ...
 ℹ️   OS release is Ubuntu 16.04.6 LTS
-⚠️  VM is unable to access k8s.gcr.io, you may need to configure a proxy or set --image-repository
-🐳  Preparing Kubernetes v1.17.0 on Docker '19.03.5' ...
+⚠️  VM is unable to access k8s.gcr.io, you may need to configure a proxy or <span class="hljs-built_in">set</span> --image-repository
+🐳  Preparing Kubernetes v1.17.0 on Docker <span class="hljs-string">&#x27;19.03.5&#x27;</span> ...
 🚜  Pulling images ...
 🚀  Launching Kubernetes ... 
-🤹  Configuring local host environment ...
+🤹  Configuring <span class="hljs-built_in">local</span> host environment ...
 
-⚠️  The 'none' driver provides limited isolation and may reduce system security and reliability.
+⚠️  The <span class="hljs-string">&#x27;none&#x27;</span> driver provides limited isolation and may reduce system security and reliability.
 ⚠️  For more information, see:
 👉  https://minikube.sigs.k8s.io/docs/reference/drivers/none/
 
-⚠️  kubectl and minikube configuration will be stored in /home/lky
+⚠️  kubectl and minikube configuration will be stored <span class="hljs-keyword">in</span> /home/lky
 ⚠️  To use kubectl or minikube commands as your own user, you may need to relocate them. For example, to overwrite your own settings, run:
 
-    ▪ sudo mv /home/lky/.kube /home/lky/.minikube $HOME
-    ▪ sudo chown -R $USER $HOME/.kube $HOME/.minikube
+    ▪ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mv</span> /home/lky/.kube /home/lky/.minikube <span class="hljs-variable">$HOME</span>
+    ▪ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> -R <span class="hljs-variable">$USER</span> <span class="hljs-variable">$HOME</span>/.kube <span class="hljs-variable">$HOME</span>/.minikube
 
-💡  This can also be done automatically by setting the env var CHANGE_MINIKUBE_NONE_USER=true
-⌛  Waiting for cluster to come online ...
-🏄  Done! kubectl is now configured to use &quot;minikube&quot;</code></pre>
+💡  This can also be <span class="hljs-keyword">done</span> automatically by setting the <span class="hljs-built_in">env</span> var CHANGE_MINIKUBE_NONE_USER=<span class="hljs-literal">true</span>
+⌛  Waiting <span class="hljs-keyword">for</span> cluster to come online ...
+🏄  Done! kubectl is now configured to use <span class="hljs-string">&quot;minikube&quot;</span></code></pre>
 <p><strong>可以使用</strong> <code>sudo kubectl cluster-info</code> <strong>查看单节点集群信息</strong>：</p>
 <pre><code>➜  [/home/lky/tools] sudo kubectl cluster-info
 [sudo] password for lky: 
@@ -3109,88 +3109,88 @@ kind.yaml切换一下镜像源，然后`kind create cluster --name moelove --con
 <li>通过二进制安装<br><code>wget -O /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/0.2.0/kind-linux-amd64 &amp;&amp; chmod +x /usr/local/bin/kind</code></li>
 </ul>
 <p><strong>安装好后创建单节点k8s集群</strong></p>
-<pre><code>➜  [/home/lky/Downloads] kind --version
+<pre><code class="hljs">➜  [/home/lky/Downloads] kind --version
 kind version 0.2.0
 ➜  [/home/lky/Downloads] kind create cluster --name lkytest
-Creating cluster &quot;lkytest&quot; ...
+Creating cluster <span class="hljs-string">&quot;lkytest&quot;</span> ...
  ✓ Ensuring node image (kindest/node:v1.13.4) 🖼 
  ✓ Preparing nodes 📦 
  ✓ Creating kubeadm config 📜 
  ✓ Starting control-plane 🕹️ 
 Cluster creation complete. You can now use the cluster with:
 
-export KUBECONFIG=&quot;$(kind get kubeconfig-path --name=&quot;lkytest&quot;)&quot;
+<span class="hljs-built_in">export</span> KUBECONFIG=<span class="hljs-string">&quot;<span class="hljs-subst">$(kind get kubeconfig-path --name=<span class="hljs-string">&quot;lkytest&quot;</span>)</span>&quot;</span>
 kubectl cluster-info
-➜  [/home/lky/Downloads] export KUBECONFIG=&quot;$(kind get kubeconfig-path --name=&quot;lkytest&quot;)&quot;
+➜  [/home/lky/Downloads] <span class="hljs-built_in">export</span> KUBECONFIG=<span class="hljs-string">&quot;<span class="hljs-subst">$(kind get kubeconfig-path --name=<span class="hljs-string">&quot;lkytest&quot;</span>)</span>&quot;</span>
 ➜  [/home/lky/Downloads] kubectl cluster-info
 Kubernetes master is running at https://localhost:32727
 KubeDNS is running at https://localhost:32727/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+To further debug and diagnose cluster problems, use <span class="hljs-string">&#x27;kubectl cluster-info dump&#x27;</span>.
 ➜  [/home/lky/Downloads] kubectl get nodes
 NAME                    STATUS   ROLES    AGE     VERSION
 lkytest-control-plane   Ready    master   3m23s   v1.13.4
 
 </code></pre>
 <p><strong>运行第一个应用</strong></p>
-<pre><code>➜  [/home/lky] kubectl run kubia --image=lkybuaa/kubia --port=8080 --generator=run/v1
-kubectl run --generator=run/v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
-replicationcontroller/kubia created
-➜  [/home/lky] kubectl get pods                 
-NAME          READY   STATUS              RESTARTS   AGE
-kubia-pt77q   0/1     ContainerCreating   0          24s
-➜  [/home/lky] kubectl describe pod 
-Name:           kubia-pt77q
-Namespace:      default
-Priority:       0
-Node:           lkytest-control-plane/172.17.0.2
-Start Time:     Fri, 10 Jan 2020 16:55:14 +0800
-Labels:         run=kubia
-Annotations:    &lt;none&gt;
-Status:         Running
-IP:             10.32.0.4
-IPs:            &lt;none&gt;
-Controlled By:  ReplicationController/kubia
-Containers:
-  kubia:
-    Container ID:   docker://872ef1700e9afa3573dd745599add7bc2c9f3216f0ec603710286e5f9e9b2cf2
-    Image:          lkybuaa/kubia
-    Image ID:       docker-pullable://lkybuaa/kubia@sha256:c5e35be31ea0a0440c2a3dc63741a9d6566d4bc4c3d8c219cf649b7e5361cb83
-    Port:           8080/TCP
-    Host Port:      0/TCP
-    State:          Running
-      Started:      Fri, 10 Jan 2020 16:58:27 +0800
-    Ready:          True
-    Restart Count:  0
-    Environment:    &lt;none&gt;
-    Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from default-token-7kn4l (ro)
-Conditions:
-  Type              Status
-  Initialized       True 
-  Ready             True 
-  ContainersReady   True 
-  PodScheduled      True 
-Volumes:
-  default-token-7kn4l:
-    Type:        Secret (a volume populated by a Secret)
-    SecretName:  default-token-7kn4l
-    Optional:    false
-QoS Class:       BestEffort
-Node-Selectors:  &lt;none&gt;
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-Events:
-  Type    Reason     Age   From                            Message
-  ----    ------     ----  ----                            -------
-  Normal  Scheduled  4m3s  default-scheduler               Successfully assigned default/kubia-pt77q to lkytest-control-plane
-  Normal  Pulling    4m2s  kubelet, lkytest-control-plane  pulling image &quot;lkybuaa/kubia&quot;
-  Normal  Pulled     53s   kubelet, lkytest-control-plane  Successfully pulled image &quot;lkybuaa/kubia&quot;
-  Normal  Created    50s   kubelet, lkytest-control-plane  Created container
-  Normal  Started    50s   kubelet, lkytest-control-plane  Started container
-➜  [/home/lky] kubectl get pods     
-NAME          READY   STATUS    RESTARTS   AGE
-kubia-pt77q   1/1     Running   0          4m7s</code></pre>
+<pre><code class="hljs"><span class="hljs-string">➜</span>  [<span class="hljs-string">/home/lky</span>] <span class="hljs-string">kubectl</span> <span class="hljs-string">run</span> <span class="hljs-string">kubia</span> <span class="hljs-string">--image=lkybuaa/kubia</span> <span class="hljs-string">--port=8080</span> <span class="hljs-string">--generator=run/v1</span>
+<span class="hljs-string">kubectl</span> <span class="hljs-string">run</span> <span class="hljs-string">--generator=run/v1</span> <span class="hljs-string">is</span> <span class="hljs-string">DEPRECATED</span> <span class="hljs-string">and</span> <span class="hljs-string">will</span> <span class="hljs-string">be</span> <span class="hljs-string">removed</span> <span class="hljs-string">in</span> <span class="hljs-string">a</span> <span class="hljs-string">future</span> <span class="hljs-string">version.</span> <span class="hljs-string">Use</span> <span class="hljs-string">kubectl</span> <span class="hljs-string">run</span> <span class="hljs-string">--generator=run-pod/v1</span> <span class="hljs-string">or</span> <span class="hljs-string">kubectl</span> <span class="hljs-string">create</span> <span class="hljs-string">instead.</span>
+<span class="hljs-string">replicationcontroller/kubia</span> <span class="hljs-string">created</span>
+<span class="hljs-string">➜</span>  [<span class="hljs-string">/home/lky</span>] <span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">pods</span>                 
+<span class="hljs-string">NAME</span>          <span class="hljs-string">READY</span>   <span class="hljs-string">STATUS</span>              <span class="hljs-string">RESTARTS</span>   <span class="hljs-string">AGE</span>
+<span class="hljs-string">kubia-pt77q</span>   <span class="hljs-number">0</span><span class="hljs-string">/1</span>     <span class="hljs-string">ContainerCreating</span>   <span class="hljs-number">0</span>          <span class="hljs-string">24s</span>
+<span class="hljs-string">➜</span>  [<span class="hljs-string">/home/lky</span>] <span class="hljs-string">kubectl</span> <span class="hljs-string">describe</span> <span class="hljs-string">pod</span> 
+<span class="hljs-attr">Name:</span>           <span class="hljs-string">kubia-pt77q</span>
+<span class="hljs-attr">Namespace:</span>      <span class="hljs-string">default</span>
+<span class="hljs-attr">Priority:</span>       <span class="hljs-number">0</span>
+<span class="hljs-attr">Node:</span>           <span class="hljs-string">lkytest-control-plane/172.17.0.2</span>
+<span class="hljs-attr">Start Time:</span>     <span class="hljs-string">Fri,</span> <span class="hljs-number">10</span> <span class="hljs-string">Jan</span> <span class="hljs-number">2020 16:55:14</span> <span class="hljs-string">+0800</span>
+<span class="hljs-attr">Labels:</span>         <span class="hljs-string">run=kubia</span>
+<span class="hljs-attr">Annotations:</span>    <span class="hljs-string">&lt;none&gt;</span>
+<span class="hljs-attr">Status:</span>         <span class="hljs-string">Running</span>
+<span class="hljs-attr">IP:</span>             <span class="hljs-number">10.32</span><span class="hljs-number">.0</span><span class="hljs-number">.4</span>
+<span class="hljs-attr">IPs:</span>            <span class="hljs-string">&lt;none&gt;</span>
+<span class="hljs-attr">Controlled By:</span>  <span class="hljs-string">ReplicationController/kubia</span>
+<span class="hljs-attr">Containers:</span>
+  <span class="hljs-attr">kubia:</span>
+    <span class="hljs-attr">Container ID:</span>   <span class="hljs-string">docker://872ef1700e9afa3573dd745599add7bc2c9f3216f0ec603710286e5f9e9b2cf2</span>
+    <span class="hljs-attr">Image:</span>          <span class="hljs-string">lkybuaa/kubia</span>
+    <span class="hljs-attr">Image ID:</span>       <span class="hljs-string">docker-pullable://lkybuaa/kubia@sha256:c5e35be31ea0a0440c2a3dc63741a9d6566d4bc4c3d8c219cf649b7e5361cb83</span>
+    <span class="hljs-attr">Port:</span>           <span class="hljs-number">8080</span><span class="hljs-string">/TCP</span>
+    <span class="hljs-attr">Host Port:</span>      <span class="hljs-number">0</span><span class="hljs-string">/TCP</span>
+    <span class="hljs-attr">State:</span>          <span class="hljs-string">Running</span>
+      <span class="hljs-attr">Started:</span>      <span class="hljs-string">Fri,</span> <span class="hljs-number">10</span> <span class="hljs-string">Jan</span> <span class="hljs-number">2020 16:58:27</span> <span class="hljs-string">+0800</span>
+    <span class="hljs-attr">Ready:</span>          <span class="hljs-literal">True</span>
+    <span class="hljs-attr">Restart Count:</span>  <span class="hljs-number">0</span>
+    <span class="hljs-attr">Environment:</span>    <span class="hljs-string">&lt;none&gt;</span>
+    <span class="hljs-attr">Mounts:</span>
+      <span class="hljs-string">/var/run/secrets/kubernetes.io/serviceaccount</span> <span class="hljs-string">from</span> <span class="hljs-string">default-token-7kn4l</span> <span class="hljs-string">(ro)</span>
+<span class="hljs-attr">Conditions:</span>
+  <span class="hljs-string">Type</span>              <span class="hljs-string">Status</span>
+  <span class="hljs-string">Initialized</span>       <span class="hljs-literal">True</span> 
+  <span class="hljs-string">Ready</span>             <span class="hljs-literal">True</span> 
+  <span class="hljs-string">ContainersReady</span>   <span class="hljs-literal">True</span> 
+  <span class="hljs-string">PodScheduled</span>      <span class="hljs-literal">True</span> 
+<span class="hljs-attr">Volumes:</span>
+  <span class="hljs-attr">default-token-7kn4l:</span>
+    <span class="hljs-attr">Type:</span>        <span class="hljs-string">Secret</span> <span class="hljs-string">(a</span> <span class="hljs-string">volume</span> <span class="hljs-string">populated</span> <span class="hljs-string">by</span> <span class="hljs-string">a</span> <span class="hljs-string">Secret)</span>
+    <span class="hljs-attr">SecretName:</span>  <span class="hljs-string">default-token-7kn4l</span>
+    <span class="hljs-attr">Optional:</span>    <span class="hljs-literal">false</span>
+<span class="hljs-attr">QoS Class:</span>       <span class="hljs-string">BestEffort</span>
+<span class="hljs-attr">Node-Selectors:</span>  <span class="hljs-string">&lt;none&gt;</span>
+<span class="hljs-attr">Tolerations:</span>     <span class="hljs-string">node.kubernetes.io/not-ready:NoExecute</span> <span class="hljs-string">for</span> <span class="hljs-string">300s</span>
+                 <span class="hljs-string">node.kubernetes.io/unreachable:NoExecute</span> <span class="hljs-string">for</span> <span class="hljs-string">300s</span>
+<span class="hljs-attr">Events:</span>
+  <span class="hljs-string">Type</span>    <span class="hljs-string">Reason</span>     <span class="hljs-string">Age</span>   <span class="hljs-string">From</span>                            <span class="hljs-string">Message</span>
+  <span class="hljs-string">----</span>    <span class="hljs-string">------</span>     <span class="hljs-string">----</span>  <span class="hljs-string">----</span>                            <span class="hljs-string">-------</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Scheduled</span>  <span class="hljs-string">4m3s</span>  <span class="hljs-string">default-scheduler</span>               <span class="hljs-string">Successfully</span> <span class="hljs-string">assigned</span> <span class="hljs-string">default/kubia-pt77q</span> <span class="hljs-string">to</span> <span class="hljs-string">lkytest-control-plane</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Pulling</span>    <span class="hljs-string">4m2s</span>  <span class="hljs-string">kubelet,</span> <span class="hljs-string">lkytest-control-plane</span>  <span class="hljs-string">pulling</span> <span class="hljs-string">image</span> <span class="hljs-string">&quot;lkybuaa/kubia&quot;</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Pulled</span>     <span class="hljs-string">53s</span>   <span class="hljs-string">kubelet,</span> <span class="hljs-string">lkytest-control-plane</span>  <span class="hljs-string">Successfully</span> <span class="hljs-string">pulled</span> <span class="hljs-string">image</span> <span class="hljs-string">&quot;lkybuaa/kubia&quot;</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Created</span>    <span class="hljs-string">50s</span>   <span class="hljs-string">kubelet,</span> <span class="hljs-string">lkytest-control-plane</span>  <span class="hljs-string">Created</span> <span class="hljs-string">container</span>
+  <span class="hljs-string">Normal</span>  <span class="hljs-string">Started</span>    <span class="hljs-string">50s</span>   <span class="hljs-string">kubelet,</span> <span class="hljs-string">lkytest-control-plane</span>  <span class="hljs-string">Started</span> <span class="hljs-string">container</span>
+<span class="hljs-string">➜</span>  [<span class="hljs-string">/home/lky</span>] <span class="hljs-string">kubectl</span> <span class="hljs-string">get</span> <span class="hljs-string">pods</span>     
+<span class="hljs-string">NAME</span>          <span class="hljs-string">READY</span>   <span class="hljs-string">STATUS</span>    <span class="hljs-string">RESTARTS</span>   <span class="hljs-string">AGE</span>
+<span class="hljs-string">kubia-pt77q</span>   <span class="hljs-number">1</span><span class="hljs-string">/1</span>     <span class="hljs-string">Running</span>   <span class="hljs-number">0</span>          <span class="hljs-string">4m7s</span></code></pre>
 <p><strong>创建负载均衡服务对外暴露pod</strong>
 （kind和minikube都不支持LoadBalancer类型服务，所以外部ip一直为pending）</p>
 <pre><code>➜  [/home/lky] kubectl expose rc kubia --type=LoadBalancer --name kubia-http
@@ -3228,7 +3228,7 @@ nodes:
   - role: worker</code></pre>
 <p>即创建一个三节点的集群。         </p>
 <p>然后进入kube-batch项目，首先make，然后创建rfd</p>
-<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_podgroup.yaml                                                                                                
+<pre><code class="hljs">➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_podgroup.yaml                                                                                                
 customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.incubator.k8s.io created
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha2_podgroup.yaml 
 customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.sigs.dev created
@@ -3239,37 +3239,37 @@ customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f default.yaml 
 queue.scheduling.incubator.k8s.io/default created</code></pre>
 <p>然后进入make生成的__output文件夹启动kube-batch</p>
-<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch -h
+<pre><code class="hljs">➜  [/home/lky/<span class="hljs-keyword">go</span>/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch -h
 Usage of ./kube-batch:
-      --alsologtostderr                  log to standard error as well as files
-      --default-queue string             The default queue name of the job (default &quot;default&quot;)
-      --kubeconfig string                Path to kubeconfig file with authorization and master location information
-      --leader-elect                     Start a leader election client and gain leadership before executing the main loop. Enable this when running replicated kube-batch for high availability
-      --listen-address string            The address to listen on for HTTP requests. (default &quot;:8080&quot;)
-      --lock-object-namespace string     Define the namespace of the lock object that is used for leader election
-      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
-      --log-dir string                   If non-empty, write log files in this directory
-      --log-flush-frequency duration     Maximum number of seconds between log flushes (default 5s)
-      --logtostderr                      log to standard error instead of files
-      --master string                    The address of the Kubernetes API server (overrides any value in kubeconfig)
-      --priority-class                   Enable PriorityClass to provide the capacity of preemption at pod group level; to disable it, set it false (default true)
-      --schedule-period duration         The period between each scheduling cycle (default 1s)
-      --scheduler-conf string            The absolute path of scheduler configuration file
-      --scheduler-name string            kube-batch will handle pods whose .spec.SchedulerName is same as scheduler-name (default &quot;kube-batch&quot;)
-      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
-  -v, --v Level                          log level for V logs
+      --alsologtostderr                  log to standard <span class="hljs-type">error</span> as well as files
+      --<span class="hljs-keyword">default</span>-queue <span class="hljs-type">string</span>             The <span class="hljs-keyword">default</span> queue name of the job (<span class="hljs-keyword">default</span> <span class="hljs-string">&quot;default&quot;</span>)
+      --kubeconfig <span class="hljs-type">string</span>                Path to kubeconfig file with authorization and master location information
+      --leader-elect                     Start a leader election client and gain leadership before executing the main loop. Enable this when running replicated kube-batch <span class="hljs-keyword">for</span> high availability
+      --listen-address <span class="hljs-type">string</span>            The address to listen on <span class="hljs-keyword">for</span> HTTP requests. (<span class="hljs-keyword">default</span> <span class="hljs-string">&quot;:8080&quot;</span>)
+      --lock-object-namespace <span class="hljs-type">string</span>     Define the namespace of the lock object that is used <span class="hljs-keyword">for</span> leader election
+      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (<span class="hljs-keyword">default</span> :<span class="hljs-number">0</span>)
+      --log-dir <span class="hljs-type">string</span>                   If non-empty, write log files in this directory
+      --log-flush-frequency duration     Maximum number of seconds between log flushes (<span class="hljs-keyword">default</span> <span class="hljs-number">5</span>s)
+      --logtostderr                      log to standard <span class="hljs-type">error</span> instead of files
+      --master <span class="hljs-type">string</span>                    The address of the Kubernetes API server (overrides any value in kubeconfig)
+      --priority-class                   Enable PriorityClass to provide the capacity of preemption at pod group level; to disable it, set it <span class="hljs-literal">false</span> (<span class="hljs-keyword">default</span> <span class="hljs-literal">true</span>)
+      --schedule-period duration         The period between each scheduling cycle (<span class="hljs-keyword">default</span> <span class="hljs-number">1</span>s)
+      --scheduler-conf <span class="hljs-type">string</span>            The absolute path of scheduler configuration file
+      --scheduler-name <span class="hljs-type">string</span>            kube-batch will handle pods whose .spec.SchedulerName is same as scheduler-name (<span class="hljs-keyword">default</span> <span class="hljs-string">&quot;kube-batch&quot;</span>)
+      --stderrthreshold severity         logs at or above this threshold <span class="hljs-keyword">go</span> to stderr (<span class="hljs-keyword">default</span> <span class="hljs-number">2</span>)
+  -v, --v Level                          log level <span class="hljs-keyword">for</span> V logs
       --version                          Show version and quit
-      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+      --vmodule moduleSpec               comma-separated list of pattern=N settings <span class="hljs-keyword">for</span> file-filtered logging
 pflag: help requested
-➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch --kubeconfig=&quot;/home/lky/.kube/config&quot; --logtostderr --schedule-period 5s --v 3 --scheduler-conf=&quot;../../config/kube-batch-conf.yaml&quot;
-I0112 16:35:11.424548   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-apiserver-test1-control-plane&gt; into cache.
-I0112 16:35:11.429708   22529 event_handlers.go:203] Added pod &lt;kube-system/etcd-test1-control-plane&gt; into cache.
-I0112 16:35:11.429736   22529 event_handlers.go:203] Added pod &lt;kube-system/coredns-5644d7b6d9-fcjsg&gt; into cache.
-I0112 16:35:11.429747   22529 event_handlers.go:203] Added pod &lt;kube-system/kindnet-qqnq5&gt; into cache.
-I0112 16:35:11.429759   22529 event_handlers.go:203] Added pod &lt;kube-system/kindnet-tgdr2&gt; into cache.
-I0112 16:35:11.429770   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-controller-manager-test1-control-plane&gt; into cache.
-I0112 16:35:11.429781   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-proxy-6bdn7&gt; into cache.
-I0112 16:35:11.429924   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-scheduler-test1-contrl-plane&gt; into cache.
+➜  [/home/lky/<span class="hljs-keyword">go</span>/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch --kubeconfig=<span class="hljs-string">&quot;/home/lky/.kube/config&quot;</span> --logtostderr --schedule-period <span class="hljs-number">5</span>s --v <span class="hljs-number">3</span> --scheduler-conf=<span class="hljs-string">&quot;../../config/kube-batch-conf.yaml&quot;</span>
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.424548</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kube-apiserver-test1-control-plane&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429708</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/etcd-test1-control-plane&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429736</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/coredns<span class="hljs-number">-5644</span>d7b6d9-fcjsg&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429747</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kindnet-qqnq5&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429759</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kindnet-tgdr2&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429770</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kube-controller-manager-test1-control-plane&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429781</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kube-proxy<span class="hljs-number">-6</span>bdn7&gt; into cache.
+I0112 <span class="hljs-number">16</span>:<span class="hljs-number">35</span>:<span class="hljs-number">11.429924</span>   <span class="hljs-number">22529</span> event_handlers.<span class="hljs-keyword">go</span>:<span class="hljs-number">203</span>] Added pod &lt;kube-system/kube-scheduler-test1-contrl-plane&gt; into cache.
 ....
 ...
 ..</code></pre>
@@ -3285,35 +3285,35 @@ NAME         READY   STATUS    RESTARTS   AGE
 qj-1-5vfjw   1/1     Running   0          22s
 qj-1-6g9xk   1/1     Running   0          22s</code></pre>
 <p>其中，job.yaml内容为：</p>
-<pre><code>apiVersion: batch/v1
-kind: Job
-metadata:
-  name: qj-1
-spec:
-  completions: 2
-  parallelism: 2
-  template:
-    metadata:
-      annotations:
-        scheduling.k8s.io/group-name: qj-1
-    spec:
-      containers:
-      - image: busybox
-        imagePullPolicy: IfNotPresent
-        name: busybox
-        command: [&quot;sleep&quot;, &quot;9999999&quot;]
-        resources:
-          requests:
-            cpu: &quot;1&quot;
-      restartPolicy: Never
-      schedulerName: kube-batch
----
-apiVersion: scheduling.incubator.k8s.io/v1alpha1
-kind: PodGroup
-metadata:
-  name: qj-1
-spec:
-  minMember: 2</code></pre>
+<pre><code class="hljs"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">batch/v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Job</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">qj-1</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">completions:</span> <span class="hljs-number">2</span>
+  <span class="hljs-attr">parallelism:</span> <span class="hljs-number">2</span>
+  <span class="hljs-attr">template:</span>
+    <span class="hljs-attr">metadata:</span>
+      <span class="hljs-attr">annotations:</span>
+        <span class="hljs-attr">scheduling.k8s.io/group-name:</span> <span class="hljs-string">qj-1</span>
+    <span class="hljs-attr">spec:</span>
+      <span class="hljs-attr">containers:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">image:</span> <span class="hljs-string">busybox</span>
+        <span class="hljs-attr">imagePullPolicy:</span> <span class="hljs-string">IfNotPresent</span>
+        <span class="hljs-attr">name:</span> <span class="hljs-string">busybox</span>
+        <span class="hljs-attr">command:</span> [<span class="hljs-string">&quot;sleep&quot;</span>, <span class="hljs-string">&quot;9999999&quot;</span>]
+        <span class="hljs-attr">resources:</span>
+          <span class="hljs-attr">requests:</span>
+            <span class="hljs-attr">cpu:</span> <span class="hljs-string">&quot;1&quot;</span>
+      <span class="hljs-attr">restartPolicy:</span> <span class="hljs-string">Never</span>
+      <span class="hljs-attr">schedulerName:</span> <span class="hljs-string">kube-batch</span>
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">scheduling.incubator.k8s.io/v1alpha1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">PodGroup</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">qj-1</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">minMember:</span> <span class="hljs-number">2</span></code></pre>
 <p>kube-batch把一组pod看成一个pod group。</p>
 <h1 id="pod">Pod</h1>
 <p>Pod是一组并置的容器，代表k8s中的基本构建模块。          </p>
@@ -3348,8 +3348,8 @@ spec:
 <p>　　用<code>driver.save_screenshot(&#39;1.png&#39;)</code>截图也只能截到空白的图片。      </p>
 <p>　　后来去掉<code>#options.add_argument(&quot;--headless&quot;)</code>,弹出chrome浏览器的时候看了一下它的Cookie，发现比真实浏览器的少了一个名字叫<code>JSESSIONID</code>的Cookie，代码输出一下Cookie：<br><code>print(driver.get_cookies())</code>     </p>
 <p>　　发现确实只有后两个Cookie：    </p>
-<pre><code>    [{'domain': 'mobile.cfda.gov.cn', 'expiry': 1892368214, 'httpOnly': False, 'name': 'tuNQaYE2WCOr80T', 'path': '/', 'secure': False, 'value': '44Kn.5S4Qs9FYazHg9cvpAh7RvvkX6CHCFFLnsNw3CWLTJqQ6uRw0fI8bg5vrYGQEX6hJa0J.RsRZXrnLpG9ViGS6qQB.h0ihFdotILVHmKWMi8rTSe4I7l24OjHVvISZagZFyCmw23._.vUSDK3RsDU47zozbhS.mSlLRCcnw4tiTC6vzgime927xft3LdtTnQXjiYoqH.ONQGdKHPdqzeGiwGMEjgoxEebyhgXrJn2tAr5hqtntejwrroOnMyvm77CXd8_V5QkuK5aINNj2DYlMrReJ7uKRLSx3FeepzkKvtT5WFd.hbAsVYU5eqbtb_Mq'},        
-    {'domain': 'mobile.cfda.gov.cn', 'expiry': 1892368213.81084, 'httpOnly': True, 'name': 'tuNQaYE2WCOr80S', 'path': '/', 'secure': False, 'value': 'hPNhBHTwoBvnsQ5znkw4QCEmXQJ7.5vsBR2r8eDpRyWyiYBaMsjvKkr75trGzXPe'}]</code></pre>
+<pre><code class="hljs">    [{<span class="hljs-string">&#x27;domain&#x27;</span>: <span class="hljs-string">&#x27;mobile.cfda.gov.cn&#x27;</span>, <span class="hljs-string">&#x27;expiry&#x27;</span>: <span class="hljs-number">1892368214</span>, <span class="hljs-string">&#x27;httpOnly&#x27;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;tuNQaYE2WCOr80T&#x27;</span>, <span class="hljs-string">&#x27;path&#x27;</span>: <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;secure&#x27;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&#x27;value&#x27;</span>: <span class="hljs-string">&#x27;44Kn.5S4Qs9FYazHg9cvpAh7RvvkX6CHCFFLnsNw3CWLTJqQ6uRw0fI8bg5vrYGQEX6hJa0J.RsRZXrnLpG9ViGS6qQB.h0ihFdotILVHmKWMi8rTSe4I7l24OjHVvISZagZFyCmw23._.vUSDK3RsDU47zozbhS.mSlLRCcnw4tiTC6vzgime927xft3LdtTnQXjiYoqH.ONQGdKHPdqzeGiwGMEjgoxEebyhgXrJn2tAr5hqtntejwrroOnMyvm77CXd8_V5QkuK5aINNj2DYlMrReJ7uKRLSx3FeepzkKvtT5WFd.hbAsVYU5eqbtb_Mq&#x27;</span>},        
+    {<span class="hljs-string">&#x27;domain&#x27;</span>: <span class="hljs-string">&#x27;mobile.cfda.gov.cn&#x27;</span>, <span class="hljs-string">&#x27;expiry&#x27;</span>: <span class="hljs-number">1892368213.81084</span>, <span class="hljs-string">&#x27;httpOnly&#x27;</span>: <span class="hljs-literal">True</span>, <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;tuNQaYE2WCOr80S&#x27;</span>, <span class="hljs-string">&#x27;path&#x27;</span>: <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;secure&#x27;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&#x27;value&#x27;</span>: <span class="hljs-string">&#x27;hPNhBHTwoBvnsQ5znkw4QCEmXQJ7.5vsBR2r8eDpRyWyiYBaMsjvKkr75trGzXPe&#x27;</span>}]</code></pre>
 <p><br>　　这是真实浏览器的Cookie：</p>
 <div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/3.png" alt="" width="1047" height="774" loading="lazy" decoding="async"></div><p>　　可能就是因为这个原因打不开浏览器。     </p>
 <p>　　后来试着去群里问了一下，感谢@姬大神还有群里的@耿欣大佬，他俩告诉我可以用**<a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a>**发请求，然后生成带<code>Header</code>的代码，如图，Postman能显示所有Cookie和Header信息,可以看到Header信息里，服务端用了<code>gzip</code>还有<code>gb2312</code>的编码格式(图3)：      </p>
@@ -3472,15 +3472,15 @@ spec:
 <p>　　原理很简单，设A、B两个链表不相交的部分分别为a、b，相交部分为merge，则<code>a + merge + b = b + merge + a</code>，等号两侧分别为两个指针按照顺序走过的路径相加，因此相遇点就是相交点。</p>
 <h2 id="3.powxn">3.Pow(x,n)</h2>
 <p>踩坑过程:     </p>
-<pre><code>-&gt; 直接递归调用自身     
--&gt; 一些例子导致栈溢出     
--&gt; 改用循环处理       
--&gt; ｎ可能为负数没考虑到        
--&gt; ｎ为负数时，ｎ变成-n，x变为1/x       
--&gt; 一些例子会报错： `runtime error: negation of -2147483648 cannot be represented in type 'int'`，问题出在n变为-n时，正数和负数的最大表示范围不一样。         
--&gt; 用long long类型变量N代替n：`long long N = n;`    
--&gt; 2.00000 -2147483648的例子还是会超出时间限制 感受到了深深的恶意      
--&gt; 向题解低头，用二分递归实现，简洁优雅卧槽</code></pre>
+<pre><code class="hljs"><span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">直接递归调用自身</span>     
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">一些例子导致栈溢出</span>     
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">改用循环处理</span>       
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">ｎ可能为负数没考虑到</span>        
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">ｎ为负数时，ｎ变成-n，x变为1/x</span>       
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">一些例子会报错： `runtime error: negation of -2147483648 cannot be represented <span class="hljs-keyword">in</span> <span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;int&#x27;</span>`，问题出在n变为-n时，正数和负数的最大表示范围不一样。</span>         
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">用long long类型变量N代替n：`long long N = n;`</span>    
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">2.00000 -2147483648的例子还是会超出时间限制 感受到了深深的恶意</span>      
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">向题解低头，用二分递归实现，简洁优雅卧槽</span></code></pre>
 <p>最终代码：</p>
 <pre><code class="language-c++ hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
 <span class="hljs-keyword">public</span>:
@@ -3494,34 +3494,34 @@ spec:
     }
 };</code></pre>
 <h4 id="h-bcb178">数值的整数次方： 快速幂的迭代写法</h4>
-<pre><code>class Solution {
-public:
-    double myPow(double x, int n) {
-        double res = 1;
-        int i = n;
-        while (i) {
-            if (i &amp; 1) res *= x;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-type">double</span> x, <span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-type">double</span> res = <span class="hljs-number">1</span>;
+        <span class="hljs-type">int</span> i = n;
+        <span class="hljs-keyword">while</span> (i) {
+            <span class="hljs-keyword">if</span> (i &amp; <span class="hljs-number">1</span>) res *= x;
             x = x*x;
-            i /= 2;
+            i /= <span class="hljs-number">2</span>;
         }
-        return n &gt; 0 ? res : 1 / res;
+        <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">0</span> ? res : <span class="hljs-number">1</span> / res;
     }
 };</code></pre>
 <h2 id="4.offer-bb5af2">4.剑指offer 剪绳子 贪心算法</h2>
-<pre><code>class Solution {
-public:
-    int cuttingRope(int n) {
-        if (n == 2 || n == 3) return n-1;
-        if (n % 3 == 0) {
-            return pow(3, n / 3);                    //全部是3
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">cuttingRope</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">2</span> || n == <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> n<span class="hljs-number">-1</span>;
+        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, n / <span class="hljs-number">3</span>);                    <span class="hljs-comment">//全部是3</span>
         }
-        if (n % 3 == 1) {                            //多余一个1
-            return pow(3, n / 3 - 1) * 2 * 2;        //取出一个3，和1组成2*2，因为1*3 &lt; 2*2
+        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> == <span class="hljs-number">1</span>) {                            <span class="hljs-comment">//多余一个1</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, n / <span class="hljs-number">3</span> - <span class="hljs-number">1</span>) * <span class="hljs-number">2</span> * <span class="hljs-number">2</span>;        <span class="hljs-comment">//取出一个3，和1组成2*2，因为1*3 &lt; 2*2</span>
         }              
-        if (n % 3 == 2) {                            //多余一个2
-            return pow(3, n / 3) * 2;
+        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> == <span class="hljs-number">2</span>) {                            <span class="hljs-comment">//多余一个2</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, n / <span class="hljs-number">3</span>) * <span class="hljs-number">2</span>;
         }
-        return -1;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
     }
 };</code></pre>
 <h2 id="5.offer-1-n-1-amp-n-b3857e">5.剑指offer 统计二进制中1的个数 (n - 1) &amp; n</h2>
@@ -3540,60 +3540,60 @@ public:
 <h2 id="6.offer-1n-291939">6.剑指offer 打印从1到最大的n位数 （大数问题，使用字符串）</h2>
 <p>看作n位数每一位从1-9的全排列，输出时不输出高位0</p>
 <h2 id="7.-a27e86">7.字符串实现大数加法</h2>
-<pre><code>#include&lt;iostream&gt;
-#include &lt;string.h&gt;
-#include &lt;stdio.h&gt;
-using namespace std;
+<pre><code class="hljs"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
  
-char s1[200],s2[200],sum[210];
+<span class="hljs-type">char</span> s1[<span class="hljs-number">200</span>],s2[<span class="hljs-number">200</span>],sum[<span class="hljs-number">210</span>];
  
-void add()
-{
-    int lena = strlen(s1);
-    int lenb = strlen(s2);
-    int maxlen = (lena &lt; lenb)? lenb : lena;
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-type">int</span> lena = <span class="hljs-built_in">strlen</span>(s1);
+    <span class="hljs-type">int</span> lenb = <span class="hljs-built_in">strlen</span>(s2);
+    <span class="hljs-type">int</span> maxlen = (lena &lt; lenb)? lenb : lena;
  
-    int carry = 0,k = 0;
-    while (lena-- &gt; 0 &amp;&amp; lenb-- &gt; 0) {  //低位对齐相加
-        int left = s1[lena] - '0';
-        int right = s2[lenb] - '0';
-        int s = left + right + carry;
-        carry = s / 10;
-        s %= 10;
-        sum[k++] = s + '0';
+    <span class="hljs-type">int</span> carry = <span class="hljs-number">0</span>,k = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (lena-- &gt; <span class="hljs-number">0</span> &amp;&amp; lenb-- &gt; <span class="hljs-number">0</span>) {  <span class="hljs-comment">//低位对齐相加</span>
+        <span class="hljs-type">int</span> left = s1[lena] - <span class="hljs-string">&#x27;0&#x27;</span>;
+        <span class="hljs-type">int</span> right = s2[lenb] - <span class="hljs-string">&#x27;0&#x27;</span>;
+        <span class="hljs-type">int</span> s = left + right + carry;
+        carry = s / <span class="hljs-number">10</span>;
+        s %= <span class="hljs-number">10</span>;
+        sum[k++] = s + <span class="hljs-string">&#x27;0&#x27;</span>;
     }
-    if (lena &lt;= 0) {                    //不对齐的部分，s1比s2长时
-        while (lenb-- &gt; 0) {
-            int left = 0;
-            int right = s2[lenb] - '0';
-            int s = left + right + carry;
-            carry = s / 10;
-            s %= 10;
-            sum[k++] = s + '0';
+    <span class="hljs-keyword">if</span> (lena &lt;= <span class="hljs-number">0</span>) {                    <span class="hljs-comment">//不对齐的部分，s1比s2长时</span>
+        <span class="hljs-keyword">while</span> (lenb-- &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;
+            <span class="hljs-type">int</span> right = s2[lenb] - <span class="hljs-string">&#x27;0&#x27;</span>;
+            <span class="hljs-type">int</span> s = left + right + carry;
+            carry = s / <span class="hljs-number">10</span>;
+            s %= <span class="hljs-number">10</span>;
+            sum[k++] = s + <span class="hljs-string">&#x27;0&#x27;</span>;
         }
     }
-    else if (lenb &lt;= 0) {               //不对齐的部分，s2比s1长时
-        while (lena-- &gt; 0) {
-            int left = s1[lena] - '0';
-            int right = 0;
-            int s = left + right + carry;
-            carry = s / 10;
-            s %= 10;
-            sum[k++] = s + '0';
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lenb &lt;= <span class="hljs-number">0</span>) {               <span class="hljs-comment">//不对齐的部分，s2比s1长时</span>
+        <span class="hljs-keyword">while</span> (lena-- &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-type">int</span> left = s1[lena] - <span class="hljs-string">&#x27;0&#x27;</span>;
+            <span class="hljs-type">int</span> right = <span class="hljs-number">0</span>;
+            <span class="hljs-type">int</span> s = left + right + carry;
+            carry = s / <span class="hljs-number">10</span>;
+            s %= <span class="hljs-number">10</span>;
+            sum[k++] = s + <span class="hljs-string">&#x27;0&#x27;</span>;
         }
     }
-    if (carry != 0)
-        sum[k++] = carry + '0';
-    sum[k] = '\0';
-    strrev(sum);
+    <span class="hljs-keyword">if</span> (carry != <span class="hljs-number">0</span>)
+        sum[k++] = carry + <span class="hljs-string">&#x27;0&#x27;</span>;
+    sum[k] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+    <span class="hljs-built_in">strrev</span>(sum);
 }
  
-int main()
-{
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
     cin &gt;&gt; s1 &gt;&gt; s2;
-    add();
-    cout &lt;&lt; &quot;result is &quot; &lt;&lt; sum &lt;&lt; endl;
-    return 0;
+    <span class="hljs-built_in">add</span>();
+    cout &lt;&lt; <span class="hljs-string">&quot;result is &quot;</span> &lt;&lt; sum &lt;&lt; endl;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }</code></pre>
 <h2 id="8.-d3315f">8. 删除单链表节点</h2>
 <h4 id="offer-o1-listnode-headlistnode-ptobedeleted-834dd2">剑指offer O(1)时间 传入参数为<em>ListNode head和</em>ListNode pToBeDeleted</h4>
@@ -3601,156 +3601,156 @@ int main()
 <p>　　尾节点仍需遍历。单个节点的链表需要设置头结点为空。</p>
 <h4 id="leetcode-on-listnode-head-int-val-4ac85b">Leetcode O(n)时间 传入参数为*ListNode head和 int val</h4>
 <p>　　设置dummy节点</p>
-<pre><code>class Solution {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
 public:
-    ListNode* deleteNode(ListNode* head, int val) {
-        ListNode* dummy = new ListNode(0);
-        dummy-&gt;next = head;
+    ListNode* deleteNode(ListNode* head, <span class="hljs-built_in">int</span> val) {
+        ListNode* dummy = new ListNode(<span class="hljs-number">0</span>);
+        dummy-&gt;<span class="hljs-built_in">next</span> = head;
         ListNode* p = dummy;
-        while (p-&gt;next-&gt;val != val) p = p-&gt;next;
-        p-&gt;next = p-&gt;next-&gt;next;
-        return dummy-&gt;next;
+        <span class="hljs-keyword">while</span> (p-&gt;<span class="hljs-built_in">next</span>-&gt;val != val) p = p-&gt;<span class="hljs-built_in">next</span>;
+        p-&gt;<span class="hljs-built_in">next</span> = p-&gt;<span class="hljs-built_in">next</span>-&gt;<span class="hljs-built_in">next</span>;
+        <span class="hljs-keyword">return</span> dummy-&gt;<span class="hljs-built_in">next</span>;
     }
 };</code></pre>
 <h2 id="9.offer-cf633f">9.剑指Offer 正则表达式匹配</h2>
 <p>.匹配任意字符 *表示之前的1个字符可以出现0~任意次</p>
 <p>解法:分情况递归</p>
-<pre><code>class Solution {
-public:
-    bool isMatch(string s, string p) {
-        if (p.empty()) {            //若模式串为空，则S必须为空，反之不成立
-            return s.empty();
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(string s, string p)</span> </span>{
+        <span class="hljs-keyword">if</span> (p.<span class="hljs-built_in">empty</span>()) {            <span class="hljs-comment">//若模式串为空，则S必须为空，反之不成立</span>
+            <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">empty</span>();
         }
-        if (p.size() &gt; 1 &amp;&amp; p[1] == '*') { //模式串里有*，情况1：patter后移两个字符（即*前的字符在s中出现0次）情况2：patter不变，s后移一个字符
-            return isMatch(s, p.substr(2)) || (!s.empty() &amp;&amp; (s[0] == p[0] || p[0] == '.') &amp;&amp; 
-            isMatch(s.substr(1), p));
+        <span class="hljs-keyword">if</span> (p.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span> &amp;&amp; p[<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;*&#x27;</span>) { <span class="hljs-comment">//模式串里有*，情况1：patter后移两个字符（即*前的字符在s中出现0次）情况2：patter不变，s后移一个字符</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">isMatch</span>(s, p.<span class="hljs-built_in">substr</span>(<span class="hljs-number">2</span>)) || (!s.<span class="hljs-built_in">empty</span>() &amp;&amp; (s[<span class="hljs-number">0</span>] == p[<span class="hljs-number">0</span>] || p[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;.&#x27;</span>) &amp;&amp; 
+            <span class="hljs-built_in">isMatch</span>(s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>), p));
         }
-        //模式串里没有*，若匹配则各后移一个字符
-        return !s.empty() &amp;&amp; (s[0] == p[0] || p[0] == '.') &amp;&amp; isMatch(s.substr(1), p.substr(1));
+        <span class="hljs-comment">//模式串里没有*，若匹配则各后移一个字符</span>
+        <span class="hljs-keyword">return</span> !s.<span class="hljs-built_in">empty</span>() &amp;&amp; (s[<span class="hljs-number">0</span>] == p[<span class="hljs-number">0</span>] || p[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;.&#x27;</span>) &amp;&amp; <span class="hljs-built_in">isMatch</span>(s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>), p.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>));
     }
 };</code></pre>
 <h2 id="10.-ef5f59">10.判断一个二叉树是否对称(用递归解决)</h2>
 <p>也可以用剑指offer中比较两棵树的前序遍历和对称前序遍历(根-&gt;右节点-&gt;左节点)的序列。</p>
-<pre><code>class Solution {
-public:
-    bool isMirror(TreeNode* t1, TreeNode* t2) {
-        if (t1 == nullptr &amp;&amp; t2 == nullptr) return true;
-        if (t1 == nullptr || t2 == nullptr) return false;
-        return (t1-&gt;val == t2-&gt;val) &amp;&amp; isMirror(t1-&gt;left, t2-&gt;right) &amp;&amp; isMirror(t1-&gt;right, t2-&gt;left);
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isMirror</span><span class="hljs-params">(TreeNode* t1, TreeNode* t2)</span> </span>{
+        <span class="hljs-keyword">if</span> (t1 == <span class="hljs-literal">nullptr</span> &amp;&amp; t2 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">if</span> (t1 == <span class="hljs-literal">nullptr</span> || t2 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">return</span> (t1-&gt;val == t2-&gt;val) &amp;&amp; <span class="hljs-built_in">isMirror</span>(t1-&gt;left, t2-&gt;right) &amp;&amp; <span class="hljs-built_in">isMirror</span>(t1-&gt;right, t2-&gt;left);
     }
 
-    bool isSymmetric(TreeNode* root) {
-        return isMirror(root, root);
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">isMirror</span>(root, root);
     }
 };</code></pre>
 <h2 id="11.-min-b3822e">11. 包含min函数的栈</h2>
 <p>诀窍在于维护一个存放min记忆的栈,每次push都将当前时刻的最小值push进该栈.</p>
 <h2 id="12.-b6a3f9">12. 含有随机指针的链表的深拷贝</h2>
 <p>解法一: O(n)时间O(n)空间 利用哈希表</p>
-<pre><code>class Solution {
-public:
-    Node* copyRandomList(Node* head) {
-        if (head == nullptr) return nullptr;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Node* <span class="hljs-title">copyRandomList</span><span class="hljs-params">(Node* head)</span> </span>{
+        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;
         map&lt;Node*, Node*&gt; M;
         Node* cur = head;
-        // 将所有节点加入Map
-        while (cur) {
-            Node* tmp = new Node(cur-&gt;val, nullptr, nullptr);
+        <span class="hljs-comment">// 将所有节点加入Map</span>
+        <span class="hljs-keyword">while</span> (cur) {
+            Node* tmp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(cur-&gt;val, <span class="hljs-literal">nullptr</span>, <span class="hljs-literal">nullptr</span>);
             M[cur] = tmp;
             cur = cur-&gt;next;
         }
-        // 更新Map中value的所有指针
+        <span class="hljs-comment">// 更新Map中value的所有指针</span>
         cur = head;
-        while (cur) {
+        <span class="hljs-keyword">while</span> (cur) {
             M[cur]-&gt;random = M[cur-&gt;random];
             M[cur]-&gt;next = M[cur-&gt;next];
             cur = cur-&gt;next;
         }
-        return M[head];
+        <span class="hljs-keyword">return</span> M[head];
     }
 };</code></pre>
 <p>解法二:O(n)时间O(1)空间 在每个节点后面紧接一个其复制</p>
-<pre><code>class Solution {
-public:
-    Node* copyRandomList(Node* head) {
-        if (head == nullptr) {
-            return head;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Node* <span class="hljs-title">copyRandomList</span><span class="hljs-params">(Node* head)</span> </span>{
+        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span>) {
+            <span class="hljs-keyword">return</span> head;
         }
         Node* p = head;
-        while (p) {             // 每个节点后面插入一个值相同的节点
-            Node* q = new Node(p-&gt;val);
+        <span class="hljs-keyword">while</span> (p) {             <span class="hljs-comment">// 每个节点后面插入一个值相同的节点</span>
+            Node* q = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(p-&gt;val);
             q-&gt;next = p-&gt;next;
             p-&gt;next = q;
             p = q-&gt;next;
         }
         p = head;
-        while (p) {             // 给复制进来的节点赋random值
-            p-&gt;next-&gt;random = p-&gt;random? p-&gt;random-&gt;next : nullptr;
+        <span class="hljs-keyword">while</span> (p) {             <span class="hljs-comment">// 给复制进来的节点赋random值</span>
+            p-&gt;next-&gt;random = p-&gt;random? p-&gt;random-&gt;next : <span class="hljs-literal">nullptr</span>;
             p = p-&gt;next-&gt;next;
         }
         p = head;
         Node* ret = head-&gt;next;
         Node* q = ret;
-        while (q-&gt;next) {       // 奇数结点构成原始链表，偶数结点是新链表，返回偶数结点链表
+        <span class="hljs-keyword">while</span> (q-&gt;next) {       <span class="hljs-comment">// 奇数结点构成原始链表，偶数结点是新链表，返回偶数结点链表</span>
             p-&gt;next = q-&gt;next;
             q-&gt;next = q-&gt;next-&gt;next;
             p = p-&gt;next;
             q = q-&gt;next;
         }
-        p-&gt;next = nullptr;      // 退出时，将原链表尾节点置为NULL
-        return ret;
+        p-&gt;next = <span class="hljs-literal">nullptr</span>;      <span class="hljs-comment">// 退出时，将原链表尾节点置为NULL</span>
+        <span class="hljs-keyword">return</span> ret;
     }
 };</code></pre>
 <h2 id="13.-1482c6">13.二叉搜索树转换为双向链表</h2>
 <p>对树进行中序遍历,同时更新指针.</p>
-<pre><code>class Solution {
-public:
-    void inTraval(Node* root) {
-        if (root == nullptr) return;
-        inTraval(root-&gt;left);
-        //-------------------------------------
-        if (last == nullptr) {          //说明此时刚刚开始进行中序遍历，遍历到最左边，最小的元素了。
-            head = root;          //找到了head
-            last = root;          //last将从这里开始向后移动
-        } else {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">inTraval</span><span class="hljs-params">(Node* root)</span> </span>{
+        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span>;
+        <span class="hljs-built_in">inTraval</span>(root-&gt;left);
+        <span class="hljs-comment">//-------------------------------------</span>
+        <span class="hljs-keyword">if</span> (last == <span class="hljs-literal">nullptr</span>) {          <span class="hljs-comment">//说明此时刚刚开始进行中序遍历，遍历到最左边，最小的元素了。</span>
+            head = root;          <span class="hljs-comment">//找到了head</span>
+            last = root;          <span class="hljs-comment">//last将从这里开始向后移动</span>
+        } <span class="hljs-keyword">else</span> {
             last-&gt;right = root;
             root-&gt;left = last;
             last = root;
         }
-        //-------------------------------------
-        inTraval(root-&gt;right);
+        <span class="hljs-comment">//-------------------------------------</span>
+        <span class="hljs-built_in">inTraval</span>(root-&gt;right);
 
     }
-    Node* treeToDoublyList(Node* root) {
-        if (root == nullptr) return head;
-        inTraval(root);
-        // 首尾相接
+    <span class="hljs-function">Node* <span class="hljs-title">treeToDoublyList</span><span class="hljs-params">(Node* root)</span> </span>{
+        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> head;
+        <span class="hljs-built_in">inTraval</span>(root);
+        <span class="hljs-comment">// 首尾相接</span>
         head-&gt;left = last;
         last-&gt;right = head;
-        return head;
+        <span class="hljs-keyword">return</span> head;
     }
-private:
-    Node* last = nullptr;
-    Node* head = nullptr;
+<span class="hljs-keyword">private</span>:
+    Node* last = <span class="hljs-literal">nullptr</span>;
+    Node* head = <span class="hljs-literal">nullptr</span>;
 };</code></pre>
 <h2 id="14.-a9153b">14.字符串的排列</h2>
 <p>用集合保存结果，将每一位字符与第一个字符交换位置，递归</p>
-<pre><code>class Solution {
-public:
-    vector&lt;string&gt; permutation(string s) {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">permutation</span><span class="hljs-params">(string s)</span> </span>{
         set&lt;string&gt; res;
-        permutation(s, 0, res);
-        return vector&lt;string&gt;(res.begin(), res.end());
+        <span class="hljs-built_in">permutation</span>(s, <span class="hljs-number">0</span>, res);
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vector</span>&lt;string&gt;(res.<span class="hljs-built_in">begin</span>(), res.<span class="hljs-built_in">end</span>());
     } 
 
-    void permutation(string s, int begin, set&lt;string&gt;&amp; res) {
-        if (s.size() == begin) {
-            res.insert(s);
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">permutation</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> begin, set&lt;string&gt;&amp; res)</span> </span>{
+        <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">size</span>() == begin) {
+            res.<span class="hljs-built_in">insert</span>(s);
         }
-        for (int i = begin; i &lt; s.size(); i++) {
-            swap(s[i], s[begin]);
-            permutation(s, begin + 1, res);
-            swap(s[begin], s[i]);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = begin; i &lt; s.<span class="hljs-built_in">size</span>(); i++) {
+            <span class="hljs-built_in">swap</span>(s[i], s[begin]);
+            <span class="hljs-built_in">permutation</span>(s, begin + <span class="hljs-number">1</span>, res);
+            <span class="hljs-built_in">swap</span>(s[begin], s[i]);
         }
     }
 };</code></pre>
@@ -3786,102 +3786,102 @@ return nums[nums.size()/2];</code></pre>
 <ul>
 <li>快排 数据一次性读入内存，允许对原数组修改，时间复杂度O(n)</li>
 </ul>
-<pre><code>class Solution {
-private:
-    int partition(vector&lt;int&gt;&amp; arr,int start,int end){
-        //快速排序辅助函数
-        int l=start;
-        int r=end;
-        int q=arr[start];
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr,<span class="hljs-type">int</span> start,<span class="hljs-type">int</span> end)</span></span>{
+        <span class="hljs-comment">//快速排序辅助函数</span>
+        <span class="hljs-type">int</span> l=start;
+        <span class="hljs-type">int</span> r=end;
+        <span class="hljs-type">int</span> q=arr[start];
         
-        while(l&lt;r){
-            while(l&lt;r&amp;&amp;arr[r]&gt;=q)
+        <span class="hljs-keyword">while</span>(l&lt;r){
+            <span class="hljs-keyword">while</span>(l&lt;r&amp;&amp;arr[r]&gt;=q)
                 r--;
-            while(l&lt;r&amp;&amp;arr[l]&lt;=q)
+            <span class="hljs-keyword">while</span>(l&lt;r&amp;&amp;arr[l]&lt;=q)
                 l++;
-            swap(arr[l],arr[r]);
+            <span class="hljs-built_in">swap</span>(arr[l],arr[r]);
         }
-        swap(arr[start],arr[l]);
-        return l;
+        <span class="hljs-built_in">swap</span>(arr[start],arr[l]);
+        <span class="hljs-keyword">return</span> l;
     }
-public:
-    vector&lt;int&gt; getLeastNumbers(vector&lt;int&gt;&amp; arr, int k) {
-        vector&lt;int&gt; res;
-        if(k==0||arr.size()==0)
-            return res;       
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">getLeastNumbers</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr, <span class="hljs-type">int</span> k)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; res;
+        <span class="hljs-keyword">if</span>(k==<span class="hljs-number">0</span>||arr.<span class="hljs-built_in">size</span>()==<span class="hljs-number">0</span>)
+            <span class="hljs-keyword">return</span> res;       
 
-        //快速排序
-        int l=0;
-        int r=arr.size()-1;
-        int dx=partition(arr,l,r);
-        while(dx!=k-1){
-            if(dx&gt;k-1){
-                r=dx-1;
-                dx=partition(arr,l,r);
+        <span class="hljs-comment">//快速排序</span>
+        <span class="hljs-type">int</span> l=<span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> r=arr.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;
+        <span class="hljs-type">int</span> dx=<span class="hljs-built_in">partition</span>(arr,l,r);
+        <span class="hljs-keyword">while</span>(dx!=k<span class="hljs-number">-1</span>){
+            <span class="hljs-keyword">if</span>(dx&gt;k<span class="hljs-number">-1</span>){
+                r=dx<span class="hljs-number">-1</span>;
+                dx=<span class="hljs-built_in">partition</span>(arr,l,r);
             }
-            else if(dx&lt;k-1){
-                l=dx+1;
-                dx=partition(arr,l,r);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dx&lt;k<span class="hljs-number">-1</span>){
+                l=dx<span class="hljs-number">+1</span>;
+                dx=<span class="hljs-built_in">partition</span>(arr,l,r);
             }
         }
         
-        for(int i=0;i&lt;k;i++){
-            res.push_back(arr[i]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++){
+            res.<span class="hljs-built_in">push_back</span>(arr[i]);
         }
         
-        return res;
+        <span class="hljs-keyword">return</span> res;
         
     }
 };</code></pre>
 <ul>
 <li>最大堆 一次读入一个数据，时间复杂度O(nlogk),空间复杂度O(k)</li>
 </ul>
-<pre><code>class Solution {
-public:
-    vector&lt;int&gt; getLeastNumbers(vector&lt;int&gt;&amp; arr, int k) {
-        vector&lt;int&gt; res;
-        if (k == 0 || arr.size() == 0) {
-            return res;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">getLeastNumbers</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr, <span class="hljs-type">int</span> k)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; res;
+        <span class="hljs-keyword">if</span> (k == <span class="hljs-number">0</span> || arr.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> res;
         }
-        priority_queue&lt;int&gt; q;
-        int i = 0;
-        for (; i &lt; k; i++) {
-            q.push(arr[i]);
+        priority_queue&lt;<span class="hljs-type">int</span>&gt; q;
+        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (; i &lt; k; i++) {
+            q.<span class="hljs-built_in">push</span>(arr[i]);
         }
-        for (; i &lt; arr.size(); i++) {
-            if (arr[i] &lt; q.top()) {
-                q.pop();
-                q.push(arr[i]);
+        <span class="hljs-keyword">for</span> (; i &lt; arr.<span class="hljs-built_in">size</span>(); i++) {
+            <span class="hljs-keyword">if</span> (arr[i] &lt; q.<span class="hljs-built_in">top</span>()) {
+                q.<span class="hljs-built_in">pop</span>();
+                q.<span class="hljs-built_in">push</span>(arr[i]);
             }
         }
-        while (!q.empty()) {
-            res.push_back(q.top());
-            q.pop();
+        <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>()) {
+            res.<span class="hljs-built_in">push_back</span>(q.<span class="hljs-built_in">top</span>());
+            q.<span class="hljs-built_in">pop</span>();
         }
-        return res;
+        <span class="hljs-keyword">return</span> res;
     }
 };</code></pre>
 <h2 id="17.-1n1-offer-fdeda4">17. 1~n中1出现的次数 剑指offer找规律</h2>
-<pre><code>class Solution {
-public:
-    int countDigitOne(int n) {
-        if(n &lt;= 0) return 0;
-        if(n &lt; 10) return 1;
-        string s = to_string(n);
-        int highNum = s[0] - '0';
-        int size = s.size();
-        int withoutHigh = n - highNum * pow(10,size - 1);
-    // 1. 统计首位为1出现次数:
-    //    - 若n首位是1(如12345), 那么有 2346个
-    //    - 若n的首位U不是1(如23456), 那么有 10000个
-        int first = highNum == 1 ? withoutHigh + 1 :pow(10,size - 1);
-    // 统计其他位为1的出现次数
-    // 2. 大于 3456
-    //    - 可以划分为两个区间，例如对 23456 划分为
-    //      [10000, 19999], [3457, 9999]U[20001, 23456]
-    //    - 对任意一个区间，后面4个数字，选择其中一个为1，其他三个都可以在0~9中任意选择，因此一共有 2*4*10^3 个1 
-    int other = highNum * (size - 1) * pow(10, size - 2);
-    return first + other +countDigitOne(withoutHigh);
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countDigitOne</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-keyword">if</span>(n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span>(n &lt; <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        string s = <span class="hljs-built_in">to_string</span>(n);
+        <span class="hljs-type">int</span> highNum = s[<span class="hljs-number">0</span>] - <span class="hljs-string">&#x27;0&#x27;</span>;
+        <span class="hljs-type">int</span> size = s.<span class="hljs-built_in">size</span>();
+        <span class="hljs-type">int</span> withoutHigh = n - highNum * <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>,size - <span class="hljs-number">1</span>);
+    <span class="hljs-comment">// 1. 统计首位为1出现次数:</span>
+    <span class="hljs-comment">//    - 若n首位是1(如12345), 那么有 2346个</span>
+    <span class="hljs-comment">//    - 若n的首位U不是1(如23456), 那么有 10000个</span>
+        <span class="hljs-type">int</span> first = highNum == <span class="hljs-number">1</span> ? withoutHigh + <span class="hljs-number">1</span> :<span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>,size - <span class="hljs-number">1</span>);
+    <span class="hljs-comment">// 统计其他位为1的出现次数</span>
+    <span class="hljs-comment">// 2. 大于 3456</span>
+    <span class="hljs-comment">//    - 可以划分为两个区间，例如对 23456 划分为</span>
+    <span class="hljs-comment">//      [10000, 19999], [3457, 9999]U[20001, 23456]</span>
+    <span class="hljs-comment">//    - 对任意一个区间，后面4个数字，选择其中一个为1，其他三个都可以在0~9中任意选择，因此一共有 2*4*10^3 个1 </span>
+    <span class="hljs-type">int</span> other = highNum * (size - <span class="hljs-number">1</span>) * <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, size - <span class="hljs-number">2</span>);
+    <span class="hljs-keyword">return</span> first + other +<span class="hljs-built_in">countDigitOne</span>(withoutHigh);
     }
 };</code></pre>
 <h2 id="18.-626674">18. 最长不含重复字符的子字符串</h2>
@@ -3894,46 +3894,46 @@ public:
 其次还要求s[i]!=s[j]。因为当满足前两个条件时，s[i]、s[j]一定不在下标从i+1到j-1的子串中，如果这时再满足s[i]!=s[j]，那么dp[i][j]一定是真。</p>
 <p>因此状态转移方程为dp[i][j] = (dp[i][j-1] &amp;&amp; dp[i+1][j] &amp;&amp; s[i] != s[j]);
 动态规划代码如下：         </p>
-<pre><code>class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-    	size_t len = s.size();
-    	if (len == 0) return 0;
-    	int res = 1;
-        vector&lt;vector&lt;bool&gt; &gt; dp(len, vector&lt;bool&gt;(len, true));
-        for (int i = len - 2; i &gt;= 0; --i) {
-        	for (int j = i + 1; j &lt; len; ++j) {
-        		dp[i][j] = (dp[i][j-1] &amp;&amp; dp[i+1][j] &amp;&amp; s[i] != s[j]);
-        		if (dp[i][j] &amp;&amp; j - i + 1 &gt; res) res = j - i + 1;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>{
+    	<span class="hljs-type">size_t</span> len = s.<span class="hljs-built_in">size</span>();
+    	<span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    	<span class="hljs-type">int</span> res = <span class="hljs-number">1</span>;
+        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt; &gt; <span class="hljs-built_in">dp</span>(len, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(len, <span class="hljs-literal">true</span>));
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = len - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; --i) {
+        	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; len; ++j) {
+        		dp[i][j] = (dp[i][j<span class="hljs-number">-1</span>] &amp;&amp; dp[i<span class="hljs-number">+1</span>][j] &amp;&amp; s[i] != s[j]);
+        		<span class="hljs-keyword">if</span> (dp[i][j] &amp;&amp; j - i + <span class="hljs-number">1</span> &gt; res) res = j - i + <span class="hljs-number">1</span>;
 			}
 		}
-		return res;
+		<span class="hljs-keyword">return</span> res;
     }
 };</code></pre>
 <ul>
 <li>滑动窗口</li>
 </ul>
-<pre><code>class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        int len = s.size();
-        if (len == 0) return 0;
-        int res = 1;
-        int i = 0, j = 0;   //  滑动窗口
-        map&lt;char, int&gt; m;
-        for (;j &lt; len; ++j) {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>{
+        <span class="hljs-type">int</span> len = s.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> res = <span class="hljs-number">1</span>;
+        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;   <span class="hljs-comment">//  滑动窗口</span>
+        map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; m;
+        <span class="hljs-keyword">for</span> (;j &lt; len; ++j) {
             m[s[j]]++;
-            if (m[s[j]] == 1) {
-                if (j - i + 1 &gt; res) {
-                    res = j - i + 1;
-                    continue;
+            <span class="hljs-keyword">if</span> (m[s[j]] == <span class="hljs-number">1</span>) {
+                <span class="hljs-keyword">if</span> (j - i + <span class="hljs-number">1</span> &gt; res) {
+                    res = j - i + <span class="hljs-number">1</span>;
+                    <span class="hljs-keyword">continue</span>;
                 }
             }
-            while(m[s[j]] &gt; 1) {  // 收缩窗口
+            <span class="hljs-keyword">while</span>(m[s[j]] &gt; <span class="hljs-number">1</span>) {  <span class="hljs-comment">// 收缩窗口</span>
                 m[s[i++]]--;
             }
         }
-        return res;
+        <span class="hljs-keyword">return</span> res;
     }
 };</code></pre>
 <h2 id="19.-e6ef44">19. 数组中数字出现的次数</h2>
@@ -3944,20 +3944,20 @@ public:
 <li>用x &amp; (-x)得到一个二进制位最右边一位为1的数字mask，也就是两者出现不等的地方</li>
 <li>maskmask 和数组的每个数字做与运算，等于 0 的分为一组，等于 maskmask 的分为一组，这同时也将两个不一样的数字分开了</li>
 </ol>
-<pre><code>class Solution {
-public:
-vector&lt;int&gt; singleNumbers(vector&lt;int&gt;&amp; nums) {
-    vector&lt;int&gt; res(2, 0);
-    int number = 0;
-    for (int num : nums) {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+<span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">singleNumbers</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">res</span><span class="hljs-params">(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-type">int</span> number = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums) {
         number ^= num;
     }
-    int pos = number &amp; (-number);
-    for (int num : nums) {
-        if ((num &amp; pos) == pos) res[0] ^= num;
-        else res[1] ^= num;
+    <span class="hljs-type">int</span> pos = number &amp; (-number);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums) {
+        <span class="hljs-keyword">if</span> ((num &amp; pos) == pos) res[<span class="hljs-number">0</span>] ^= num;
+        <span class="hljs-keyword">else</span> res[<span class="hljs-number">1</span>] ^= num;
     }
-    return res;
+    <span class="hljs-keyword">return</span> res;
 }
 };</code></pre>
 </li>
@@ -3965,22 +3965,22 @@ vector&lt;int&gt; singleNumbers(vector&lt;int&gt;&amp; nums) {
 </li>
 </ul>
 <p>　　记录每一位不为0的数字出现的次数，如果出现的次数对3取模为1，则说明只出现一次的数字此位也是1，将所有模3为1的位想加，得到最终结果      </p>
-<pre><code>class Solution {
-public:
-    int singleNumber(vector&lt;int&gt;&amp; nums) {
-        int res = 0;
-        for (int i = 0; i &lt; 32; i++) {
-            int cnt = 0;
-            for (int n : nums) {
-                if ((1 &lt;&lt; i) &amp; n) {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++) {
+            <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n : nums) {
+                <span class="hljs-keyword">if</span> ((<span class="hljs-number">1</span> &lt;&lt; i) &amp; n) {
                     cnt++;
                 }
             }
-            if (cnt % 3) {
-                res += (1 &lt;&lt; i);
+            <span class="hljs-keyword">if</span> (cnt % <span class="hljs-number">3</span>) {
+                res += (<span class="hljs-number">1</span> &lt;&lt; i);
             } 
         }
-        return res;
+        <span class="hljs-keyword">return</span> res;
     }
 };</code></pre>
 <h2 id="20.-offer-n-ab4d26">20. 剑指offer n个骰子的点数 动态规划</h2>
@@ -3995,17 +3995,17 @@ public:
     }
 };</code></pre>
 <h2 id="21.-7926be">21. 位运算实现加法</h2>
-<pre><code>class Solution {
-public:
-    int add(int a, int b) {
-        int sum = 0, carry = 0;
-        do {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>{
+        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>, carry = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">do</span> {
             sum = a ^ b;
-            carry = (unsigned int)(a &amp; b) &lt;&lt; 1;     //C++不支持负值左移，需强制转换为无符号整数
+            carry = (<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)(a &amp; b) &lt;&lt; <span class="hljs-number">1</span>;     <span class="hljs-comment">//C++不支持负值左移，需强制转换为无符号整数</span>
             a = sum;
             b = carry;
-        } while (carry != 0);
-        return sum;
+        } <span class="hljs-keyword">while</span> (carry != <span class="hljs-number">0</span>);
+        <span class="hljs-keyword">return</span> sum;
     }
 };</code></pre>
 ]]></description>

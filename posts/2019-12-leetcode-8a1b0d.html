@@ -116,15 +116,15 @@
 <p>　　原理很简单，设A、B两个链表不相交的部分分别为a、b，相交部分为merge，则<code>a + merge + b = b + merge + a</code>，等号两侧分别为两个指针按照顺序走过的路径相加，因此相遇点就是相交点。</p>
 <h2 id="3.powxn">3.Pow(x,n)</h2>
 <p>踩坑过程:     </p>
-<pre><code>-&gt; 直接递归调用自身     
--&gt; 一些例子导致栈溢出     
--&gt; 改用循环处理       
--&gt; ｎ可能为负数没考虑到        
--&gt; ｎ为负数时，ｎ变成-n，x变为1/x       
--&gt; 一些例子会报错： `runtime error: negation of -2147483648 cannot be represented in type 'int'`，问题出在n变为-n时，正数和负数的最大表示范围不一样。         
--&gt; 用long long类型变量N代替n：`long long N = n;`    
--&gt; 2.00000 -2147483648的例子还是会超出时间限制 感受到了深深的恶意      
--&gt; 向题解低头，用二分递归实现，简洁优雅卧槽</code></pre>
+<pre><code class="hljs"><span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">直接递归调用自身</span>     
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">一些例子导致栈溢出</span>     
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">改用循环处理</span>       
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">ｎ可能为负数没考虑到</span>        
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">ｎ为负数时，ｎ变成-n，x变为1/x</span>       
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">一些例子会报错： `runtime error: negation of -2147483648 cannot be represented <span class="hljs-keyword">in</span> <span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;int&#x27;</span>`，问题出在n变为-n时，正数和负数的最大表示范围不一样。</span>         
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">用long long类型变量N代替n：`long long N = n;`</span>    
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">2.00000 -2147483648的例子还是会超出时间限制 感受到了深深的恶意</span>      
+<span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">向题解低头，用二分递归实现，简洁优雅卧槽</span></code></pre>
 <p>最终代码：</p>
 <pre><code class="language-c++ hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
 <span class="hljs-keyword">public</span>:
@@ -138,34 +138,34 @@
     }
 };</code></pre>
 <h4 id="h-bcb178">数值的整数次方： 快速幂的迭代写法</h4>
-<pre><code>class Solution {
-public:
-    double myPow(double x, int n) {
-        double res = 1;
-        int i = n;
-        while (i) {
-            if (i &amp; 1) res *= x;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-type">double</span> x, <span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-type">double</span> res = <span class="hljs-number">1</span>;
+        <span class="hljs-type">int</span> i = n;
+        <span class="hljs-keyword">while</span> (i) {
+            <span class="hljs-keyword">if</span> (i &amp; <span class="hljs-number">1</span>) res *= x;
             x = x*x;
-            i /= 2;
+            i /= <span class="hljs-number">2</span>;
         }
-        return n &gt; 0 ? res : 1 / res;
+        <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">0</span> ? res : <span class="hljs-number">1</span> / res;
     }
 };</code></pre>
 <h2 id="4.offer-bb5af2">4.剑指offer 剪绳子 贪心算法</h2>
-<pre><code>class Solution {
-public:
-    int cuttingRope(int n) {
-        if (n == 2 || n == 3) return n-1;
-        if (n % 3 == 0) {
-            return pow(3, n / 3);                    //全部是3
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">cuttingRope</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">2</span> || n == <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> n<span class="hljs-number">-1</span>;
+        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, n / <span class="hljs-number">3</span>);                    <span class="hljs-comment">//全部是3</span>
         }
-        if (n % 3 == 1) {                            //多余一个1
-            return pow(3, n / 3 - 1) * 2 * 2;        //取出一个3，和1组成2*2，因为1*3 &lt; 2*2
+        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> == <span class="hljs-number">1</span>) {                            <span class="hljs-comment">//多余一个1</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, n / <span class="hljs-number">3</span> - <span class="hljs-number">1</span>) * <span class="hljs-number">2</span> * <span class="hljs-number">2</span>;        <span class="hljs-comment">//取出一个3，和1组成2*2，因为1*3 &lt; 2*2</span>
         }              
-        if (n % 3 == 2) {                            //多余一个2
-            return pow(3, n / 3) * 2;
+        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> == <span class="hljs-number">2</span>) {                            <span class="hljs-comment">//多余一个2</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, n / <span class="hljs-number">3</span>) * <span class="hljs-number">2</span>;
         }
-        return -1;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
     }
 };</code></pre>
 <h2 id="5.offer-1-n-1-amp-n-b3857e">5.剑指offer 统计二进制中1的个数 (n - 1) &amp; n</h2>
@@ -184,60 +184,60 @@ public:
 <h2 id="6.offer-1n-291939">6.剑指offer 打印从1到最大的n位数 （大数问题，使用字符串）</h2>
 <p>看作n位数每一位从1-9的全排列，输出时不输出高位0</p>
 <h2 id="7.-a27e86">7.字符串实现大数加法</h2>
-<pre><code>#include&lt;iostream&gt;
-#include &lt;string.h&gt;
-#include &lt;stdio.h&gt;
-using namespace std;
+<pre><code class="hljs"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
  
-char s1[200],s2[200],sum[210];
+<span class="hljs-type">char</span> s1[<span class="hljs-number">200</span>],s2[<span class="hljs-number">200</span>],sum[<span class="hljs-number">210</span>];
  
-void add()
-{
-    int lena = strlen(s1);
-    int lenb = strlen(s2);
-    int maxlen = (lena &lt; lenb)? lenb : lena;
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-type">int</span> lena = <span class="hljs-built_in">strlen</span>(s1);
+    <span class="hljs-type">int</span> lenb = <span class="hljs-built_in">strlen</span>(s2);
+    <span class="hljs-type">int</span> maxlen = (lena &lt; lenb)? lenb : lena;
  
-    int carry = 0,k = 0;
-    while (lena-- &gt; 0 &amp;&amp; lenb-- &gt; 0) {  //低位对齐相加
-        int left = s1[lena] - '0';
-        int right = s2[lenb] - '0';
-        int s = left + right + carry;
-        carry = s / 10;
-        s %= 10;
-        sum[k++] = s + '0';
+    <span class="hljs-type">int</span> carry = <span class="hljs-number">0</span>,k = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (lena-- &gt; <span class="hljs-number">0</span> &amp;&amp; lenb-- &gt; <span class="hljs-number">0</span>) {  <span class="hljs-comment">//低位对齐相加</span>
+        <span class="hljs-type">int</span> left = s1[lena] - <span class="hljs-string">&#x27;0&#x27;</span>;
+        <span class="hljs-type">int</span> right = s2[lenb] - <span class="hljs-string">&#x27;0&#x27;</span>;
+        <span class="hljs-type">int</span> s = left + right + carry;
+        carry = s / <span class="hljs-number">10</span>;
+        s %= <span class="hljs-number">10</span>;
+        sum[k++] = s + <span class="hljs-string">&#x27;0&#x27;</span>;
     }
-    if (lena &lt;= 0) {                    //不对齐的部分，s1比s2长时
-        while (lenb-- &gt; 0) {
-            int left = 0;
-            int right = s2[lenb] - '0';
-            int s = left + right + carry;
-            carry = s / 10;
-            s %= 10;
-            sum[k++] = s + '0';
+    <span class="hljs-keyword">if</span> (lena &lt;= <span class="hljs-number">0</span>) {                    <span class="hljs-comment">//不对齐的部分，s1比s2长时</span>
+        <span class="hljs-keyword">while</span> (lenb-- &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;
+            <span class="hljs-type">int</span> right = s2[lenb] - <span class="hljs-string">&#x27;0&#x27;</span>;
+            <span class="hljs-type">int</span> s = left + right + carry;
+            carry = s / <span class="hljs-number">10</span>;
+            s %= <span class="hljs-number">10</span>;
+            sum[k++] = s + <span class="hljs-string">&#x27;0&#x27;</span>;
         }
     }
-    else if (lenb &lt;= 0) {               //不对齐的部分，s2比s1长时
-        while (lena-- &gt; 0) {
-            int left = s1[lena] - '0';
-            int right = 0;
-            int s = left + right + carry;
-            carry = s / 10;
-            s %= 10;
-            sum[k++] = s + '0';
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lenb &lt;= <span class="hljs-number">0</span>) {               <span class="hljs-comment">//不对齐的部分，s2比s1长时</span>
+        <span class="hljs-keyword">while</span> (lena-- &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-type">int</span> left = s1[lena] - <span class="hljs-string">&#x27;0&#x27;</span>;
+            <span class="hljs-type">int</span> right = <span class="hljs-number">0</span>;
+            <span class="hljs-type">int</span> s = left + right + carry;
+            carry = s / <span class="hljs-number">10</span>;
+            s %= <span class="hljs-number">10</span>;
+            sum[k++] = s + <span class="hljs-string">&#x27;0&#x27;</span>;
         }
     }
-    if (carry != 0)
-        sum[k++] = carry + '0';
-    sum[k] = '\0';
-    strrev(sum);
+    <span class="hljs-keyword">if</span> (carry != <span class="hljs-number">0</span>)
+        sum[k++] = carry + <span class="hljs-string">&#x27;0&#x27;</span>;
+    sum[k] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+    <span class="hljs-built_in">strrev</span>(sum);
 }
  
-int main()
-{
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
     cin &gt;&gt; s1 &gt;&gt; s2;
-    add();
-    cout &lt;&lt; &quot;result is &quot; &lt;&lt; sum &lt;&lt; endl;
-    return 0;
+    <span class="hljs-built_in">add</span>();
+    cout &lt;&lt; <span class="hljs-string">&quot;result is &quot;</span> &lt;&lt; sum &lt;&lt; endl;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }</code></pre>
 <h2 id="8.-d3315f">8. 删除单链表节点</h2>
 <h4 id="offer-o1-listnode-headlistnode-ptobedeleted-834dd2">剑指offer O(1)时间 传入参数为<em>ListNode head和</em>ListNode pToBeDeleted</h4>
@@ -245,156 +245,156 @@ int main()
 <p>　　尾节点仍需遍历。单个节点的链表需要设置头结点为空。</p>
 <h4 id="leetcode-on-listnode-head-int-val-4ac85b">Leetcode O(n)时间 传入参数为*ListNode head和 int val</h4>
 <p>　　设置dummy节点</p>
-<pre><code>class Solution {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
 public:
-    ListNode* deleteNode(ListNode* head, int val) {
-        ListNode* dummy = new ListNode(0);
-        dummy-&gt;next = head;
+    ListNode* deleteNode(ListNode* head, <span class="hljs-built_in">int</span> val) {
+        ListNode* dummy = new ListNode(<span class="hljs-number">0</span>);
+        dummy-&gt;<span class="hljs-built_in">next</span> = head;
         ListNode* p = dummy;
-        while (p-&gt;next-&gt;val != val) p = p-&gt;next;
-        p-&gt;next = p-&gt;next-&gt;next;
-        return dummy-&gt;next;
+        <span class="hljs-keyword">while</span> (p-&gt;<span class="hljs-built_in">next</span>-&gt;val != val) p = p-&gt;<span class="hljs-built_in">next</span>;
+        p-&gt;<span class="hljs-built_in">next</span> = p-&gt;<span class="hljs-built_in">next</span>-&gt;<span class="hljs-built_in">next</span>;
+        <span class="hljs-keyword">return</span> dummy-&gt;<span class="hljs-built_in">next</span>;
     }
 };</code></pre>
 <h2 id="9.offer-cf633f">9.剑指Offer 正则表达式匹配</h2>
 <p>.匹配任意字符 *表示之前的1个字符可以出现0~任意次</p>
 <p>解法:分情况递归</p>
-<pre><code>class Solution {
-public:
-    bool isMatch(string s, string p) {
-        if (p.empty()) {            //若模式串为空，则S必须为空，反之不成立
-            return s.empty();
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isMatch</span><span class="hljs-params">(string s, string p)</span> </span>{
+        <span class="hljs-keyword">if</span> (p.<span class="hljs-built_in">empty</span>()) {            <span class="hljs-comment">//若模式串为空，则S必须为空，反之不成立</span>
+            <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">empty</span>();
         }
-        if (p.size() &gt; 1 &amp;&amp; p[1] == '*') { //模式串里有*，情况1：patter后移两个字符（即*前的字符在s中出现0次）情况2：patter不变，s后移一个字符
-            return isMatch(s, p.substr(2)) || (!s.empty() &amp;&amp; (s[0] == p[0] || p[0] == '.') &amp;&amp; 
-            isMatch(s.substr(1), p));
+        <span class="hljs-keyword">if</span> (p.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span> &amp;&amp; p[<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;*&#x27;</span>) { <span class="hljs-comment">//模式串里有*，情况1：patter后移两个字符（即*前的字符在s中出现0次）情况2：patter不变，s后移一个字符</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">isMatch</span>(s, p.<span class="hljs-built_in">substr</span>(<span class="hljs-number">2</span>)) || (!s.<span class="hljs-built_in">empty</span>() &amp;&amp; (s[<span class="hljs-number">0</span>] == p[<span class="hljs-number">0</span>] || p[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;.&#x27;</span>) &amp;&amp; 
+            <span class="hljs-built_in">isMatch</span>(s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>), p));
         }
-        //模式串里没有*，若匹配则各后移一个字符
-        return !s.empty() &amp;&amp; (s[0] == p[0] || p[0] == '.') &amp;&amp; isMatch(s.substr(1), p.substr(1));
+        <span class="hljs-comment">//模式串里没有*，若匹配则各后移一个字符</span>
+        <span class="hljs-keyword">return</span> !s.<span class="hljs-built_in">empty</span>() &amp;&amp; (s[<span class="hljs-number">0</span>] == p[<span class="hljs-number">0</span>] || p[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;.&#x27;</span>) &amp;&amp; <span class="hljs-built_in">isMatch</span>(s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>), p.<span class="hljs-built_in">substr</span>(<span class="hljs-number">1</span>));
     }
 };</code></pre>
 <h2 id="10.-ef5f59">10.判断一个二叉树是否对称(用递归解决)</h2>
 <p>也可以用剑指offer中比较两棵树的前序遍历和对称前序遍历(根-&gt;右节点-&gt;左节点)的序列。</p>
-<pre><code>class Solution {
-public:
-    bool isMirror(TreeNode* t1, TreeNode* t2) {
-        if (t1 == nullptr &amp;&amp; t2 == nullptr) return true;
-        if (t1 == nullptr || t2 == nullptr) return false;
-        return (t1-&gt;val == t2-&gt;val) &amp;&amp; isMirror(t1-&gt;left, t2-&gt;right) &amp;&amp; isMirror(t1-&gt;right, t2-&gt;left);
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isMirror</span><span class="hljs-params">(TreeNode* t1, TreeNode* t2)</span> </span>{
+        <span class="hljs-keyword">if</span> (t1 == <span class="hljs-literal">nullptr</span> &amp;&amp; t2 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">if</span> (t1 == <span class="hljs-literal">nullptr</span> || t2 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">return</span> (t1-&gt;val == t2-&gt;val) &amp;&amp; <span class="hljs-built_in">isMirror</span>(t1-&gt;left, t2-&gt;right) &amp;&amp; <span class="hljs-built_in">isMirror</span>(t1-&gt;right, t2-&gt;left);
     }
 
-    bool isSymmetric(TreeNode* root) {
-        return isMirror(root, root);
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">isMirror</span>(root, root);
     }
 };</code></pre>
 <h2 id="11.-min-b3822e">11. 包含min函数的栈</h2>
 <p>诀窍在于维护一个存放min记忆的栈,每次push都将当前时刻的最小值push进该栈.</p>
 <h2 id="12.-b6a3f9">12. 含有随机指针的链表的深拷贝</h2>
 <p>解法一: O(n)时间O(n)空间 利用哈希表</p>
-<pre><code>class Solution {
-public:
-    Node* copyRandomList(Node* head) {
-        if (head == nullptr) return nullptr;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Node* <span class="hljs-title">copyRandomList</span><span class="hljs-params">(Node* head)</span> </span>{
+        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;
         map&lt;Node*, Node*&gt; M;
         Node* cur = head;
-        // 将所有节点加入Map
-        while (cur) {
-            Node* tmp = new Node(cur-&gt;val, nullptr, nullptr);
+        <span class="hljs-comment">// 将所有节点加入Map</span>
+        <span class="hljs-keyword">while</span> (cur) {
+            Node* tmp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(cur-&gt;val, <span class="hljs-literal">nullptr</span>, <span class="hljs-literal">nullptr</span>);
             M[cur] = tmp;
             cur = cur-&gt;next;
         }
-        // 更新Map中value的所有指针
+        <span class="hljs-comment">// 更新Map中value的所有指针</span>
         cur = head;
-        while (cur) {
+        <span class="hljs-keyword">while</span> (cur) {
             M[cur]-&gt;random = M[cur-&gt;random];
             M[cur]-&gt;next = M[cur-&gt;next];
             cur = cur-&gt;next;
         }
-        return M[head];
+        <span class="hljs-keyword">return</span> M[head];
     }
 };</code></pre>
 <p>解法二:O(n)时间O(1)空间 在每个节点后面紧接一个其复制</p>
-<pre><code>class Solution {
-public:
-    Node* copyRandomList(Node* head) {
-        if (head == nullptr) {
-            return head;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Node* <span class="hljs-title">copyRandomList</span><span class="hljs-params">(Node* head)</span> </span>{
+        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span>) {
+            <span class="hljs-keyword">return</span> head;
         }
         Node* p = head;
-        while (p) {             // 每个节点后面插入一个值相同的节点
-            Node* q = new Node(p-&gt;val);
+        <span class="hljs-keyword">while</span> (p) {             <span class="hljs-comment">// 每个节点后面插入一个值相同的节点</span>
+            Node* q = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(p-&gt;val);
             q-&gt;next = p-&gt;next;
             p-&gt;next = q;
             p = q-&gt;next;
         }
         p = head;
-        while (p) {             // 给复制进来的节点赋random值
-            p-&gt;next-&gt;random = p-&gt;random? p-&gt;random-&gt;next : nullptr;
+        <span class="hljs-keyword">while</span> (p) {             <span class="hljs-comment">// 给复制进来的节点赋random值</span>
+            p-&gt;next-&gt;random = p-&gt;random? p-&gt;random-&gt;next : <span class="hljs-literal">nullptr</span>;
             p = p-&gt;next-&gt;next;
         }
         p = head;
         Node* ret = head-&gt;next;
         Node* q = ret;
-        while (q-&gt;next) {       // 奇数结点构成原始链表，偶数结点是新链表，返回偶数结点链表
+        <span class="hljs-keyword">while</span> (q-&gt;next) {       <span class="hljs-comment">// 奇数结点构成原始链表，偶数结点是新链表，返回偶数结点链表</span>
             p-&gt;next = q-&gt;next;
             q-&gt;next = q-&gt;next-&gt;next;
             p = p-&gt;next;
             q = q-&gt;next;
         }
-        p-&gt;next = nullptr;      // 退出时，将原链表尾节点置为NULL
-        return ret;
+        p-&gt;next = <span class="hljs-literal">nullptr</span>;      <span class="hljs-comment">// 退出时，将原链表尾节点置为NULL</span>
+        <span class="hljs-keyword">return</span> ret;
     }
 };</code></pre>
 <h2 id="13.-1482c6">13.二叉搜索树转换为双向链表</h2>
 <p>对树进行中序遍历,同时更新指针.</p>
-<pre><code>class Solution {
-public:
-    void inTraval(Node* root) {
-        if (root == nullptr) return;
-        inTraval(root-&gt;left);
-        //-------------------------------------
-        if (last == nullptr) {          //说明此时刚刚开始进行中序遍历，遍历到最左边，最小的元素了。
-            head = root;          //找到了head
-            last = root;          //last将从这里开始向后移动
-        } else {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">inTraval</span><span class="hljs-params">(Node* root)</span> </span>{
+        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span>;
+        <span class="hljs-built_in">inTraval</span>(root-&gt;left);
+        <span class="hljs-comment">//-------------------------------------</span>
+        <span class="hljs-keyword">if</span> (last == <span class="hljs-literal">nullptr</span>) {          <span class="hljs-comment">//说明此时刚刚开始进行中序遍历，遍历到最左边，最小的元素了。</span>
+            head = root;          <span class="hljs-comment">//找到了head</span>
+            last = root;          <span class="hljs-comment">//last将从这里开始向后移动</span>
+        } <span class="hljs-keyword">else</span> {
             last-&gt;right = root;
             root-&gt;left = last;
             last = root;
         }
-        //-------------------------------------
-        inTraval(root-&gt;right);
+        <span class="hljs-comment">//-------------------------------------</span>
+        <span class="hljs-built_in">inTraval</span>(root-&gt;right);
 
     }
-    Node* treeToDoublyList(Node* root) {
-        if (root == nullptr) return head;
-        inTraval(root);
-        // 首尾相接
+    <span class="hljs-function">Node* <span class="hljs-title">treeToDoublyList</span><span class="hljs-params">(Node* root)</span> </span>{
+        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> head;
+        <span class="hljs-built_in">inTraval</span>(root);
+        <span class="hljs-comment">// 首尾相接</span>
         head-&gt;left = last;
         last-&gt;right = head;
-        return head;
+        <span class="hljs-keyword">return</span> head;
     }
-private:
-    Node* last = nullptr;
-    Node* head = nullptr;
+<span class="hljs-keyword">private</span>:
+    Node* last = <span class="hljs-literal">nullptr</span>;
+    Node* head = <span class="hljs-literal">nullptr</span>;
 };</code></pre>
 <h2 id="14.-a9153b">14.字符串的排列</h2>
 <p>用集合保存结果，将每一位字符与第一个字符交换位置，递归</p>
-<pre><code>class Solution {
-public:
-    vector&lt;string&gt; permutation(string s) {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">permutation</span><span class="hljs-params">(string s)</span> </span>{
         set&lt;string&gt; res;
-        permutation(s, 0, res);
-        return vector&lt;string&gt;(res.begin(), res.end());
+        <span class="hljs-built_in">permutation</span>(s, <span class="hljs-number">0</span>, res);
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vector</span>&lt;string&gt;(res.<span class="hljs-built_in">begin</span>(), res.<span class="hljs-built_in">end</span>());
     } 
 
-    void permutation(string s, int begin, set&lt;string&gt;&amp; res) {
-        if (s.size() == begin) {
-            res.insert(s);
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">permutation</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> begin, set&lt;string&gt;&amp; res)</span> </span>{
+        <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">size</span>() == begin) {
+            res.<span class="hljs-built_in">insert</span>(s);
         }
-        for (int i = begin; i &lt; s.size(); i++) {
-            swap(s[i], s[begin]);
-            permutation(s, begin + 1, res);
-            swap(s[begin], s[i]);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = begin; i &lt; s.<span class="hljs-built_in">size</span>(); i++) {
+            <span class="hljs-built_in">swap</span>(s[i], s[begin]);
+            <span class="hljs-built_in">permutation</span>(s, begin + <span class="hljs-number">1</span>, res);
+            <span class="hljs-built_in">swap</span>(s[begin], s[i]);
         }
     }
 };</code></pre>
@@ -430,102 +430,102 @@ return nums[nums.size()/2];</code></pre>
 <ul>
 <li>快排 数据一次性读入内存，允许对原数组修改，时间复杂度O(n)</li>
 </ul>
-<pre><code>class Solution {
-private:
-    int partition(vector&lt;int&gt;&amp; arr,int start,int end){
-        //快速排序辅助函数
-        int l=start;
-        int r=end;
-        int q=arr[start];
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr,<span class="hljs-type">int</span> start,<span class="hljs-type">int</span> end)</span></span>{
+        <span class="hljs-comment">//快速排序辅助函数</span>
+        <span class="hljs-type">int</span> l=start;
+        <span class="hljs-type">int</span> r=end;
+        <span class="hljs-type">int</span> q=arr[start];
         
-        while(l&lt;r){
-            while(l&lt;r&amp;&amp;arr[r]&gt;=q)
+        <span class="hljs-keyword">while</span>(l&lt;r){
+            <span class="hljs-keyword">while</span>(l&lt;r&amp;&amp;arr[r]&gt;=q)
                 r--;
-            while(l&lt;r&amp;&amp;arr[l]&lt;=q)
+            <span class="hljs-keyword">while</span>(l&lt;r&amp;&amp;arr[l]&lt;=q)
                 l++;
-            swap(arr[l],arr[r]);
+            <span class="hljs-built_in">swap</span>(arr[l],arr[r]);
         }
-        swap(arr[start],arr[l]);
-        return l;
+        <span class="hljs-built_in">swap</span>(arr[start],arr[l]);
+        <span class="hljs-keyword">return</span> l;
     }
-public:
-    vector&lt;int&gt; getLeastNumbers(vector&lt;int&gt;&amp; arr, int k) {
-        vector&lt;int&gt; res;
-        if(k==0||arr.size()==0)
-            return res;       
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">getLeastNumbers</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr, <span class="hljs-type">int</span> k)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; res;
+        <span class="hljs-keyword">if</span>(k==<span class="hljs-number">0</span>||arr.<span class="hljs-built_in">size</span>()==<span class="hljs-number">0</span>)
+            <span class="hljs-keyword">return</span> res;       
 
-        //快速排序
-        int l=0;
-        int r=arr.size()-1;
-        int dx=partition(arr,l,r);
-        while(dx!=k-1){
-            if(dx&gt;k-1){
-                r=dx-1;
-                dx=partition(arr,l,r);
+        <span class="hljs-comment">//快速排序</span>
+        <span class="hljs-type">int</span> l=<span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> r=arr.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;
+        <span class="hljs-type">int</span> dx=<span class="hljs-built_in">partition</span>(arr,l,r);
+        <span class="hljs-keyword">while</span>(dx!=k<span class="hljs-number">-1</span>){
+            <span class="hljs-keyword">if</span>(dx&gt;k<span class="hljs-number">-1</span>){
+                r=dx<span class="hljs-number">-1</span>;
+                dx=<span class="hljs-built_in">partition</span>(arr,l,r);
             }
-            else if(dx&lt;k-1){
-                l=dx+1;
-                dx=partition(arr,l,r);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dx&lt;k<span class="hljs-number">-1</span>){
+                l=dx<span class="hljs-number">+1</span>;
+                dx=<span class="hljs-built_in">partition</span>(arr,l,r);
             }
         }
         
-        for(int i=0;i&lt;k;i++){
-            res.push_back(arr[i]);
+        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++){
+            res.<span class="hljs-built_in">push_back</span>(arr[i]);
         }
         
-        return res;
+        <span class="hljs-keyword">return</span> res;
         
     }
 };</code></pre>
 <ul>
 <li>最大堆 一次读入一个数据，时间复杂度O(nlogk),空间复杂度O(k)</li>
 </ul>
-<pre><code>class Solution {
-public:
-    vector&lt;int&gt; getLeastNumbers(vector&lt;int&gt;&amp; arr, int k) {
-        vector&lt;int&gt; res;
-        if (k == 0 || arr.size() == 0) {
-            return res;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">getLeastNumbers</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr, <span class="hljs-type">int</span> k)</span> </span>{
+        vector&lt;<span class="hljs-type">int</span>&gt; res;
+        <span class="hljs-keyword">if</span> (k == <span class="hljs-number">0</span> || arr.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">return</span> res;
         }
-        priority_queue&lt;int&gt; q;
-        int i = 0;
-        for (; i &lt; k; i++) {
-            q.push(arr[i]);
+        priority_queue&lt;<span class="hljs-type">int</span>&gt; q;
+        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (; i &lt; k; i++) {
+            q.<span class="hljs-built_in">push</span>(arr[i]);
         }
-        for (; i &lt; arr.size(); i++) {
-            if (arr[i] &lt; q.top()) {
-                q.pop();
-                q.push(arr[i]);
+        <span class="hljs-keyword">for</span> (; i &lt; arr.<span class="hljs-built_in">size</span>(); i++) {
+            <span class="hljs-keyword">if</span> (arr[i] &lt; q.<span class="hljs-built_in">top</span>()) {
+                q.<span class="hljs-built_in">pop</span>();
+                q.<span class="hljs-built_in">push</span>(arr[i]);
             }
         }
-        while (!q.empty()) {
-            res.push_back(q.top());
-            q.pop();
+        <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>()) {
+            res.<span class="hljs-built_in">push_back</span>(q.<span class="hljs-built_in">top</span>());
+            q.<span class="hljs-built_in">pop</span>();
         }
-        return res;
+        <span class="hljs-keyword">return</span> res;
     }
 };</code></pre>
 <h2 id="17.-1n1-offer-fdeda4">17. 1~n中1出现的次数 剑指offer找规律</h2>
-<pre><code>class Solution {
-public:
-    int countDigitOne(int n) {
-        if(n &lt;= 0) return 0;
-        if(n &lt; 10) return 1;
-        string s = to_string(n);
-        int highNum = s[0] - '0';
-        int size = s.size();
-        int withoutHigh = n - highNum * pow(10,size - 1);
-    // 1. 统计首位为1出现次数:
-    //    - 若n首位是1(如12345), 那么有 2346个
-    //    - 若n的首位U不是1(如23456), 那么有 10000个
-        int first = highNum == 1 ? withoutHigh + 1 :pow(10,size - 1);
-    // 统计其他位为1的出现次数
-    // 2. 大于 3456
-    //    - 可以划分为两个区间，例如对 23456 划分为
-    //      [10000, 19999], [3457, 9999]U[20001, 23456]
-    //    - 对任意一个区间，后面4个数字，选择其中一个为1，其他三个都可以在0~9中任意选择，因此一共有 2*4*10^3 个1 
-    int other = highNum * (size - 1) * pow(10, size - 2);
-    return first + other +countDigitOne(withoutHigh);
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countDigitOne</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-keyword">if</span>(n &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span>(n &lt; <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        string s = <span class="hljs-built_in">to_string</span>(n);
+        <span class="hljs-type">int</span> highNum = s[<span class="hljs-number">0</span>] - <span class="hljs-string">&#x27;0&#x27;</span>;
+        <span class="hljs-type">int</span> size = s.<span class="hljs-built_in">size</span>();
+        <span class="hljs-type">int</span> withoutHigh = n - highNum * <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>,size - <span class="hljs-number">1</span>);
+    <span class="hljs-comment">// 1. 统计首位为1出现次数:</span>
+    <span class="hljs-comment">//    - 若n首位是1(如12345), 那么有 2346个</span>
+    <span class="hljs-comment">//    - 若n的首位U不是1(如23456), 那么有 10000个</span>
+        <span class="hljs-type">int</span> first = highNum == <span class="hljs-number">1</span> ? withoutHigh + <span class="hljs-number">1</span> :<span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>,size - <span class="hljs-number">1</span>);
+    <span class="hljs-comment">// 统计其他位为1的出现次数</span>
+    <span class="hljs-comment">// 2. 大于 3456</span>
+    <span class="hljs-comment">//    - 可以划分为两个区间，例如对 23456 划分为</span>
+    <span class="hljs-comment">//      [10000, 19999], [3457, 9999]U[20001, 23456]</span>
+    <span class="hljs-comment">//    - 对任意一个区间，后面4个数字，选择其中一个为1，其他三个都可以在0~9中任意选择，因此一共有 2*4*10^3 个1 </span>
+    <span class="hljs-type">int</span> other = highNum * (size - <span class="hljs-number">1</span>) * <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, size - <span class="hljs-number">2</span>);
+    <span class="hljs-keyword">return</span> first + other +<span class="hljs-built_in">countDigitOne</span>(withoutHigh);
     }
 };</code></pre>
 <h2 id="18.-626674">18. 最长不含重复字符的子字符串</h2>
@@ -538,46 +538,46 @@ public:
 其次还要求s[i]!=s[j]。因为当满足前两个条件时，s[i]、s[j]一定不在下标从i+1到j-1的子串中，如果这时再满足s[i]!=s[j]，那么dp[i][j]一定是真。</p>
 <p>因此状态转移方程为dp[i][j] = (dp[i][j-1] &amp;&amp; dp[i+1][j] &amp;&amp; s[i] != s[j]);
 动态规划代码如下：         </p>
-<pre><code>class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-    	size_t len = s.size();
-    	if (len == 0) return 0;
-    	int res = 1;
-        vector&lt;vector&lt;bool&gt; &gt; dp(len, vector&lt;bool&gt;(len, true));
-        for (int i = len - 2; i &gt;= 0; --i) {
-        	for (int j = i + 1; j &lt; len; ++j) {
-        		dp[i][j] = (dp[i][j-1] &amp;&amp; dp[i+1][j] &amp;&amp; s[i] != s[j]);
-        		if (dp[i][j] &amp;&amp; j - i + 1 &gt; res) res = j - i + 1;
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>{
+    	<span class="hljs-type">size_t</span> len = s.<span class="hljs-built_in">size</span>();
+    	<span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    	<span class="hljs-type">int</span> res = <span class="hljs-number">1</span>;
+        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt; &gt; <span class="hljs-built_in">dp</span>(len, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(len, <span class="hljs-literal">true</span>));
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = len - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; --i) {
+        	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; len; ++j) {
+        		dp[i][j] = (dp[i][j<span class="hljs-number">-1</span>] &amp;&amp; dp[i<span class="hljs-number">+1</span>][j] &amp;&amp; s[i] != s[j]);
+        		<span class="hljs-keyword">if</span> (dp[i][j] &amp;&amp; j - i + <span class="hljs-number">1</span> &gt; res) res = j - i + <span class="hljs-number">1</span>;
 			}
 		}
-		return res;
+		<span class="hljs-keyword">return</span> res;
     }
 };</code></pre>
 <ul>
 <li>滑动窗口</li>
 </ul>
-<pre><code>class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        int len = s.size();
-        if (len == 0) return 0;
-        int res = 1;
-        int i = 0, j = 0;   //  滑动窗口
-        map&lt;char, int&gt; m;
-        for (;j &lt; len; ++j) {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>{
+        <span class="hljs-type">int</span> len = s.<span class="hljs-built_in">size</span>();
+        <span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> res = <span class="hljs-number">1</span>;
+        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;   <span class="hljs-comment">//  滑动窗口</span>
+        map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; m;
+        <span class="hljs-keyword">for</span> (;j &lt; len; ++j) {
             m[s[j]]++;
-            if (m[s[j]] == 1) {
-                if (j - i + 1 &gt; res) {
-                    res = j - i + 1;
-                    continue;
+            <span class="hljs-keyword">if</span> (m[s[j]] == <span class="hljs-number">1</span>) {
+                <span class="hljs-keyword">if</span> (j - i + <span class="hljs-number">1</span> &gt; res) {
+                    res = j - i + <span class="hljs-number">1</span>;
+                    <span class="hljs-keyword">continue</span>;
                 }
             }
-            while(m[s[j]] &gt; 1) {  // 收缩窗口
+            <span class="hljs-keyword">while</span>(m[s[j]] &gt; <span class="hljs-number">1</span>) {  <span class="hljs-comment">// 收缩窗口</span>
                 m[s[i++]]--;
             }
         }
-        return res;
+        <span class="hljs-keyword">return</span> res;
     }
 };</code></pre>
 <h2 id="19.-e6ef44">19. 数组中数字出现的次数</h2>
@@ -588,20 +588,20 @@ public:
 <li>用x &amp; (-x)得到一个二进制位最右边一位为1的数字mask，也就是两者出现不等的地方</li>
 <li>maskmask 和数组的每个数字做与运算，等于 0 的分为一组，等于 maskmask 的分为一组，这同时也将两个不一样的数字分开了</li>
 </ol>
-<pre><code>class Solution {
-public:
-vector&lt;int&gt; singleNumbers(vector&lt;int&gt;&amp; nums) {
-    vector&lt;int&gt; res(2, 0);
-    int number = 0;
-    for (int num : nums) {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+<span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">singleNumbers</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">res</span><span class="hljs-params">(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-type">int</span> number = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums) {
         number ^= num;
     }
-    int pos = number &amp; (-number);
-    for (int num : nums) {
-        if ((num &amp; pos) == pos) res[0] ^= num;
-        else res[1] ^= num;
+    <span class="hljs-type">int</span> pos = number &amp; (-number);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums) {
+        <span class="hljs-keyword">if</span> ((num &amp; pos) == pos) res[<span class="hljs-number">0</span>] ^= num;
+        <span class="hljs-keyword">else</span> res[<span class="hljs-number">1</span>] ^= num;
     }
-    return res;
+    <span class="hljs-keyword">return</span> res;
 }
 };</code></pre>
 </li>
@@ -609,22 +609,22 @@ vector&lt;int&gt; singleNumbers(vector&lt;int&gt;&amp; nums) {
 </li>
 </ul>
 <p>　　记录每一位不为0的数字出现的次数，如果出现的次数对3取模为1，则说明只出现一次的数字此位也是1，将所有模3为1的位想加，得到最终结果      </p>
-<pre><code>class Solution {
-public:
-    int singleNumber(vector&lt;int&gt;&amp; nums) {
-        int res = 0;
-        for (int i = 0; i &lt; 32; i++) {
-            int cnt = 0;
-            for (int n : nums) {
-                if ((1 &lt;&lt; i) &amp; n) {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{
+        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++) {
+            <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n : nums) {
+                <span class="hljs-keyword">if</span> ((<span class="hljs-number">1</span> &lt;&lt; i) &amp; n) {
                     cnt++;
                 }
             }
-            if (cnt % 3) {
-                res += (1 &lt;&lt; i);
+            <span class="hljs-keyword">if</span> (cnt % <span class="hljs-number">3</span>) {
+                res += (<span class="hljs-number">1</span> &lt;&lt; i);
             } 
         }
-        return res;
+        <span class="hljs-keyword">return</span> res;
     }
 };</code></pre>
 <h2 id="20.-offer-n-ab4d26">20. 剑指offer n个骰子的点数 动态规划</h2>
@@ -639,17 +639,17 @@ public:
     }
 };</code></pre>
 <h2 id="21.-7926be">21. 位运算实现加法</h2>
-<pre><code>class Solution {
-public:
-    int add(int a, int b) {
-        int sum = 0, carry = 0;
-        do {
+<pre><code class="hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>{
+        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>, carry = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">do</span> {
             sum = a ^ b;
-            carry = (unsigned int)(a &amp; b) &lt;&lt; 1;     //C++不支持负值左移，需强制转换为无符号整数
+            carry = (<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)(a &amp; b) &lt;&lt; <span class="hljs-number">1</span>;     <span class="hljs-comment">//C++不支持负值左移，需强制转换为无符号整数</span>
             a = sum;
             b = carry;
-        } while (carry != 0);
-        return sum;
+        } <span class="hljs-keyword">while</span> (carry != <span class="hljs-number">0</span>);
+        <span class="hljs-keyword">return</span> sum;
     }
 };</code></pre>
 

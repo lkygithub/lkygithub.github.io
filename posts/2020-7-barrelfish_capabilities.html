@@ -66,25 +66,25 @@
 <p>　　l1_CNode和l2_CNode也是capability所有不同类型中的两种类型，与ram | dispatcher | ... 一样也是capability，所有capbility都有如下性质：即包含指向某一段内存的信息（虚地址addr、虚拟内存大小size）以及相关权限rights。</p>
 <p>　　内核中定义实现了capability的相关数据结构，定义实现如下：         </p>
 <p>　　文件路径：kernel/include/capabilities.h      </p>
-<pre><code>/**
+<pre><code class="hljs"><span class="hljs-comment">/**
 	* \brief A CTE (Capability Table Entry).
 	*
 	* A CTE is an entry in a CNode, which in turn is an entry in CSpace, the
 	* capability space. CSpace is a guarded tree structure. Refer to the seL4
 	* reference manual for further information about how CSpace is implemented.
-	*/
-struct cte {
-	struct capability   cap;           	///&lt; The capability
-	char padding0[ROUND_UP(sizeof(struct capability), 8)- sizeof(struct capability)];
-	struct mdbnode      mdbnode;       	///&lt; MDB &quot;root&quot; node for the cap
-	char padding1[ROUND_UP(sizeof(struct mdbnode), 8) - sizeof(struct mdbnode)];
-	struct delete_list  delete_node;    ///&lt; State for in-progress delete cascades
+	*/</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">cte</span> {
+	<span class="hljs-keyword">struct</span> <span class="hljs-title class_">capability</span>   cap;           	<span class="hljs-comment">///&lt; The capability</span>
+	<span class="hljs-type">char</span> padding0[<span class="hljs-built_in">ROUND_UP</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> capability), <span class="hljs-number">8</span>)- <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> capability)];
+	<span class="hljs-keyword">struct</span> <span class="hljs-title class_">mdbnode</span>      mdbnode;       	<span class="hljs-comment">///&lt; MDB &quot;root&quot; node for the cap</span>
+	<span class="hljs-type">char</span> padding1[<span class="hljs-built_in">ROUND_UP</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> mdbnode), <span class="hljs-number">8</span>) - <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> mdbnode)];
+	<span class="hljs-keyword">struct</span> <span class="hljs-title class_">delete_list</span>  delete_node;    <span class="hljs-comment">///&lt; State for in-progress delete cascades</span>
 
-	/// Padding to fill the struct out to the size required by OBJBITS_CTE
-	char padding[(1UL &lt;&lt; OBJBITS_CTE)
-					- sizeof(struct delete_list)
-					- ROUND_UP(sizeof(struct capability), 8)
-					- ROUND_UP(sizeof(struct mdbnode), 8)];
+	<span class="hljs-comment">/// Padding to fill the struct out to the size required by OBJBITS_CTE</span>
+	<span class="hljs-type">char</span> padding[(<span class="hljs-number">1UL</span> &lt;&lt; OBJBITS_CTE)
+					- <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> delete_list)
+					- <span class="hljs-built_in">ROUND_UP</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> capability), <span class="hljs-number">8</span>)
+					- <span class="hljs-built_in">ROUND_UP</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> mdbnode), <span class="hljs-number">8</span>)];
 };</code></pre>
 <p>　　由于每个slots是固定大小，所以定义了一些padding用来对齐大小。我们首先关注第一个成员cap，后两个成员mdbnode和delete_node暂时不管，后面会详细说明。                </p>
 <p>　　注意到其中的第一个成员cap的类型为capability类型的结构体，该结构体定义如下:      </p>
@@ -100,56 +100,56 @@ struct cte {
 <li>以及该cap所对应的权限</li>
 </ul>
 <p>　　其中第一个联合体成员定义如下：</p>
-<pre><code>union capability_u {struct  Null null;
-				struct  PhysAddr physaddr;
-				struct  RAM ram;
-				struct  L1CNode l1cnode;
-				struct  L2CNode l2cnode;
-				struct  FCNode fcnode;
-				struct  Dispatcher dispatcher;
-				struct  EndPoint endpoint;
-				struct  Frame frame;
-				struct  Frame_Mapping frame_mapping;
-				struct  DevFrame devframe;
-				struct  DevFrame_Mapping devframe_mapping;
-				struct  Kernel kernel;
-				struct  VNode_x86_64_pml4 vnode_x86_64_pml4;
-				struct  VNode_x86_64_pml4_Mapping vnode_x86_64_pml4_mapping;
-				struct  VNode_x86_64_pdpt vnode_x86_64_pdpt;
-				struct  VNode_x86_64_pdpt_Mapping vnode_x86_64_pdpt_mapping;
-				struct  VNode_x86_64_pdir vnode_x86_64_pdir;
-				struct  VNode_x86_64_pdir_Mapping vnode_x86_64_pdir_mapping;
-				struct  VNode_x86_64_ptable vnode_x86_64_ptable;
-				struct  VNode_x86_64_ptable_Mapping vnode_x86_64_ptable_mapping;
-				struct  VNode_x86_32_pdpt vnode_x86_32_pdpt;
-				struct  VNode_x86_32_pdpt_Mapping vnode_x86_32_pdpt_mapping;
-				struct  VNode_x86_32_pdir vnode_x86_32_pdir;
-				struct  VNode_x86_32_pdir_Mapping vnode_x86_32_pdir_mapping;
-				struct  VNode_x86_32_ptable vnode_x86_32_ptable;
-				struct  VNode_x86_32_ptable_Mapping vnode_x86_32_ptable_mapping;
-				struct  VNode_ARM_l1 vnode_arm_l1;
-				struct  VNode_ARM_l1_Mapping vnode_arm_l1_mapping;
-				struct  VNode_ARM_l2 vnode_arm_l2;
-				struct  VNode_ARM_l2_Mapping vnode_arm_l2_mapping;
-				struct  VNode_AARCH64_l0 vnode_aarch64_l0;
-				struct  VNode_AARCH64_l0_Mapping vnode_aarch64_l0_mapping;
-				struct  VNode_AARCH64_l1 vnode_aarch64_l1;
-				struct  VNode_AARCH64_l1_Mapping vnode_aarch64_l1_mapping;
-				struct  VNode_AARCH64_l2 vnode_aarch64_l2;
-				struct  VNode_AARCH64_l2_Mapping vnode_aarch64_l2_mapping;
-				struct  VNode_AARCH64_l3 vnode_aarch64_l3;
-				struct  VNode_AARCH64_l3_Mapping vnode_aarch64_l3_mapping;
-				struct  IRQTable irqtable;
-				struct  IRQDest irqdest;
-				struct  IRQSrc irqsrc;
-				struct  IO io;
-				struct  Notify_IPI notify_ipi;
-				struct  ID id;
-				struct  PerfMon perfmon;
-				struct  KernelControlBlock kernelcontrolblock;
-				struct  IPI ipi;
-				struct  ProcessManager processmanager;
-				struct  Domain domain;};</code></pre>
+<pre><code class="hljs"><span class="hljs-keyword">union</span> <span class="hljs-title class_">capability_u</span> {<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Null</span> null;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">PhysAddr</span> physaddr;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">RAM</span> ram;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">L1CNode</span> l1cnode;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">L2CNode</span> l2cnode;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">FCNode</span> fcnode;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Dispatcher</span> dispatcher;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">EndPoint</span> endpoint;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Frame</span> frame;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Frame_Mapping</span> frame_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">DevFrame</span> devframe;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">DevFrame_Mapping</span> devframe_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Kernel</span> kernel;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pml4</span> vnode_x86_64_pml4;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pml4_Mapping</span> vnode_x86_64_pml4_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pdpt</span> vnode_x86_64_pdpt;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pdpt_Mapping</span> vnode_x86_64_pdpt_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pdir</span> vnode_x86_64_pdir;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_pdir_Mapping</span> vnode_x86_64_pdir_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_ptable</span> vnode_x86_64_ptable;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_64_ptable_Mapping</span> vnode_x86_64_ptable_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_pdpt</span> vnode_x86_32_pdpt;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_pdpt_Mapping</span> vnode_x86_32_pdpt_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_pdir</span> vnode_x86_32_pdir;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_pdir_Mapping</span> vnode_x86_32_pdir_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_ptable</span> vnode_x86_32_ptable;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_x86_32_ptable_Mapping</span> vnode_x86_32_ptable_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_ARM_l1</span> vnode_arm_l1;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_ARM_l1_Mapping</span> vnode_arm_l1_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_ARM_l2</span> vnode_arm_l2;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_ARM_l2_Mapping</span> vnode_arm_l2_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l0</span> vnode_aarch64_l0;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l0_Mapping</span> vnode_aarch64_l0_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l1</span> vnode_aarch64_l1;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l1_Mapping</span> vnode_aarch64_l1_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l2</span> vnode_aarch64_l2;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l2_Mapping</span> vnode_aarch64_l2_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l3</span> vnode_aarch64_l3;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">VNode_AARCH64_l3_Mapping</span> vnode_aarch64_l3_mapping;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IRQTable</span> irqtable;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IRQDest</span> irqdest;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IRQSrc</span> irqsrc;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IO</span> io;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Notify_IPI</span> notify_ipi;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">ID</span> id;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">PerfMon</span> perfmon;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">KernelControlBlock</span> kernelcontrolblock;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">IPI</span> ipi;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">ProcessManager</span> processmanager;
+				<span class="hljs-keyword">struct</span>  <span class="hljs-title class_">Domain</span> domain;};</code></pre>
 <p>　　可以看到这个联合体包含了Barrelfish系统中可能出现的<strong>所有类型</strong>的capability的结构体定义。由于不同体系结构的CPU的内核所需要的capability类型是不同的（比如可以看到上面很多名字中带x86、ARM、aarch64的cap类型），所以Barrelfish的开发者选择用Hamlet DSL来自动生成这部分代码。            </p>
 <p>　　下面对capability的类型系统作说明。</p>
 <h3 id="capability-f4ba85">对capability类型系统的解释：</h3>
@@ -162,17 +162,17 @@ struct cte {
 <li>...</li>
 </ul>
 <p>　　这里附上上述类型的cap的结构体定义：           </p>
-<pre><code>struct Dispatcher {struct dcb* dcb;};
-struct RAM {genpaddr_t base;		// genpaddr 指 general physical address
-			pasid_t pasid;
-			gensize_t bytes;};
-struct PhysAddr {genpaddr_t base;
-					pasid_t pasid;
-					gensize_t bytes;};
-struct L1CNode {lpaddr_t cnode;		// lpaddr 指 local physical address
+<pre><code class="hljs"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Dispatcher</span> {<span class="hljs-keyword">struct</span> <span class="hljs-title class_">dcb</span>* dcb;};
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">RAM</span> {<span class="hljs-type">genpaddr_t</span> base;		<span class="hljs-comment">// genpaddr 指 general physical address</span>
+			<span class="hljs-type">pasid_t</span> pasid;
+			<span class="hljs-type">gensize_t</span> bytes;};
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">PhysAddr</span> {<span class="hljs-type">genpaddr_t</span> base;
+					<span class="hljs-type">pasid_t</span> pasid;
+					<span class="hljs-type">gensize_t</span> bytes;};
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">L1CNode</span> {<span class="hljs-type">lpaddr_t</span> cnode;		<span class="hljs-comment">// lpaddr 指 local physical address</span>
 				CapRights rightsmask;
-				gensize_t allocated_bytes;};
-struct L2CNode {lpaddr_t cnode;
+				<span class="hljs-type">gensize_t</span> allocated_bytes;};
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">L2CNode</span> {<span class="hljs-type">lpaddr_t</span> cnode;
 				CapRights rightsmask;};</code></pre>
 <p>　　capability类型与类型之间是可以相互转换的，但是需要遵循一定的规则，barrelfish规定了一棵类似于树形的结构，来表示合法的<strong>类型转换路径</strong>,见下图：</p>
 <div align=center><img src="../2020/7/barrelfish_capability/retype.png" alt="" width="944" height="632" loading="lazy" decoding="async"></div><p>　　类型转换举例：</p>
@@ -185,20 +185,20 @@ struct L2CNode {lpaddr_t cnode;
 <ul>
 <li>对于dispatcher类型的cap（指向进程控制表），提供了以下类型的command：</li>
 </ul>
-<pre><code>/**
+<pre><code class="hljs"><span class="hljs-comment">/**
 * Specific commands for dispatcher capabilities.
-*/
-enum dispatcher_cmd {
-	DispatcherCmd_Setup,            ///&lt; Set dispatcher parameters
-	DispatcherCmd_Properties,       ///&lt; Set dispatcher properties
-	DispatcherCmd_PerfMon,          ///&lt; Performance monitoring
-	DispatcherCmd_SetupGuest,       ///&lt; Set up the DCB of a guest domain
-	DispatcherCmd_DumpPTables,      ///&lt; Dump hw page tables of dispatcher   比如打印维护进程虚存空间的页表
-	DispatcherCmd_DumpCapabilities, ///&lt; Dump capabilities of dispatcher·	 又比如打印该进程所拥有的所有cap（打印CSpace）
-	DispatcherCmd_Vmread,           ///&lt; Execute vmread on the current and active VMCS      
-	DispatcherCmd_Vmwrite,          ///&lt; Execute vmwrite on the current and active VMCS
-	DispatcherCmd_Vmptrld,          ///&lt; Make VMCS clear and inactive
-	DispatcherCmd_Vmclear,          ///&lt; Make VMCS current and active 
+*/</span>
+<span class="hljs-keyword">enum</span> <span class="hljs-title class_">dispatcher_cmd</span> {
+	DispatcherCmd_Setup,            <span class="hljs-comment">///&lt; Set dispatcher parameters</span>
+	DispatcherCmd_Properties,       <span class="hljs-comment">///&lt; Set dispatcher properties</span>
+	DispatcherCmd_PerfMon,          <span class="hljs-comment">///&lt; Performance monitoring</span>
+	DispatcherCmd_SetupGuest,       <span class="hljs-comment">///&lt; Set up the DCB of a guest domain</span>
+	DispatcherCmd_DumpPTables,      <span class="hljs-comment">///&lt; Dump hw page tables of dispatcher   比如打印维护进程虚存空间的页表</span>
+	DispatcherCmd_DumpCapabilities, <span class="hljs-comment">///&lt; Dump capabilities of dispatcher·	 又比如打印该进程所拥有的所有cap（打印CSpace）</span>
+	DispatcherCmd_Vmread,           <span class="hljs-comment">///&lt; Execute vmread on the current and active VMCS      </span>
+	DispatcherCmd_Vmwrite,          <span class="hljs-comment">///&lt; Execute vmwrite on the current and active VMCS</span>
+	DispatcherCmd_Vmptrld,          <span class="hljs-comment">///&lt; Make VMCS clear and inactive</span>
+	DispatcherCmd_Vmclear,          <span class="hljs-comment">///&lt; Make VMCS current and active </span>
 };</code></pre>
 <ul>
 <li>对于VNode类型的cap（指向一段虚存），提供了以下类型的command：</li>
@@ -212,19 +212,19 @@ enum dispatcher_cmd {
 <ul>
 <li>对于CNode类型的cap（指向一段用来保存capability的内存，即指向某一个cap），提供了以下类型的command：</li>
 </ul>
-<pre><code>/**
+<pre><code class="hljs"><span class="hljs-comment">/**
 	* CNode capability commands.
-	*/
-enum cnode_cmd {
-	CNodeCmd_Copy,      ///&lt; Copy capability
-	CNodeCmd_Mint,      ///&lt; Mint capability
-	CNodeCmd_Retype,    ///&lt; Retype capability         ————&gt;这就是之前说到的类型转换操作
-	CNodeCmd_Delete,    ///&lt; Delete capability
-	CNodeCmd_Revoke,    ///&lt; Revoke capability
-	CNodeCmd_Create,    ///&lt; Create capability
-	CNodeCmd_GetState,  ///&lt; Get distcap state for capability
-	CNodeCmd_GetSize,   ///&lt; Get Size of CNode, only applicable for L1 Cnode
-	CNodeCmd_Resize,    ///&lt; Resize CNode, only applicable for L1 Cnode
+	*/</span>
+<span class="hljs-keyword">enum</span> <span class="hljs-title class_">cnode_cmd</span> {
+	CNodeCmd_Copy,      <span class="hljs-comment">///&lt; Copy capability</span>
+	CNodeCmd_Mint,      <span class="hljs-comment">///&lt; Mint capability</span>
+	CNodeCmd_Retype,    <span class="hljs-comment">///&lt; Retype capability         ————&gt;这就是之前说到的类型转换操作</span>
+	CNodeCmd_Delete,    <span class="hljs-comment">///&lt; Delete capability</span>
+	CNodeCmd_Revoke,    <span class="hljs-comment">///&lt; Revoke capability</span>
+	CNodeCmd_Create,    <span class="hljs-comment">///&lt; Create capability</span>
+	CNodeCmd_GetState,  <span class="hljs-comment">///&lt; Get distcap state for capability</span>
+	CNodeCmd_GetSize,   <span class="hljs-comment">///&lt; Get Size of CNode, only applicable for L1 Cnode</span>
+	CNodeCmd_Resize,    <span class="hljs-comment">///&lt; Resize CNode, only applicable for L1 Cnode</span>
 };</code></pre>
 <p>　　上述提供的对CNode的操作，其中Resize、GetSize都是针对CNode本身进行的操作，而Copy、Mint、Retype、Delete等都是针对这个CNode中的作为叶子节点的非CNode类型capability进行的操作。
 	可见对某一个cap进行某种操作时，需要对该cap所位于的CNode调用该操作。             </p>
@@ -323,48 +323,48 @@ usr/monitor/invocations.c
 
 
 	if目录下是各种消息接口定义，是用一种叫做flounder的DSL语言实现的，flounder实现的消息接口通过haskell实现的编译器可以生成相应的c代码，和capability有关的主要是monitor部分的消息接口：        </code></pre>
-<pre><code>if/monitor.if
-	/* for UMP/BMP cap tx */
+<pre><code class="hljs"><span class="hljs-keyword">if</span>/monitor.<span class="hljs-keyword">if</span>
+	<span class="hljs-comment">/* for UMP/BMP cap tx */</span>
 	message cap_send_request(
-		uintptr mon_id,
-		cap cap,
+		<span class="hljs-type">uintptr</span> mon_id,
+		<span class="hljs-built_in">cap</span> <span class="hljs-built_in">cap</span>,
 		capid capid);
 	message cap_move_request(
-		uintptr mon_id,
-		give_away_cap cap,
+		<span class="hljs-type">uintptr</span> mon_id,
+		give_away_cap <span class="hljs-built_in">cap</span>,
 		capid capid);
 	message cap_receive_request(
-		uintptr conn_id,
+		<span class="hljs-type">uintptr</span> conn_id,
 		errval err,
-		give_away_cap cap,
+		give_away_cap <span class="hljs-built_in">cap</span>,
 		capid capid);
-if/monitor_blocking.if
-	/* Remote cap operation messages */
-	rpc remote_cap_retype(in cap src_root, in cap dest_root, in uint32 src,
-						in uint64 offset, in uint64 objtype, in uint64 objsize,
-						in uint64 count, in uint32 to, in uint32 slot,
-						in int dcn_level, out errval err);
-	rpc remote_cap_delete(in cap croot, in uint32 src, in uint8 level,
+<span class="hljs-keyword">if</span>/monitor_blocking.<span class="hljs-keyword">if</span>
+	<span class="hljs-comment">/* Remote cap operation messages */</span>
+	rpc remote_cap_retype(in <span class="hljs-built_in">cap</span> src_root, in <span class="hljs-built_in">cap</span> dest_root, in <span class="hljs-type">uint32</span> src,
+						in <span class="hljs-type">uint64</span> offset, in <span class="hljs-type">uint64</span> objtype, in <span class="hljs-type">uint64</span> objsize,
+						in <span class="hljs-type">uint64</span> count, in <span class="hljs-type">uint32</span> to, in <span class="hljs-type">uint32</span> slot,
+						in <span class="hljs-type">int</span> dcn_level, out errval err);
+	rpc remote_cap_delete(in <span class="hljs-built_in">cap</span> croot, in <span class="hljs-type">uint32</span> src, in <span class="hljs-type">uint8</span> level,
 						out errval err);
-	rpc remote_cap_revoke(in cap croot, in uint32 src, in uint8 level,
+	rpc remote_cap_revoke(in <span class="hljs-built_in">cap</span> croot, in <span class="hljs-type">uint32</span> src, in <span class="hljs-type">uint8</span> level,
 						out errval err);
 
-	rpc get_phyaddr_cap(out cap pyaddr, out errval err);
-	rpc get_io_cap(out cap io, out errval err);
+	rpc get_phyaddr_cap(out <span class="hljs-built_in">cap</span> pyaddr, out errval err);
+	rpc get_io_cap(out <span class="hljs-built_in">cap</span> io, out errval err);
 	
-	// Get a capability that is targeted at the local apic.
-	rpc get_irq_dest_cap(out cap io, out errval err);
-	// debug cap identify mechanism
-	rpc cap_identify(in cap cap, out errval err, out caprep caprep);
-	// XXX: Hack to set a cap remote until we have x-core cap management
-	rpc cap_set_remote(in cap cap, in bool remote, out errval err);
-	/* Allocate an IRQ on the arm plattform */
-	rpc arm_irq_handle(in cap ep, in uint32 irq, out errval err);
-	/* Retrieve local arch-specific core ID (e.g. APIC ID on x86)*/
-	rpc get_arch_core_id(out uintptr id);
-	/* get cap that can be used to send IPIs */
-	rpc get_ipi_cap(out cap cap);
-	rpc forward_kcb_request(in coreid destination, in cap kcb, out errval err);</code></pre>
+	<span class="hljs-comment">// Get a capability that is targeted at the local apic.</span>
+	rpc get_irq_dest_cap(out <span class="hljs-built_in">cap</span> io, out errval err);
+	<span class="hljs-comment">// debug cap identify mechanism</span>
+	rpc cap_identify(in <span class="hljs-built_in">cap</span> <span class="hljs-built_in">cap</span>, out errval err, out caprep caprep);
+	<span class="hljs-comment">// <span class="hljs-doctag">XXX:</span> Hack to set a cap remote until we have x-core cap management</span>
+	rpc cap_set_remote(in <span class="hljs-built_in">cap</span> <span class="hljs-built_in">cap</span>, in <span class="hljs-type">bool</span> remote, out errval err);
+	<span class="hljs-comment">/* Allocate an IRQ on the arm plattform */</span>
+	rpc arm_irq_handle(in <span class="hljs-built_in">cap</span> ep, in <span class="hljs-type">uint32</span> irq, out errval err);
+	<span class="hljs-comment">/* Retrieve local arch-specific core ID (e.g. APIC ID on x86)*/</span>
+	rpc get_arch_core_id(out <span class="hljs-type">uintptr</span> id);
+	<span class="hljs-comment">/* get cap that can be used to send IPIs */</span>
+	rpc get_ipi_cap(out <span class="hljs-built_in">cap</span> <span class="hljs-built_in">cap</span>);
+	rpc forward_kcb_request(in coreid destination, in <span class="hljs-built_in">cap</span> kcb, out errval err);</code></pre>
 <pre><code>
 
 
