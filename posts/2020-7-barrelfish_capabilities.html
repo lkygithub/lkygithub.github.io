@@ -87,8 +87,10 @@ struct cte {
 					- ROUND_UP(sizeof(struct mdbnode), 8)];
 };
 </code></pre>
-<p>　　由于每个slots是固定大小，所以定义了一些padding用来对齐大小。我们首先关注第一个成员cap，后两个成员mdbnode和delete_node暂时不管，后面会详细说明。<br>　　注意到其中的第一个成员cap的类型为capability类型的结构体，该结构体定义如下:      </p>
-<p>　　文件路径：build/armv8/include/barrelfish_kpi/capbits.h<br>(这个文件是由Hamlet————一种描述capability类型系统的DSL自动生成的)<br>　　在Hamlet中定义cap的类型和接口，然后自动生成部分capability相关的代码。对于Hamlet感兴趣的话，因为ETH自己暂时没有Hamlet相关的文档，可以看下System Research at Harvard的这个仓库：<br><strong><a href="https://github.com/Harvard-PRINCESS/Guppy/wiki/Hamlet-Tutorial" target="_blank" rel="noopener">https://github.com/Harvard-PRINCESS/Guppy/wiki/Hamlet-Tutorial</a></strong>                 </p>
+<p>　　由于每个slots是固定大小，所以定义了一些padding用来对齐大小。我们首先关注第一个成员cap，后两个成员mdbnode和delete_node暂时不管，后面会详细说明。                </p>
+<p>　　注意到其中的第一个成员cap的类型为capability类型的结构体，该结构体定义如下:      </p>
+<p>　　文件路径：build/armv8/include/barrelfish_kpi/capbits.h<br>(这个文件是由Hamlet————一种描述capability类型系统的DSL自动生成的)              </p>
+<p>　　在Hamlet中定义cap的类型和接口，然后自动生成部分capability相关的代码。对于Hamlet感兴趣的话，因为ETH自己暂时没有Hamlet相关的文档，可以看下System Research at Harvard的这个仓库：<br><strong><a href="https://github.com/Harvard-PRINCESS/Guppy/wiki/Hamlet-Tutorial" target="_blank" rel="noopener">https://github.com/Harvard-PRINCESS/Guppy/wiki/Hamlet-Tutorial</a></strong>                 </p>
 <pre><code>struct capability {union  capability_u u;
 				enum objtype type;
 				CapRights rights;};
@@ -151,7 +153,8 @@ struct cte {
 				struct  ProcessManager processmanager;
 				struct  Domain domain;};
 </code></pre>
-<p>　　可以看到这个联合体包含了Barrelfish系统中可能出现的<strong>所有类型</strong>的capability的结构体定义。由于不同体系结构的CPU的内核所需要的capability类型是不同的（比如可以看到上面很多名字中带x86、ARM、aarch64的cap类型），所以Barrelfish的开发者选择用Hamlet DSL来自动生成这部分代码。<br>　　下面对capability的类型系统作说明。</p>
+<p>　　可以看到这个联合体包含了Barrelfish系统中可能出现的<strong>所有类型</strong>的capability的结构体定义。由于不同体系结构的CPU的内核所需要的capability类型是不同的（比如可以看到上面很多名字中带x86、ARM、aarch64的cap类型），所以Barrelfish的开发者选择用Hamlet DSL来自动生成这部分代码。            </p>
+<p>　　下面对capability的类型系统作说明。</p>
 <h3 id="capability-f4ba85">对capability类型系统的解释：</h3>
 <p>不同类型的capability代表不同类型的系统资源，比如:</p>
 <ul>
@@ -232,7 +235,8 @@ enum cnode_cmd {
 </code></pre>
 <p>　　上述提供的对CNode的操作，其中Resize、GetSize都是针对CNode本身进行的操作，而Copy、Mint、Retype、Delete等都是针对这个CNode中的作为叶子节点的非CNode类型capability进行的操作。
 	可见对某一个cap进行某种操作时，需要对该cap所位于的CNode调用该操作。             </p>
-<p>　　所有对于cap的操作，都需要通过该cap所在的CNode调用。<br>　　比如我想将一个ram类型的cap转型为Dispatcher类型，用来存储dcb,那么就需要对该ram类型的capability所在的root_CNode调用invoke操作，同时将invoke时的cmd参数设置为CNodeCmd_Retype，同时设置好其他参数，比如转型前的类型和转型后的类型，转型前的cap的地址以及转型后的cap所存放地址等等。等。            </p>
+<p>　　所有对于cap的操作，都需要通过该cap所在的CNode调用。          </p>
+<p>　　比如我想将一个ram类型的cap转型为Dispatcher类型，用来存储dcb,那么就需要对该ram类型的capability所在的root_CNode调用invoke操作，同时将invoke时的cmd参数设置为CNodeCmd_Retype，同时设置好其他参数，比如转型前的类型和转型后的类型，转型前的cap的地址以及转型后的cap所存放地址等等。等。            </p>
 <p>　　上述这些对cap进行的操作会使cap之间存在副本、后代这样的关系，我们通过之前的介绍已经知道了,一个进程的CSpace是一个两级树形结构,它的根是Root_CNode,root下面有很多l2_CNode,每个l2_CNode下面是最终的叶子节点capabilty,但是上述的copy、retype等操作以及barrelfish所支持的在进程间发送/接受cap的功能，会使同一个CSpace内，乃至不同CSpace内部的capability产生联系，这种联系说白了就是“副本”or“后代”or“祖先”这样的关系。         </p>
 <p>　　如果一个capA经过retype操作转型为capB，那么capA就是capB的“祖先”，capB就是capA的“后代”。“副本”关系则由copy操作产生。      </p>
 <p>　　在系统的运行中常常需要查询这些关系，从而保证上述针对cap的操作能够正确地完成，（举个例子，比如一个ram类型的capability（我们称其为capA）已经经过一次retype操作，得到了一个dispatcher类型的capB，那么之后就不能再对capA进行retype操作，将其retype成别的类型的cap，（因为capA所指向的那段内存，也就是capB所指向的内存，我们已经用来存dcb了，不能再存别的），所以我们在对一个cap进行类型转换即retype操作前，往往要查询其是否已经有后代了）。为此，Barrelfish使用了一个叫做mdb的数据库（<strong>mapping database</strong>）来存储capability之间这样的关系，以便系统运行时动态地查询、更新cap之间的关系。             </p>
@@ -244,9 +248,11 @@ enum cnode_cmd {
 <p>　　上文中cte的结构体定义中，有一个成员为            </p>
 <pre><code>struct mdbnode  mdbnode;  ///&lt; MDB &quot;root&quot; node for the cap
 ```　　
+
 　　这就是用来表示该cte所代表的capabiltiy,在mdb中的表示。             
 
 　　mdbnode结构体的定义如下:                  
+
 　　文件路径：include/mdb/types.h        
 
 </code></pre>
@@ -300,7 +306,8 @@ Kernel-level
 	kernel/include/cap_predicates.h - capability pre-declares (?)
 	include/barrelfish_kpi/capabilities.h - required capabilities definitions
 	build/x86_64/capabilities/*.c - Hamlet capabilities output C</p>
-<pre><code>　　kernel目录下
+<pre><code>
+　　kernel目录下
 </code></pre>
 <p>kernel/include/capabilities.h<br>cte等数据结构的定义、内核中所需要用到的所有capability相关的函数的声明<br>kernel/include/cap_predicates.h<br>一些返回值为布尔类型的对cte或capability进行判断的函数<br>kernel/capabilities.c<br>内核中所有需要用到的capability相关函数的实现，包括cap创建、删除、索引等
 	两级树状CSpace的实现，各种cap操作的实现以及对cap系统的tracing支持<br>kernel/cap_delete.c

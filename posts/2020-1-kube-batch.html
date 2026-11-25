@@ -65,13 +65,17 @@
 <li><p>两个任务，各包含10个worker，集群的资源只能启动10个worker。两个任务分别有5个worker被启动了，但两个任务都无法开始训练。10个worker的资源被浪费了。</p>
 </li>
 </ul>
-<p>　　由此可见，原生调度器对于分布式训练的调度存在问题，影响了资源的利用率。而Kubernetes社区提供了一个批调度器kube-batch， 它能够将一个训练任务的多个worker当做一个整体进行调度，只有当任务所有worker的资源都满足，才会将容器在节点上启动。（要不全部，要不全部不，all or none）<br>　　如图所示，kube-batch定义了job和pod group的概念，一个job对应一个pod group，一个pod group里有一个或者多个pod，分别对应一个或多个task。</p>
-<div align=center><img src="../2020/1/kube-batch/1.jpg" alt="" width="461" height="533" loading="lazy" decoding="async"></div>
-　　这解决了上述的问题，避免了任务间的资源死锁，提高了资源的利用率。         
-　　kube-batch还提供了队列的机制，同个队列的任务，会依次运行。不同队列直接可以设置优先级，优先级高的队列中的任务会优先得到调度。队列还可以设置权重，权重高的队列分配到的资源会更多。<h1 id="2.-168176">2.整体框架</h1>
-<div align=center><img src="../2020/1/kube-batch/2.jpg" alt="" width="713" height="587" loading="lazy" decoding="async"></div><p>　　如图所示，kube-batch中有四个模块，分别是Cache、Session、Plugin和Action。<br>　　其中，Cache负责调用API Server的相关接口，维护整个系统内当前资源的分配状态，供调度器查询和计算。Session是调度器对pod/pod group/queue等进行调度时构建的一个对象，一次会话就是一次调度，调度时会从待调度的pod/queue中选择优先级最高的一个进行调度。<br>　　个人理解：调度时所依据的相关算法/规则/策略就是Plugin，调度产生的结果就是各种Action。</p>
+<p>　　由此可见，原生调度器对于分布式训练的调度存在问题，影响了资源的利用率。而Kubernetes社区提供了一个批调度器kube-batch， 它能够将一个训练任务的多个worker当做一个整体进行调度，只有当任务所有worker的资源都满足，才会将容器在节点上启动。（要不全部，要不全部不，all or none）        </p>
+<p>　　如图所示，kube-batch定义了job和pod group的概念，一个job对应一个pod group，一个pod group里有一个或者多个pod，分别对应一个或多个task。</p>
+<div align=center><img src="../2020/1/kube-batch/1.jpg" alt="" width="461" height="533" loading="lazy" decoding="async"></div><p>　　这解决了上述的问题，避免了任务间的资源死锁，提高了资源的利用率。         </p>
+<p>　　kube-batch还提供了队列的机制，同个队列的任务，会依次运行。不同队列直接可以设置优先级，优先级高的队列中的任务会优先得到调度。队列还可以设置权重，权重高的队列分配到的资源会更多。</p>
+<h1 id="2.-168176">2.整体框架</h1>
+<div align=center><img src="../2020/1/kube-batch/2.jpg" alt="" width="713" height="587" loading="lazy" decoding="async"></div><p>　　如图所示，kube-batch中有四个模块，分别是Cache、Session、Plugin和Action。            </p>
+<p>　　其中，Cache负责调用API Server的相关接口，维护整个系统内当前资源的分配状态，供调度器查询和计算。Session是调度器对pod/pod group/queue等进行调度时构建的一个对象，一次会话就是一次调度，调度时会从待调度的pod/queue中选择优先级最高的一个进行调度。             </p>
+<p>　　个人理解：调度时所依据的相关算法/规则/策略就是Plugin，调度产生的结果就是各种Action。</p>
 <h3 id="2.1-cache">2.1 Cache</h3>
-<p>　　Cache模块封装了对API Server的节点、容器等对象的数据同步逻辑。Kubernetes的数据保存在分布式存储etcd中，所有对数据的查询和操作都通过调用API Server的接口，而非直接操作etcd。在调度时，需要集群中的节点和容器的使用资源和状态等信息。Cache模块通过调用Kubernetes的SDK，通过watch机制监听集群中的节点、容器的状态变化，将信息同步到自己的数据结构中。<br>　　Cache模块还封装了对API server的接口的调用。比如Cache.Bind这个接口，会去调用API Server的Bind接口，将容器绑定到指定的节点上。在kube-batch中只有cache模块需要和API Server交互，其他模块只需要调用Cache模块的接口。</p>
+<p>　　Cache模块封装了对API Server的节点、容器等对象的数据同步逻辑。Kubernetes的数据保存在分布式存储etcd中，所有对数据的查询和操作都通过调用API Server的接口，而非直接操作etcd。在调度时，需要集群中的节点和容器的使用资源和状态等信息。Cache模块通过调用Kubernetes的SDK，通过watch机制监听集群中的节点、容器的状态变化，将信息同步到自己的数据结构中。           </p>
+<p>　　Cache模块还封装了对API server的接口的调用。比如Cache.Bind这个接口，会去调用API Server的Bind接口，将容器绑定到指定的节点上。在kube-batch中只有cache模块需要和API Server交互，其他模块只需要调用Cache模块的接口。</p>
 <h3 id="2.2-session">2.2 Session</h3>
 <p>　　Session模块是将其他三个模块串联起来的一个模块。Kube-batch在每个调度周期开始时，都会新建一个Session对象，这个Session的初始化时，会做以下操作：  </p>
 <ol>
@@ -93,7 +97,8 @@
 </ul>
 </li>
 </ol>
-<p>　　Plugin不需要注册上面所有的函数，而是可以根据自己的需要，注册某几个函数。比如Predict plugin就只注册了predicateFns这个函数到Session中。<br>　　而某些plugin的使用与否（包括某些action使用与否）都由配置文件决定:(<code>kube-batch/pkg/scheduler/util.go</code>)</p>
+<p>　　Plugin不需要注册上面所有的函数，而是可以根据自己的需要，注册某几个函数。比如Predict plugin就只注册了predicateFns这个函数到Session中。         </p>
+<p>　　而某些plugin的使用与否（包括某些action使用与否）都由配置文件决定:(<code>kube-batch/pkg/scheduler/util.go</code>)</p>
 <pre><code>var defaultSchedulerConf = `
 actions: &quot;allocate, backfill&quot;
 tiers:
@@ -107,6 +112,7 @@ tiers:
   - name: nodeorder
 ```　　
 可知默认配置使用2种action(allocate和backfill)和6种plugin。（tiers是什么意思暂时不明）        
+
 代码可以参考：
 (`kube-batch/pkg/scheduler/framework/framework.go`)和
 (`kube-batch/pkg/scheduler/framework/session.go`)
@@ -136,6 +142,7 @@ tiers:
 &lt;div align=center&gt;&lt;img src = &#39;/2020/1/kube-batch/3.png&#39; style=&quot;zoom:70%&quot; title=&quot;drf&quot;/&gt;&lt;/div&gt;
 
 　　目的是尽量避免集群内某一类资源使用比例偏高，而其他类型资源使用比例却很低的不良状态。在调度时，让具有最低资源占用比例的任务具有高优先级。
+
 代码位于`kube-batch/pkg/scheduler/plugins/drf/drf.go`，主要关注`onSessionOpen`函数：        
 
 1. 统计集群中所有node可分配资源总量
@@ -151,12 +158,13 @@ tiers:
 #### 2.3.2 gang
 
 　　gang需要实现的策略是只有当job中的全部pod，或者用户指定的某几个pod都分配到资源后，才真正将pod调度到node上。（即先从逻辑上分配资源给pod，等满足条件后才真正进行调度。）                
+
 　　gang注册3个function，分别是：         
 
 + `preemptableFn` 为避免gang的策略被preempt和reclaiｍ干扰，定义了preemptableFn,排除那些还未准备就绪的job，避免其被抢占。（虽然实际上这些job未真正调度到node上去，但是确实从逻辑上把资源分配给它了）
 + `jobOrderFn` 为让已经就绪的job尽快被调度到节点，定义了jobOrderFn ,让已经就绪的job拥有更高的优先级
 + `jobReadyFn` 用来判断一个job是否已经就绪。`jobReady`会调用所有注册了的 plugin的Ready判定函数，只有都判定为ready ,才返回true
-　
+
 
 #### 2.3.3 predicates
 
@@ -190,7 +198,9 @@ tiers:
     allocated *api.Resource   // 实际分配到的资源总量
     request   *api.Resource   // 该队列中所有job声明的要分配的资源总量
 }</p>
-<pre><code>　　proportion根据各个队列声明的权重和全局的资源总量,初始化deserved的值，根据全局的job初始化allocated和request的值。并监听全局的资源释放和申请事件,更新队列的状态。（暂时理解为队列级别的drf策略。）          
+<pre><code>
+　　proportion根据各个队列声明的权重和全局的资源总量,初始化deserved的值，根据全局的job初始化allocated和request的值。并监听全局的资源释放和申请事件,更新队列的状态。（暂时理解为队列级别的drf策略。）          
+
 　　proportion注册的function分别是：
 
 + `queueOrderFn` 决定哪一个队列里的job在调度时会被优先考虑,这里沿用了DRF处jobOrderFn的逻辑，

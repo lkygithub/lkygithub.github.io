@@ -66,8 +66,10 @@
     </details>
     <div class="blog-post-content">
 <h1 id="h-8e1b94">背景</h1>
-<p>应用程序发展趋势：<br>　　单体应用 -&gt; 微服务</p>
-<p>产生需求：  　<br>　　微服务扩容、部署、软件环境需求差异、自动监控（运维）</p>
+<p>应用程序发展趋势：     </p>
+<p>　　单体应用 -&gt; 微服务</p>
+<p>产生需求：  　   </p>
+<p>　　微服务扩容、部署、软件环境需求差异、自动监控（运维）</p>
 <h1 id="linux-356314">Linux容器技术</h1>
 <p>两种隔离机制：      </p>
 <ul>
@@ -84,7 +86,10 @@
 </ul>
 <h1 id="docker">Docker</h1>
 <ul>
-<li>镜像（image）<br>　　镜像“层”的概念：使镜像分发更高效，减少存储空间（公用层只读，各自新的改动保存在新的层上）          </li>
+<li>镜像（image）</li>
+</ul>
+<p>　　镜像“层”的概念：使镜像分发更高效，减少存储空间（公用层只读，各自新的改动保存在新的层上）          </p>
+<ul>
 <li>镜像仓库             </li>
 <li>容器（container）</li>
 <li>Docker安装、build&amp;run、Dockerfile、ps -a、rm、tag、push</li>
@@ -118,7 +123,8 @@
 <li>健康检查和自修复</li>
 </ul>
 <h3 id="kube-batch">Kube-Batch</h3>
-<p>　　Kube-Batch是运行在k8s上面向机器学习/大数据/HPC的批调度器（batch scheduler）。<br>　　开源仓库：<a href="https://github.com/kubernetes-sigs/kube-batch" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kube-batch</a></p>
+<p>　　Kube-Batch是运行在k8s上面向机器学习/大数据/HPC的批调度器（batch scheduler）。               </p>
+<p>　　开源仓库：<a href="https://github.com/kubernetes-sigs/kube-batch" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kube-batch</a></p>
 <h1 id="minikube-b1ce4e">使用Minikube构建单节点集群</h1>
 <ul>
 <li>下载kubectl<br><code># curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl</code><br><code># mv kubectl /usr/local/bin/ &amp;&amp; chmod +x /usr/local/bin/kubectl</code><br><code># kubectl version</code></li>
@@ -173,7 +179,8 @@ KubeDNS is running at https://192.168.80.128:8443/api/v1/namespaces/kube-system/
 To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
 </code></pre>
 <h1 id="kindk8s-047df9">使用kind构建单节点k8s集群</h1>
-<p>　　Kind, Kubernetes In Docker<br>　　项目地址：<a href="https://github.com/kubernetes-sigs/kind" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kind</a>                          </p>
+<p>　　Kind, Kubernetes In Docker             </p>
+<p>　　项目地址：<a href="https://github.com/kubernetes-sigs/kind" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kind</a>                          </p>
 <pre><code>```note
 安装运行需要下载外网镜像，可以按照[这篇教程](https://segmentfault.com/a/1190000018720465)里的方法创建一个
 kind.yaml切换一下镜像源，然后`kind create cluster --name moelove --config kind.yaml`
@@ -305,7 +312,8 @@ nodes:
   - role: worker
   - role: worker
 </code></pre>
-<p>即创建一个三节点的集群。<br>然后进入kube-batch项目，首先make，然后创建rfd</p>
+<p>即创建一个三节点的集群。         </p>
+<p>然后进入kube-batch项目，首先make，然后创建rfd</p>
 <pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_podgroup.yaml                                                                                                
 customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.incubator.k8s.io created
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha2_podgroup.yaml 
@@ -398,7 +406,8 @@ spec:
 </code></pre>
 <p>kube-batch把一组pod看成一个pod group。</p>
 <h1 id="pod">Pod</h1>
-<p>Pod是一组并置的容器，代表k8s中的基本构建模块。<br>由于一个容器中运行多个进程在实现中不可行，因此一个容器对应一个进程，然后用一种更高级的结构（pod）将多个容器绑定在一起。</p>
+<p>Pod是一组并置的容器，代表k8s中的基本构建模块。          </p>
+<p>由于一个容器中运行多个进程在实现中不可行，因此一个容器对应一个进程，然后用一种更高级的结构（pod）将多个容器绑定在一起。</p>
 
     </div>
     <nav class="post-nav">

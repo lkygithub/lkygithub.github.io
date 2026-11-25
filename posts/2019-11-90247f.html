@@ -65,10 +65,11 @@
     <div class="blog-post-content">
 <p>帮小乔爬了一下共青团中央的所有微博，做了一下高频词统计。</p>
 <h2 id="h-686420">爬取数据</h2>
-<p>爬数据用的github上别人的项目，地址是<a href="https://github.com/dataabc/weibo-crawler" target="_blank" rel="noopener">https://github.com/dataabc/weibo-crawler</a><br>爬之前需要设置好要爬的微博的微博id，以及时间范围、原创微博还是转发微博、是否爬图片、视频等选项。
-然后直接运行    </p>
+<p>爬数据用的github上别人的项目，地址是<a href="https://github.com/dataabc/weibo-crawler" target="_blank" rel="noopener">https://github.com/dataabc/weibo-crawler</a><br>爬之前需要设置好要爬的微博的微博id，以及时间范围、原创微博还是转发微博、是否爬图片、视频等选项。</p>
+<p>然后直接运行    </p>
 <p><code>python weibo.py</code>   </p>
-<p>这里把时间设置成1900-01-01，爬了共青团中央至2019-11-23的所有原创微博。<br>这是爬好的数据，一共有两万多条数据。   </p>
+<p>这里把时间设置成1900-01-01，爬了共青团中央至2019-11-23的所有原创微博。   </p>
+<p>这是爬好的数据，一共有两万多条数据。   </p>
 <div align=center><img src="../2019/11/WeiboCrawler/1.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>   <h2 id="h-63b682">统计高频词</h2>
 <p>使用jieba分词并统计高频词频率<br>先把微博内容提取出来   </p>
 <pre><code class="language-python">    import csv
