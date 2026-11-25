@@ -29,6 +29,27 @@ a {
     display: inline-block;
 }
 
+/* One row per post: the date is a fixed column so every title starts at the
+   same x, and a title too long for one line wraps inside its own column
+   instead of dropping below the date. */
+#posts {
+    display: flex;
+    align-items: baseline;
+}
+
+#date.date-time-title {
+    flex: 0 0 7.5em;
+    /* Keep the digits the same width so the dates themselves line up. */
+    font-variant-numeric: tabular-nums;
+}
+
+/* A flex item will not shrink past its min-content width by default, which on
+   a phone lets a long title push the whole row wider than the screen. */
+.date-time-title.post {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
 #posts {
     padding-left: 2em;
 }
@@ -52,6 +73,16 @@ body {
     max-height: 42em;
     width: auto;
     height: auto;
+}
+
+/* The browser default (normal, around 1.3 with this font) packs CJK lines too
+   tightly to read comfortably. Only the prose gets the looser leading. */
+.blog-post-content {
+    line-height: 1.8;
+}
+
+.blog-post-content pre, .blog-post-content code {
+    line-height: 1.5;
 }
 
 .blog-post-subheader {
@@ -322,4 +353,55 @@ html.dark .blog-post-content pre, html.dark .blog-post-content code {
 html.dark .blog-post-content img, html.dark #cover img {
     /* Take the edge off bright screenshots on a dark page. */
     filter: brightness(0.9);
+}
+
+/* ---- narrow screens ----
+   The desktop layout leans on indentation that costs too much room on a
+   phone, so most of it is dropped and the date column is tightened. */
+
+@media (max-width: 40em) {
+    body {
+        padding: 0 0.8em;
+        /* Stop Safari from inflating text when the phone is turned sideways. */
+        -webkit-text-size-adjust: 100%;
+    }
+
+    #posts {
+        padding-left: 0;
+    }
+
+    /* Same id+class specificity as the desktop rule, so it wins by order. */
+    #date.date-time-title {
+        flex-basis: 6.2em;
+        font-size: 0.9em;
+    }
+
+    .post {
+        padding-left: 0.5em;
+    }
+
+    .blog-post, .entry-list {
+        padding-left: 0;
+    }
+
+    .entry-list time {
+        width: 6.5em;
+    }
+
+    #site-nav a, #theme-toggle {
+        margin: 0 0.4em;
+        /* The row of links needs to be allowed to wrap. */
+        display: inline-block;
+    }
+
+    .post-nav {
+        flex-direction: column;
+        gap: 0.6em;
+    }
+
+    /* Wide tables scroll on their own instead of stretching the page. */
+    .blog-post-content table {
+        display: block;
+        overflow-x: auto;
+    }
 }

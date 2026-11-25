@@ -64,10 +64,10 @@
 </li>
 </ul>
 <p>　　由此可见，原生调度器对于分布式训练的调度存在问题，影响了资源的利用率。而Kubernetes社区提供了一个批调度器kube-batch， 它能够将一个训练任务的多个worker当做一个整体进行调度，只有当任务所有worker的资源都满足，才会将容器在节点上启动。（要不全部，要不全部不，all or none）<br>　　如图所示，kube-batch定义了job和pod group的概念，一个job对应一个pod group，一个pod group里有一个或者多个pod，分别对应一个或多个task。</p>
-<div align=center><img src="../2020/1/kube-batch/1.jpg" alt=""></div>
+<div align=center><img src="../2020/1/kube-batch/1.jpg" alt="" width="461" height="533" loading="lazy" decoding="async"></div>
 　　这解决了上述的问题，避免了任务间的资源死锁，提高了资源的利用率。         
 　　kube-batch还提供了队列的机制，同个队列的任务，会依次运行。不同队列直接可以设置优先级，优先级高的队列中的任务会优先得到调度。队列还可以设置权重，权重高的队列分配到的资源会更多。<h1 id="2.-168176">2.整体框架</h1>
-<div align=center><img src="../2020/1/kube-batch/2.jpg" alt=""></div><p>　　如图所示，kube-batch中有四个模块，分别是Cache、Session、Plugin和Action。<br>　　其中，Cache负责调用API Server的相关接口，维护整个系统内当前资源的分配状态，供调度器查询和计算。Session是调度器对pod/pod group/queue等进行调度时构建的一个对象，一次会话就是一次调度，调度时会从待调度的pod/queue中选择优先级最高的一个进行调度。<br>　　个人理解：调度时所依据的相关算法/规则/策略就是Plugin，调度产生的结果就是各种Action。</p>
+<div align=center><img src="../2020/1/kube-batch/2.jpg" alt="" width="713" height="587" loading="lazy" decoding="async"></div><p>　　如图所示，kube-batch中有四个模块，分别是Cache、Session、Plugin和Action。<br>　　其中，Cache负责调用API Server的相关接口，维护整个系统内当前资源的分配状态，供调度器查询和计算。Session是调度器对pod/pod group/queue等进行调度时构建的一个对象，一次会话就是一次调度，调度时会从待调度的pod/queue中选择优先级最高的一个进行调度。<br>　　个人理解：调度时所依据的相关算法/规则/策略就是Plugin，调度产生的结果就是各种Action。</p>
 <h3 id="2.1-cache">2.1 Cache</h3>
 <p>　　Cache模块封装了对API Server的节点、容器等对象的数据同步逻辑。Kubernetes的数据保存在分布式存储etcd中，所有对数据的查询和操作都通过调用API Server的接口，而非直接操作etcd。在调度时，需要集群中的节点和容器的使用资源和状态等信息。Cache模块通过调用Kubernetes的SDK，通过watch机制监听集群中的节点、容器的状态变化，将信息同步到自己的数据结构中。<br>　　Cache模块还封装了对API server的接口的调用。比如Cache.Bind这个接口，会去调用API Server的Bind接口，将容器绑定到指定的节点上。在kube-batch中只有cache模块需要和API Server交互，其他模块只需要调用Cache模块的接口。</p>
 <h3 id="2.2-session">2.2 Session</h3>

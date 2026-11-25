@@ -174,7 +174,7 @@ struct L2CNode {lpaddr_t cnode;
 				CapRights rightsmask;};
 </code></pre>
 <p>　　capability类型与类型之间是可以相互转换的，但是需要遵循一定的规则，barrelfish规定了一棵类似于树形的结构，来表示合法的<strong>类型转换路径</strong>,见下图：</p>
-<div align=center><img src="../2020/7/barrelfish_capability/retype.png" alt=""></div><p>　　类型转换举例：</p>
+<div align=center><img src="../2020/7/barrelfish_capability/retype.png" alt="" width="944" height="632" loading="lazy" decoding="async"></div><p>　　类型转换举例：</p>
 <p>　　比如最基础的类型是PhysAddr，所有其他类型都从该类型转换而来，因为所有的资源说白了都是一块内存，只不过里面保存的数据的类型不一样。        </p>
 <p>　　PhysAddr可以转换为Ram，可能需要经过一定的虚实映射操作，barrelfish在进行虚实映射时也用到了cap来索引页目录及页表等资源，比如上述的VNode_x86_64_pml4 vnode_x86_64_pml4以及所有其他和这个长得很像的东西，都是指向页表的cap，对应每种页表cap还有映射cap，这里暂不深究，这个属于barrelfish的虚存实现机制了，感兴趣可以看《<a href="http://www.barrelfish.org/publications/gerber-master-vm.pdf》" target="_blank" rel="noopener">http://www.barrelfish.org/publications/gerber-master-vm.pdf》</a> 这篇文章。         </p>
 <p>　　PhysAddr转换为Ram类型后,Ram类型的cap又可以转换为dispatcher、l1_CNode、l2_CNode.....等各种类型的cap。当然，Ram类型的cap也可以转换为自身的ram类型，即上图中每个节点指向自身的路径，当我们需要将一块size较大的ram分割为两块size较小的ram时。</p>

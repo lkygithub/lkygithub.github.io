@@ -64,20 +64,20 @@
     <div class="blog-post-content">
 <p>　　这两天跟着徐徐大佬学了一下爬虫，想用 python 爬一下cfda网站上的<a href="http://mobile.cfda.gov.cn/datasearch/QueryList?tableId=36&amp;searchF=Quick%20Search&amp;pageIndex=1&amp;pageSize=15" target="_blank" rel="noopener">药品数据</a>，徐徐试了**<code>requests</code><strong>和</strong><code>selenium</code>**的办法，
 发现爬到的都是一串神秘字符串，如图，</p>
-<div align=center><img src="../2019/12/PythonCrawler/1.jpg" alt=""></div><p>　　因为浏览器能正常打开，所以猜测是服务器端用了某种压缩/动态渲染，就想着能不能用 <code>Selenium</code> + <code>PhantomJs/ChromeDriver</code> 这种无头浏览器来弄，
+<div align=center><img src="../2019/12/PythonCrawler/1.jpg" alt="" width="1280" height="309" loading="lazy" decoding="async"></div><p>　　因为浏览器能正常打开，所以猜测是服务器端用了某种压缩/动态渲染，就想着能不能用 <code>Selenium</code> + <code>PhantomJs/ChromeDriver</code> 这种无头浏览器来弄，
 结果每次结果都是空的，Google了各种方法，StackOverflow上的办法大多是加命令参数/改程序版本，
 结果好像加了各种命令选项都不行，这是最后的代码，</p>
-<div align=center><img src="../2019/12/PythonCrawler/2.png" alt=""></div><p>　　得到的<code>driver.page_source</code>结果永远都是空的：<br><strong><code>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</code></strong><br>　　用<code>driver.save_screenshot(&#39;1.png&#39;)</code>截图也只能截到空白的图片。<br>　　后来去掉<code>#options.add_argument(&quot;--headless&quot;)</code>,弹出chrome浏览器的时候看了一下它的Cookie，发现比真实浏览器的少了一个名字叫<code>JSESSIONID</code>的Cookie，代码输出一下Cookie：<br><code>print(driver.get_cookies())</code><br>　　发现确实只有后两个Cookie：    </p>
+<div align=center><img src="../2019/12/PythonCrawler/2.png" alt="" width="1920" height="1080" loading="lazy" decoding="async"></div><p>　　得到的<code>driver.page_source</code>结果永远都是空的：<br><strong><code>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</code></strong><br>　　用<code>driver.save_screenshot(&#39;1.png&#39;)</code>截图也只能截到空白的图片。<br>　　后来去掉<code>#options.add_argument(&quot;--headless&quot;)</code>,弹出chrome浏览器的时候看了一下它的Cookie，发现比真实浏览器的少了一个名字叫<code>JSESSIONID</code>的Cookie，代码输出一下Cookie：<br><code>print(driver.get_cookies())</code><br>　　发现确实只有后两个Cookie：    </p>
 <pre><code>    [{&#39;domain&#39;: &#39;mobile.cfda.gov.cn&#39;, &#39;expiry&#39;: 1892368214, &#39;httpOnly&#39;: False, &#39;name&#39;: &#39;tuNQaYE2WCOr80T&#39;, &#39;path&#39;: &#39;/&#39;, &#39;secure&#39;: False, &#39;value&#39;: &#39;44Kn.5S4Qs9FYazHg9cvpAh7RvvkX6CHCFFLnsNw3CWLTJqQ6uRw0fI8bg5vrYGQEX6hJa0J.RsRZXrnLpG9ViGS6qQB.h0ihFdotILVHmKWMi8rTSe4I7l24OjHVvISZagZFyCmw23._.vUSDK3RsDU47zozbhS.mSlLRCcnw4tiTC6vzgime927xft3LdtTnQXjiYoqH.ONQGdKHPdqzeGiwGMEjgoxEebyhgXrJn2tAr5hqtntejwrroOnMyvm77CXd8_V5QkuK5aINNj2DYlMrReJ7uKRLSx3FeepzkKvtT5WFd.hbAsVYU5eqbtb_Mq&#39;},        
     {&#39;domain&#39;: &#39;mobile.cfda.gov.cn&#39;, &#39;expiry&#39;: 1892368213.81084, &#39;httpOnly&#39;: True, &#39;name&#39;: &#39;tuNQaYE2WCOr80S&#39;, &#39;path&#39;: &#39;/&#39;, &#39;secure&#39;: False, &#39;value&#39;: &#39;hPNhBHTwoBvnsQ5znkw4QCEmXQJ7.5vsBR2r8eDpRyWyiYBaMsjvKkr75trGzXPe&#39;}]
 </code></pre>
 <p><br>　　这是真实浏览器的Cookie：</p>
-<div align=center><img src="../2019/12/PythonCrawler/3.png" alt=""></div><p>　　可能就是因为这个原因打不开浏览器。<br>　　后来试着去群里问了一下，感谢@姬大神还有群里的@耿欣大佬，他俩告诉我可以用**<a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a>**发请求，然后生成带<code>Header</code>的代码，如图，Postman能显示所有Cookie和Header信息,可以看到Header信息里，服务端用了<code>gzip</code>还有<code>gb2312</code>的编码格式(图3)：      </p>
-<div align=center><img src="../2019/12/PythonCrawler/4.png" alt=""></div>
-<div align=center><img src="../2019/12/PythonCrawler/5.png" alt=""></div>
-<div align=center><img src="../2019/12/PythonCrawler/6.png" alt=""></div><p>　　点击右上角的<strong>Code</strong>按钮可以生成各种版本的请求代码，生成之前可以设置一下 <code>Include Temporary Headers</code> 选项让生成的代码含有现在的**<code>Headers</code>**</p>
-<div align=center><img src="../2019/12/PythonCrawler/7.png" alt=""></div><p>　　这是生成后的各个语言的请求代码：</p>
-<div align=center><img src="../2019/12/PythonCrawler/8.png" alt=""></div><h3 id="go-a9fb1c">Go语言代码：</h3>
+<div align=center><img src="../2019/12/PythonCrawler/3.png" alt="" width="1047" height="774" loading="lazy" decoding="async"></div><p>　　可能就是因为这个原因打不开浏览器。<br>　　后来试着去群里问了一下，感谢@姬大神还有群里的@耿欣大佬，他俩告诉我可以用**<a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a>**发请求，然后生成带<code>Header</code>的代码，如图，Postman能显示所有Cookie和Header信息,可以看到Header信息里，服务端用了<code>gzip</code>还有<code>gb2312</code>的编码格式(图3)：      </p>
+<div align=center><img src="../2019/12/PythonCrawler/4.png" alt="" width="1920" height="1080" loading="lazy" decoding="async"></div>
+<div align=center><img src="../2019/12/PythonCrawler/5.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>
+<div align=center><img src="../2019/12/PythonCrawler/6.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div><p>　　点击右上角的<strong>Code</strong>按钮可以生成各种版本的请求代码，生成之前可以设置一下 <code>Include Temporary Headers</code> 选项让生成的代码含有现在的**<code>Headers</code>**</p>
+<div align=center><img src="../2019/12/PythonCrawler/7.png" alt="" width="1058" height="645" loading="lazy" decoding="async"></div><p>　　这是生成后的各个语言的请求代码：</p>
+<div align=center><img src="../2019/12/PythonCrawler/8.png" alt="" width="1057" height="643" loading="lazy" decoding="async"></div><h3 id="go-a9fb1c">Go语言代码：</h3>
 <pre><code class="language-go">package main
 
 import (
@@ -115,7 +115,7 @@ func main() {
 }
 </code></pre>
 <p>Go语言版本的结果：</p>
-<div align=center><img src="../2019/12/PythonCrawler/9.png" alt=""></div><h3 id="python-requests-33a687">Python requests代码：</h3>
+<div align=center><img src="../2019/12/PythonCrawler/9.png" alt="" width="1000" height="773" loading="lazy" decoding="async"></div><h3 id="python-requests-33a687">Python requests代码：</h3>
 <pre><code class="language-python">import requests
 
 if __name__ == &quot;__main__&quot;:
@@ -136,9 +136,9 @@ if __name__ == &quot;__main__&quot;:
     print(response.text)
 </code></pre>
 <p>Python运行结果：</p>
-<div align=center><img src="../2019/12/PythonCrawler/10.png" alt=""></div><h3 id="h-e56671">徐徐的办法</h3>
+<div align=center><img src="../2019/12/PythonCrawler/10.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div><h3 id="h-e56671">徐徐的办法</h3>
 <p>　　徐徐用Selenium模拟鼠标和键盘，右键然后点击A保存，把html代码保存到本地，如图：</p>
-<div align=center><img src="../2019/12/PythonCrawler/11.jpg" alt=""></div><h3 id="update">Update</h3>
+<div align=center><img src="../2019/12/PythonCrawler/11.jpg" alt="" width="946" height="465" loading="lazy" decoding="async"></div><h3 id="update">Update</h3>
 <p>　　晚上旺财又告诉我他发现Firefox driver的无头模式可以用。。。(为什么Phantom和Chrome就不行呢),贴代码：</p>
 <pre><code class="language-python">    from selenium import webdriver
     import time

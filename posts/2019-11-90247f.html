@@ -67,7 +67,7 @@
 然后直接运行    </p>
 <p><code>python weibo.py</code>   </p>
 <p>这里把时间设置成1900-01-01，爬了共青团中央至2019-11-23的所有原创微博。<br>这是爬好的数据，一共有两万多条数据。   </p>
-<div align=center><img src="../2019/11/WeiboCrawler/1.png" alt=""></div>   <h2 id="h-63b682">统计高频词</h2>
+<div align=center><img src="../2019/11/WeiboCrawler/1.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>   <h2 id="h-63b682">统计高频词</h2>
 <p>使用jieba分词并统计高频词频率<br>先把微博内容提取出来   </p>
 <pre><code class="language-python">    import csv
     with open(&#39;3937348351.csv&#39;,&#39;r&#39; , encoding=&#39;utf-8&#39;) as csvfile:
@@ -88,7 +88,7 @@
     newfile.close()
 </code></pre>
 <p>高频词个数输入100，就可以得到共青团中央前100的高频词了，这是结果：   </p>
-<div align=center><img src="../2019/11/WeiboCrawler/2.png" alt=""></div><h2 id="h-909d1d">生成词云</h2>
+<div align=center><img src="../2019/11/WeiboCrawler/2.png" alt="" width="654" height="438" loading="lazy" decoding="async"></div><h2 id="h-909d1d">生成词云</h2>
 <p>得到高频词后可以使用wordcloud生成词云：</p>
 <pre><code class="language-python">    from wordcloud import WordCloud
     wc = WordCloud(
@@ -104,8 +104,8 @@
     wc.to_file(&quot;pic.png&quot;)
 </code></pre>
 <p>这是得到的结果：</p>
-<div align=center><img src="../2019/11/WeiboCrawler/3.png" alt=""></div><p>可以修改<code>scale</code>、<code>width</code>等参数生成不一样的图。这是结果：</p>
-<div align=center><img src="../2019/11/WeiboCrawler/4.jpg" alt=""></div>
+<div align=center><img src="../2019/11/WeiboCrawler/3.png" alt="" width="1600" height="800" loading="lazy" decoding="async"></div><p>可以修改<code>scale</code>、<code>width</code>等参数生成不一样的图。这是结果：</p>
+<div align=center><img src="../2019/11/WeiboCrawler/4.jpg" alt="" width="1600" height="160" loading="lazy" decoding="async"></div>
     </div>
     <nav class="post-nav">
         <span><a href="2019-11-barrelfish-overview.html">← Barrelfish操作系统 (1)系统介绍</a></span>
