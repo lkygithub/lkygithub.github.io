@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>工作中常用Git操作总结</title>
         <meta name="description" content="基础操作 更新当前分支 取回其他分支的更新 基于当前分支创建新分支并切换到新分支 直接切换到某个本地分支 把改动加入缓冲区 提交时建议使用commitizen插件，可以生成规范化的commit message 修补提交 添加补丁/修改commit message 生成patch/…">

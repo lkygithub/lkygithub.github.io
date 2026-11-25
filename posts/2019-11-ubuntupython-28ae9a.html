@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>Ubuntu16.04升级Python3.7</title>
         <meta name="description" content="Ubuntu16.04默认带的Python是2.7.12和3.5，升级到Python3.7的步骤如下： 第一步，增加ppa仓库: $sudo add apt repository ppa:jonathonf/python 3.7 第二步，升级apt索引，更新python: $su…">

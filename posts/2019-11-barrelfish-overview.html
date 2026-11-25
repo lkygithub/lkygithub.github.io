@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>Barrelfish操作系统 (1)系统介绍</title>
         <meta name="description" content="网上貌似没有Barrelfish的中文文档，正好最近在写文献综述，所以这里整理一下，为以后想要研究这个系统的童鞋省一点时间。 简介 Barrelfish是微软剑桥研究院和苏黎世理工大学提出的一个面向异构、众核体系的操作系统，其旨在解决异构、众核体系结构上操作系统的可扩展性问题。系…">

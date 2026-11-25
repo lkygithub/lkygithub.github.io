@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>Hello Again</title>
         <meta name="description" content="第三次搭博客了，从来没有养成写博客的习惯 今天看了小徐的博客很受震撼，决心向小徐学习😘，开始认真写博客，记录一下平时踩的坑和心路历程 博客这次用的是Hugo，先用apt get安装了一下发现版本太老了，好多主题都用不了，发布的时候会报 function not found 的错…">

@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>[转载]代码注释中的NOTE/XXX/HACK/FIXME/BUG/TODO</title>
         <meta name="description" content="看到一篇博客 解释代码注释中的各种tag解释得很有意思。 + NOTE: Description of how the code works when it isn’t self evident 汝等凡人 + XXX: Warning about possible pitfall…">

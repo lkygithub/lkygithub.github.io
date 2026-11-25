@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>Go语言学习资料汇总</title>
         <meta name="description" content="GO语言学习过程中遇到的一些比较好的资料： 博文 First class function in Go 讲了go语言中函数如何作为一等公民 总结了才知道，原来channel有这么多用法！ 讲channel定义和用法，有一些笔误，参考原文评论区 理解 Go interface 的 …">

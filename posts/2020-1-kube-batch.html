@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>Kube-Batch学习笔记</title>
         <meta name="description" content="1.概述 kube batch是k8s下面向高性能计算领域的批调度器。 k8s原生的调度器会将需要启动的容器，放到一个优先队列（Priority Queue）里面，每次从队列里面取出一个容器，将其调度到一个节点上。 AI分布式训练需要所有worker都启动后，训练才能够开始进行。…">

@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>Python爬虫踩坑</title>
         <meta name="description" content="这两天跟着徐徐大佬学了一下爬虫，想用 python 爬一下cfda网站上的药品数据，徐徐试了 requests 和 selenium 的办法， 发现爬到的都是一串神秘字符串，如图， 因为浏览器能正常打开，所以猜测是服务器端用了某种压缩/动态渲染，就想着能不能用 Selenium …">

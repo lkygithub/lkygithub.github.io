@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>Kubernetes学习笔记</title>
         <meta name="description" content="背景 应用程序发展趋势： 单体应用 微服务 产生需求： 微服务扩容、部署、软件环境需求差异、自动监控（运维） Linux容器技术 两种隔离机制： + Linux命名空间 使每个进程只能看到自己的系统视图（文件、进程、网络接口、主机名等） + Linux控制组 cgroups 限制…">

@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>Hello from 2026</title>
         <meta name="description" content="腾讯云的机器到期了，这回没再续，用agent帮忙搬去了 GitHub Pages。 很多图片以为找不到了，是agent在fork的elephant主题仓库的static目录里发现了。感谢AI。 后来又让agent写脚本把 md 渲染成 html，顺手配了自动发布，以后写完 pus…">

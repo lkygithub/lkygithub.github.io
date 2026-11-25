@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>MIT 6.824 Lab1实现</title>
         <meta name="description" content="本文实现MIT的分布式系统课程（6.824）的配套实验一。 本实验将用go语言实现一个MapReduce库，MapReduce的概念可以参考Google的这篇论文。 首先拉取实验代码的仓库 git clone git://g.csail.mit.edu/6.824 golabs …">

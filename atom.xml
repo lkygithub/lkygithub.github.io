@@ -1,0 +1,4457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>日日是好日-我的生活记录</title>
+    <link>https://ririshihaori.com/</link>
+    <description>一个记录技术、生活与思考的个人博客</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 20 Nov 2026 13:30:00 GMT</lastBuildDate>
+    <atom:link href="https://ririshihaori.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+        <title>Hello from 2026</title>
+        <link>https://ririshihaori.com/posts/2026-11-hello_from_2026.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2026-11-hello_from_2026.html</guid>
+        <pubDate>Fri, 20 Nov 2026 13:30:00 GMT</pubDate>
+        <category>博客</category>
+        <category>技术</category>
+        <category>github-pages</category>
+        <category>ai</category>
+        <description><![CDATA[<p>腾讯云的机器到期了，这回没再续，用agent帮忙搬去了 GitHub Pages。</p>
+<p>很多图片以为找不到了，是agent在fork的elephant主题仓库的static目录里发现了。感谢AI。</p>
+<p>后来又让agent写脚本把 md 渲染成 html，顺手配了自动发布，以后写完 push 一下就行。然后又陆陆续续加了很多功能：评论、深色模式、标签页、搜索框，还有订阅、长文目录和相关文章。。。</p>
+<p><a href="/posts/2019-11-hello.html">N年前</a>我还在一个个试 <code>--bind</code> 参数，今天一下午就把荒废好几年的站点捞了回来。再次感谢AI。</p>
+<p>想起14年上熊璋和王静远老师的《计算机导论与伦理学》，布置的小论文作业，主题大概是“畅想一种未来的程序”。</p>
+<p>苦于当时的C语言作业，我幻想“未来会有一种自动写程序的程序，把代码逻辑，输入输出格式描述给它，由这个程序自动在codeblocks里生成可运行且通过所有case的程序”。</p>
+<div align=middle><img src="https://ririshihaori.com/2026/11/hello2026/usaco.jpg" alt="" width="720" height="680" loading="lazy" decoding="async"></div><p>几年之间，幻想变成了日常，AI浪潮继续向前，实在令人感慨。</p>
+<div align=middle><img src="https://ririshihaori.com/2026/11/hello2026/yocsef.jpg" alt="" width="866" height="1218" loading="lazy" decoding="async"></div><p>欢迎来到 AI 时代</p>
+<p>也欢迎回来，日日是好日</p>
+<p>（本篇也是 agent 发布）</p>
+]]></description>
+    </item>
+    <item>
+        <title>Time does not heal all wounds.It merely softens the pain and blurs the memories.</title>
+        <link>https://ririshihaori.com/posts/2021-8-movies.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2021-8-movies.html</guid>
+        <pubDate>Sun, 08 Aug 2021 12:00:22 GMT</pubDate>
+        <category>电影</category>
+        <category>生活</category>
+        <description><![CDATA[<p>　　最近喜欢上了去电影资料馆看电影。<br>　　契机是上个礼拜，yg拿着三张电影资料馆的电影票问我要不要一起。yg是忠实的电影爱好者，据说他已经在小西天看过快一百次电影了。前几周的周末他在电影资料馆一天看了四部电影，这次秀秀不去，他只能临时找人。<br>　　我们从下午一点半开始，一直看到晚上十点，三部电影分别是《风吹麦浪》《巴贝特之宴》和《甜蜜的生活》。真的很好玩！头一次把一天的时间都泡在电影院里，但是完全不觉得辛苦，因为三部电影都各有各的精彩。                 </p>
+<div align=middle><img src="https://ririshihaori.com/2021/8/movies/The-Wind-That-Shakes-The-Barley.jpg" alt="" width="1024" height="576" loading="lazy" decoding="async"></div><p>　　《风吹麦浪》是基里安·墨菲主演的，之前看过他的一个英剧《浴血黑帮》，所以一下就认出他了。这里跑题说一下那个英剧，不同于《教父》《美国往事》《赌城风云》中的意大利黑手党，也不同于《毒枭》系列中的哥伦比亚 墨西哥毒枭们，《浴血黑帮》中的剃刀党总给我一种小打小闹街头混混的感觉，甚至不如部分《古惑仔》系列。<br>　　可能是英剧犯罪片的本身的特点，也可能是我只看了第一季，它的题材因为时间太早比较受限。不过男主角基里安·墨菲的颜值和演技还是在线的，在电影中的表演也很好。电影是关于爱尔兰内战的，题材稍显老套，但还是很打动人。这个电影里还有《权力的游戏》里面的洋葱骑士。感觉英国的演员就那么几个hhh。              </p>
+<div align=middle><img src="https://ririshihaori.com/2021/8/movies/Babettes-gaestebud.jpg" alt="" width="1318" height="1080" loading="lazy" decoding="async"></div><p>　　《巴贝特之宴》是这三部里面我最喜欢的一部，整个电影节奏比较慢，前半段差点让我睡着，但是随着剧情的展开，一切都从糊里糊涂慢慢变得清晰，最后欧亨利式的结尾既出人意料，又仿佛在情理之中。安利！                  </p>
+<div align=middle><img src="https://ririshihaori.com/2021/8/movies/La-dolce-vita.jpg" alt="" width="1600" height="960" loading="lazy" decoding="async"></div><p>　　《甜蜜的生活》是著名导演费里尼的作品，时长将近三个小时，第一次看这种类型的电影，很多象征性的表达和内涵都没法完全领会到，中间一度昏昏欲睡，真是尴尬。不过片中马切洛的生活倒让我想起前不久一段酒精摄入过量的日子，决心以此为戒，以后不再喝多了。<br>　　可能是因为一天之内看了三部电影，这一天让我感觉格外漫长，也格外充实。好的电影能让心灵得到充分的休息。<br>　　礼拜五晚上我和yg又去资料馆，看了一部《安东尼娅家族》，这部电影同样特别好，我在豆瓣上给它打了5星。<br>　　片中的安东尼娅时时让我想起我的奶奶，同样是一位坚强的女性，在父亲和他的兄弟们还小的时候，几乎是一个人撑起了整个家。电影结束时，观众们都静静地坐在座位上，迟迟不愿离开。<br>　　这篇随笔的题目是电影中的一句旁白，我觉得说得很好，索性拿来当做题目了。如果要选出今年看过的最棒的一部电影，一定是这一部了。                    </p>
+<div align=middle><img src="https://ririshihaori.com/2021/8/movies/Antonia.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async"></div>
+　　马上电影节又要到了，19年的电影节看了《日日是好日》，20年因为疫情不在北京，希望今年的电影节能看到更多的好电影~🎬
+]]></description>
+    </item>
+    <item>
+        <title>第一次提交golangci-lint报错</title>
+        <link>https://ririshihaori.com/posts/2021-4-go_lint_errors.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2021-4-go_lint_errors.html</guid>
+        <pubDate>Wed, 28 Apr 2021 03:26:26 GMT</pubDate>
+        <category>Go</category>
+        <category>技术</category>
+        <description><![CDATA[<p>　　第一次开发的分支代码直接提交到远程后，触发了gitlab的pipeline，先是报了lint的几个错误，
+修改提交之后又报了unittest的错误。</br>
+　　之后在把本地分支push到远程分支之前可以先本地<code>golangci-lint run ./... </code>过lint，再<code>go test -v -cover ./cmd/...</code>过单元测试再提交。</p>
+<pre><code>$ golangci-lint run ./...
+cmd/server/handler.go:57:21: G601: Implicit memory aliasing in for loop. (gosec)
+                        process(&amp;item)
+                                ^
+cmd/server/handler.go:88:21: G601: Implicit memory aliasing in for loop. (gosec)
+                        cache.Put(key, &amp;record)
+                                       ^
+</code></pre>
+<p>　　这里报的lint的错误是<code>Implicit memory aliasing in for loop</code>，刚开始以为是在for循环里的函数调用传地址会报错，后来根据<a href="https://stackoverflow.com/questions/62446118/implicit-memory-aliasing-in-for-loop" target="_blank" rel="noopener">https://stackoverflow.com/questions/62446118/implicit-memory-aliasing-in-for-loop</a> 里的说法，发现是因为for _, x range y的写法,循环里如果有传地址的操作，其实传的一直是x的地址，据说多个协程的场景下可能会有风险。</br>
+　　修改的方式很简单，把for循环的写法改成使用index遍历的方式即可，或者把函数实现从传指针改成传值的方式也可以。</p>
+]]></description>
+    </item>
+    <item>
+        <title>K8S In Action读书笔记</title>
+        <link>https://ririshihaori.com/posts/2021-4-k8s_in_action.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2021-4-k8s_in_action.html</guid>
+        <pubDate>Wed, 21 Apr 2021 02:43:56 GMT</pubDate>
+        <category>K8S</category>
+        <category>技术</category>
+        <description><![CDATA[<p>[^-^]:
+	# k8s in action读书笔记 </p>
+<div align=right><img src="https://ririshihaori.com/2021/4/k8s_in_action/1.png" alt="" width="1600" height="1294" loading="lazy" decoding="async"></div>]]></description>
+    </item>
+    <item>
+        <title>Go语言学习资料汇总</title>
+        <link>https://ririshihaori.com/posts/2021-4-go_learning.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2021-4-go_learning.html</guid>
+        <pubDate>Fri, 02 Apr 2021 06:37:10 GMT</pubDate>
+        <category>Go</category>
+        <category>技术</category>
+        <description><![CDATA[<p>　　GO语言学习过程中遇到的一些比较好的资料：</p>
+<h3 id="h-528819">博文</h3>
+<ul>
+<li><p><a href="https://lessisbetter.site/2019/06/09/golang-first-class-function" target="_blank" rel="noopener">First class function in Go</a></p>
+<ul>
+<li>讲了go语言中函数如何作为一等公民</li>
+</ul>
+</li>
+<li><p><a href="https://segmentfault.com/a/1190000017958702" target="_blank" rel="noopener">总结了才知道，原来channel有这么多用法！</a></p>
+<ul>
+<li>讲channel定义和用法，有一些笔误，参考原文评论区</li>
+</ul>
+</li>
+<li><p><a href="https://sanyuesha.com/2017/07/22/how-to-understand-go-interface/" target="_blank" rel="noopener">理解 Go interface 的 5 个关键点</a></p>
+<ul>
+<li>有一点难，例子有点抽象</li>
+</ul>
+</li>
+<li><p><a href="https://studygolang.com/articles/10167" target="_blank" rel="noopener">golang中defer的使用规则</a></p>
+</li>
+</ul>
+<h3 id="h-7590dc">学习站点</h3>
+<ul>
+<li><p><a href="https://gobyexample.com/" target="_blank" rel="noopener">Go by Example</a>（很短 有例子比较好理解）</p>
+</li>
+<li><p><a href="http://go-database-sql.org/" target="_blank" rel="noopener">Go database/sql tutorial</a></p>
+</li>
+<li><p><a href="https://books.studygolang.com/gopl-zh/" target="_blank" rel="noopener">Go 语言圣经</a>（有比较具体的实例）</p>
+</li>
+</ul>
+<h3 id="h-72191b">书籍</h3>
+<ul>
+<li><p><a href="https://github.com/tiancaiamao/go-internals" target="_blank" rel="noopener">《深入解析Go》</a></p>
+</li>
+<li><p><a href="https://github.com/astaxie/Go-in-Action" target="_blank" rel="noopener">《Go实战开发》</a></p>
+</li>
+<li><p><a href="https://github.com/Unknwon/the-way-to-go_ZH_CN" target="_blank" rel="noopener">《Go入门指南》</a></p>
+</li>
+<li><p><a href="https://github.com/polaris1119/The-Golang-Standard-Library-by-Example" target="_blank" rel="noopener">《Go语言标准库》</a></p>
+</li>
+<li><p><a href="https://github.com/astaxie/build-web-application-with-golang" target="_blank" rel="noopener">《Go Web 编程》</a></p>
+</li>
+<li><p><a href="https://github.com/achun/Go-Blog-In-Action" target="_blank" rel="noopener">《Go语言博客实践》</a></p>
+</li>
+<li><p><a href="https://github.com/qyuhen/book" target="_blank" rel="noopener">《Go语言学习笔记》</a></p>
+</li>
+</ul>
+<h3 id="h-8b3607">翻译</h3>
+<ul>
+<li><p><a href="https://golang.org/doc/effective_go.html" target="_blank" rel="noopener">Effective Go</a> 英文版</p>
+</li>
+<li><p><a href="https://github.com/Unknwon/the-way-to-go_ZH_CN" target="_blank" rel="noopener">The Way to Go</a> 中文版</p>
+</li>
+<li><p><a href="https://github.com/miekg/gobook" target="_blank" rel="noopener">《Learning Go》</a>英文版:=&gt;<a href="https://github.com/mikespook/Learning-Go-zh-cn" target="_blank" rel="noopener">《Learning Go》</a> 中文版</p>
+</li>
+</ul>
+<h3 id="h-b7824d">教程</h3>
+<ul>
+<li><p><a href="https://github.com/Unknwon/go-fundamental-programming" target="_blank" rel="noopener">《Go编程基础》</a></p>
+</li>
+<li><p><a href="https://github.com/Unknwon/go-web-foundation" target="_blank" rel="noopener">《Go Web基础》</a></p>
+</li>
+<li><p><a href="https://github.com/Unknwon/go-rock-libraries-showcases" target="_blank" rel="noopener">《Go名库讲解》</a></p>
+</li>
+<li><p><a href="https://github.com/hyper-carrot/go_command_tutorial" target="_blank" rel="noopener">Go 命令教程</a></p>
+</li>
+</ul>
+]]></description>
+    </item>
+    <item>
+        <title>K8s_informer</title>
+        <link>https://ririshihaori.com/posts/2021-4-k8s_informer.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2021-4-k8s_informer.html</guid>
+        <pubDate>Thu, 01 Apr 2021 02:43:56 GMT</pubDate>
+        <category>K8S</category>
+        <category>技术</category>
+        <description><![CDATA[<p><a href="https://cloudnative.to/blog/client-go-informer-source-code/" target="_blank" rel="noopener">https://cloudnative.to/blog/client-go-informer-source-code/</a></p>
+]]></description>
+    </item>
+    <item>
+        <title>工作中常用Git操作总结</title>
+        <link>https://ririshihaori.com/posts/2021-4-git_cmds.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2021-4-git_cmds.html</guid>
+        <pubDate>Thu, 01 Apr 2021 02:42:24 GMT</pubDate>
+        <category>Git</category>
+        <category>技术</category>
+        <description><![CDATA[<h3 id="h-1a249a">基础操作</h3>
+<ul>
+<li>更新当前分支</li>
+</ul>
+<pre><code class="language-git">    git pull
+</code></pre>
+<ul>
+<li>取回其他分支的更新</li>
+</ul>
+<pre><code class="language-git">    git fetch
+    git fetch xxx
+</code></pre>
+<ul>
+<li>基于当前分支创建新分支并切换到新分支</li>
+</ul>
+<pre><code class="language-git">    git co -b xxx
+</code></pre>
+<ul>
+<li>直接切换到某个本地分支</li>
+</ul>
+<pre><code class="language-git">    git co xxx
+</code></pre>
+<ul>
+<li>把改动加入缓冲区</li>
+</ul>
+<pre><code class="language-git">    git add xxx
+    git add . 
+</code></pre>
+<ul>
+<li>提交时建议使用commitizen插件，可以生成规范化的commit message</li>
+</ul>
+<pre><code class="language-git">    git cz
+    git commit
+    git commit -m &quot;xxx&quot;
+</code></pre>
+<ul>
+<li>修补提交(添加补丁/修改commit message)</li>
+</ul>
+<pre><code class="language-git">    git commit --amend
+</code></pre>
+<ul>
+<li><p>生成patch/打patch</p>
+<ul>
+<li><p>未commit的改动</p>
+<pre><code class="language-git">git format-patch 【commit sha1 id】 -1                     //某次提交
+git format-patch 【commit sha1 id】 -n                  // 某次提交含之前几次提交
+git format-patch 【commit sha1 id】..【commit sha1 id】  // 某两次提交之间的所有patch
+
+git diff  【commit sha1 id】 【commit sha1 id】 &gt;  【diff文件名】   // 两次提交之间差异
+
+
+git apply patch
+git apply --stat newpatch.patch
+git apply --check newpatch.patch
+</code></pre>
+</li>
+<li><p>已经commit的改动，</p>
+<p>  先git log 查看commit ID, 记录你想要打的补丁的ID</p>
+<pre><code class="language-git">git diff xxxx   xxxx  &gt; patch
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>从缓冲区删除不需要的文件（git add了不需要提交的东西）</p>
+</li>
+</ul>
+<pre><code class="language-git">    git rm --cached 文件路径
+</code></pre>
+<ul>
+<li>多个feature修改代码的同一部分时，使用git rebase使一个分支基于另一个分支进行改动</li>
+</ul>
+<pre><code class="language-git">    git rebase &lt;target-branch-name&gt;
+</code></pre>
+<pre><code>原理：rebase命令会把当前分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到&quot;.git/rebase&quot;目录中),然后把当前分支更新为最新的target分支，最后把保存的这些补丁应用到当前分支上。
+</code></pre>
+<ul>
+<li>本地分支xxx推送到远端分支yyy</li>
+</ul>
+<pre><code class="language-git">    git push origin xxx:yyy
+</code></pre>
+<ul>
+<li><p>本地分支退回到之前某个commit的状态</p>
+<ul>
+<li>保存改动</li>
+</ul>
+<pre><code class="language-git">git reset --soft [commit sha1 id]
+git reset --mixed [commit sha1 id]
+</code></pre>
+<ul>
+<li>不保存改动（一般需要提前用patch或者stash备份下）</li>
+</ul>
+<pre><code class="language-git">git reset --hard 【commit sha1 id】
+</code></pre>
+</li>
+<li><p>比较两个分支的代码差异</p>
+<pre><code>git diff br1 br2
+git diff br1 br2 --stat
+git diff br1 br2 /path/to/file
+</code></pre>
+</li>
+</ul>
+<h3 id="h-4218bc">骚操作</h3>
+<ul>
+<li>后悔药：退回到某个本地命令之前的状态</li>
+</ul>
+<pre><code class="language-git">    git reflog show
+    复制下之前某个命令的HEAD码
+    git reset
+</code></pre>
+]]></description>
+    </item>
+    <item>
+        <title>2020秋招提前上岸啦！</title>
+        <link>https://ririshihaori.com/posts/2020-8-donggeniubi.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2020-8-donggeniubi.html</guid>
+        <pubDate>Sat, 01 Aug 2020 16:43:06 GMT</pubDate>
+        <category>面试</category>
+        <category>生活</category>
+        <description><![CDATA[<p>　　因为拿到了京东的提前批offer，2020秋招提前上岸啦~~<br>　　本来还想继续刷题准备，再面一面华为阿里这些，争取多拿几个offer的，但是东哥给的实在是太多了😆</p>
+<div align=center><img src="https://ririshihaori.com/2020/8/donggeniubi/1.jpg" alt="" width="522" height="801" loading="lazy" decoding="async"></div><p>　　感谢东哥，感谢室友们，感谢一起打卡刷题的yry同学，感谢leetcode和牛客网，感谢陈逊师兄和燕子师兄，感谢姜老师，感谢曹总的和牛火锅和海哥的红西凤。</p>
+<p>　　今年因为疫情的关系一直在家，从三四月份就开始投实习，但是因为准备不充分的关系，最开始几乎都是一面挂。随着后来面得原来越多，尤其是被腾讯内部各种转岗各种面，也对面试的基本套路有了一个了解，加上寝室群里大家一直在交流，所以到后来也就慢慢有经验了，在这里分享下自己的经历和总结的经验。</p>
+<p>　　技术面试（非算法岗）基本上就是自我介绍+项目介绍+计算机基础知识+现场coding，所以一个经验就是可以提前按照这几个部分去准备。<br>　　自我介绍可以突出一下自己的优点，给面试官留一个好印象。项目介绍都是对着简历说，所以要提前准备好自己的简历。简历一定要详略得当，突出项目，或者突出自己的成绩、奖项等优点。但不要太夸张，“精通C++”“代码能力优秀”这种还是要谨慎😰，最好可以找师兄或者比较专业的朋友帮着修改一下简历。不要吹牛，写自己不会或者不熟的东西，同理面试的时候也不要提不熟的东西（我有次提到了最近在学go语言，然后被问到过go routine是怎么实现的，然后场面就失去控制了😂）。</p>
+<p>　　关于面试中各种具体知识点，可以去参考同寝大佬<a href="http://blog.wangcaimeng.top/archives/page/2/" target="_blank" rel="noopener">旺财的博客</a>,他是算法岗，所以除了基础知识还有机器学习相关的要点。像排序算法（时空复杂度、是否稳定）、前序中序后序dfsbfs、红黑树哈希表，这些最基础最简单的数据结构和算法很爱考，还有就是操作系统（虚存机制、fork exec 、程序编译链接装载执行过程、elf、section segment区别（顺便推荐《链接装载与库》那本书）、进程地址空间布局、进程线程比较和原理、线程和协程区别、IPC同步互斥）、数据库（Mysql、Redis、索引）、网络（http、https、tcp三次握手四次挥手状态转移、tcp慢开始拥塞避免快重传快恢复、udp、io多路复用，ping命令背后发生了什么）、编译原理（x86汇编指令,函数调用过程esp ebp的操作、词法分析语法分析语义分析IR生成及优化代码生成、llvm pass、常见的优化手段），java/C++/go相关（我是C++，多态、virtual关键字、虚函数虚表指针、菱形继承、const和constexpr都问到过）,计算机组成原理（大小端）几乎不考，但也可以准备下，还有就是那种问题，几亿个数字，有限的内存，让你排序或者找出出现次数最多的。此外，聊项目的过程中，如果面试官刚好对你的项目所涉及的领域比较了解，也会深入地问一些问题，有技术问题，也有项目实现中你的作用和你的收获等等。之前面华为2012的编译器时那个面试官就对调试信息比较熟悉，问到了DWARF里面各种不同的section的作用以及gdb的实现原理。</p>
+<p>　　还有一些比较笼统的经验，首先就是<strong>一定要多面</strong>，尤其是平时和陌生人交流有困难或者答辩/作报告时容易紧张的同学，只有多面才能克服这一点，第二个就是面试的时候要自信，不会也没关系，可以<del>现场直编</del>尽量说说自己的理解，或者虽然这个不会但是我会什么什么（一定是相关的），或者虽然我不知道它是怎么实现的，但是如果让我实现我会怎么做。总之就是不要轻易气馁和放弃，记得smartx的二面，面试官给我说，虽然答得磕磕绊绊，但是在他的提醒下总算能说个差不多，看在我不屈不挠的精神上还是给过了。。🌚</p>
+<p>　　最后就是技术面几乎必考的coding环节了，coding这里大部分都是给一个算法题，少数实习招聘可能会给你一个工作中实际的小问题让你解决(比如之前面腾讯给了一个日志处理的任务，要求写一个程序把日志里的有效信息提取出来，主要考正则和字符串处理)。如果是ACM大佬就算了，普通人一定多刷题，刷的多了自然就会了，推荐leetcode和牛客网混合刷，我是主要在leetcode上刷，面试前再牛客上模拟一下，因为笔试和部分面试都是在牛客上，而且牛客需要自己实现输入输出，所以可以在牛客上练习一下输入输出。比如C++就是iostream和stringstream基本够用了。每天刷三道，每日一题再随便roll两道，或者按照之前面试/笔试暴露出的漏洞专门的专题训练一下。坚持几个月就有效果了。</p>
+<p>　　还有一个经验就是，感觉面试中出的题一般不会太难，二分搜索、双指针、dfs bfs 加回溯、或者简单的dp基本顶天了（除了头条，头条就离谱），反而是大厂机试（阿里、pdd）这些会出一些比较难的，dp必考，再加状态压缩并查集前缀和各种技巧，几乎都是leetcode里的hard了，所以能内推还是尽量内推吧，机试真的容易让人自闭，做了半天结果超时一半的例子就很痛苦。如果leetcode里的hard都能得心应手，那么面试时候出的题几乎都可以解决了。  </p>
+<p>　　除了技术面，就是主管面和hr面了，大概感觉就是，主管也会问一些技术相关的，但更多的是通过聊天考察性格和三观方面的东西，也会问到你对未来的规划，或者接受不接受xxxx诸如此类的问题，hr面就比较偏重未来的规划，喜欢的城市，感兴趣的领域，以及手上目前有几个offer，分别给多少钱等等。</p>
+<p>　　最后记录下找实习+秋招目前的战绩。后面可能再面下商汤阿里快手大疆，争取拿到更大的package！秋招冲冲冲！</p>
+<div align=center><img src="https://ririshihaori.com/2020/8/donggeniubi/2.png" alt="" width="460" height="552" loading="lazy" decoding="async"></div>
+]]></description>
+    </item>
+    <item>
+        <title>Barrelfish操作系统(2) capability系统实现代码分析</title>
+        <link>https://ririshihaori.com/posts/2020-7-barrelfish_capabilities.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2020-7-barrelfish_capabilities.html</guid>
+        <pubDate>Sat, 11 Jul 2020 03:22:15 GMT</pubDate>
+        <category>操作系统</category>
+        <category>技术</category>
+        <description><![CDATA[<h1 id="1capability-20b7c8">1、Capability系统设计实现概述</h1>
+<p>　　一个capability其实就是一个指针，但又是指针的一个超集，一个capability往往含有两个成员，一个是指向某块内存的地址addr，另一个是权限rights，权限用以说明某进程可以对 <strong>通过该capability寻址得到的内存</strong> 进行哪种操作（如只读、读写、只写）。   </p>
+<p>　　因此，可以把capability理解为一种<strong>带有权限的指针</strong> ，我在后文中提到“capability”时，既有可能是指保存该“capability”本身的那块内存，也有可能是指该“capability”所指向的那块内存。大家需要根据语境自行判断。举一个例子，比如后文提到的“l1_CNode用来存储l2_CNode”，这句话中的“l1_CNode”就是指类型为l1_CNode类型的capability所指向的某一段内存，而这句话中的“l2_CNode”是指保存l2_CNode类型的capability本身的那块内存，即该内存中的数据为地址+权限。</p>
+<p>　　Barrelfish内核为每一个dispatcher维护其CSpace（<strong>某进程拥有的所有capability构成该进程的CSpace</strong>）,沿用seL4中CNode及两级寻址的方式设计，具体方式为在dcb（dispatcher control block,进程控制块）中保存Root_CNode的地址。         </p>
+<p>　　Root_CNode是一块固定大小的内存，这块内存按照cte(capability table entry)的大小分为很多slots块，每一个slot块中可保存一个cte，一个cte就是一个capabiltiy，会指向另一块保存有数据的内存。      </p>
+<p>　　Root_CNode又称为l1_CNode,Root_CNode中保存的cte必须是l2_CNode类型的capability,每个l2_CNode也指向一块固定大小的内存，这块内存其中也有很多slots,每个slots中可保存一个cte，l2_CNode中保存的cte就是系统中真实使用的各种其他类型的capability，如dispatcher类型的、ram类型的等等。                      </p>
+<p>　　l1_CNode(root_CNode)和l2_CNode都是用来存储capability的capability。只不过l1_CNode中保存的是l2_CNode类型的capability,而l2_CNode中保存的是其他非CNode类型的capability。</p>
+<p>　　查询一个dispatcher的任意一个capability，都需要经过其root_CNode，首先定位到保存该cap的l2_CNode，最后再定位到该cap。有点类似于两级页表寻址，Root_CNode是页目录，l2_CNode是页表，l2_CNode中的某个slot是页表项。每个进程的dcb中都保存了root_CNode的地址。通过该地址可以索引该进程的整个CSpace。           </p>
+<p>　　l1_CNode和l2_CNode也是capability所有不同类型中的两种类型，与ram | dispatcher | ... 一样也是capability，所有capbility都有如下性质：即包含指向某一段内存的信息（虚地址addr、虚拟内存大小size）以及相关权限rights。</p>
+<p>　　内核中定义实现了capability的相关数据结构，定义实现如下：         </p>
+<p>　　文件路径：kernel/include/capabilities.h      </p>
+<pre><code>/**
+	* \brief A CTE (Capability Table Entry).
+	*
+	* A CTE is an entry in a CNode, which in turn is an entry in CSpace, the
+	* capability space. CSpace is a guarded tree structure. Refer to the seL4
+	* reference manual for further information about how CSpace is implemented.
+	*/
+struct cte {
+	struct capability   cap;           	///&lt; The capability
+	char padding0[ROUND_UP(sizeof(struct capability), 8)- sizeof(struct capability)];
+	struct mdbnode      mdbnode;       	///&lt; MDB &quot;root&quot; node for the cap
+	char padding1[ROUND_UP(sizeof(struct mdbnode), 8) - sizeof(struct mdbnode)];
+	struct delete_list  delete_node;    ///&lt; State for in-progress delete cascades
+
+	/// Padding to fill the struct out to the size required by OBJBITS_CTE
+	char padding[(1UL &lt;&lt; OBJBITS_CTE)
+					- sizeof(struct delete_list)
+					- ROUND_UP(sizeof(struct capability), 8)
+					- ROUND_UP(sizeof(struct mdbnode), 8)];
+};
+</code></pre>
+<p>　　由于每个slots是固定大小，所以定义了一些padding用来对齐大小。我们首先关注第一个成员cap，后两个成员mdbnode和delete_node暂时不管，后面会详细说明。<br>　　注意到其中的第一个成员cap的类型为capability类型的结构体，该结构体定义如下:      </p>
+<p>　　文件路径：build/armv8/include/barrelfish_kpi/capbits.h<br>(这个文件是由Hamlet————一种描述capability类型系统的DSL自动生成的)<br>　　在Hamlet中定义cap的类型和接口，然后自动生成部分capability相关的代码。对于Hamlet感兴趣的话，因为ETH自己暂时没有Hamlet相关的文档，可以看下System Research at Harvard的这个仓库：<br><strong><a href="https://github.com/Harvard-PRINCESS/Guppy/wiki/Hamlet-Tutorial" target="_blank" rel="noopener">https://github.com/Harvard-PRINCESS/Guppy/wiki/Hamlet-Tutorial</a></strong>                 </p>
+<pre><code>struct capability {union  capability_u u;
+				enum objtype type;
+				CapRights rights;};
+</code></pre>
+<p>　　可以看到一个cap包含三个成员变量，分别是    </p>
+<ul>
+<li>一个用来保存<strong>具体类型的cap</strong>的联合体         </li>
+<li>一个枚举类型的类型变量            </li>
+<li>以及该cap所对应的权限</li>
+</ul>
+<p>　　其中第一个联合体成员定义如下：</p>
+<pre><code>union capability_u {struct  Null null;
+				struct  PhysAddr physaddr;
+				struct  RAM ram;
+				struct  L1CNode l1cnode;
+				struct  L2CNode l2cnode;
+				struct  FCNode fcnode;
+				struct  Dispatcher dispatcher;
+				struct  EndPoint endpoint;
+				struct  Frame frame;
+				struct  Frame_Mapping frame_mapping;
+				struct  DevFrame devframe;
+				struct  DevFrame_Mapping devframe_mapping;
+				struct  Kernel kernel;
+				struct  VNode_x86_64_pml4 vnode_x86_64_pml4;
+				struct  VNode_x86_64_pml4_Mapping vnode_x86_64_pml4_mapping;
+				struct  VNode_x86_64_pdpt vnode_x86_64_pdpt;
+				struct  VNode_x86_64_pdpt_Mapping vnode_x86_64_pdpt_mapping;
+				struct  VNode_x86_64_pdir vnode_x86_64_pdir;
+				struct  VNode_x86_64_pdir_Mapping vnode_x86_64_pdir_mapping;
+				struct  VNode_x86_64_ptable vnode_x86_64_ptable;
+				struct  VNode_x86_64_ptable_Mapping vnode_x86_64_ptable_mapping;
+				struct  VNode_x86_32_pdpt vnode_x86_32_pdpt;
+				struct  VNode_x86_32_pdpt_Mapping vnode_x86_32_pdpt_mapping;
+				struct  VNode_x86_32_pdir vnode_x86_32_pdir;
+				struct  VNode_x86_32_pdir_Mapping vnode_x86_32_pdir_mapping;
+				struct  VNode_x86_32_ptable vnode_x86_32_ptable;
+				struct  VNode_x86_32_ptable_Mapping vnode_x86_32_ptable_mapping;
+				struct  VNode_ARM_l1 vnode_arm_l1;
+				struct  VNode_ARM_l1_Mapping vnode_arm_l1_mapping;
+				struct  VNode_ARM_l2 vnode_arm_l2;
+				struct  VNode_ARM_l2_Mapping vnode_arm_l2_mapping;
+				struct  VNode_AARCH64_l0 vnode_aarch64_l0;
+				struct  VNode_AARCH64_l0_Mapping vnode_aarch64_l0_mapping;
+				struct  VNode_AARCH64_l1 vnode_aarch64_l1;
+				struct  VNode_AARCH64_l1_Mapping vnode_aarch64_l1_mapping;
+				struct  VNode_AARCH64_l2 vnode_aarch64_l2;
+				struct  VNode_AARCH64_l2_Mapping vnode_aarch64_l2_mapping;
+				struct  VNode_AARCH64_l3 vnode_aarch64_l3;
+				struct  VNode_AARCH64_l3_Mapping vnode_aarch64_l3_mapping;
+				struct  IRQTable irqtable;
+				struct  IRQDest irqdest;
+				struct  IRQSrc irqsrc;
+				struct  IO io;
+				struct  Notify_IPI notify_ipi;
+				struct  ID id;
+				struct  PerfMon perfmon;
+				struct  KernelControlBlock kernelcontrolblock;
+				struct  IPI ipi;
+				struct  ProcessManager processmanager;
+				struct  Domain domain;};
+</code></pre>
+<p>　　可以看到这个联合体包含了Barrelfish系统中可能出现的<strong>所有类型</strong>的capability的结构体定义。由于不同体系结构的CPU的内核所需要的capability类型是不同的（比如可以看到上面很多名字中带x86、ARM、aarch64的cap类型），所以Barrelfish的开发者选择用Hamlet DSL来自动生成这部分代码。<br>　　下面对capability的类型系统作说明。</p>
+<h3 id="capability-f4ba85">对capability类型系统的解释：</h3>
+<p>不同类型的capability代表不同类型的系统资源，比如:</p>
+<ul>
+<li>dispatcher类型的cap就指向内核中一个dispatcher的dcb（dispatcher control block）      </li>
+<li>ram类型的cap就指向一段虚拟内存。。         </li>
+<li>PhysAddr类型的cap就指向一段未被映射的物理内存          </li>
+<li>CNnode类型的cap就指向一段专门用来保存cap的虚拟内存            </li>
+<li>...</li>
+</ul>
+<p>　　这里附上上述类型的cap的结构体定义：           </p>
+<pre><code>struct Dispatcher {struct dcb* dcb;};
+struct RAM {genpaddr_t base;		// genpaddr 指 general physical address
+			pasid_t pasid;
+			gensize_t bytes;};
+struct PhysAddr {genpaddr_t base;
+					pasid_t pasid;
+					gensize_t bytes;};
+struct L1CNode {lpaddr_t cnode;		// lpaddr 指 local physical address
+				CapRights rightsmask;
+				gensize_t allocated_bytes;};
+struct L2CNode {lpaddr_t cnode;
+				CapRights rightsmask;};
+</code></pre>
+<p>　　capability类型与类型之间是可以相互转换的，但是需要遵循一定的规则，barrelfish规定了一棵类似于树形的结构，来表示合法的<strong>类型转换路径</strong>,见下图：</p>
+<div align=center><img src="https://ririshihaori.com/2020/7/barrelfish_capability/retype.png" alt="" width="944" height="632" loading="lazy" decoding="async"></div><p>　　类型转换举例：</p>
+<p>　　比如最基础的类型是PhysAddr，所有其他类型都从该类型转换而来，因为所有的资源说白了都是一块内存，只不过里面保存的数据的类型不一样。        </p>
+<p>　　PhysAddr可以转换为Ram，可能需要经过一定的虚实映射操作，barrelfish在进行虚实映射时也用到了cap来索引页目录及页表等资源，比如上述的VNode_x86_64_pml4 vnode_x86_64_pml4以及所有其他和这个长得很像的东西，都是指向页表的cap，对应每种页表cap还有映射cap，这里暂不深究，这个属于barrelfish的虚存实现机制了，感兴趣可以看《<a href="http://www.barrelfish.org/publications/gerber-master-vm.pdf》" target="_blank" rel="noopener">http://www.barrelfish.org/publications/gerber-master-vm.pdf》</a> 这篇文章。         </p>
+<p>　　PhysAddr转换为Ram类型后,Ram类型的cap又可以转换为dispatcher、l1_CNode、l2_CNode.....等各种类型的cap。当然，Ram类型的cap也可以转换为自身的ram类型，即上图中每个节点指向自身的路径，当我们需要将一块size较大的ram分割为两块size较小的ram时。</p>
+<p>　　类型转换的术语叫做 retype.后续会再对这个做解释。              </p>
+<p>　　就像面向对象的思想一样，对于每种不同类型的cap，系统提供了不同的对其操作的<strong>接口</strong>，调用这些接口的术语叫做<strong>invoke</strong>。　　　　　　</p>
+<p>　　可以在 include/barrelfish_kpi/capabilities.h 中找到相关定义，比如：　　　　　　　　</p>
+<ul>
+<li>对于dispatcher类型的cap（指向进程控制表），提供了以下类型的command：</li>
+</ul>
+<pre><code>/**
+* Specific commands for dispatcher capabilities.
+*/
+enum dispatcher_cmd {
+	DispatcherCmd_Setup,            ///&lt; Set dispatcher parameters
+	DispatcherCmd_Properties,       ///&lt; Set dispatcher properties
+	DispatcherCmd_PerfMon,          ///&lt; Performance monitoring
+	DispatcherCmd_SetupGuest,       ///&lt; Set up the DCB of a guest domain
+	DispatcherCmd_DumpPTables,      ///&lt; Dump hw page tables of dispatcher   比如打印维护进程虚存空间的页表
+	DispatcherCmd_DumpCapabilities, ///&lt; Dump capabilities of dispatcher·	 又比如打印该进程所拥有的所有cap（打印CSpace）
+	DispatcherCmd_Vmread,           ///&lt; Execute vmread on the current and active VMCS      
+	DispatcherCmd_Vmwrite,          ///&lt; Execute vmwrite on the current and active VMCS
+	DispatcherCmd_Vmptrld,          ///&lt; Make VMCS clear and inactive
+	DispatcherCmd_Vmclear,          ///&lt; Make VMCS current and active 
+};
+</code></pre>
+<ul>
+<li>对于VNode类型的cap（指向一段虚存），提供了以下类型的command：</li>
+</ul>
+<pre><code>enum vnode_cmd {
+	VNodeCmd_Map,
+	VNodeCmd_Unmap,
+	VNodeCmd_Identify,   ///&lt; Return the physical address of the VNode
+	VNodeCmd_ModifyFlags,
+};
+</code></pre>
+<ul>
+<li>对于CNode类型的cap（指向一段用来保存capability的内存，即指向某一个cap），提供了以下类型的command：</li>
+</ul>
+<pre><code>/**
+	* CNode capability commands.
+	*/
+enum cnode_cmd {
+	CNodeCmd_Copy,      ///&lt; Copy capability
+	CNodeCmd_Mint,      ///&lt; Mint capability
+	CNodeCmd_Retype,    ///&lt; Retype capability         ————&gt;这就是之前说到的类型转换操作
+	CNodeCmd_Delete,    ///&lt; Delete capability
+	CNodeCmd_Revoke,    ///&lt; Revoke capability
+	CNodeCmd_Create,    ///&lt; Create capability
+	CNodeCmd_GetState,  ///&lt; Get distcap state for capability
+	CNodeCmd_GetSize,   ///&lt; Get Size of CNode, only applicable for L1 Cnode
+	CNodeCmd_Resize,    ///&lt; Resize CNode, only applicable for L1 Cnode
+};
+</code></pre>
+<p>　　上述提供的对CNode的操作，其中Resize、GetSize都是针对CNode本身进行的操作，而Copy、Mint、Retype、Delete等都是针对这个CNode中的作为叶子节点的非CNode类型capability进行的操作。
+	可见对某一个cap进行某种操作时，需要对该cap所位于的CNode调用该操作。             </p>
+<p>　　所有对于cap的操作，都需要通过该cap所在的CNode调用。<br>　　比如我想将一个ram类型的cap转型为Dispatcher类型，用来存储dcb,那么就需要对该ram类型的capability所在的root_CNode调用invoke操作，同时将invoke时的cmd参数设置为CNodeCmd_Retype，同时设置好其他参数，比如转型前的类型和转型后的类型，转型前的cap的地址以及转型后的cap所存放地址等等。等。            </p>
+<p>　　上述这些对cap进行的操作会使cap之间存在副本、后代这样的关系，我们通过之前的介绍已经知道了,一个进程的CSpace是一个两级树形结构,它的根是Root_CNode,root下面有很多l2_CNode,每个l2_CNode下面是最终的叶子节点capabilty,但是上述的copy、retype等操作以及barrelfish所支持的在进程间发送/接受cap的功能，会使同一个CSpace内，乃至不同CSpace内部的capability产生联系，这种联系说白了就是“副本”or“后代”or“祖先”这样的关系。         </p>
+<p>　　如果一个capA经过retype操作转型为capB，那么capA就是capB的“祖先”，capB就是capA的“后代”。“副本”关系则由copy操作产生。      </p>
+<p>　　在系统的运行中常常需要查询这些关系，从而保证上述针对cap的操作能够正确地完成，（举个例子，比如一个ram类型的capability（我们称其为capA）已经经过一次retype操作，得到了一个dispatcher类型的capB，那么之后就不能再对capA进行retype操作，将其retype成别的类型的cap，（因为capA所指向的那段内存，也就是capB所指向的内存，我们已经用来存dcb了，不能再存别的），所以我们在对一个cap进行类型转换即retype操作前，往往要查询其是否已经有后代了）。为此，Barrelfish使用了一个叫做mdb的数据库（<strong>mapping database</strong>）来存储capability之间这样的关系，以便系统运行时动态地查询、更新cap之间的关系。             </p>
+<p>　　后面会详细介绍mdb。           </p>
+<h3 id="mdb-7be6ce">mdb简介</h3>
+<p>　　Barrelfish的mdb实现为AA树，是红黑树的一个变种。AA树和红黑树都是搜索树，即树中的节点是存在一定的偏序关系的。          </p>
+<p>　　Barrelfish将capability按照cap类型、内存基地址、内存大小等因素排序，从而产生cap之间的偏序关系。比如 父类型 &gt; 子类型 基址低 &gt; 基址高 size大 &gt; size小。        </p>
+<p>　　互为副本的两个cap, 其类型、基址、大小等相同，因此在树中的位置也相邻。而互为祖先后代的两个cap,在树中的位置一定是祖先在前，后代在后，满足上述的自定义偏序。</p>
+<p>　　上文中cte的结构体定义中，有一个成员为            </p>
+<pre><code>struct mdbnode  mdbnode;  ///&lt; MDB &quot;root&quot; node for the cap
+```　　
+　　这就是用来表示该cte所代表的capabiltiy,在mdb中的表示。             
+
+　　mdbnode结构体的定义如下:                  
+　　文件路径：include/mdb/types.h        
+
+</code></pre>
+<pre><code>/**
+</code></pre>
+<ul>
+<li>\brief A mapping database node.
+*/
+struct mdbnode {
+  struct cte *left, *right;
+  genpaddr_t end;
+  mdb_root_t end_root;
+  mdb_level_t level;
+  bool remote_copies:1, remote_ancs:1, remote_descs:1;
+  bool locked:1, in_delete:1;
+  coreid_t owner;
+};</li>
+</ul>
+<pre><code>
+　　可以看到这个树节点的定义除了包含指向左右两个子节点的cap的指针，还包含一些其他数据，这些数据我们后面介绍。
+
+mdb的代码实现：   
+
+</code></pre>
+<pre><code>include/mdb/mdb.h               
+include/mdb/mdb_tree.h                
+include/mdb/types.h          
+lib/mdb/mdb.c          
+lib/mdb/mdb_tree.c         
+</code></pre>
+<pre><code>
+### 多核系统capability模型设计
+
+　　上述capability模型主要解决了单内核下的情况，这里主要分析一下在Barrelfish这样的多内核操作系统中，上述capability系统存在的问题以及Barrelfish是如何解决这些问题的。             
+
+# 2、capability相关的代码模块分析
+
+
+### 1、模块分析
+
+　　x86下代码模块（armv7、armv8类似）
+
+</code></pre>
+<p>User-level
+	lib/barrelfish/capabilities.c - user-level capability management stuff
+	usr/monitor/capops, usr/monitor/capops/include, usr/tests/capops - C code for user-level capabilities operations
+Kernel-level
+	capabilities/caps.hl - capabilities definition file
+	tools/create_static_cap_dot.py - generate a dependency/hierarchy graph from a Hamlet file
+	kernel/cap_delete.c - Kernel capability delete code
+	kernel/include/cap_predicates.h - capability pre-declares (?)
+	include/barrelfish_kpi/capabilities.h - required capabilities definitions
+	build/x86_64/capabilities/*.c - Hamlet capabilities output C</p>
+<pre><code>　　kernel目录下
+</code></pre>
+<p>kernel/include/capabilities.h<br>cte等数据结构的定义、内核中所需要用到的所有capability相关的函数的声明<br>kernel/include/cap_predicates.h<br>一些返回值为布尔类型的对cte或capability进行判断的函数<br>kernel/capabilities.c<br>内核中所有需要用到的capability相关函数的实现，包括cap创建、删除、索引等
+	两级树状CSpace的实现，各种cap操作的实现以及对cap系统的tracing支持<br>kernel/cap_delete.c
+	由于多内核的分布式特性，导致对capability的删除操作比较复杂，所以单独分离出来作为一个文件。</p>
+<pre><code>
+　　lib目录下主要是lib/barrelfish和lib/mdb
+
+</code></pre>
+<pre><code>lib/mdb/mdb.c
+lib/mdb/mdb_tree.c
+lib/barrelfish/capabilities.c
+</code></pre>
+<pre><code>
+	usr目录下主要是monitor中
+
+</code></pre>
+<pre><code>usr/monitor/capops/	整个目录实现monitor的cap操作
+usr/monitor/invocations.c
+</code></pre>
+<pre><code>
+
+
+	if目录下是各种消息接口定义，是用一种叫做flounder的DSL语言实现的，flounder实现的消息接口通过haskell实现的编译器可以生成相应的c代码，和capability有关的主要是monitor部分的消息接口：        
+</code></pre>
+<pre><code>if/monitor.if
+	/* for UMP/BMP cap tx */
+	message cap_send_request(
+		uintptr mon_id,
+		cap cap,
+		capid capid);
+	message cap_move_request(
+		uintptr mon_id,
+		give_away_cap cap,
+		capid capid);
+	message cap_receive_request(
+		uintptr conn_id,
+		errval err,
+		give_away_cap cap,
+		capid capid);
+if/monitor_blocking.if
+	/* Remote cap operation messages */
+	rpc remote_cap_retype(in cap src_root, in cap dest_root, in uint32 src,
+						in uint64 offset, in uint64 objtype, in uint64 objsize,
+						in uint64 count, in uint32 to, in uint32 slot,
+						in int dcn_level, out errval err);
+	rpc remote_cap_delete(in cap croot, in uint32 src, in uint8 level,
+						out errval err);
+	rpc remote_cap_revoke(in cap croot, in uint32 src, in uint8 level,
+						out errval err);
+
+	rpc get_phyaddr_cap(out cap pyaddr, out errval err);
+	rpc get_io_cap(out cap io, out errval err);
+	
+	// Get a capability that is targeted at the local apic.
+	rpc get_irq_dest_cap(out cap io, out errval err);
+	// debug cap identify mechanism
+	rpc cap_identify(in cap cap, out errval err, out caprep caprep);
+	// XXX: Hack to set a cap remote until we have x-core cap management
+	rpc cap_set_remote(in cap cap, in bool remote, out errval err);
+	/* Allocate an IRQ on the arm plattform */
+	rpc arm_irq_handle(in cap ep, in uint32 irq, out errval err);
+	/* Retrieve local arch-specific core ID (e.g. APIC ID on x86)*/
+	rpc get_arch_core_id(out uintptr id);
+	/* get cap that can be used to send IPIs */
+	rpc get_ipi_cap(out cap cap);
+	rpc forward_kcb_request(in coreid destination, in cap kcb, out errval err);
+</code></pre>
+<pre><code>
+
+
+### 2、接口分析
+</code></pre>
+]]></description>
+    </item>
+    <item>
+        <title>[转载]代码注释中的NOTE/XXX/HACK/FIXME/BUG/TODO</title>
+        <link>https://ririshihaori.com/posts/2020-4-comments_tag.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2020-4-comments_tag.html</guid>
+        <pubDate>Sat, 04 Apr 2020 07:55:52 GMT</pubDate>
+        <category>工程实践</category>
+        <category>技术</category>
+        <description><![CDATA[<p>看到<a href="https://blog.csdn.net/xianghongai/article/details/79306361?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3&amp;utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3" target="_blank" rel="noopener">一篇博客</a>
+解释代码注释中的各种tag解释得很有意思。</p>
+<ul>
+<li><p>NOTE: Description of how the code works (when it isn’t self evident)          <strong>汝等凡人</strong></p>
+</li>
+<li><p>XXX: Warning about possible pitfalls, can be used as NOTE:XXX:                <strong>陷阱</strong></p>
+</li>
+<li><p>HACK: Not very well written or malformed code to circumvent a problem/bug.
+Should be used as HACK:FIXME:                                             <strong>补锅踩雷填坑</strong>
+</p>
+</li>
+<li><p>FIXME: This works, sort of, but it could be done better. (usually code written in a hurry that needs rewriting) <strong>Fuck Me</strong></p>
+</li>
+<li><p>BUG: There is a problem here.                              <strong>丢锅埋雷挖坑</strong></p>
+</li>
+<li><p>TODO: No problem, but addtional code needs to be written (usually when you are skipping something) <strong>情未了</strong></p>
+</li>
+</ul>
+]]></description>
+    </item>
+    <item>
+        <title>Go实现String Set</title>
+        <link>https://ririshihaori.com/posts/2020-4-go_sets.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2020-4-go_sets.html</guid>
+        <pubDate>Tue, 31 Mar 2020 17:13:28 GMT</pubDate>
+        <category>Go</category>
+        <category>技术</category>
+        <description><![CDATA[<p>基于map实现sets.go</p>
+<pre><code>package sets
+
+// An Empty struct does not take up any memory
+type Empty struct{}
+
+// sets.String is a set of strings, implemented via map[string]struct{} for minimal memory consumption.
+type String map[string]Empty
+
+
+func NewString(items ...string) String {
+	s := String{}
+	s.Insert(items...)
+	return s
+}
+
+func (s String) Insert(items ...string) {
+	for _, item := range items {
+		s[item] = Empty{}
+	}
+}
+
+func (s String) Delete(items ...string) {
+	for _, item := range items {
+		delete(s, item)
+	}
+}
+
+func (s String) Has(item string) bool {
+	_, res := s[item]
+	return res
+}
+
+// HasAll returns true if and only if all items are contained in the set.
+func (s String) HasAll(items ...string) bool {
+	for _, item := range items {
+		if !s.Has(item) {
+			return false
+		}
+	}
+	return true
+}
+
+// HasAny returns true if any items are contained in the set.
+func (s String) HasAny(items ...string) bool {
+	for _, item := range items {
+		if s.Has(item) {
+			return true
+		}
+	}
+	return false
+}
+
+// Difference returns a set of objects that are not in s2
+func (s String) Difference(s2 String) String {
+	res := NewString()
+	for item := range s {
+		if !s2.Has(item) {
+			res.Insert(item)
+		}
+	}
+	return res
+}
+
+// Union returns a new set which includes items in either s1 or s2.
+func (s1 String) Union(s2 String) String {
+	res := NewString()
+	for item := range s1 {
+		res.Insert(item)
+	}
+	for item := range s2 {
+		res.Insert(item)
+	}
+	return res
+}
+
+// Intersection returns a new set which includes the item in BOTH s1 and s2
+func (s1 String) Intersection(s2 String) String {
+	res := NewString()
+	if s1.Len() &lt; s2.Len() {
+		for item := range s1 {
+			if s2.Has(item) {
+				res.Insert(item)
+			}
+		}
+	} else {
+		for item := range s2 {
+			if s1.Has(item) {
+				res.Insert(item)
+			}
+		}
+	}
+	return res
+}
+
+func (s String) Len() int {
+	return len(s)
+}
+
+func (s String) List() []string {
+	res := make([]string, 0, len(s))
+	for item := range s {
+		res = append(res, item)
+    }
+	return res
+}
+</code></pre>
+<p>单元测试 sets_test.go</p>
+<pre><code>package sets
+
+import (
+    &quot;testing&quot;
+)
+
+func TestInsert(t *testing.T) {
+	ss := NewString()
+	
+	// Insert 1 item\
+	ss.Insert(&quot;a&quot;)
+	if !ss.Has(&quot;a&quot;) {
+		t.Errorf(&quot;Insert failed.&quot;)
+	}
+
+	// Insert several items
+	ss.Insert(&quot;a&quot;, &quot;bb&quot;, &quot;ccc&quot;, &quot;dddd&quot;)
+	if !ss.HasAll(&quot;a&quot;, &quot;bb&quot;, &quot;ccc&quot;, &quot;dddd&quot;) || ss.Len() != 4 {
+		t.Errorf(&quot;Insert failed.&quot;)
+	}
+
+}
+
+func TestDelete(t *testing.T) {
+	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+
+	// Delete 1 item
+	ss.Delete(&quot;a&quot;)
+	if ss.Has(&quot;a&quot;) {
+		t.Errorf(&quot;Delete failed.&quot;)
+	}
+
+	// Delete several items
+	ss.Delete(&quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+	if ss.HasAny(&quot;b&quot;, &quot;c&quot;, &quot;d&quot;) || ss.Len() != 0 {
+		t.Errorf(&quot;Delete failed.&quot;)
+	}
+}
+
+func TestHas(t *testing.T) {
+	s := &quot;abc&quot;
+	ss := NewString(s)
+	_, res1 := ss[s]
+	res2 := ss.Has(s)
+	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(&quot;Has Check failed.&quot;)
+	}
+}
+
+func TestHasAny(t *testing.T) {
+	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+	_, resA := ss[&quot;a&quot;]
+	_, resB := ss[&quot;b&quot;]
+	res1 := resA || resB
+	res2 := ss.HasAny(&quot;a&quot;, &quot;b&quot;)
+	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(&quot;HasAny Check failed.&quot;)
+	}
+
+}
+
+func TestHasAll(t *testing.T) {
+	ss := NewString(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+	_, resA := ss[&quot;a&quot;]
+	_, resB := ss[&quot;b&quot;]
+	_, resC := ss[&quot;c&quot;]
+	res1 := resA &amp;&amp; resB &amp;&amp; resC
+	res2 := ss.HasAll(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+	if (res1 &amp;&amp; !res2) || (!res1 &amp;&amp; res2) {
+		t.Errorf(&quot;HasAll Check failed.&quot;)
+	}
+}
+
+func TestDifference(t *testing.T) {
+	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
+	ss2 := NewString(&quot;a&quot;, &quot;c&quot;)
+	res := ss1.Difference(ss2)
+	if !res.Has(&quot;b&quot;) {
+		t.Errorf(&quot;Difference Check failed.&quot;)
+	}
+}
+
+func TestUnion(t *testing.T) {
+	ss1 := NewString(&quot;a&quot;)
+	ss2 := NewString(&quot;b&quot;)
+	res := ss1.Union(ss2)
+	if !res.HasAll(&quot;a&quot;, &quot;b&quot;) {
+		t.Errorf(&quot;Union Check failed.&quot;)
+	}
+}
+
+func TestIntersection(t *testing.T) {
+	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
+	ss2 := NewString(&quot;a&quot;, &quot;c&quot;)
+	res := ss1.Intersection(ss2)
+	if !res.Has(&quot;a&quot;) {
+		t.Errorf(&quot;Intersection Check failed.&quot;)
+	}
+}
+
+func TestLen(t *testing.T) {
+	ss1 := NewString(&quot;a&quot;, &quot;b&quot;)
+	if ss1.Len() != 2 {
+		t.Errorf(&quot;Len Check failed.&quot;)
+	}
+}
+</code></pre>
+]]></description>
+    </item>
+    <item>
+        <title>[转载]Golang新手可能会踩的50个坑</title>
+        <link>https://ririshihaori.com/posts/2020-3-go_traps_and_common_mistakes.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2020-3-go_traps_and_common_mistakes.html</guid>
+        <pubDate>Sun, 29 Mar 2020 11:26:30 GMT</pubDate>
+        <category>Go</category>
+        <category>技术</category>
+        <description><![CDATA[<p>使用Golang时读到了这篇文章，感觉每一条都非常有用，所以转到这里。感谢原文作者和译者。    </p>
+<p>译文地址：<a href="https://segmentfault.com/a/1190000013739000#articleHeader43" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013739000#articleHeader43</a><br>原文地址：<a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/" target="_blank" rel="noopener">http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/</a></p>
+<h2 id="h-df3688">前言</h2>
+<p>Go 是一门简单有趣的编程语言，与其他语言一样，在使用时不免会遇到很多坑，不过它们大多不是 Go 本身的设计缺陷。如果你刚从其他语言转到 Go，那这篇文章里的坑多半会踩到。</p>
+<p>如果花时间学习官方 doc、wiki、<a href="https://groups.google.com/forum/#!forum/golang-nuts" target="_blank" rel="noopener">讨论邮件列表</a>、 <a href="https://github.com/robpike" target="_blank" rel="noopener">Rob Pike</a> 的大量文章以及 Go 的源码，会发现这篇文章中的坑是很常见的，新手跳过这些坑，能减少大量调试代码的时间。</p>
+<h3 id="1.-07beec">1. 左大括号 <code>{</code> 一般不能单独放一行</h3>
+<p>在其他大多数语言中，<code>{</code> 的位置你自行决定。Go 比较特别，遵守分号注入规则（automatic semicolon injection）：编译器会在每行代码尾部特定分隔符后加 <code>;</code> 来分隔多条语句，比如会在 <code>)</code> 后加分号：</p>
+<pre><code class="language-go">// 错误示例
+func main()					
+{
+	println(&quot;hello world&quot;)
+}
+
+// 等效于
+func main();	// 无函数体					
+{
+	println(&quot;hello world&quot;)
+}
+</code></pre>
+<pre><code>&gt; ./main.go: missing function body             
+&gt; ./main.go: syntax error: unexpected semicolon or newline before {
+</code></pre>
+<pre><code class="language-go">// 正确示例
+func main() {
+	println(&quot;hello world&quot;)
+}     
+</code></pre>
+<p>注意代码块等特殊情况：</p>
+<pre><code class="language-go">// { 并不遵守分号注入规则，不会在其后边自动加分，此时可换行
+func main() {
+	{
+		println(&quot;hello world&quot;)
+	}
+}     
+
+</code></pre>
+<p>参考：<a href="http://blog.csdn.net/icyday/article/details/8265864?hmsr=studygolang.com&amp;utm_medium=studygolang.com&amp;utm_source=studygolang.com" target="_blank" rel="noopener">Golang中自动加分号的特殊分隔符</a></p>
+<h3 id="2.-c7856d">2. 未使用的变量</h3>
+<p>如果在函数体代码中有未使用的变量，则无法通过编译，不过全局变量声明但不使用是可以的。</p>
+<p>即使变量声明后为变量赋值，依旧无法通过编译，需在某处使用它：</p>
+<pre><code class="language-go">// 错误示例
+var gvar int 	// 全局变量，声明不使用也可以
+
+func main() {
+	var one int 	// error: one declared and not used
+	two := 2	// error: two declared and not used
+	var three int	// error: three declared and not used
+	three = 3		
+}
+
+
+// 正确示例
+// 可以直接注释或移除未使用的变量
+func main() {
+	var one int
+	_ = one
+	
+	two := 2
+	println(two)
+	
+	var three int
+	one = three
+
+	var four int
+	four = four
+}
+</code></pre>
+<h3 id="3.-import-a4389d">3. 未使用的 import</h3>
+<p>如果你 import 一个包，但包中的变量、函数、接口和结构体一个都没有用到的话，将编译失败。</p>
+<p>可以使用 <code>_</code> 下划线符号作为别名来忽略导入的包，从而避免编译错误，这只会执行 package 的 <code>init()</code> </p>
+<pre><code class="language-go">// 错误示例
+import (
+	&quot;fmt&quot;	// imported and not used: &quot;fmt&quot;
+	&quot;log&quot;	// imported and not used: &quot;log&quot;
+	&quot;time&quot;	// imported and not used: &quot;time&quot;
+)
+
+func main() {
+}
+
+
+// 正确示例
+// 可以使用 goimports 工具来注释或移除未使用到的包
+import (
+	_ &quot;fmt&quot;
+	&quot;log&quot;
+	&quot;time&quot;
+)
+
+func main() {
+	_ = log.Println
+	_ = time.Now
+}
+</code></pre>
+<h3 id="4.-9ec422">4. 简短声明的变量只能在函数内部使用</h3>
+<pre><code class="language-go">// 错误示例
+myvar := 1	// syntax error: non-declaration statement outside function body
+func main() {
+}
+
+
+// 正确示例
+var  myvar = 1
+func main() {
+}
+</code></pre>
+<h3 id="5.-a7df1f">5. 使用简短声明来重复声明变量</h3>
+<p>不能用简短声明方式来单独为一个变量重复声明， <code>:=</code> 左侧至少有一个新变量，才允许多变量的重复声明：</p>
+<pre><code class="language-go">// 错误示例
+func main() {  
+    one := 0
+    one := 1 // error: no new variables on left side of :=
+}
+
+
+// 正确示例
+func main() {
+	one := 0
+	one, two := 1, 2	// two 是新变量，允许 one 的重复声明。比如 error 处理经常用同名变量 err
+	one, two = two, one	// 交换两个变量值的简写
+}
+</code></pre>
+<h3 id="6.-8e5e72">6. 不能使用简短声明来设置字段的值</h3>
+<p>struct 的变量字段不能使用 <code>:=</code> 来赋值以使用预定义的变量来避免解决：</p>
+<pre><code class="language-go">// 错误示例
+type info struct {
+	result int
+}
+
+func work() (int, error) {
+	return 3, nil
+}
+
+func main() {
+	var data info
+	data.result, err := work()	// error: non-name data.result on left side of :=
+	fmt.Printf(&quot;info: %+v\n&quot;, data)
+}
+
+
+// 正确示例
+func main() {
+	var data info
+	var err error	// err 需要预声明
+
+	data.result, err = work()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Printf(&quot;info: %+v\n&quot;, data)
+}
+</code></pre>
+<h3 id="7.-fb8d45">7. 不小心覆盖了变量</h3>
+<p>对从动态语言转过来的开发者来说，简短声明很好用，这可能会让人误会 <code>:=</code> 是一个赋值操作符。</p>
+<p>如果你在新的代码块中像下边这样误用了 <code>:=</code>，编译不会报错，但是变量不会按你的预期工作：</p>
+<pre><code class="language-go">func main() {
+	x := 1
+	println(x)		// 1
+	{
+		println(x)	// 1
+		x := 2
+		println(x)	// 2	// 新的 x 变量的作用域只在代码块内部
+	}
+	println(x)		// 1
+}
+</code></pre>
+<p>这是 Go 开发者常犯的错，而且不易被发现。</p>
+<p>可使用 <a href="http://godoc.org/golang.org/x/tools/cmd/vet" target="_blank" rel="noopener">vet</a> 工具来诊断这种变量覆盖，Go 默认不做覆盖检查，添加 <code>-shadow</code> 选项来启用：</p>
+<pre><code class="language-shell">&gt; go tool vet -shadow main.go
+main.go:9: declaration of &quot;x&quot; shadows declaration at main.go:5
+</code></pre>
+<p>注意 vet 不会报告全部被覆盖的变量，可以使用 <a href="https://github.com/barakmich/go-nyet" target="_blank" rel="noopener">go-nyet</a> 来做进一步的检测：</p>
+<pre><code class="language-shell">&gt; $GOPATH/bin/go-nyet main.go
+main.go:10:3:Shadowing variable `x`
+</code></pre>
+<h3 id="8.-nil-6e84ce">8. 显式类型的变量无法使用 nil 来初始化</h3>
+<p><code>nil</code> 是 interface、function、pointer、map、slice 和 channel 类型变量的默认初始值。但声明时不指定类型，编译器也无法推断出变量的具体类型。</p>
+<pre><code class="language-go">// 错误示例
+func main() {
+    var x = nil	// error: use of untyped nil
+	_ = x
+}
+
+
+// 正确示例
+func main() {
+	var x interface{} = nil
+	_ = x
+}    
+</code></pre>
+<h3 id="9.-nil-slicemap-0dd774">9. 直接使用值为 nil 的 slice、map</h3>
+<p>允许对值为 nil 的 slice 添加元素，但对值为 nil 的 map 添加元素则会造成运行时 panic</p>
+<pre><code class="language-go">// map 错误示例
+func main() {
+    var m map[string]int
+    m[&quot;one&quot;] = 1		// error: panic: assignment to entry in nil map
+    // m := make(map[string]int)// map 的正确声明，分配了实际的内存
+}    
+
+
+// slice 正确示例
+func main() {
+	var s []int
+	s = append(s, 1)
+}
+</code></pre>
+<h3 id="10.-map-adf01d">10. map 容量</h3>
+<p>在创建 map 类型的变量时可以指定容量，但不能像 slice 一样使用 <code>cap()</code> 来检测分配空间的大小：</p>
+<pre><code class="language-go">// 错误示例
+func main() {
+	m := make(map[string]int, 99)
+	println(cap(m)) 	// error: invalid argument m1 (type map[string]int) for cap  
+}    
+</code></pre>
+<h3 id="11.-string-nil-9490f9">11.  string 类型的变量值不能为 nil</h3>
+<p>对那些喜欢用 <code>nil</code> 初始化字符串的人来说，这就是坑：</p>
+<pre><code class="language-go">// 错误示例
+func main() {
+	var s string = nil	// cannot use nil as type string in assignment
+	if s == nil {	// invalid operation: s == nil (mismatched types string and nil)
+		s = &quot;default&quot;
+	}
+}
+
+
+// 正确示例
+func main() {
+	var s string	// 字符串类型的零值是空串 &quot;&quot;
+	if s == &quot;&quot; {
+		s = &quot;default&quot;
+	}
+}
+</code></pre>
+<h3 id="12.-array-8d7e88">12. Array 类型的值作为函数参数</h3>
+<p>在 C/C++ 中，数组（名）是指针。将数组作为参数传进函数时，相当于传递了数组内存地址的引用，在函数内部会改变该数组的值。</p>
+<p>在 Go 中，数组是值。作为参数传进函数时，传递的是数组的原始值拷贝，此时在函数内部是无法更新该数组的：</p>
+<pre><code class="language-go">// 数组使用值拷贝传参
+func main() {
+	x := [3]int{1,2,3}
+
+	func(arr [3]int) {
+		arr[0] = 7
+		fmt.Println(arr)	// [7 2 3]
+	}(x)
+	fmt.Println(x)			// [1 2 3]	// 并不是你以为的 [7 2 3]
+}
+</code></pre>
+<p>如果想修改参数数组：</p>
+<ul>
+<li>直接传递指向这个数组的指针类型：</li>
+</ul>
+<pre><code class="language-go">// 传址会修改原数据
+func main() {
+	x := [3]int{1,2,3}
+
+	func(arr *[3]int) {
+		(*arr)[0] = 7	
+		fmt.Println(arr)	// &amp;[7 2 3]
+	}(&amp;x)
+	fmt.Println(x)	// [7 2 3]
+}
+</code></pre>
+<ul>
+<li>直接使用 slice：即使函数内部得到的是 slice 的值拷贝，但依旧会更新 slice 的原始数据（底层 array）</li>
+</ul>
+<pre><code class="language-go">// 会修改 slice 的底层 array，从而修改 slice
+func main() {
+	x := []int{1, 2, 3}
+	func(arr []int) {
+		arr[0] = 7
+		fmt.Println(x)	// [7 2 3]
+	}(x)
+	fmt.Println(x)	// [7 2 3]
+}
+</code></pre>
+<h3 id="13.-range-slice-array-543fc5">13. range 遍历 slice 和 array 时混淆了返回值</h3>
+<p>与其他编程语言中的 <code>for-in</code> 、<code>foreach</code> 遍历语句不同，Go 中的 <code>range</code> 在遍历时会生成 2 个值，第一个是元素索引，第二个是元素的值：</p>
+<pre><code class="language-go">// 错误示例
+func main() {
+	x := []string{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;}
+	for v := range x {
+		fmt.Println(v)	// 1 2 3
+	}
+}
+
+
+// 正确示例
+func main() {
+	x := []string{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;}
+	for _, v := range x {	// 使用 _ 丢弃索引
+		fmt.Println(v)
+	}
+}
+</code></pre>
+<h3 id="14.-slice-array-360553">14. slice 和 array 其实是一维数据</h3>
+<p>看起来 Go 支持多维的 array 和 slice，可以创建数组的数组、切片的切片，但其实并不是。</p>
+<p>对依赖动态计算多维数组值的应用来说，就性能和复杂度而言，用 Go 实现的效果并不理想。</p>
+<p>可以使用原始的一维数组、“独立“ 的切片、“共享底层数组”的切片来创建动态的多维数组。</p>
+<ol>
+<li><p>使用原始的一维数组：要做好索引检查、溢出检测、以及当数组满时再添加值时要重新做内存分配。</p>
+</li>
+<li><p>使用“独立”的切片分两步：</p>
+</li>
+</ol>
+<ul>
+<li><p>创建外部 slice</p>
+<ul>
+<li><p>对每个内部 slice 进行内存分配</p>
+<p>注意内部的 slice 相互独立，使得任一内部 slice 增缩都不会影响到其他的 slice</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-go">// 使用各自独立的 6 个 slice 来创建 [2][3] 的动态多维数组
+func main() {
+	x := 2
+	y := 4
+	
+	table := make([][]int, x)
+	for i  := range table {
+		table[i] = make([]int, y)
+	}
+}
+</code></pre>
+<ol start="3">
+<li>使用“共享底层数组”的切片</li>
+</ol>
+<ul>
+<li><p>创建一个存放原始数据的容器 slice</p>
+</li>
+<li><p>创建其他的 slice</p>
+</li>
+<li><p>切割原始 slice 来初始化其他的 slice</p>
+</li>
+</ul>
+<pre><code class="language-go">func main() {
+	h, w := 2, 4
+	raw := make([]int, h*w)
+
+	for i := range raw {
+		raw[i] = i
+	}
+
+	// 初始化原始 slice
+	fmt.Println(raw, &amp;raw[4])	// [0 1 2 3 4 5 6 7] 0xc420012120 
+    
+	table := make([][]int, h)
+	for i := range table {
+        
+        // 等间距切割原始 slice，创建动态多维数组 table
+        // 0: raw[0*4: 0*4 + 4]
+        // 1: raw[1*4: 1*4 + 4]
+		table[i] = raw[i*w : i*w + w]
+	}
+
+	fmt.Println(table, &amp;table[1][0])	// [[0 1 2 3] [4 5 6 7]] 0xc420012120
+}
+</code></pre>
+<p>更多关于多维数组的参考</p>
+<p><a href="https://stackoverflow.com/questions/39561140/go-how-is-two-dimensional-arrays-memory-representation" target="_blank" rel="noopener">go-how-is-two-dimensional-arrays-memory-representation</a></p>
+<p><a href="https://stackoverflow.com/questions/39804861/what-is-a-concise-way-to-create-a-2d-slice-in-go" target="_blank" rel="noopener">what-is-a-concise-way-to-create-a-2d-slice-in-go</a></p>
+<h3 id="15.-map-key-792fc7">15. 访问 map 中不存在的 key</h3>
+<p>和其他编程语言类似，如果访问了 map 中不存在的 key 则希望能返回 nil，比如在 PHP 中：</p>
+<pre><code class="language-shell">&gt; php -r &#39;$v = [&quot;x&quot;=&gt;1, &quot;y&quot;=&gt;2]; @var_dump($v[&quot;z&quot;]);&#39;
+NULL
+</code></pre>
+<p>Go 则会返回元素对应数据类型的零值，比如 <code>nil</code>、<code>&#39;&#39;</code> 、<code>false</code> 和 0，取值操作总有值返回，故不能通过取出来的值来判断 key 是不是在 map 中。</p>
+<p>检查 key 是否存在可以用 map 直接访问，检查返回的第二个参数即可：</p>
+<pre><code class="language-go">// 错误的 key 检测方式
+func main() {
+	x := map[string]string{&quot;one&quot;: &quot;2&quot;, &quot;two&quot;: &quot;&quot;, &quot;three&quot;: &quot;3&quot;}
+	if v := x[&quot;two&quot;]; v == &quot;&quot; {
+		fmt.Println(&quot;key two is no entry&quot;)	// 键 two 存不存在都会返回的空字符串
+	}
+}
+
+// 正确示例
+func main() {
+	x := map[string]string{&quot;one&quot;: &quot;2&quot;, &quot;two&quot;: &quot;&quot;, &quot;three&quot;: &quot;3&quot;}
+	if _, ok := x[&quot;two&quot;]; !ok {
+		fmt.Println(&quot;key two is no entry&quot;)
+	}
+}
+</code></pre>
+<h3 id="16.-string-7d940f">16. string 类型的值是常量，不可更改</h3>
+<p>尝试使用索引遍历字符串，来更新字符串中的个别字符，是不允许的。</p>
+<p>string 类型的值是只读的二进制 byte slice，如果真要修改字符串中的字符，将 string 转为 []byte 修改后，再转为 string 即可：</p>
+<pre><code class="language-go">// 修改字符串的错误示例
+func main() {
+	x := &quot;text&quot;
+	x[0] = &quot;T&quot;		// error: cannot assign to x[0]
+	fmt.Println(x)
+}
+
+
+// 修改示例
+func main() {
+	x := &quot;text&quot;
+	xBytes := []byte(x)
+	xBytes[0] = &#39;T&#39;	// 注意此时的 T 是 rune 类型
+	x = string(xBytes)
+	fmt.Println(x)	// Text
+}
+</code></pre>
+<p><strong>注意：</strong> 上边的示例并不是更新字符串的正确姿势，因为一个 UTF8 编码的字符可能会占多个字节，比如汉字就需要 3~4 个字节来存储，此时更新其中的一个字节是错误的。</p>
+<p>更新字串的正确姿势：将 string 转为 rune slice（此时 1 个 rune 可能占多个 byte），直接更新 rune 中的字符</p>
+<pre><code class="language-go">func main() {
+	x := &quot;text&quot;
+	xRunes := []rune(x)
+	xRunes[0] = &#39;我&#39;
+	x = string(xRunes)
+	fmt.Println(x)	// 我ext
+}
+</code></pre>
+<h3 id="17.-string-byte-slice-50e8c9">17. string 与 byte slice 之间的转换</h3>
+<p>当进行 string 和 byte slice 相互转换时，参与转换的是拷贝的原始值。这种转换的过程，与其他编程语的强制类型转换操作不同，也和新 slice 与旧 slice 共享底层数组不同。</p>
+<p>Go 在 string 与 byte slice 相互转换上优化了两点，避免了额外的内存分配：</p>
+<ul>
+<li>在 <code>map[string]</code> 中查找 key 时，使用了对应的 <code>[]byte</code>，避免做 <code>m[string(key)]</code> 的内存分配</li>
+<li>使用 <code>for range</code> 迭代 string 转换为 []byte 的迭代：<code>for i,v := range []byte(str) {...}</code></li>
+</ul>
+<p>雾：<a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/index.html#string_byte_slice_conv" target="_blank" rel="noopener">参考原文</a></p>
+<h3 id="18.-string-0b246e">18. string 与索引操作符</h3>
+<p>对字符串用索引访问返回的不是字符，而是一个 byte 值。</p>
+<p>这种处理方式和其他语言一样，比如 PHP 中：</p>
+<pre><code class="language-shell">&gt; php -r &#39;$name=&quot;中文&quot;; var_dump($name);&#39;	# &quot;中文&quot; 占用 6 个字节
+string(6) &quot;中文&quot;
+
+&gt; php -r &#39;$name=&quot;中文&quot;; var_dump($name[0]);&#39; # 把第一个字节当做 Unicode 字符读取，显示 U+FFFD
+string(1) &quot;�&quot;	
+
+&gt; php -r &#39;$name=&quot;中文&quot;; var_dump($name[0].$name[1].$name[2]);&#39;
+string(3) &quot;中&quot;
+</code></pre>
+<pre><code class="language-go">func main() {
+	x := &quot;ascii&quot;
+	fmt.Println(x[0])		// 97
+	fmt.Printf(&quot;%T\n&quot;, x[0])// uint8
+}
+</code></pre>
+<p>如果需要使用 <code>for range</code> 迭代访问字符串中的字符（unicode code point / rune），标准库中有 <code>&quot;unicode/utf8&quot;</code> 包来做 UTF8 的相关解码编码。另外 <a href="https://godoc.org/golang.org/x/exp/utf8string" target="_blank" rel="noopener">utf8string</a> 也有像 <code>func (s *String) At(i int) rune</code> 等很方便的库函数。</p>
+<h3 id="19.-utf8-66c571">19. 字符串并不都是 UTF8 文本</h3>
+<p>string 的值不必是 UTF8 文本，可以包含任意的值。只有字符串是文字字面值时才是 UTF8 文本，字串可以通过转义来包含其他数据。</p>
+<p>判断字符串是否是 UTF8 文本，可使用 &quot;unicode/utf8&quot; 包中的 <code>ValidString()</code> 函数：</p>
+<pre><code class="language-go">func main() {
+	str1 := &quot;ABC&quot;
+	fmt.Println(utf8.ValidString(str1))	// true
+
+	str2 := &quot;A\xfeC&quot;
+	fmt.Println(utf8.ValidString(str2))	// false
+
+	str3 := &quot;A\\xfeC&quot;
+	fmt.Println(utf8.ValidString(str3))	// true	// 把转义字符转义成字面值
+}
+</code></pre>
+<h3 id="20.-221376">20. 字符串的长度</h3>
+<p>在 Python 中：</p>
+<pre><code class="language-python">data = u&#39;♥&#39;  
+print(len(data)) # 1
+</code></pre>
+<p>然而在 Go 中：</p>
+<pre><code class="language-go">func main() {
+	char := &quot;♥&quot;
+	fmt.Println(len(char))	// 3
+}
+</code></pre>
+<p>Go 的内建函数 <code>len()</code> 返回的是字符串的  byte 数量，而不是像 Python  中那样是计算 Unicode 字符数。</p>
+<p>如果要得到字符串的字符数，可使用 &quot;unicode/utf8&quot; 包中的 <code>RuneCountInString(str string) (n int)</code></p>
+<pre><code class="language-go">func main() {
+	char := &quot;♥&quot;
+	fmt.Println(utf8.RuneCountInString(char))	// 1
+}
+</code></pre>
+<p><strong>注意：</strong> <code>RuneCountInString</code> 并不总是返回我们看到的字符数，因为有的字符会占用 2 个 rune：</p>
+<pre><code class="language-go">func main() {
+	char := &quot;é&quot;
+	fmt.Println(len(char))	// 3
+	fmt.Println(utf8.RuneCountInString(char))	// 2
+	fmt.Println(&quot;cafe\u0301&quot;)	// café	// 法文的 cafe，实际上是两个 rune 的组合
+}
+</code></pre>
+<p>参考：<a href="https://blog.golang.org/normalization" target="_blank" rel="noopener">normalization</a></p>
+<h3 id="21.-arrayslicemap-80034b">21. 在多行 array、slice、map 语句中缺少 <code>,</code> 号</h3>
+<pre><code class="language-go">func main() {
+	x := []int {
+		1,
+		2	// syntax error: unexpected newline, expecting comma or }
+	}
+	y := []int{1,2,}	
+	z := []int{1,2}	
+	// ...
+}
+</code></pre>
+<p>声明语句中 <code>}</code> 折叠到单行后，尾部的 <code>,</code> 不是必需的。</p>
+<h3 id="22.-log.fatal-log.panic-log-3816e8">22. <code>log.Fatal</code> 和 <code>log.Panic</code> 不只是 log</h3>
+<p>log 标准库提供了不同的日志记录等级，与其他语言的日志库不同，Go 的 log 包在调用 <code>Fatal*()</code>、<code>Panic*()</code> 时能做更多日志外的事，如中断程序的执行等：</p>
+<pre><code class="language-go">func main() {
+	log.Fatal(&quot;Fatal level log: log entry&quot;)		// 输出信息后，程序终止执行
+	log.Println(&quot;Nomal level log: log entry&quot;)
+}
+</code></pre>
+<h3 id="23.-a72df6">23. 对内建数据结构的操作并不是同步的</h3>
+<p>尽管 Go 本身有大量的特性来支持并发，但并不保证并发的数据安全，用户需自己保证变量等数据以原子操作更新。</p>
+<p>goroutine 和 channel 是进行原子操作的好方法，或使用 &quot;sync&quot; 包中的锁。</p>
+<h3 id="24.-range-string-169ac8">24. range 迭代 string 得到的值</h3>
+<p>range 得到的索引是字符值（Unicode point / rune）第一个字节的位置，与其他编程语言不同，这个索引并不直接是字符在字符串中的位置。</p>
+<p>注意一个字符可能占多个 rune，比如法文单词 café 中的 é。操作特殊字符可使用<a href="https://golang.org/pkg/vendor/golang_org/x/text/unicode/norm/" target="_blank" rel="noopener">norm</a> 包。</p>
+<p>for range 迭代会尝试将 string 翻译为 UTF8 文本，对任何无效的码点都直接使用 0XFFFD rune（�）UNicode 替代字符来表示。如果 string 中有任何非 UTF8 的数据，应将 string 保存为 byte slice 再进行操作。</p>
+<pre><code class="language-go">func main() {
+	data := &quot;A\xfe\x02\xff\x04&quot;
+	for _, v := range data {
+		fmt.Printf(&quot;%#x &quot;, v)	// 0x41 0xfffd 0x2 0xfffd 0x4	// 错误
+	}
+
+	for _, v := range []byte(data) {
+		fmt.Printf(&quot;%#x &quot;, v)	// 0x41 0xfe 0x2 0xff 0x4	// 正确
+	}
+}
+</code></pre>
+<h3 id="25.-range-map-f7242e">25. range 迭代 map</h3>
+<p>如果你希望以特定的顺序（如按 key 排序）来迭代 map，要注意每次迭代都可能产生不一样的结果。</p>
+<p>Go 的运行时是有意打乱迭代顺序的，所以你得到的迭代结果可能不一致。但也并不总会打乱，得到连续相同的 5 个迭代结果也是可能的，如：</p>
+<pre><code class="language-go">func main() {
+	m := map[string]int{&quot;one&quot;: 1, &quot;two&quot;: 2, &quot;three&quot;: 3, &quot;four&quot;: 4}
+	for k, v := range m {
+		fmt.Println(k, v)
+	}
+}
+</code></pre>
+<p>如果你去 <a href="https://play.golang.org/" target="_blank" rel="noopener">Go Playground</a> 重复运行上边的代码，输出是不会变的，只有你更新代码它才会重新编译。重新编译后迭代顺序是被打乱的：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/25.png" alt="" width="267" height="237" loading="lazy" decoding="async"></div><h3 id="26.-switch-fallthrough-b6fdbc">26. switch 中的 fallthrough 语句</h3>
+<p><code>switch</code> 语句中的 <code>case</code> 代码块会默认带上 break，但可以使用 <code>fallthrough</code> 来强制执行下一个 case 代码块。</p>
+<pre><code class="language-go">func main() {
+	isSpace := func(char byte) bool {
+		switch char {
+		case &#39; &#39;:	// 空格符会直接 break，返回 false // 和其他语言不一样
+		// fallthrough	// 返回 true
+		case &#39;\t&#39;:
+			return true
+		}
+		return false
+	}
+	fmt.Println(isSpace(&#39;\t&#39;))	// true
+	fmt.Println(isSpace(&#39; &#39;))	// false
+}
+</code></pre>
+<p>不过你可以在 case 代码块末尾使用 <code>fallthrough</code>，强制执行下一个 case 代码块。</p>
+<p>也可以改写 case 为多条件判断：</p>
+<pre><code class="language-go">func main() {
+	isSpace := func(char byte) bool {
+		switch char {
+		case &#39; &#39;, &#39;\t&#39;:
+			return true
+		}
+		return false
+	}
+	fmt.Println(isSpace(&#39;\t&#39;))	// true
+	fmt.Println(isSpace(&#39; &#39;))	// true
+}
+</code></pre>
+<h3 id="27.-467b47">27. 自增和自减运算</h3>
+<p>很多编程语言都自带前置后置的 <code>++</code>、<code>--</code> 运算。但 Go 特立独行，去掉了前置操作，同时 <code>++</code>、<code>—</code>  只作为运算符而非表达式。</p>
+<pre><code class="language-go">// 错误示例
+func main() {
+	data := []int{1, 2, 3}
+	i := 0
+	++i			// syntax error: unexpected ++, expecting }
+	fmt.Println(data[i++])	// syntax error: unexpected ++, expecting :
+}
+
+
+// 正确示例
+func main() {
+	data := []int{1, 2, 3}
+	i := 0
+	i++
+	fmt.Println(data[i])	// 2
+}
+</code></pre>
+<h3 id="28.-561119">28. 按位取反</h3>
+<p>很多编程语言使用 <code>~</code> 作为一元按位取反（NOT）操作符，Go 重用 <code>^</code> XOR 操作符来按位取反：</p>
+<pre><code class="language-go">// 错误的取反操作
+func main() {
+	fmt.Println(~2)		// bitwise complement operator is ^
+}
+
+
+// 正确示例
+func main() {
+	var d uint8 = 2
+	fmt.Printf(&quot;%08b\n&quot;, d)		// 00000010
+	fmt.Printf(&quot;%08b\n&quot;, ^d)	// 11111101
+}
+</code></pre>
+<p>同时 <code>^</code> 也是按位异或（XOR）操作符。</p>
+<p>一个操作符能重用两次，是因为一元的 NOT 操作 <code>NOT 0x02</code>，与二元的 XOR 操作 <code>0x22 XOR 0xff</code> 是一致的。</p>
+<p>Go 也有特殊的操作符 AND NOT <code>&amp;^</code> 操作符，不同位才取1。</p>
+<pre><code class="language-go">func main() {
+	var a uint8 = 0x82
+	var b uint8 = 0x02
+	fmt.Printf(&quot;%08b [A]\n&quot;, a)
+	fmt.Printf(&quot;%08b [B]\n&quot;, b)
+
+	fmt.Printf(&quot;%08b (NOT B)\n&quot;, ^b)
+	fmt.Printf(&quot;%08b ^ %08b = %08b [B XOR 0xff]\n&quot;, b, 0xff, b^0xff)
+
+	fmt.Printf(&quot;%08b ^ %08b = %08b [A XOR B]\n&quot;, a, b, a^b)
+	fmt.Printf(&quot;%08b &amp; %08b = %08b [A AND B]\n&quot;, a, b, a&amp;b)
+	fmt.Printf(&quot;%08b &amp;^%08b = %08b [A &#39;AND NOT&#39; B]\n&quot;, a, b, a&amp;^b)
+	fmt.Printf(&quot;%08b&amp;(^%08b)= %08b [A AND (NOT B)]\n&quot;, a, b, a&amp;(^b))
+}
+</code></pre>
+<pre><code class="language-shell">10000010 [A]
+00000010 [B]
+11111101 (NOT B)
+00000010 ^ 11111111 = 11111101 [B XOR 0xff]
+10000010 ^ 00000010 = 10000000 [A XOR B]
+10000010 &amp; 00000010 = 00000010 [A AND B]
+10000010 &amp;^00000010 = 10000000 [A &#39;AND NOT&#39; B]
+10000010&amp;(^00000010)= 10000000 [A AND (NOT B)]
+</code></pre>
+<h3 id="29.-6945ee">29. 运算符的优先级</h3>
+<p>除了位清除（bit clear）操作符，Go 也有很多和其他语言一样的位操作符，但优先级另当别论。</p>
+<pre><code class="language-go">func main() {
+	fmt.Printf(&quot;0x2 &amp; 0x2 + 0x4 -&gt; %#x\n&quot;, 0x2&amp;0x2+0x4)	// &amp; 优先 +
+	//prints: 0x2 &amp; 0x2 + 0x4 -&gt; 0x6
+	//Go:    (0x2 &amp; 0x2) + 0x4
+	//C++:    0x2 &amp; (0x2 + 0x4) -&gt; 0x2
+
+	fmt.Printf(&quot;0x2 + 0x2 &lt;&lt; 0x1 -&gt; %#x\n&quot;, 0x2+0x2&lt;&lt;0x1)	// &lt;&lt; 优先 +
+	//prints: 0x2 + 0x2 &lt;&lt; 0x1 -&gt; 0x6
+	//Go:     0x2 + (0x2 &lt;&lt; 0x1)
+	//C++:   (0x2 + 0x2) &lt;&lt; 0x1 -&gt; 0x8
+
+	fmt.Printf(&quot;0xf | 0x2 ^ 0x2 -&gt; %#x\n&quot;, 0xf|0x2^0x2)	// | 优先 ^
+	//prints: 0xf | 0x2 ^ 0x2 -&gt; 0xd
+	//Go:    (0xf | 0x2) ^ 0x2
+	//C++:    0xf | (0x2 ^ 0x2) -&gt; 0xf
+}
+</code></pre>
+<p>优先级列表：</p>
+<pre><code class="language-go">Precedence    Operator
+    5             *  /  %  &lt;&lt;  &gt;&gt;  &amp;  &amp;^
+    4             +  -  |  ^
+    3             ==  !=  &lt;  &lt;=  &gt;  &gt;=
+    2             &amp;&amp;
+    1             ||
+</code></pre>
+<h3 id="30.-struct-encode-52df01">30. 不导出的 struct 字段无法被 encode</h3>
+<p>以小写字母开头的字段成员是无法被外部直接访问的，所以  <code>struct</code> 在进行 json、xml、gob 等格式的 encode 操作时，这些私有字段会被忽略，导出时得到零值：</p>
+<pre><code class="language-go">func main() {
+	in := MyData{1, &quot;two&quot;}
+	fmt.Printf(&quot;%#v\n&quot;, in)	// main.MyData{One:1, two:&quot;two&quot;}
+
+	encoded, _ := json.Marshal(in)
+	fmt.Println(string(encoded))	// {&quot;One&quot;:1}	// 私有字段 two 被忽略了
+
+	var out MyData
+	json.Unmarshal(encoded, &amp;out)
+	fmt.Printf(&quot;%#v\n&quot;, out) 	// main.MyData{One:1, two:&quot;&quot;}
+}
+</code></pre>
+<h3 id="31.-goroutine-3af5f5">31. 程序退出时还有 goroutine 在执行</h3>
+<p>程序默认不等所有 goroutine 都执行完才退出，这点需要特别注意：</p>
+<pre><code class="language-go">// 主程序会直接退出
+func main() {
+	workerCount := 2
+	for i := 0; i &lt; workerCount; i++ {
+		go doIt(i)
+	}
+	time.Sleep(1 * time.Second)
+	fmt.Println(&quot;all done!&quot;)
+}
+
+func doIt(workerID int) {
+	fmt.Printf(&quot;[%v] is running\n&quot;, workerID)
+	time.Sleep(3 * time.Second)		// 模拟 goroutine 正在执行 
+	fmt.Printf(&quot;[%v] is done\n&quot;, workerID)
+}
+</code></pre>
+<p>如下，<code>main()</code> 主程序不等两个 goroutine 执行完就直接退出了：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/31.png" alt="" width="269" height="124" loading="lazy" decoding="async"></div><p>常用解决办法：使用 &quot;WaitGroup&quot;  变量，它会让主程序等待所有 goroutine 执行完毕再退出。</p>
+<p>如果你的 goroutine 要做消息的循环处理等耗时操作，可以向它们发送一条 <code>kill</code> 消息来关闭它们。或直接关闭一个它们都等待接收数据的 channel：</p>
+<pre><code class="language-go">// 等待所有 goroutine 执行完毕
+// 进入死锁
+func main() {
+	var wg sync.WaitGroup
+	done := make(chan struct{})
+
+	workerCount := 2
+	for i := 0; i &lt; workerCount; i++ {
+		wg.Add(1)
+		go doIt(i, done, wg)
+	}
+
+	close(done)
+	wg.Wait()
+	fmt.Println(&quot;all done!&quot;)
+}
+
+func doIt(workerID int, done &lt;-chan struct{}, wg sync.WaitGroup) {
+	fmt.Printf(&quot;[%v] is running\n&quot;, workerID)
+	defer wg.Done()
+	&lt;-done
+	fmt.Printf(&quot;[%v] is done\n&quot;, workerID)
+}
+</code></pre>
+<p>执行结果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/31_2.png" alt="" width="464" height="373" loading="lazy" decoding="async"></div><p>看起来好像 goroutine 都执行完了，然而报错：</p>
+<blockquote>
+<p>fatal error: all goroutines are asleep - deadlock!</p>
+</blockquote>
+<p>为什么会发生死锁？goroutine 在退出前调用了 <code>wg.Done()</code> ，程序应该正常退出的。</p>
+<p>原因是 goroutine 得到的 &quot;WaitGroup&quot; 变量是 <code>var wg WaitGroup</code> 的一份拷贝值，即 <code>doIt()</code> 传参只传值。所以哪怕在每个 goroutine 中都调用了 <code>wg.Done()</code>， 主程序中的 <code>wg</code> 变量并不会受到影响。</p>
+<pre><code class="language-go">// 等待所有 goroutine 执行完毕
+// 使用传址方式为 WaitGroup 变量传参
+// 使用 channel 关闭 goroutine
+
+func main() {
+	var wg sync.WaitGroup
+	done := make(chan struct{})
+	ch := make(chan interface{})
+
+	workerCount := 2
+	for i := 0; i &lt; workerCount; i++ {
+		wg.Add(1)
+        go doIt(i, ch, done, &amp;wg)	// wg 传指针，doIt() 内部会改变 wg 的值
+	}
+
+	for i := 0; i &lt; workerCount; i++ {	// 向 ch 中发送数据，关闭 goroutine
+		ch &lt;- i
+	}
+
+	close(done)
+	wg.Wait()
+	close(ch)
+	fmt.Println(&quot;all done!&quot;)
+}
+
+func doIt(workerID int, ch &lt;-chan interface{}, done &lt;-chan struct{}, wg *sync.WaitGroup) {
+	fmt.Printf(&quot;[%v] is running\n&quot;, workerID)
+	defer wg.Done()
+	for {
+		select {
+		case m := &lt;-ch:
+			fmt.Printf(&quot;[%v] m =&gt; %v\n&quot;, workerID, m)
+		case &lt;-done:
+			fmt.Printf(&quot;[%v] is done\n&quot;, workerID)
+			return
+		}
+	}
+}
+</code></pre>
+<p>运行效果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/31_3.png" alt="" width="228" height="212" loading="lazy" decoding="async"></div><h3 id="32.-channel-receiver-6b8576">32. 向无缓冲的 channel 发送数据，只要 receiver 准备好了就会立刻返回</h3>
+<p>只有在数据被 receiver 处理时，sender 才会阻塞。因运行环境而异，在 sender 发送完数据后，receiver 的 goroutine 可能没有足够的时间处理下一个数据。如：</p>
+<pre><code class="language-go">func main() {
+	ch := make(chan string)
+
+	go func() {
+		for m := range ch {
+			fmt.Println(&quot;Processed:&quot;, m)
+			time.Sleep(1 * time.Second)	// 模拟需要长时间运行的操作
+		}
+	}()
+
+	ch &lt;- &quot;cmd.1&quot;
+	ch &lt;- &quot;cmd.2&quot; // 不会被接收处理
+}
+</code></pre>
+<p>运行效果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/32.png" alt="" width="214" height="77" loading="lazy" decoding="async"></div><h3 id="33.-channel-panic-2b9373">33. 向已关闭的 channel 发送数据会造成 panic</h3>
+<p>从已关闭的 channel 接收数据是安全的：</p>
+<p>接收状态值 <code>ok</code> 是 <code>false</code> 时表明 channel 中已没有数据可以接收了。类似的，从有缓冲的 channel 中接收数据，缓存的数据获取完再没有数据可取时，状态值也是 <code>false</code></p>
+<p>向已关闭的 channel 中发送数据会造成 panic：</p>
+<pre><code class="language-go">func main() {
+	ch := make(chan int)
+	for i := 0; i &lt; 3; i++ {
+		go func(idx int) {
+			ch &lt;- idx
+		}(i)
+	}
+
+	fmt.Println(&lt;-ch)		// 输出第一个发送的值
+	close(ch)			// 不能关闭，还有其他的 sender
+	time.Sleep(2 * time.Second)	// 模拟做其他的操作
+}
+</code></pre>
+<p>运行结果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/33_1.png" alt="" width="412" height="237" loading="lazy" decoding="async"></div><p>针对上边有 bug 的这个例子，可使用一个废弃 channel <code>done</code> 来告诉剩余的  goroutine 无需再向 ch 发送数据。此时 <code>&lt;- done</code> 的结果是 <code>{}</code>：</p>
+<pre><code class="language-go">func main() {
+	ch := make(chan int)
+	done := make(chan struct{})
+
+	for i := 0; i &lt; 3; i++ {
+		go func(idx int) {
+			select {
+			case ch &lt;- (idx + 1) * 2:
+				fmt.Println(idx, &quot;Send result&quot;)
+			case &lt;-done:
+				fmt.Println(idx, &quot;Exiting&quot;)
+			}
+		}(i)
+	}
+
+	fmt.Println(&quot;Result: &quot;, &lt;-ch)
+	close(done)
+	time.Sleep(3 * time.Second)
+}
+</code></pre>
+<p> 运行效果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/33_2.png" alt="" width="230" height="147" loading="lazy" decoding="async"></div><h3 id="34.-nil-channel-98b18e">34. 使用了值为 <code>nil </code> 的 channel</h3>
+<p>在一个值为 nil 的 channel 上发送和接收数据将永久阻塞：</p>
+<pre><code class="language-go">func main() {
+	var ch chan int // 未初始化，值为 nil
+	for i := 0; i &lt; 3; i++ {
+		go func(i int) {
+			ch &lt;- i
+		}(i)
+	}
+
+	fmt.Println(&quot;Result: &quot;, &lt;-ch)
+	time.Sleep(2 * time.Second)
+}
+</code></pre>
+<p>runtime 死锁错误：</p>
+<blockquote>
+<p>fatal error: all goroutines are asleep - deadlock!
+goroutine 1 [chan receive (nil chan)]</p>
+</blockquote>
+<p>利用这个死锁的特性，可以用在 select 中动态的打开和关闭 case 语句块：</p>
+<pre><code class="language-go">func main() {
+	inCh := make(chan int)
+	outCh := make(chan int)
+
+	go func() {
+		var in &lt;-chan int = inCh
+		var out chan&lt;- int
+		var val int
+
+		for {
+			select {
+			case out &lt;- val:
+				println(&quot;--------&quot;)
+				out = nil
+				in = inCh
+			case val = &lt;-in:
+				println(&quot;++++++++++&quot;)
+				out = outCh
+				in = nil
+			}
+		}
+	}()
+
+	go func() {
+		for r := range outCh {
+			fmt.Println(&quot;Result: &quot;, r)
+		}
+	}()
+
+	time.Sleep(0)
+	inCh &lt;- 1
+	inCh &lt;- 2
+	time.Sleep(3 * time.Second)
+}
+</code></pre>
+<p>运行效果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/34_1.png" alt="" width="215" height="191" loading="lazy" decoding="async"></div><h3 id="34.-receiver-2e422d">34. 若函数 receiver 传参是传值方式，则无法修改参数的原有值</h3>
+<p>方法 receiver 的参数与一般函数的参数类似：如果声明为值，那方法体得到的是一份参数的值拷贝，此时对参数的任何修改都不会对原有值产生影响。</p>
+<p>除非 receiver 参数是 map 或 slice 类型的变量，并且是以指针方式更新 map 中的字段、slice 中的元素的，才会更新原有值:</p>
+<pre><code class="language-go">type data struct {
+	num   int
+	key   *string
+	items map[string]bool
+}
+
+func (this *data) pointerFunc() {
+	this.num = 7
+}
+
+func (this data) valueFunc() {
+	this.num = 8
+	*this.key = &quot;valueFunc.key&quot;
+	this.items[&quot;valueFunc&quot;] = true
+}
+
+func main() {
+	key := &quot;key1&quot;
+
+	d := data{1, &amp;key, make(map[string]bool)}
+	fmt.Printf(&quot;num=%v  key=%v  items=%v\n&quot;, d.num, *d.key, d.items)
+
+	d.pointerFunc()	// 修改 num 的值为 7
+	fmt.Printf(&quot;num=%v  key=%v  items=%v\n&quot;, d.num, *d.key, d.items)
+
+	d.valueFunc()	// 修改 key 和 items 的值
+	fmt.Printf(&quot;num=%v  key=%v  items=%v\n&quot;, d.num, *d.key, d.items)
+}
+</code></pre>
+<p>运行结果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/34_2.png" alt="" width="425" height="129" loading="lazy" decoding="async"></div><h3 id="35.-http-13b6e0">35. 关闭 HTTP 的响应体</h3>
+<p>使用 HTTP 标准库发起请求、获取响应时，即使你不从响应中读取任何数据或响应为空，都需要手动关闭响应体。新手很容易忘记手动关闭，或者写在了错误的位置：</p>
+<pre><code class="language-go">// 请求失败造成 panic
+func main() {
+	resp, err := http.Get(&quot;https://api.ipify.org?format=json&quot;)
+	defer resp.Body.Close()	// resp 可能为 nil，不能读取 Body
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+    checkError(err)
+
+	fmt.Println(string(body))
+}
+
+func checkError(err error) {
+	if err != nil{
+		log.Fatalln(err)
+	}
+}
+</code></pre>
+<p>上边的代码能正确发起请求，但是一旦请求失败，变量 <code>resp</code> 值为 <code>nil</code>，造成 panic：</p>
+<blockquote>
+<p>panic: runtime error: invalid memory address or nil pointer dereference</p>
+</blockquote>
+<p>应该先检查 HTTP 响应错误为 <code>nil</code>，再调用 <code>resp.Body.Close()</code> 来关闭响应体：</p>
+<pre><code class="language-go">// 大多数情况正确的示例
+func main() {
+	resp, err := http.Get(&quot;https://api.ipify.org?format=json&quot;)
+	checkError(err)
+    
+	defer resp.Body.Close()	// 绝大多数情况下的正确关闭方式
+	body, err := ioutil.ReadAll(resp.Body)
+	checkError(err)
+
+	fmt.Println(string(body))
+}
+</code></pre>
+<p>输出：</p>
+<blockquote>
+<p>Get <a href="https://api.ipify.org?format=json" target="_blank" rel="noopener">https://api.ipify.org?format=json</a>: x509: certificate signed by unknown authority</p>
+</blockquote>
+<p>绝大多数请求失败的情况下，<code>resp</code> 的值为 <code>nil</code> 且 <code>err</code> 为 <code>non-nil</code>。但如果你得到的是重定向错误，那它俩的值都是 <code>non-nil</code>，最后依旧可能发生内存泄露。2 个解决办法：</p>
+<ul>
+<li>可以直接在处理 HTTP 响应错误的代码块中，直接关闭非 nil 的响应体。</li>
+<li>手动调用 <code>defer</code> 来关闭响应体：</li>
+</ul>
+<pre><code class="language-go">// 正确示例
+func main() {
+	resp, err := http.Get(&quot;http://www.baidu.com&quot;)
+	
+    // 关闭 resp.Body 的正确姿势
+    if resp != nil {
+		defer resp.Body.Close()
+	}
+
+	checkError(err)
+
+	body, err := ioutil.ReadAll(resp.Body)
+	checkError(err)
+
+	fmt.Println(string(body))
+}
+</code></pre>
+<p><code>resp.Body.Close()</code> 早先版本的实现是读取响应体的数据之后丢弃，保证了 keep-alive 的 HTTP 连接能重用处理不止一个请求。但 Go 的最新版本将读取并丢弃数据的任务交给了用户，如果你不处理，HTTP 连接可能会直接关闭而非重用，参考在 Go 1.5 版本文档。</p>
+<p>如果程序大量重用 HTTP 长连接，你可能要在处理响应的逻辑代码中加入：</p>
+<pre><code class="language-go">_, err = io.Copy(ioutil.Discard, resp.Body)	// 手动丢弃读取完毕的数据
+</code></pre>
+<p>如果你需要完整读取响应，上边的代码是需要写的。比如在解码 API 的 JSON 响应数据：</p>
+<pre><code class="language-go">json.NewDecoder(resp.Body).Decode(&amp;data)  
+</code></pre>
+<h3 id="36.-http-f47093">36. 关闭 HTTP 连接</h3>
+<p>一些支持 HTTP1.1 或 HTTP1.0 配置了 <code>connection: keep-alive</code> 选项的服务器会保持一段时间的长连接。但标准库 &quot;net/http&quot; 的连接默认只在服务器主动要求关闭时才断开，所以你的程序可能会消耗完 socket 描述符。解决办法有 2 个，请求结束后：</p>
+<ul>
+<li>直接设置请求变量的 <code>Close </code> 字段值为 <code>true</code>，每次请求结束后就会主动关闭连接。</li>
+<li>设置 Header 请求头部选项 <code>Connection: close</code>，然后服务器返回的响应头部也会有这个选项，此时 HTTP 标准库会主动断开连接。</li>
+</ul>
+<pre><code class="language-go">// 主动关闭连接
+func main() {
+	req, err := http.NewRequest(&quot;GET&quot;, &quot;http://golang.org&quot;, nil)
+	checkError(err)
+
+	req.Close = true
+	//req.Header.Add(&quot;Connection&quot;, &quot;close&quot;)	// 等效的关闭方式
+
+	resp, err := http.DefaultClient.Do(req)
+	if resp != nil {
+		defer resp.Body.Close()
+	}
+	checkError(err)
+
+	body, err := ioutil.ReadAll(resp.Body)
+	checkError(err)
+
+	fmt.Println(string(body))
+}
+</code></pre>
+<p>你可以创建一个自定义配置的 HTTP transport 客户端，用来取消 HTTP 全局的复用连接：</p>
+<pre><code class="language-go">func main() {
+	tr := http.Transport{DisableKeepAlives: true}
+	client := http.Client{Transport: &amp;tr}
+
+	resp, err := client.Get(&quot;https://golang.google.cn/&quot;)
+	if resp != nil {
+		defer resp.Body.Close()
+	}
+	checkError(err)
+
+	fmt.Println(resp.StatusCode)	// 200
+
+	body, err := ioutil.ReadAll(resp.Body)
+	checkError(err)
+
+	fmt.Println(len(string(body)))
+}
+</code></pre>
+<p>根据需求选择使用场景：</p>
+<ul>
+<li><p>若你的程序要向同一服务器发大量请求，使用默认的保持长连接。</p>
+</li>
+<li><p>若你的程序要连接大量的服务器，且每台服务器只请求一两次，那收到请求后直接关闭连接。或增加最大文件打开数 <code>fs.file-max</code> 的值。</p>
+</li>
+</ul>
+<h3 id="37.-json-interface-34ceea">37. 将 JSON 中的数字解码为 interface 类型</h3>
+<p>在 encode/decode JSON 数据时，Go 默认会将数值当做 float64 处理，比如下边的代码会造成 panic：</p>
+<pre><code class="language-go">func main() {
+	var data = []byte(`{&quot;status&quot;: 200}`)
+	var result map[string]interface{}
+
+	if err := json.Unmarshal(data, &amp;result); err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Printf(&quot;%T\n&quot;, result[&quot;status&quot;])	// float64
+	var status = result[&quot;status&quot;].(int)	// 类型断言错误
+	fmt.Println(&quot;Status value: &quot;, status)
+}
+</code></pre>
+<blockquote>
+<p>panic: interface conversion: interface {} is float64, not int</p>
+</blockquote>
+<p>如果你尝试 decode 的 JSON 字段是整型，你可以：</p>
+<ul>
+<li><p>将 int 值转为 float 统一使用</p>
+</li>
+<li><p>将 decode 后需要的 float 值转为 int 使用</p>
+</li>
+</ul>
+<pre><code class="language-go">// 将 decode 的值转为 int 使用
+func main() {
+    var data = []byte(`{&quot;status&quot;: 200}`)
+    var result map[string]interface{}
+
+    if err := json.Unmarshal(data, &amp;result); err != nil {
+        log.Fatalln(err)
+    }
+
+    var status = uint64(result[&quot;status&quot;].(float64))
+    fmt.Println(&quot;Status value: &quot;, status)
+}
+</code></pre>
+<ul>
+<li>使用 <code>Decoder</code> 类型来 decode JSON 数据，明确表示字段的值类型</li>
+</ul>
+<pre><code class="language-go">// 指定字段类型
+func main() {
+	var data = []byte(`{&quot;status&quot;: 200}`)
+	var result map[string]interface{}
+    
+	var decoder = json.NewDecoder(bytes.NewReader(data))
+	decoder.UseNumber()
+
+	if err := decoder.Decode(&amp;result); err != nil {
+		log.Fatalln(err)
+	}
+
+	var status, _ = result[&quot;status&quot;].(json.Number).Int64()
+	fmt.Println(&quot;Status value: &quot;, status)
+}
+
+ // 你可以使用 string 来存储数值数据，在 decode 时再决定按 int 还是 float 使用
+ // 将数据转为 decode 为 string
+ func main() {
+ 	var data = []byte({&quot;status&quot;: 200})
+  	var result map[string]interface{}
+  	var decoder = json.NewDecoder(bytes.NewReader(data))
+  	decoder.UseNumber()
+  	if err := decoder.Decode(&amp;result); err != nil {
+  		log.Fatalln(err)
+  	}
+    var status uint64
+  	err := json.Unmarshal([]byte(result[&quot;status&quot;].(json.Number).String()), &amp;status);
+	checkError(err)
+   	fmt.Println(&quot;Status value: &quot;, status)
+}
+</code></pre>
+<p>​- 使用 <code>struct</code> 类型将你需要的数据映射为数值型</p>
+<pre><code class="language-go">// struct 中指定字段类型
+func main() {
+  	var data = []byte(`{&quot;status&quot;: 200}`)
+  	var result struct {
+  		Status uint64 `json:&quot;status&quot;`
+  	}
+
+  	err := json.NewDecoder(bytes.NewReader(data)).Decode(&amp;result)
+  	checkError(err)
+	fmt.Printf(&quot;Result: %+v&quot;, result)
+}
+</code></pre>
+<ul>
+<li><p>可以使用 <code>struct</code> 将数值类型映射为 <code>json.RawMessage</code> 原生数据类型</p>
+<p>适用于如果 JSON 数据不着急 decode 或 JSON 某个字段的值类型不固定等情况：</p>
+</li>
+</ul>
+<pre><code class="language-go">// 状态名称可能是 int 也可能是 string，指定为 json.RawMessage 类型
+func main() {
+	records := [][]byte{
+		[]byte(`{&quot;status&quot;:200, &quot;tag&quot;:&quot;one&quot;}`),
+		[]byte(`{&quot;status&quot;:&quot;ok&quot;, &quot;tag&quot;:&quot;two&quot;}`),
+	}
+
+	for idx, record := range records {
+		var result struct {
+			StatusCode uint64
+			StatusName string
+			Status     json.RawMessage `json:&quot;status&quot;`
+			Tag        string          `json:&quot;tag&quot;`
+		}
+
+		err := json.NewDecoder(bytes.NewReader(record)).Decode(&amp;result)
+		checkError(err)
+
+		var name string
+		err = json.Unmarshal(result.Status, &amp;name)
+		if err == nil {
+			result.StatusName = name
+		}
+
+		var code uint64
+		err = json.Unmarshal(result.Status, &amp;code)
+		if err == nil {
+			result.StatusCode = code
+		}
+
+		fmt.Printf(&quot;[%v] result =&gt; %+v\n&quot;, idx, result)
+	}
+}
+</code></pre>
+<p>​</p>
+<h3 id="38.-structarrayslice-map-2364f2">38. struct、array、slice 和 map 的值比较</h3>
+<p>可以使用相等运算符 <code>==</code> 来比较结构体变量，前提是两个结构体的成员都是可比较的类型：</p>
+<pre><code class="language-go">type data struct {
+	num     int
+	fp      float32
+	complex complex64
+	str     string
+	char    rune
+	yes     bool
+	events  &lt;-chan string
+	handler interface{}
+	ref     *byte
+	raw     [10]byte
+}
+
+func main() {
+	v1 := data{}
+	v2 := data{}
+	fmt.Println(&quot;v1 == v2: &quot;, v1 == v2)	// true
+}
+</code></pre>
+<p>如果两个结构体中有任意成员是不可比较的，将会造成编译错误。注意数组成员只有在数组元素可比较时候才可比较。</p>
+<pre><code class="language-go">type data struct {
+	num    int
+	checks [10]func() bool		// 无法比较
+	doIt   func() bool		// 无法比较
+	m      map[string]string	// 无法比较
+	bytes  []byte			// 无法比较
+}
+
+func main() {
+	v1 := data{}
+	v2 := data{}
+
+	fmt.Println(&quot;v1 == v2: &quot;, v1 == v2)
+}
+</code></pre>
+<blockquote>
+<p> invalid operation: v1 == v2 (struct containing [10]func() bool cannot be compared)</p>
+</blockquote>
+<p>Go 提供了一些库函数来比较那些无法使用 <code>==</code> 比较的变量，比如使用 &quot;reflect&quot; 包的 <code>DeepEqual()</code> ：</p>
+<pre><code class="language-go">// 比较相等运算符无法比较的元素
+func main() {
+	v1 := data{}
+	v2 := data{}
+	fmt.Println(&quot;v1 == v2: &quot;, reflect.DeepEqual(v1, v2))	// true
+
+	m1 := map[string]string{&quot;one&quot;: &quot;a&quot;, &quot;two&quot;: &quot;b&quot;}
+	m2 := map[string]string{&quot;two&quot;: &quot;b&quot;, &quot;one&quot;: &quot;a&quot;}
+	fmt.Println(&quot;v1 == v2: &quot;, reflect.DeepEqual(m1, m2))	// true
+
+	s1 := []int{1, 2, 3}
+	s2 := []int{1, 2, 3}
+   	// 注意两个 slice 相等，值和顺序必须一致
+	fmt.Println(&quot;v1 == v2: &quot;, reflect.DeepEqual(s1, s2))	// true
+}
+</code></pre>
+<p>这种比较方式可能比较慢，根据你的程序需求来使用。<code>DeepEqual()</code> 还有其他用法：</p>
+<pre><code class="language-go">func main() {
+	var b1 []byte = nil
+	b2 := []byte{}
+	fmt.Println(&quot;b1 == b2: &quot;, reflect.DeepEqual(b1, b2))	// false
+}
+</code></pre>
+<p><strong>注意：</strong></p>
+<ul>
+<li><code>DeepEqual()</code> 并不总适合于比较 slice</li>
+</ul>
+<pre><code class="language-go">func main() {
+	var str = &quot;one&quot;
+	var in interface{} = &quot;one&quot;
+	fmt.Println(&quot;str == in: &quot;, reflect.DeepEqual(str, in))	// true
+
+	v1 := []string{&quot;one&quot;, &quot;two&quot;}
+	v2 := []string{&quot;two&quot;, &quot;one&quot;}
+	fmt.Println(&quot;v1 == v2: &quot;, reflect.DeepEqual(v1, v2))	// false
+
+	data := map[string]interface{}{
+		&quot;code&quot;:  200,
+		&quot;value&quot;: []string{&quot;one&quot;, &quot;two&quot;},
+	}
+	encoded, _ := json.Marshal(data)
+	var decoded map[string]interface{}
+	json.Unmarshal(encoded, &amp;decoded)
+	fmt.Println(&quot;data == decoded: &quot;, reflect.DeepEqual(data, decoded))	// false
+}
+</code></pre>
+<p>如果要大小写不敏感来比较 byte 或 string 中的英文文本，可以使用 &quot;bytes&quot; 或 &quot;strings&quot; 包的 <code>ToUpper()</code> 和 <code>ToLower()</code> 函数。比较其他语言的 byte 或 string，应使用 <code>bytes.EqualFold()</code>  和 <code>strings.EqualFold()</code> </p>
+<p>如果 byte slice 中含有验证用户身份的数据（密文哈希、token 等），不应再使用 <code>reflect.DeepEqual()</code>、<code>bytes.Equal()</code>、 <code>bytes.Compare()</code>。这三个函数容易对程序造成 <a href="http://en.wikipedia.org/wiki/Timing_attack" target="_blank" rel="noopener">timing attacks</a>，此时应使用 &quot;crypto/subtle&quot; 包中的 <code>subtle.ConstantTimeCompare()</code> 等函数</p>
+<ul>
+<li><code>reflect.DeepEqual()</code> 认为空 slice 与 nil slice 并不相等，但注意 <code>byte.Equal()</code> 会认为二者相等：</li>
+</ul>
+<pre><code class="language-go">func main() {
+	var b1 []byte = nil
+	b2 := []byte{}
+
+    // b1 与 b2 长度相等、有相同的字节序
+    // nil 与 slice 在字节上是相同的
+    fmt.Println(&quot;b1 == b2: &quot;, bytes.Equal(b1, b2))	// true
+}
+</code></pre>
+<h3 id="39.-panic-a6daf7">39. 从 panic 中恢复</h3>
+<p>在一个 defer 延迟执行的函数中调用 <code>recover()</code> ，它便能捕捉 / 中断 panic</p>
+<pre><code class="language-go">// 错误的 recover 调用示例
+func main() {
+	recover()	// 什么都不会捕捉
+	panic(&quot;not good&quot;)	// 发生 panic，主程序退出
+	recover()	// 不会被执行
+	println(&quot;ok&quot;)
+}
+
+// 正确的 recover 调用示例
+func main() {
+	defer func() {
+		fmt.Println(&quot;recovered: &quot;, recover())
+	}()
+	panic(&quot;not good&quot;)
+}
+</code></pre>
+<p>从上边可以看出，<code>recover()</code> 仅在 defer 执行的函数中调用才会生效。</p>
+<pre><code class="language-go">// 错误的调用示例
+func main() {
+	defer func() {
+		doRecover()
+	}()
+	panic(&quot;not good&quot;)
+}
+
+func doRecover() {
+	fmt.Println(&quot;recobered: &quot;, recover())
+}
+</code></pre>
+<blockquote>
+<p>recobered:  <nil>   panic: not good</p>
+</blockquote>
+<h3 id="40.-range-slicearraymap-818257">40. 在 range 迭代 slice、array、map 时通过更新引用来更新元素</h3>
+<p>在 range 迭代中，得到的值其实是元素的一份值拷贝，更新拷贝并不会更改原来的元素，即是拷贝的地址并不是原有元素的地址：</p>
+<pre><code class="language-go">func main() {
+	data := []int{1, 2, 3}
+	for _, v := range data {
+		v *= 10		// data 中原有元素是不会被修改的
+	}
+	fmt.Println(&quot;data: &quot;, data)	// data:  [1 2 3]
+}
+</code></pre>
+<p>如果要修改原有元素的值，应该使用索引直接访问：</p>
+<pre><code class="language-go">func main() {
+	data := []int{1, 2, 3}
+	for i, v := range data {
+		data[i] = v * 10	
+	}
+	fmt.Println(&quot;data: &quot;, data)	// data:  [10 20 30]
+}
+</code></pre>
+<p>如果你的集合保存的是指向值的指针，需稍作修改。依旧需要使用索引访问元素，不过可以使用 range 出来的元素直接更新原有值：</p>
+<pre><code class="language-go">func main() {
+	data := []*struct{ num int }{{1}, {2}, {3},}
+	for _, v := range data {
+		v.num *= 10	// 直接使用指针更新
+	}
+	fmt.Println(data[0], data[1], data[2])	// &amp;{10} &amp;{20} &amp;{30}
+}
+</code></pre>
+<h3 id="41.-slice-2ac4d1">41. slice 中隐藏的数据</h3>
+<p>从 slice 中重新切出新 slice 时，新 slice 会引用原 slice 的底层数组。如果跳了这个坑，程序可能会分配大量的临时 slice 来指向原底层数组的部分数据，将导致难以预料的内存使用。</p>
+<pre><code class="language-go">func get() []byte {
+	raw := make([]byte, 10000)
+	fmt.Println(len(raw), cap(raw), &amp;raw[0])	// 10000 10000 0xc420080000
+	return raw[:3]	// 重新分配容量为 10000 的 slice
+}
+
+func main() {
+	data := get()
+	fmt.Println(len(data), cap(data), &amp;data[0])	// 3 10000 0xc420080000
+}
+</code></pre>
+<p>可以通过拷贝临时 slice 的数据，而不是重新切片来解决：</p>
+<pre><code class="language-go">func get() (res []byte) {
+	raw := make([]byte, 10000)
+	fmt.Println(len(raw), cap(raw), &amp;raw[0])	// 10000 10000 0xc420080000
+	res = make([]byte, 3)
+	copy(res, raw[:3])
+	return
+}
+
+func main() {
+	data := get()
+	fmt.Println(len(data), cap(data), &amp;data[0])	// 3 3 0xc4200160b8
+}
+</code></pre>
+<h3 id="42.-slice-2950a1">42. Slice 中数据的误用</h3>
+<p>举个简单例子，重写文件路径（存储在 slice 中）</p>
+<p>分割路径来指向每个不同级的目录，修改第一个目录名再重组子目录名，创建新路径：</p>
+<pre><code class="language-go">// 错误使用 slice 的拼接示例
+func main() {
+	path := []byte(&quot;AAAA/BBBBBBBBB&quot;)
+	sepIndex := bytes.IndexByte(path, &#39;/&#39;) // 4
+	println(sepIndex)
+
+	dir1 := path[:sepIndex]
+	dir2 := path[sepIndex+1:]
+	println(&quot;dir1: &quot;, string(dir1))		// AAAA
+	println(&quot;dir2: &quot;, string(dir2))		// BBBBBBBBB
+
+	dir1 = append(dir1, &quot;suffix&quot;...)
+   	println(&quot;current path: &quot;, string(path))	// AAAAsuffixBBBB
+    
+	path = bytes.Join([][]byte{dir1, dir2}, []byte{&#39;/&#39;})
+	println(&quot;dir1: &quot;, string(dir1))		// AAAAsuffix
+	println(&quot;dir2: &quot;, string(dir2))		// uffixBBBB
+
+	println(&quot;new path: &quot;, string(path))	// AAAAsuffix/uffixBBBB	// 错误结果
+}
+</code></pre>
+<p>拼接的结果不是正确的 <code>AAAAsuffix/BBBBBBBBB</code>，因为 dir1、 dir2 两个 slice 引用的数据都是 <code>path</code> 的底层数组，第 13 行修改 <code>dir1</code> 同时也修改了 <code>path</code>，也导致了 <code>dir2</code> 的修改 </p>
+<p>解决方法：</p>
+<ul>
+<li>重新分配新的 slice 并拷贝你需要的数据</li>
+<li>使用完整的 slice 表达式：<code>input[low:high:max]</code>，容量便调整为 max - low</li>
+</ul>
+<pre><code class="language-go">// 使用 full slice expression
+func main() {
+
+	path := []byte(&quot;AAAA/BBBBBBBBB&quot;)
+	sepIndex := bytes.IndexByte(path, &#39;/&#39;) // 4
+    dir1 := path[:sepIndex:sepIndex]		// 此时 cap(dir1) 指定为4， 而不是先前的 16
+	dir2 := path[sepIndex+1:]
+	dir1 = append(dir1, &quot;suffix&quot;...)
+
+	path = bytes.Join([][]byte{dir1, dir2}, []byte{&#39;/&#39;})
+	println(&quot;dir1: &quot;, string(dir1))		// AAAAsuffix
+	println(&quot;dir2: &quot;, string(dir2))		// BBBBBBBBB
+	println(&quot;new path: &quot;, string(path))	// AAAAsuffix/BBBBBBBBB
+}
+</code></pre>
+<p>第 6 行中第三个参数是用来控制 dir1 的新容量，再往 dir1 中 append 超额元素时，将分配新的 buffer 来保存。而不是覆盖原来的 path 底层数组</p>
+<h3 id="43.-slice-0cd9de">43. 旧 slice</h3>
+<p>当你从一个已存在的 slice 创建新 slice 时，二者的数据指向相同的底层数组。如果你的程序使用这个特性，那需要注意 &quot;旧&quot;（stale） slice 问题。</p>
+<p>某些情况下，向一个 slice 中追加元素而它指向的底层数组容量不足时，将会重新分配一个新数组来存储数据。而其他 slice 还指向原来的旧底层数组。</p>
+<pre><code class="language-go">// 超过容量将重新分配数组来拷贝值、重新存储
+func main() {
+	s1 := []int{1, 2, 3}
+	fmt.Println(len(s1), cap(s1), s1)	// 3 3 [1 2 3 ]
+
+	s2 := s1[1:]
+	fmt.Println(len(s2), cap(s2), s2)	// 2 2 [2 3]
+
+	for i := range s2 {
+		s2[i] += 20
+	}
+	// 此时的 s1 与 s2 是指向同一个底层数组的
+	fmt.Println(s1)		// [1 22 23]
+	fmt.Println(s2)		// [22 23]
+
+	s2 = append(s2, 4)	// 向容量为 2 的 s2 中再追加元素，此时将分配新数组来存
+
+	for i := range s2 {
+		s2[i] += 10
+	}
+	fmt.Println(s1)		// [1 22 23]	// 此时的 s1 不再更新，为旧数据
+	fmt.Println(s2)		// [32 33 14]
+}
+</code></pre>
+<h3 id="44.-5d6498">44. 类型声明与方法</h3>
+<p>从一个现有的非 interface 类型创建新类型时，并不会继承原有的方法：</p>
+<pre><code class="language-go">// 定义 Mutex 的自定义类型
+type myMutex sync.Mutex
+
+func main() {
+	var mtx myMutex
+	mtx.Lock()
+	mtx.UnLock()
+}
+</code></pre>
+<blockquote>
+<p>mtx.Lock undefined (type myMutex has no field or method Lock)...</p>
+</blockquote>
+<p>如果你需要使用原类型的方法，可将原类型以匿名字段的形式嵌到你定义的新 struct 中：</p>
+<pre><code class="language-go">// 类型以字段形式直接嵌入
+type myLocker struct {
+	sync.Mutex
+}
+
+func main() {
+	var locker myLocker
+	locker.Lock()
+	locker.Unlock()
+}
+</code></pre>
+<p>interface 类型声明也保留它的方法集：</p>
+<pre><code class="language-go">type myLocker sync.Locker
+
+func main() {
+	var locker myLocker
+	locker.Lock()
+	locker.Unlock()
+}
+</code></pre>
+<h3 id="45.-for-switch-for-select-e8f21d">45. 跳出 for-switch 和 for-select 代码块</h3>
+<p>没有指定标签的 break 只会跳出 switch/select 语句，若不能使用 return 语句跳出的话，可为 break 跳出标签指定的代码块：</p>
+<pre><code class="language-go">// break 配合 label 跳出指定代码块
+func main() {
+loop:
+	for {
+		switch {
+		case true:
+			fmt.Println(&quot;breaking out...&quot;)
+			//break	// 死循环，一直打印 breaking out...
+			break loop
+		}
+	}
+	fmt.Println(&quot;out...&quot;)
+}
+</code></pre>
+<p><code>goto</code> 虽然也能跳转到指定位置，但依旧会再次进入 for-switch，死循环。</p>
+<h3 id="46.-for-781086">46. for 语句中的迭代变量与闭包函数</h3>
+<p>for 语句中的迭代变量在每次迭代中都会重用，即 for 中创建的闭包函数接收到的参数始终是同一个变量，在 goroutine 开始执行时都会得到同一个迭代值：</p>
+<pre><code class="language-go">func main() {
+	data := []string{&quot;one&quot;, &quot;two&quot;, &quot;three&quot;}
+
+	for _, v := range data {
+		go func() {
+			fmt.Println(v)
+		}()
+	}
+
+	time.Sleep(3 * time.Second)
+	// 输出 three three three
+}
+</code></pre>
+<p>最简单的解决方法：无需修改 goroutine 函数，在 for 内部使用局部变量保存迭代值，再传参：</p>
+<pre><code class="language-go">func main() {
+	data := []string{&quot;one&quot;, &quot;two&quot;, &quot;three&quot;}
+
+	for _, v := range data {
+		vCopy := v
+		go func() {
+			fmt.Println(vCopy)
+		}()
+	}
+
+	time.Sleep(3 * time.Second)
+	// 输出 one two three
+}
+</code></pre>
+<p>另一个解决方法：直接将当前的迭代值以参数形式传递给匿名函数：</p>
+<pre><code class="language-go">func main() {
+	data := []string{&quot;one&quot;, &quot;two&quot;, &quot;three&quot;}
+
+	for _, v := range data {
+		go func(in string) {
+			fmt.Println(in)
+		}(v)
+	}
+
+	time.Sleep(3 * time.Second)
+	// 输出 one two three
+}
+</code></pre>
+<p>注意下边这个稍复杂的 3 个示例区别：</p>
+<pre><code class="language-go">type field struct {
+	name string
+}
+
+func (p *field) print() {
+	fmt.Println(p.name)
+}
+
+// 错误示例
+func main() {
+	data := []field{{&quot;one&quot;}, {&quot;two&quot;}, {&quot;three&quot;}}
+	for _, v := range data {
+		go v.print()
+	}
+	time.Sleep(3 * time.Second)
+	// 输出 three three three 
+}
+
+
+// 正确示例
+func main() {
+	data := []field{{&quot;one&quot;}, {&quot;two&quot;}, {&quot;three&quot;}}
+	for _, v := range data {
+		v := v
+		go v.print()
+	}
+	time.Sleep(3 * time.Second)
+	// 输出 one two three
+}
+
+// 正确示例
+func main() {
+	data := []*field{{&quot;one&quot;}, {&quot;two&quot;}, {&quot;three&quot;}}
+	for _, v := range data {	// 此时迭代值 v 是三个元素值的地址，每次 v 指向的值不同
+		go v.print()
+	}
+	time.Sleep(3 * time.Second)
+	// 输出 one two three
+}
+</code></pre>
+<h3 id="47.-defer-9e02b9">47. defer 函数的参数值</h3>
+<p>对 defer 延迟执行的函数，它的参数会在声明时候就会求出具体值，而不是在执行时才求值：</p>
+<pre><code class="language-go">// 在 defer 函数中参数会提前求值
+func main() {
+	var i = 1
+	defer fmt.Println(&quot;result: &quot;, func() int { return i * 2 }())
+	i++
+}
+</code></pre>
+<blockquote>
+<p>result:  2</p>
+</blockquote>
+<h3 id="48.-defer-80247c">48. defer 函数的执行时机</h3>
+<p>对 defer 延迟执行的函数，会在调用它的函数结束时执行，而不是在调用它的语句块结束时执行，注意区分开。</p>
+<p>比如在一个长时间执行的函数里，内部 for 循环中使用 defer 来清理每次迭代产生的资源调用，就会出现问题：</p>
+<pre><code class="language-go">// 命令行参数指定目录名
+// 遍历读取目录下的文件
+func main() {
+
+	if len(os.Args) != 2 {
+		os.Exit(1)
+	}
+
+	dir := os.Args[1]
+	start, err := os.Stat(dir)
+	if err != nil || !start.IsDir() {
+		os.Exit(2)
+	}
+
+	var targets []string
+	filepath.Walk(dir, func(fPath string, fInfo os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if !fInfo.Mode().IsRegular() {
+			return nil
+		}
+
+		targets = append(targets, fPath)
+		return nil
+	})
+
+	for _, target := range targets {
+		f, err := os.Open(target)
+		if err != nil {
+			fmt.Println(&quot;bad target:&quot;, target, &quot;error:&quot;, err)	//error:too many open files
+			break
+		}
+		defer f.Close()	// 在每次 for 语句块结束时，不会关闭文件资源
+		
+		// 使用 f 资源
+	}
+}
+</code></pre>
+<p>先创建 10000 个文件：</p>
+<pre><code class="language-shell">#!/bin/bash
+for n in {1..10000}; do
+	echo content &gt; &quot;file${n}.txt&quot;
+done
+</code></pre>
+<p>运行效果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/48.png" alt="" width="480" height="134" loading="lazy" decoding="async"></div><p>解决办法：defer 延迟执行的函数写入匿名函数中：</p>
+<pre><code class="language-go">// 目录遍历正常
+func main() {
+    // ...
+
+	for _, target := range targets {
+		func() {
+			f, err := os.Open(target)
+			if err != nil {
+				fmt.Println(&quot;bad target:&quot;, target, &quot;error:&quot;, err)
+				return	// 在匿名函数内使用 return 代替 break 即可
+			}
+			defer f.Close()	// 匿名函数执行结束，调用关闭文件资源
+			
+			// 使用 f 资源
+		}()
+	}
+}
+</code></pre>
+<p>当然你也可以去掉 defer，在文件资源使用完毕后，直接调用 <code>f.Close()</code> 来关闭。</p>
+<h3 id="49.-ed9bcb">49. 失败的类型断言</h3>
+<p>在类型断言语句中，断言失败则会返回目标类型的“零值”，断言变量与原来变量混用可能出现异常情况：</p>
+<pre><code class="language-go">// 错误示例
+func main() {
+	var data interface{} = &quot;great&quot;
+
+    // data 混用
+	if data, ok := data.(int); ok {
+		fmt.Println(&quot;[is an int], data: &quot;, data)
+	} else {
+		fmt.Println(&quot;[not an int], data: &quot;, data)	// [isn&#39;t a int], data:  0
+	}
+}
+
+
+// 正确示例
+func main() {
+	var data interface{} = &quot;great&quot;
+
+	if res, ok := data.(int); ok {
+		fmt.Println(&quot;[is an int], data: &quot;, res)
+	} else {
+		fmt.Println(&quot;[not an int], data: &quot;, data)	// [not an int], data:  great
+	}
+}
+</code></pre>
+<h3 id="50.-gorutinue-1fe7a6">50. 阻塞的 gorutinue 与资源泄露</h3>
+<p>在 2012 年 Google I/O 大会上，Rob Pike 的 <a href="https://talks.golang.org/2012/concurrency.slide#1" target="_blank" rel="noopener">Go Concurrency Patterns</a> 演讲讨论 Go 的几种基本并发模式，如 <a href="https://repl.it/@pllv/Google-Search-Gorountine-Parallel-Replicas-Rob-Pike" target="_blank" rel="noopener">完整代码</a> 中从数据集中获取第一条数据的函数：</p>
+<pre><code class="language-go">func First(query string, replicas []Search) Result {
+	c := make(chan Result)
+	replicaSearch := func(i int) { c &lt;- replicas[i](query) }
+	for i := range replicas {
+		go replicaSearch(i)
+	}
+	return &lt;-c
+}
+</code></pre>
+<p>在搜索重复时依旧每次都起一个 goroutine 去处理，每个 goroutine 都把它的搜索结果发送到结果 channel 中，channel 中收到的第一条数据会直接返回。</p>
+<p>返回完第一条数据后，其他 goroutine 的搜索结果怎么处理？他们自己的协程如何处理？</p>
+<p>在 <code>First()</code> 中的结果 channel 是无缓冲的，这意味着只有第一个 goroutine 能返回，由于没有 receiver，其他的 goroutine 会在发送上一直阻塞。如果你大量调用，则可能造成资源泄露。</p>
+<p>为避免泄露，你应该确保所有的 goroutine 都能正确退出，有 2 个解决方法：</p>
+<ul>
+<li>使用带缓冲的 channel，确保能接收全部 goroutine 的返回结果：</li>
+</ul>
+<pre><code class="language-go">func First(query string, replicas ...Search) Result {  
+    c := make(chan Result,len(replicas))	
+    searchReplica := func(i int) { c &lt;- replicas[i](query) }
+    for i := range replicas {
+        go searchReplica(i)
+    }
+    return &lt;-c
+}
+</code></pre>
+<ul>
+<li><p>使用 <code>select</code> 语句，配合能保存一个缓冲值的 channel  <code>default</code> 语句：</p>
+<p><code>default</code> 的缓冲 channel  保证了即使结果 channel 收不到数据，也不会阻塞 goroutine</p>
+</li>
+</ul>
+<pre><code class="language-go">func First(query string, replicas ...Search) Result {  
+    c := make(chan Result,1)
+    searchReplica := func(i int) { 
+        select {
+        case c &lt;- replicas[i](query):
+        default:
+        }
+    }
+    for i := range replicas {
+        go searchReplica(i)
+    }
+    return &lt;-c
+}
+</code></pre>
+<ul>
+<li>使用特殊的废弃（cancellation） channel 来中断剩余 goroutine 的执行：</li>
+</ul>
+<pre><code class="language-go">func First(query string, replicas ...Search) Result {  
+    c := make(chan Result)
+    done := make(chan struct{})
+    defer close(done)
+    searchReplica := func(i int) { 
+        select {
+        case c &lt;- replicas[i](query):
+        case &lt;- done:
+        }
+    }
+    for i := range replicas {
+        go searchReplica(i)
+    }
+
+    return &lt;-c
+}
+</code></pre>
+<p>Rob Pike 为了简化演示，没有提及演讲代码中存在的这些问题。不过对于新手来说，可能会不加思考直接使用。</p>
+<h3 id="51.-receiver-14043f">51. 使用指针作为方法的 receiver</h3>
+<p>只要值是可寻址的，就可以在值上直接调用指针方法。即是对一个方法，它的 receiver 是指针就足矣。</p>
+<p>但不是所有值都是可寻址的，比如 map 类型的元素、通过 interface 引用的变量：</p>
+<pre><code class="language-go">type data struct {
+	name string
+}
+
+type printer interface {
+	print()
+}
+
+func (p *data) print() {
+	fmt.Println(&quot;name: &quot;, p.name)
+}
+
+func main() {
+	d1 := data{&quot;one&quot;}
+	d1.print()	// d1 变量可寻址，可直接调用指针 receiver 的方法
+
+	var in printer = data{&quot;two&quot;}
+	in.print()	// 类型不匹配
+
+	m := map[string]data{
+		&quot;x&quot;: data{&quot;three&quot;},
+	}
+	m[&quot;x&quot;].print()	// m[&quot;x&quot;] 是不可寻址的	// 变动频繁
+}
+</code></pre>
+<blockquote>
+<p>cannot use data literal (type data) as type printer in assignment:</p>
+<p>data does not implement printer (print method has pointer receiver)</p>
+<p>cannot call pointer method on m[&quot;x&quot;]
+cannot take the address of m[&quot;x&quot;]</p>
+</blockquote>
+<h3 id="52.-map-dc3a30">52. 更新 map 字段的值</h3>
+<p>如果 map 一个字段的值是 struct 类型，则无法直接更新该 struct 的单个字段：</p>
+<pre><code class="language-go">// 无法直接更新 struct 的字段值
+type data struct {
+	name string
+}
+
+func main() {
+	m := map[string]data{
+		&quot;x&quot;: {&quot;Tom&quot;},
+	}
+	m[&quot;x&quot;].name = &quot;Jerry&quot;
+}
+</code></pre>
+<blockquote>
+<p>cannot assign to struct field m[&quot;x&quot;].name in map</p>
+</blockquote>
+<p>因为 map 中的元素是不可寻址的。需区分开的是，slice 的元素可寻址：</p>
+<pre><code class="language-go">type data struct {
+	name string
+}
+
+func main() {
+	s := []data{{&quot;Tom&quot;}}
+	s[0].name = &quot;Jerry&quot;
+	fmt.Println(s)	// [{Jerry}]
+}
+</code></pre>
+<p>注意：不久前 gccgo 编译器可更新 map struct 元素的字段值，不过很快便修复了，官方认为是 Go1.3 的潜在特性，无需及时实现，依旧在 todo list 中。</p>
+<p>更新 map 中 struct 元素的字段值，有 2 个方法：</p>
+<ul>
+<li>使用局部变量</li>
+</ul>
+<pre><code class="language-go">// 提取整个 struct 到局部变量中，修改字段值后再整个赋值
+type data struct {
+	name string
+}
+
+func main() {
+	m := map[string]data{
+		&quot;x&quot;: {&quot;Tom&quot;},
+	}
+	r := m[&quot;x&quot;]
+	r.name = &quot;Jerry&quot;
+	m[&quot;x&quot;] = r
+	fmt.Println(m)	// map[x:{Jerry}]
+}
+</code></pre>
+<ul>
+<li>使用指向元素的 map 指针</li>
+</ul>
+<pre><code class="language-go">func main() {
+	m := map[string]*data{
+		&quot;x&quot;: {&quot;Tom&quot;},
+	}
+	
+	m[&quot;x&quot;].name = &quot;Jerry&quot;	// 直接修改 m[&quot;x&quot;] 中的字段
+	fmt.Println(m[&quot;x&quot;])	// &amp;{Jerry}
+}
+</code></pre>
+<p>但是要注意下边这种误用：</p>
+<pre><code class="language-go">func main() {
+	m := map[string]*data{
+		&quot;x&quot;: {&quot;Tom&quot;},
+	}
+	m[&quot;z&quot;].name = &quot;what???&quot;	 
+	fmt.Println(m[&quot;x&quot;])
+}
+</code></pre>
+<blockquote>
+<p>panic: runtime error: invalid memory address or nil pointer dereference</p>
+</blockquote>
+<h3 id="53.-nil-interface-nil-interface-88bb0a">53. nil interface 和 nil interface 值</h3>
+<p>虽然 interface 看起来像指针类型，但它不是。interface 类型的变量只有在类型和值均为 nil 时才为 nil</p>
+<p>如果你的 interface 变量的值是跟随其他变量变化的（雾），与 nil 比较相等时小心：</p>
+<pre><code class="language-go">func main() {
+	var data *byte
+	var in interface{}
+
+	fmt.Println(data, data == nil)	// &lt;nil&gt; true
+	fmt.Println(in, in == nil)	// &lt;nil&gt; true
+
+	in = data
+	fmt.Println(in, in == nil)	// &lt;nil&gt; false	// data 值为 nil，但 in 值不为 nil
+}
+</code></pre>
+<p>如果你的函数返回值类型是 interface，更要小心这个坑：</p>
+<pre><code class="language-go">// 错误示例
+func main() {
+	doIt := func(arg int) interface{} {
+		var result *struct{} = nil
+		if arg &gt; 0 {
+			result = &amp;struct{}{}
+		}
+		return result
+	}
+
+	if res := doIt(-1); res != nil {
+		fmt.Println(&quot;Good result: &quot;, res)	// Good result:  &lt;nil&gt;
+		fmt.Printf(&quot;%T\n&quot;, res)			// *struct {}	// res 不是 nil，它的值为 nil
+		fmt.Printf(&quot;%v\n&quot;, res)			// &lt;nil&gt;
+	}
+}
+
+
+// 正确示例
+func main() {
+	doIt := func(arg int) interface{} {
+		var result *struct{} = nil
+		if arg &gt; 0 {
+			result = &amp;struct{}{}
+		} else {
+			return nil	// 明确指明返回 nil
+		}
+		return result
+	}
+
+	if res := doIt(-1); res != nil {
+		fmt.Println(&quot;Good result: &quot;, res)
+	} else {
+		fmt.Println(&quot;Bad result: &quot;, res)	// Bad result:  &lt;nil&gt;
+	}
+}
+</code></pre>
+<h3 id="54.-0d92c5">54. 堆栈变量</h3>
+<p>你并不总是清楚你的变量是分配到了堆还是栈。</p>
+<p>在 C++ 中使用 <code>new</code> 创建的变量总是分配到堆内存上的，但在 Go 中即使使用 <code>new()</code>、<code>make()</code> 来创建变量，变量为内存分配位置依旧归 Go 编译器管。</p>
+<p>Go 编译器会根据变量的大小及其 &quot;escape analysis&quot; 的结果来决定变量的存储位置，故能准确返回本地变量的地址，这在 C/C++ 中是不行的。</p>
+<p>在 go build 或 go run 时，加入 -m 参数，能准确分析程序的变量分配位置： </p>
+<div align=center><img src="https://ririshihaori.com/2020/3/go50traps/54.png" alt="" width="430" height="190" loading="lazy" decoding="async"></div><h3 id="55.-gomaxprocsconcurrencyand-parallelism-6f84b7">55. GOMAXPROCS、Concurrency（并发）and Parallelism（并行）</h3>
+<p>Go 1.4 及以下版本，程序只会使用 1 个执行上下文 / OS 线程，即任何时间都最多只有 1 个 goroutine 在执行。</p>
+<p>Go 1.5 版本将可执行上下文的数量设置为 <code>runtime.NumCPU()</code> 返回的逻辑 CPU 核心数，这个数与系统实际总的 CPU 逻辑核心数是否一致，取决于你的 CPU 分配给程序的核心数，可以使用 <code>GOMAXPROCS</code> 环境变量或者动态的使用 <code>runtime.GOMAXPROCS()</code> 来调整。</p>
+<p>误区：<code>GOMAXPROCS</code> 表示执行 goroutine 的 CPU 核心数，参考<a href="https://golang.org/pkg/runtime/" target="_blank" rel="noopener">文档</a></p>
+<p><code>GOMAXPROCS</code>  的值是可以超过 CPU 的实际数量的，在 1.5 中最大为 256</p>
+<pre><code class="language-go">func main() {
+	fmt.Println(runtime.GOMAXPROCS(-1))	// 4
+	fmt.Println(runtime.NumCPU())	// 4
+	runtime.GOMAXPROCS(20)
+	fmt.Println(runtime.GOMAXPROCS(-1))	// 20
+	runtime.GOMAXPROCS(300)
+	fmt.Println(runtime.GOMAXPROCS(-1))	// Go 1.9.2 // 300
+}
+</code></pre>
+<h3 id="56.-926dbb">56. 读写操作的重新排序</h3>
+<p>Go 可能会重排一些操作的执行顺序，可以保证在一个 goroutine 中操作是顺序执行的，但不保证多 goroutine 的执行顺序：</p>
+<pre><code class="language-go">var _ = runtime.GOMAXPROCS(3)
+
+var a, b int
+
+func u1() {
+	a = 1
+	b = 2
+}
+
+func u2() {
+	a = 3
+	b = 4
+}
+
+func p() {
+	println(a)
+	println(b)
+}
+
+func main() {
+	go u1()	// 多个 goroutine 的执行顺序不定
+	go u2()	
+	go p()
+	time.Sleep(1 * time.Second)
+}
+</code></pre>
+<p>运行效果：</p>
+<div align=center><img src="https://ririshihaori.com/2020/3/go50traps/56.png" alt="" width="209" height="209" loading="lazy" decoding="async"></div><p>如果你想保持多 goroutine 像代码中的那样顺序执行，可以使用 channel 或 sync 包中的锁机制等。</p>
+<h3 id="57.-942ce8">57. 优先调度</h3>
+<p>你的程序可能出现一个 goroutine 在运行时阻止了其他 goroutine 的运行，比如程序中有一个不让调度器运行的 <code>for</code> 循环：</p>
+<pre><code class="language-go">func main() {
+	done := false
+
+	go func() {
+		done = true
+	}()
+
+	for !done {
+	}
+
+	println(&quot;done !&quot;)
+}
+</code></pre>
+<p><code>for</code> 的循环体不必为空，但如果代码不会触发调度器执行，将出现问题。</p>
+<p>调度器会在 GC、Go 声明、阻塞 channel、阻塞系统调用和锁操作后再执行，也会在非内联函数调用时执行：</p>
+<pre><code class="language-go">func main() {
+	done := false
+
+	go func() {
+		done = true
+	}()
+
+	for !done {
+		println(&quot;not done !&quot;)	// 并不内联执行
+	}
+
+	println(&quot;done !&quot;)
+}
+</code></pre>
+<p>可以添加 <code>-m</code> 参数来分析 <code>for</code> 代码块中调用的内联函数：</p>
+<div align=center><img src="https://ririshihaori.com/2020/3/go50traps/57.png" alt="" width="382" height="282" loading="lazy" decoding="async"></div><p>你也可以使用 runtime 包中的 <code>Gosched()</code> 来 手动启动调度器：</p>
+<pre><code class="language-go">func main() {
+	done := false
+
+	go func() {
+		done = true
+	}()
+
+	for !done {
+		runtime.Gosched()
+	}
+
+	println(&quot;done !&quot;)
+}
+</code></pre>
+<p>运行效果：</p>
+ <div align=center><img src="https://ririshihaori.com/2020/3/go50traps/57_2.png" alt="" width="376" height="186" loading="lazy" decoding="async"></div>
+]]></description>
+    </item>
+    <item>
+        <title>琴心剑魄今何在</title>
+        <link>https://ririshihaori.com/posts/2020-2-gujian1.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2020-2-gujian1.html</guid>
+        <pubDate>Mon, 17 Feb 2020 15:34:45 GMT</pubDate>
+        <category>游戏</category>
+        <category>生活</category>
+        <description><![CDATA[<p>　　最近疫情严重，steam上国产游戏纷纷打骨折，所以没忍住买了古剑大礼包，123一共不到50块，这两天宅在家打完了古剑1。
+　　貌似是第一次彻底打完并且耐心看完所有剧情的回合制武侠游戏，小时候玩仙剑，感觉重点都在如何通关，而不是欣赏剧情，而且往往玩到一半就半途而废了。这次也是，由于没有刷城镇里的支线任务，所以打到铁柱观的狼魔那里就过不去了，死了N次后怒下了一个修改器，把苏苏的所有数值改成了10倍，从此砍怪如切菜。只可惜这个修改器只能试用三次，之后就要付费，而且我只改了苏苏的数值，到后面雷云幻境里需要兰生一个人打怪的时候就不太行了，只能再找修改器，学了半天cheat engine最后还是下了@小幸姐的修改器，发现这个修改器简直了，不仅可以秒怪，还支持物品、宠物、加速、视野、剧情等等，简直无敌。
+　　不得不说，古一还是很不错的，虽然已经是10年前的游戏了，但是人物立绘现在看也还是很好看，<del>尤其是红玉和晴雪</del>。
+　　配音十分专业，让人有看电视剧的感觉，除了兰生有点吵之外，其他人的声音感觉都很好听，另外感觉少恭说话有点太慢了。慢到忍不住跳台词。
+　　古1的剧情和设定也非常让我着迷，从自己连玩3天通关就可以看出来了= =，意料之外的反转套路，还有仙和妖、神和魔的设定，黑龙和太古长琴的故事，感觉确实很用心，能够让人沉浸在这个宏大的世界观里。不过游戏里感觉有些关卡设置的太肝了，个人感觉一些支线的剧情可以设置得简略一点，比如自贤山庄还有去海底帮鱼人打蛟龙那里，可能因为那里我还没开挂，怪都是一个个打过去的，所以反差有点大。
+　　最后晴雪和苏苏被黑龙带上云端，肝到深夜的我的脸上也不禁浮现出了满足的神情，这一对全程高甜，尤其是在晴雪家乡那里，两个人互换小泥人的时候我也是满脸姨母笑233.
+　　除了主线还通了全部的扩展剧情，有种意犹未尽的感觉，可能这就是好的作品8，最喜欢兰生的剧情，真希望自己将来也能像兰生一样，拥有平静幸福的生活啊。</p>
+<div align=center><img src="https://ririshihaori.com/2020/2/gujian1/1.png" alt="" width="1337" height="863" loading="lazy" decoding="async"></div>
+]]></description>
+    </item>
+    <item>
+        <title>Kube-Batch学习笔记</title>
+        <link>https://ririshihaori.com/posts/2020-1-kube-batch.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2020-1-kube-batch.html</guid>
+        <pubDate>Thu, 09 Jan 2020 09:40:49 GMT</pubDate>
+        <category>K8S</category>
+        <category>技术</category>
+        <description><![CDATA[<h1 id="1.-0adf3d">1.概述</h1>
+<p>　　kube-batch是k8s下面向高性能计算领域的批调度器。    </p>
+<p>　　k8s原生的调度器会将需要启动的容器，放到一个优先队列（Priority Queue）里面，每次从队列里面取出一个容器，将其调度到一个节点上。 </p>
+<p>　　AI分布式训练需要所有worker都启动后，训练才能够开始进行。但是原生的调度器的调度是以pod为粒度的，对AI任务很不利，使用原生调度器，可能会出现以下问题：      </p>
+<ul>
+<li><p>一个任务包含了10个worker，但是集群的资源只满足9个worker。原生调度器会将任务的9个worker调度并启动，而最后一个worker一直无法启动。这样训练一直无法开始，9个已经启动的worker的资源被浪费了。</p>
+</li>
+<li><p>两个任务，各包含10个worker，集群的资源只能启动10个worker。两个任务分别有5个worker被启动了，但两个任务都无法开始训练。10个worker的资源被浪费了。</p>
+</li>
+</ul>
+<p>　　由此可见，原生调度器对于分布式训练的调度存在问题，影响了资源的利用率。而Kubernetes社区提供了一个批调度器kube-batch， 它能够将一个训练任务的多个worker当做一个整体进行调度，只有当任务所有worker的资源都满足，才会将容器在节点上启动。（要不全部，要不全部不，all or none）<br>　　如图所示，kube-batch定义了job和pod group的概念，一个job对应一个pod group，一个pod group里有一个或者多个pod，分别对应一个或多个task。</p>
+<div align=center><img src="https://ririshihaori.com/2020/1/kube-batch/1.jpg" alt="" width="461" height="533" loading="lazy" decoding="async"></div>
+　　这解决了上述的问题，避免了任务间的资源死锁，提高了资源的利用率。         
+　　kube-batch还提供了队列的机制，同个队列的任务，会依次运行。不同队列直接可以设置优先级，优先级高的队列中的任务会优先得到调度。队列还可以设置权重，权重高的队列分配到的资源会更多。<h1 id="2.-168176">2.整体框架</h1>
+<div align=center><img src="https://ririshihaori.com/2020/1/kube-batch/2.jpg" alt="" width="713" height="587" loading="lazy" decoding="async"></div><p>　　如图所示，kube-batch中有四个模块，分别是Cache、Session、Plugin和Action。<br>　　其中，Cache负责调用API Server的相关接口，维护整个系统内当前资源的分配状态，供调度器查询和计算。Session是调度器对pod/pod group/queue等进行调度时构建的一个对象，一次会话就是一次调度，调度时会从待调度的pod/queue中选择优先级最高的一个进行调度。<br>　　个人理解：调度时所依据的相关算法/规则/策略就是Plugin，调度产生的结果就是各种Action。</p>
+<h3 id="2.1-cache">2.1 Cache</h3>
+<p>　　Cache模块封装了对API Server的节点、容器等对象的数据同步逻辑。Kubernetes的数据保存在分布式存储etcd中，所有对数据的查询和操作都通过调用API Server的接口，而非直接操作etcd。在调度时，需要集群中的节点和容器的使用资源和状态等信息。Cache模块通过调用Kubernetes的SDK，通过watch机制监听集群中的节点、容器的状态变化，将信息同步到自己的数据结构中。<br>　　Cache模块还封装了对API server的接口的调用。比如Cache.Bind这个接口，会去调用API Server的Bind接口，将容器绑定到指定的节点上。在kube-batch中只有cache模块需要和API Server交互，其他模块只需要调用Cache模块的接口。</p>
+<h3 id="2.2-session">2.2 Session</h3>
+<p>　　Session模块是将其他三个模块串联起来的一个模块。Kube-batch在每个调度周期开始时，都会新建一个Session对象，这个Session的初始化时，会做以下操作：  </p>
+<ol>
+<li><p>调用Cache.Snapshot接口，将Cache中节点、任务和队列的信息拷贝一份副本，之后在这个调度周期中使用这份副本进行调度。因为Cache的数据会不断变化，为了保持同个调度周期中的数据一致性，在一开始就拷贝了一份副本。</p>
+</li>
+<li><p>将配置中的各个Plugin初始化，然后调用plugin的OnSessionOpen接口。Plugin在OnSessionOpen中，会初始化自己需要的数据，并将一些回调函数注册到session中。Plugin可以向Session中注册的函数是：      </p>
+<ul>
+<li>jobOrderFns： 决定哪个训练任务优先被处理（调度、回收、抢占） </li>
+<li>queueOrderFns：决定哪个训练队列优先被处理</li>
+<li>taskOrderFns：决定任务中哪个容器优先被处理</li>
+<li>predicateFns： 判断某个节点是否满足容器的基本调度要求。比如容器中指定的节点的标签</li>
+<li>nodeOrderFns： 当多个节点满足容器的调度要求时，优先选择哪个节点</li>
+<li>preemptableFns： 决定某个容器是否可以被抢占</li>
+<li>reclaimableFns ：决定某个容器是否可以被回收</li>
+<li>overusedFns： 决定某个队列使用的资源是否超过限额，是的话不再调度对队列中的任务</li>
+<li>jobReadyFns：判断某个任务是否已经准备好，可以调用API Server的接口将任务的容器调度到节点</li>
+<li>jobPipelinedFns ： 判断某个任务是否处于Pipelined状态</li>
+<li>jobValidFns： 判断某个任务是否有效</li>
+</ul>
+</li>
+</ol>
+<p>　　Plugin不需要注册上面所有的函数，而是可以根据自己的需要，注册某几个函数。比如Predict plugin就只注册了predicateFns这个函数到Session中。<br>　　而某些plugin的使用与否（包括某些action使用与否）都由配置文件决定:(<code>kube-batch/pkg/scheduler/util.go</code>)</p>
+<pre><code>var defaultSchedulerConf = `
+actions: &quot;allocate, backfill&quot;
+tiers:
+- plugins:
+  - name: priority
+  - name: gang
+- plugins:
+  - name: drf
+  - name: predicates
+  - name: proportion
+  - name: nodeorder
+```　　
+可知默认配置使用2种action(allocate和backfill)和6种plugin。（tiers是什么意思暂时不明）        
+代码可以参考：
+(`kube-batch/pkg/scheduler/framework/framework.go`)和
+(`kube-batch/pkg/scheduler/framework/session.go`)
+
+### 2.3 Plugin
+
+　　Plugin模块顾名思义，提供了一种可插拔的方式，向调度提供不同的策略的实现。
+
+　　如整体框架中所示，目前有7个Plugin，它们分别是：   
+
++ for Jobs
+    + drf：实现了Dominant Resouce Fairenss算法，这个算法能够有效对多种“主要资源”（CPU、Memory、GPU）进行调度。
+    + gang：实现了gang scheduling的逻辑，即保证任务所需worker同时被启动。
+    + predict：判断某个节点是否满足容器的基本要求。
+    + priority： 根据容器和队列设置的PriorityClass决定容器和队列的优先级。
+    + node order：决定满足调度要求的节点中，哪个节点优先被选择。
+    + conformance：
+
++ for Queues:
+    + proportion： 根据队列设置的权重决定每个队列分配到的资源。
+
+　　下面对部分plugin进行说明。
+
+#### 2.3.1 drf
+
+
+&lt;div align=center&gt;&lt;img src = &#39;/2020/1/kube-batch/3.png&#39; style=&quot;zoom:70%&quot; title=&quot;drf&quot;/&gt;&lt;/div&gt;
+
+　　目的是尽量避免集群内某一类资源使用比例偏高，而其他类型资源使用比例却很低的不良状态。在调度时，让具有最低资源占用比例的任务具有高优先级。
+代码位于`kube-batch/pkg/scheduler/plugins/drf/drf.go`，主要关注`onSessionOpen`函数：        
+
+1. 统计集群中所有node可分配资源总量
+2. 统计Job资源申请，计算资源占比（资源申请/资源总量）
+3. 注册Job排序函数，根据资源占比进行排序，主要资源占比越低job优先级越高
+4. 注册事件处理函数，包括分配函数以及驱逐函数，函数实现比较简单，就是当task发生变化时，增加（分配）/减少（驱逐）Job资源申请总量，并且更新资源占比。
+
+　　drf注册2个function，分别是:
+
++ `jobOrderFn` 是job的排序函数，会让share值越小的job排在最前面，即拥有最高的优先级，这个是实现drf的关键。           
++  `preemptableFn`返回可抢占的job列表，job的筛选规则是：如果待选job的share值大于将被调度的job的share值，则选中该待选job。      
+
+#### 2.3.2 gang
+
+　　gang需要实现的策略是只有当job中的全部pod，或者用户指定的某几个pod都分配到资源后，才真正将pod调度到node上。（即先从逻辑上分配资源给pod，等满足条件后才真正进行调度。）                
+　　gang注册3个function，分别是：         
+
++ `preemptableFn` 为避免gang的策略被preempt和reclaiｍ干扰，定义了preemptableFn,排除那些还未准备就绪的job，避免其被抢占。（虽然实际上这些job未真正调度到node上去，但是确实从逻辑上把资源分配给它了）
++ `jobOrderFn` 为让已经就绪的job尽快被调度到节点，定义了jobOrderFn ,让已经就绪的job拥有更高的优先级
++ `jobReadyFn` 用来判断一个job是否已经就绪。`jobReady`会调用所有注册了的 plugin的Ready判定函数，只有都判定为ready ,才返回true
+　
+
+#### 2.3.3 predicates
+
+　　predicates注册预测函数,用来判断某个节点是否满足容器的基本要求，如         
+
++ CheckNodeCondition Predicate
++ CheckNodeUnschedulable Predicate
++ NodeSelector Predicate
++ HostPorts Predicate
++ Toleration/Taint Predicate        
++ ...
+
+#### 2.3.4 priority
+
+　　priority注册         
+
++ task排序函数，根据pod优先级排序
++ job排序函数，根据job优先级排序
+
+#### 2.3.5 proportion
+
+　　针对队列。
+</code></pre>
+<p>type queueAttr struct {
+    queueID api.QueueID       // 队列的id
+    name    string            // 队列的名字
+    weight  int32             // 队列的权重,决定分配到的资源的多少
+    share   float64           // 参考drf处的share
+　
+    deserved  *api.Resource　 // 声明的资源总量
+    allocated *api.Resource   // 实际分配到的资源总量
+    request   *api.Resource   // 该队列中所有job声明的要分配的资源总量
+}</p>
+<pre><code>　　proportion根据各个队列声明的权重和全局的资源总量,初始化deserved的值，根据全局的job初始化allocated和request的值。并监听全局的资源释放和申请事件,更新队列的状态。（暂时理解为队列级别的drf策略。）          
+　　proportion注册的function分别是：
+
++ `queueOrderFn` 决定哪一个队列里的job在调度时会被优先考虑,这里沿用了DRF处jobOrderFn的逻辑，
+即share值最小的queue　会最优先被考虑.
++ `overusedFn` 判断queue的资源使用是否已经超出限制了，即 allocated &gt; deserved == true
++ `reclaimableFn` 判断一个task是否可以被召回，如果召回之后使得已经分配到的资源小于等于deserved　就不应该被召回。
+
+### 2.4 Action
+
++ allocate: 将有明确资源需求的pod（task）分配到某个节点
++ backfill: 将未设置资源使用量的pod分配到节点
++ reclaim: 召回满足条件的pod
++ preempt: 抢占已经调度了的满足条件的pod,并将目标pod调度上去
+
+## 3.运行流程
+
+启动一个调度器的过程：       
+
+1. 启动cache
+2. 载入Scheduler的配置（默认配置为2个action，6个plugin）
+3. 等待一个period后，执行调度，开启会话
+4. 执行action
+
+代码：（kube-batch\pkg\scheduler\scheduler.go）         
+</code></pre>
+<p>// Run runs the Scheduler
+func (pc *Scheduler) Run(stopCh &lt;-chan struct{}) {
+	var err error</p>
+<pre><code>// Start cache for policy.
+go pc.cache.Run(stopCh)
+pc.cache.WaitForCacheSync(stopCh)
+
+// Load configuration of scheduler
+schedConf := defaultSchedulerConf
+if len(pc.schedulerConf) != 0 {
+	if schedConf, err = readSchedulerConf(pc.schedulerConf); err != nil {
+		glog.Errorf(&quot;Failed to read scheduler configuration &#39;%s&#39;, using default configuration: %v&quot;,
+			pc.schedulerConf, err)
+		schedConf = defaultSchedulerConf
+	}
+}
+
+pc.actions, pc.plugins, err = loadSchedulerConf(schedConf)
+if err != nil {
+	panic(err)
+}
+
+go wait.Until(pc.runOnce, pc.schedulePeriod, stopCh)
+</code></pre>
+<p>}</p>
+<p>func (pc *Scheduler) runOnce() {
+	glog.V(4).Infof(&quot;Start scheduling ...&quot;)
+	scheduleStartTime := time.Now()
+	defer glog.V(4).Infof(&quot;End scheduling ...&quot;)
+	defer metrics.UpdateE2eDuration(metrics.Duration(scheduleStartTime))</p>
+<pre><code>ssn := framework.OpenSession(pc.cache, pc.plugins)
+defer framework.CloseSession(ssn)
+
+for _, action := range pc.actions {
+	actionStartTime := time.Now()
+	action.Execute(ssn)
+	metrics.UpdateActionDuration(action.Name(), metrics.Duration(actionStartTime))
+}
+</code></pre>
+<p>}</p>
+<pre><code></code></pre>
+]]></description>
+    </item>
+    <item>
+        <title>Kubernetes学习笔记</title>
+        <link>https://ririshihaori.com/posts/2020-1-k8s.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2020-1-k8s.html</guid>
+        <pubDate>Thu, 09 Jan 2020 05:32:38 GMT</pubDate>
+        <category>K8S</category>
+        <category>技术</category>
+        <description><![CDATA[<h1 id="h-8e1b94">背景</h1>
+<p>应用程序发展趋势：<br>　　单体应用 -&gt; 微服务</p>
+<p>产生需求：  　<br>　　微服务扩容、部署、软件环境需求差异、自动监控（运维）</p>
+<h1 id="linux-356314">Linux容器技术</h1>
+<p>两种隔离机制：      </p>
+<ul>
+<li><p>Linux命名空间<br>使每个进程只能看到自己的系统视图（文件、进程、网络接口、主机名等）</p>
+</li>
+<li><p>Linux控制组(cgroups)<br>限制了进程能使用的资源量（CPU、内存、网络带宽等）</p>
+</li>
+</ul>
+<h1 id="h-5a3f58">虚拟机与容器比较：</h1>
+<ul>
+<li>前者需要在每个隔离单元中运行系统服务，而后者不需要</li>
+<li>前者在宿主操作系统上有多个虚拟机操作系统内核，后者只需要一个宿主机系统内核</li>
+<li>前者的好处是提供完全隔离的环境，可用于隔离少量进程；后者的好处是低消耗，可用于在同一台机器上运行大量被隔离的进程</li>
+</ul>
+<h1 id="docker">Docker</h1>
+<ul>
+<li>镜像（image）<br>　　镜像“层”的概念：使镜像分发更高效，减少存储空间（公用层只读，各自新的改动保存在新的层上）          </li>
+<li>镜像仓库             </li>
+<li>容器（container）</li>
+<li>Docker安装、build&amp;run、Dockerfile、ps -a、rm、tag、push</li>
+</ul>
+<h1 id="rkt">rkt</h1>
+<p>强调安全性、可构建性并遵从开放标准，使用OCI容器镜像，甚至可运行常规Docker镜像</p>
+<h1 id="kubernetes-e61f8c">Kubernetes介绍</h1>
+<p>　　用于部署和管理容器化应用的软件系统，可以提高开发者和运维的效率</p>
+<h3 id="kubernetes-93685d">Kubernetes集群架构</h3>
+<ul>
+<li><p>主节点（控制面板）</p>
+<ul>
+<li>Kubernetes API服务器</li>
+<li>Scheduler（调度器）</li>
+<li>Controller manager（执行集群级别的功能，如复制组件、持续跟踪工作节点、处理节点失败）</li>
+<li>etcd（可靠的分布式存储，持久化存储集群配置）</li>
+</ul>
+</li>
+<li><p>工作节点（运行用户实际部署的应用）</p>
+<ul>
+<li>Docker、rkt或其他的容器类型</li>
+<li>Kubelet（与API服务器通信，并管理它所在节点的容器）</li>
+<li>Kubernetes Service Proxy（kube-proxy）(负责组件之间的负载均衡网络流量)</li>
+</ul>
+</li>
+</ul>
+<h3 id="k8s-812fd4">使用k8s的好处</h3>
+<ul>
+<li>简化应用程序部署（开发+运维）</li>
+<li>更好地利用硬件</li>
+<li>健康检查和自修复</li>
+</ul>
+<h3 id="kube-batch">Kube-Batch</h3>
+<p>　　Kube-Batch是运行在k8s上面向机器学习/大数据/HPC的批调度器（batch scheduler）。<br>　　开源仓库：<a href="https://github.com/kubernetes-sigs/kube-batch" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kube-batch</a></p>
+<h1 id="minikube-b1ce4e">使用Minikube构建单节点集群</h1>
+<ul>
+<li>下载kubectl<br><code># curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl</code><br><code># mv kubectl /usr/local/bin/ &amp;&amp; chmod +x /usr/local/bin/kubectl</code><br><code># kubectl version</code></li>
+</ul>
+<p>kubectl zsh下自动补全，~/.zshrc中增加：<br><code>plugins=(kubectl)</code><br><code>source &lt;(kubectl completion zsh)</code><br>然后终端中source <code>~/.zshrc</code>             </p>
+<ul>
+<li>下载安装minikube<br><code># curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-1.5.2.rpm &amp;&amp; sudo rpm -ivh minikube-1.5.2.rpm</code><br><code># minikube config set vm-driver none</code><br><code># minikube start</code></li>
+</ul>
+<h3 id="h-830c6b">报错 及 解决方式</h3>
+<p><strong>报错</strong>：</p>
+<pre><code>* Unable to pull images, which may be OK: running cmd: &quot;/bin/bash -c \&quot;sudo env PATH=/var/lib/minikube/binaries/v1.16.2:                  
+$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml\&quot;&quot;: command failed: /bin/bash -c &quot;sudo env PAT                
+H=/var/lib/minikube/binaries/v1.16.2:$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml&quot;
+stdout: 
+stderr: failed to pull image &quot;k8s.gcr.io/kube-apiserver:v1.16.2&quot;: output: Error response from daemon: Get https://k8s.gc                  
+r.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+</code></pre>
+<p><strong>解决方式</strong>：
+<code># minikube start --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</code><br>或<br><code># minikube start --image-mirror-country=cn</code></p>
+<h3 id="h-0c726a">启动成功输出：</h3>
+<pre><code>➜  [/home/lky/tools] sudo minikube start --image-mirror-country=cn
+😄  minikube v1.6.2 on Ubuntu 16.04
+✨  Selecting &#39;none&#39; driver from user configuration (alternates: [])
+🤹  Running on localhost (CPUs=2, Memory=3921MB, Disk=200494MB) ...
+ℹ️   OS release is Ubuntu 16.04.6 LTS
+⚠️  VM is unable to access k8s.gcr.io, you may need to configure a proxy or set --image-repository
+🐳  Preparing Kubernetes v1.17.0 on Docker &#39;19.03.5&#39; ...
+🚜  Pulling images ...
+🚀  Launching Kubernetes ... 
+🤹  Configuring local host environment ...
+
+⚠️  The &#39;none&#39; driver provides limited isolation and may reduce system security and reliability.
+⚠️  For more information, see:
+👉  https://minikube.sigs.k8s.io/docs/reference/drivers/none/
+
+⚠️  kubectl and minikube configuration will be stored in /home/lky
+⚠️  To use kubectl or minikube commands as your own user, you may need to relocate them. For example, to overwrite your own settings, run:
+
+    ▪ sudo mv /home/lky/.kube /home/lky/.minikube $HOME
+    ▪ sudo chown -R $USER $HOME/.kube $HOME/.minikube
+
+💡  This can also be done automatically by setting the env var CHANGE_MINIKUBE_NONE_USER=true
+⌛  Waiting for cluster to come online ...
+🏄  Done! kubectl is now configured to use &quot;minikube&quot;
+</code></pre>
+<p><strong>可以使用</strong> <code>sudo kubectl cluster-info</code> <strong>查看单节点集群信息</strong>：</p>
+<pre><code>➜  [/home/lky/tools] sudo kubectl cluster-info
+[sudo] password for lky: 
+Kubernetes master is running at https://192.168.80.128:8443
+KubeDNS is running at https://192.168.80.128:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
+</code></pre>
+<h1 id="kindk8s-047df9">使用kind构建单节点k8s集群</h1>
+<p>　　Kind, Kubernetes In Docker<br>　　项目地址：<a href="https://github.com/kubernetes-sigs/kind" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kind</a>                          </p>
+<pre><code>```note
+安装运行需要下载外网镜像，可以按照[这篇教程](https://segmentfault.com/a/1190000018720465)里的方法创建一个
+kind.yaml切换一下镜像源，然后`kind create cluster --name moelove --config kind.yaml`
+或者设置终端代理（我用的是proxychains），设置好之后`proxychains zsh`即可。
+```
+</code></pre>
+<ul>
+<li>通过源码安装<br><code>go get -u sigs.k8s.io/kind</code>                   </li>
+<li>通过二进制安装<br><code>wget -O /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/0.2.0/kind-linux-amd64 &amp;&amp; chmod +x /usr/local/bin/kind</code></li>
+</ul>
+<p><strong>安装好后创建单节点k8s集群</strong></p>
+<pre><code>➜  [/home/lky/Downloads] kind --version
+kind version 0.2.0
+➜  [/home/lky/Downloads] kind create cluster --name lkytest
+Creating cluster &quot;lkytest&quot; ...
+ ✓ Ensuring node image (kindest/node:v1.13.4) 🖼 
+ ✓ Preparing nodes 📦 
+ ✓ Creating kubeadm config 📜 
+ ✓ Starting control-plane 🕹️ 
+Cluster creation complete. You can now use the cluster with:
+
+export KUBECONFIG=&quot;$(kind get kubeconfig-path --name=&quot;lkytest&quot;)&quot;
+kubectl cluster-info
+➜  [/home/lky/Downloads] export KUBECONFIG=&quot;$(kind get kubeconfig-path --name=&quot;lkytest&quot;)&quot;
+➜  [/home/lky/Downloads] kubectl cluster-info
+Kubernetes master is running at https://localhost:32727
+KubeDNS is running at https://localhost:32727/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
+➜  [/home/lky/Downloads] kubectl get nodes
+NAME                    STATUS   ROLES    AGE     VERSION
+lkytest-control-plane   Ready    master   3m23s   v1.13.4
+
+</code></pre>
+<p><strong>运行第一个应用</strong></p>
+<pre><code>➜  [/home/lky] kubectl run kubia --image=lkybuaa/kubia --port=8080 --generator=run/v1
+kubectl run --generator=run/v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
+replicationcontroller/kubia created
+➜  [/home/lky] kubectl get pods                 
+NAME          READY   STATUS              RESTARTS   AGE
+kubia-pt77q   0/1     ContainerCreating   0          24s
+➜  [/home/lky] kubectl describe pod 
+Name:           kubia-pt77q
+Namespace:      default
+Priority:       0
+Node:           lkytest-control-plane/172.17.0.2
+Start Time:     Fri, 10 Jan 2020 16:55:14 +0800
+Labels:         run=kubia
+Annotations:    &lt;none&gt;
+Status:         Running
+IP:             10.32.0.4
+IPs:            &lt;none&gt;
+Controlled By:  ReplicationController/kubia
+Containers:
+  kubia:
+    Container ID:   docker://872ef1700e9afa3573dd745599add7bc2c9f3216f0ec603710286e5f9e9b2cf2
+    Image:          lkybuaa/kubia
+    Image ID:       docker-pullable://lkybuaa/kubia@sha256:c5e35be31ea0a0440c2a3dc63741a9d6566d4bc4c3d8c219cf649b7e5361cb83
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Fri, 10 Jan 2020 16:58:27 +0800
+    Ready:          True
+    Restart Count:  0
+    Environment:    &lt;none&gt;
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-7kn4l (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-7kn4l:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-7kn4l
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  &lt;none&gt;
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From                            Message
+  ----    ------     ----  ----                            -------
+  Normal  Scheduled  4m3s  default-scheduler               Successfully assigned default/kubia-pt77q to lkytest-control-plane
+  Normal  Pulling    4m2s  kubelet, lkytest-control-plane  pulling image &quot;lkybuaa/kubia&quot;
+  Normal  Pulled     53s   kubelet, lkytest-control-plane  Successfully pulled image &quot;lkybuaa/kubia&quot;
+  Normal  Created    50s   kubelet, lkytest-control-plane  Created container
+  Normal  Started    50s   kubelet, lkytest-control-plane  Started container
+➜  [/home/lky] kubectl get pods     
+NAME          READY   STATUS    RESTARTS   AGE
+kubia-pt77q   1/1     Running   0          4m7s
+</code></pre>
+<p><strong>创建负载均衡服务对外暴露pod</strong>
+（kind和minikube都不支持LoadBalancer类型服务，所以外部ip一直为pending）</p>
+<pre><code>➜  [/home/lky] kubectl expose rc kubia --type=LoadBalancer --name kubia-http
+service/kubia-http exposed
+➜  [/home/lky] kubectl get services                                         
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP      10.96.0.1       &lt;none&gt;        443/TCP          13m
+kubia-http   LoadBalancer   10.100.184.20   &lt;pending&gt;     8080:31142/TCP   25s
+</code></pre>
+<p><strong>kind + kube-batch</strong></p>
+<p>kind创建集群        </p>
+<pre><code>➜  [/home/lky] sudo kind create cluster --name test1 --config kind-config.yaml
+Creating cluster &quot;test1&quot; ...
+ ✓ Ensuring node image (kindest/node:v1.16.3) 🖼
+ ✓ Preparing nodes 📦 
+ ✓ Writing configuration 📜 
+ ✓ Starting control-plane 🕹️ 
+ ✓ Installing CNI 🔌 
+ ✓ Installing StorageClass 💾 
+ ✓ Joining worker nodes 🚜 
+Set kubectl context to &quot;kind-test1&quot;
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-test1
+
+Thanks for using kind! 😊
+
+</code></pre>
+<p>其中kind-config.yaml内容为：            </p>
+<pre><code>kind: Cluster
+apiVersion: kind.sigs.k8s.io/v1alpha3
+
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker
+</code></pre>
+<p>即创建一个三节点的集群。<br>然后进入kube-batch项目，首先make，然后创建rfd</p>
+<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_podgroup.yaml                                                                                                
+customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.incubator.k8s.io created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha2_podgroup.yaml 
+customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.sigs.dev created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_queue.yaml 
+customresourcedefinition.apiextensions.k8s.io/queues.scheduling.incubator.k8s.io created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha2_queue.yaml 
+customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f default.yaml 
+queue.scheduling.incubator.k8s.io/default created
+</code></pre>
+<p>然后进入make生成的__output文件夹启动kube-batch</p>
+<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch -h
+Usage of ./kube-batch:
+      --alsologtostderr                  log to standard error as well as files
+      --default-queue string             The default queue name of the job (default &quot;default&quot;)
+      --kubeconfig string                Path to kubeconfig file with authorization and master location information
+      --leader-elect                     Start a leader election client and gain leadership before executing the main loop. Enable this when running replicated kube-batch for high availability
+      --listen-address string            The address to listen on for HTTP requests. (default &quot;:8080&quot;)
+      --lock-object-namespace string     Define the namespace of the lock object that is used for leader election
+      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
+      --log-dir string                   If non-empty, write log files in this directory
+      --log-flush-frequency duration     Maximum number of seconds between log flushes (default 5s)
+      --logtostderr                      log to standard error instead of files
+      --master string                    The address of the Kubernetes API server (overrides any value in kubeconfig)
+      --priority-class                   Enable PriorityClass to provide the capacity of preemption at pod group level; to disable it, set it false (default true)
+      --schedule-period duration         The period between each scheduling cycle (default 1s)
+      --scheduler-conf string            The absolute path of scheduler configuration file
+      --scheduler-name string            kube-batch will handle pods whose .spec.SchedulerName is same as scheduler-name (default &quot;kube-batch&quot;)
+      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
+  -v, --v Level                          log level for V logs
+      --version                          Show version and quit
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+pflag: help requested
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch --kubeconfig=&quot;/home/lky/.kube/config&quot; --logtostderr --schedule-period 5s --v 3 --scheduler-conf=&quot;../../config/kube-batch-conf.yaml&quot;
+I0112 16:35:11.424548   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-apiserver-test1-control-plane&gt; into cache.
+I0112 16:35:11.429708   22529 event_handlers.go:203] Added pod &lt;kube-system/etcd-test1-control-plane&gt; into cache.
+I0112 16:35:11.429736   22529 event_handlers.go:203] Added pod &lt;kube-system/coredns-5644d7b6d9-fcjsg&gt; into cache.
+I0112 16:35:11.429747   22529 event_handlers.go:203] Added pod &lt;kube-system/kindnet-qqnq5&gt; into cache.
+I0112 16:35:11.429759   22529 event_handlers.go:203] Added pod &lt;kube-system/kindnet-tgdr2&gt; into cache.
+I0112 16:35:11.429770   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-controller-manager-test1-control-plane&gt; into cache.
+I0112 16:35:11.429781   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-proxy-6bdn7&gt; into cache.
+I0112 16:35:11.429924   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-scheduler-test1-contrl-plane&gt; into cache.
+....
+...
+..
+</code></pre>
+<p>进入example文件夹启动一个job：</p>
+<pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch] git:(master) ✗ cd example 
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/example] git:(master) ✗ ls
+job.yaml  kube-batch-conf.yaml  role.yaml
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/example] git:(master) ✗ k create -f job.yaml        
+job.batch/qj-1 created
+podgroup.scheduling.incubator.k8s.io/qj-1 created
+➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/example] git:(master) ✗ k get pods           
+NAME         READY   STATUS    RESTARTS   AGE
+qj-1-5vfjw   1/1     Running   0          22s
+qj-1-6g9xk   1/1     Running   0          22s
+</code></pre>
+<p>其中，job.yaml内容为：</p>
+<pre><code>apiVersion: batch/v1
+kind: Job
+metadata:
+  name: qj-1
+spec:
+  completions: 2
+  parallelism: 2
+  template:
+    metadata:
+      annotations:
+        scheduling.k8s.io/group-name: qj-1
+    spec:
+      containers:
+      - image: busybox
+        imagePullPolicy: IfNotPresent
+        name: busybox
+        command: [&quot;sleep&quot;, &quot;9999999&quot;]
+        resources:
+          requests:
+            cpu: &quot;1&quot;
+      restartPolicy: Never
+      schedulerName: kube-batch
+---
+apiVersion: scheduling.incubator.k8s.io/v1alpha1
+kind: PodGroup
+metadata:
+  name: qj-1
+spec:
+  minMember: 2
+</code></pre>
+<p>kube-batch把一组pod看成一个pod group。</p>
+<h1 id="pod">Pod</h1>
+<p>Pod是一组并置的容器，代表k8s中的基本构建模块。<br>由于一个容器中运行多个进程在实现中不可行，因此一个容器对应一个进程，然后用一种更高级的结构（pod）将多个容器绑定在一起。</p>
+]]></description>
+    </item>
+    <item>
+        <title>Welcome to Seb's</title>
+        <link>https://ririshihaori.com/posts/2019-12-lalaland.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-12-lalaland.html</guid>
+        <pubDate>Mon, 23 Dec 2019 16:34:00 GMT</pubDate>
+        <category>电影</category>
+        <category>生活</category>
+        <description><![CDATA[<p>　　又看了一遍「LaLaLand」。</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/lalaland/lalaland1.jpg" alt="" width="640" height="677" loading="lazy" decoding="async"></div>
+<br>
+<div align=center><img src="https://ririshihaori.com/2019/12/lalaland/lalaland2.jpg" alt="" width="1080" height="840" loading="lazy" decoding="async"></div><div align=center>🎄🎅圣诞快乐~🎅🎄</div>]]></description>
+    </item>
+    <item>
+        <title>Python爬虫踩坑</title>
+        <link>https://ririshihaori.com/posts/2019-12-pythoncfda-a59ef3.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-12-pythoncfda-a59ef3.html</guid>
+        <pubDate>Sun, 22 Dec 2019 09:53:58 GMT</pubDate>
+        <category>Python</category>
+        <category>技术</category>
+        <description><![CDATA[<p>　　这两天跟着徐徐大佬学了一下爬虫，想用 python 爬一下cfda网站上的<a href="http://mobile.cfda.gov.cn/datasearch/QueryList?tableId=36&amp;searchF=Quick%20Search&amp;pageIndex=1&amp;pageSize=15" target="_blank" rel="noopener">药品数据</a>，徐徐试了**<code>requests</code><strong>和</strong><code>selenium</code>**的办法，
+发现爬到的都是一串神秘字符串，如图，</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/1.jpg" alt="" width="1280" height="309" loading="lazy" decoding="async"></div><p>　　因为浏览器能正常打开，所以猜测是服务器端用了某种压缩/动态渲染，就想着能不能用 <code>Selenium</code> + <code>PhantomJs/ChromeDriver</code> 这种无头浏览器来弄，
+结果每次结果都是空的，Google了各种方法，StackOverflow上的办法大多是加命令参数/改程序版本，
+结果好像加了各种命令选项都不行，这是最后的代码，</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/2.png" alt="" width="1920" height="1080" loading="lazy" decoding="async"></div><p>　　得到的<code>driver.page_source</code>结果永远都是空的：<br><strong><code>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</code></strong><br>　　用<code>driver.save_screenshot(&#39;1.png&#39;)</code>截图也只能截到空白的图片。<br>　　后来去掉<code>#options.add_argument(&quot;--headless&quot;)</code>,弹出chrome浏览器的时候看了一下它的Cookie，发现比真实浏览器的少了一个名字叫<code>JSESSIONID</code>的Cookie，代码输出一下Cookie：<br><code>print(driver.get_cookies())</code><br>　　发现确实只有后两个Cookie：    </p>
+<pre><code>    [{&#39;domain&#39;: &#39;mobile.cfda.gov.cn&#39;, &#39;expiry&#39;: 1892368214, &#39;httpOnly&#39;: False, &#39;name&#39;: &#39;tuNQaYE2WCOr80T&#39;, &#39;path&#39;: &#39;/&#39;, &#39;secure&#39;: False, &#39;value&#39;: &#39;44Kn.5S4Qs9FYazHg9cvpAh7RvvkX6CHCFFLnsNw3CWLTJqQ6uRw0fI8bg5vrYGQEX6hJa0J.RsRZXrnLpG9ViGS6qQB.h0ihFdotILVHmKWMi8rTSe4I7l24OjHVvISZagZFyCmw23._.vUSDK3RsDU47zozbhS.mSlLRCcnw4tiTC6vzgime927xft3LdtTnQXjiYoqH.ONQGdKHPdqzeGiwGMEjgoxEebyhgXrJn2tAr5hqtntejwrroOnMyvm77CXd8_V5QkuK5aINNj2DYlMrReJ7uKRLSx3FeepzkKvtT5WFd.hbAsVYU5eqbtb_Mq&#39;},        
+    {&#39;domain&#39;: &#39;mobile.cfda.gov.cn&#39;, &#39;expiry&#39;: 1892368213.81084, &#39;httpOnly&#39;: True, &#39;name&#39;: &#39;tuNQaYE2WCOr80S&#39;, &#39;path&#39;: &#39;/&#39;, &#39;secure&#39;: False, &#39;value&#39;: &#39;hPNhBHTwoBvnsQ5znkw4QCEmXQJ7.5vsBR2r8eDpRyWyiYBaMsjvKkr75trGzXPe&#39;}]
+</code></pre>
+<p><br>　　这是真实浏览器的Cookie：</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/3.png" alt="" width="1047" height="774" loading="lazy" decoding="async"></div><p>　　可能就是因为这个原因打不开浏览器。<br>　　后来试着去群里问了一下，感谢@姬大神还有群里的@耿欣大佬，他俩告诉我可以用**<a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a>**发请求，然后生成带<code>Header</code>的代码，如图，Postman能显示所有Cookie和Header信息,可以看到Header信息里，服务端用了<code>gzip</code>还有<code>gb2312</code>的编码格式(图3)：      </p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/4.png" alt="" width="1920" height="1080" loading="lazy" decoding="async"></div>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/5.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/6.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div><p>　　点击右上角的<strong>Code</strong>按钮可以生成各种版本的请求代码，生成之前可以设置一下 <code>Include Temporary Headers</code> 选项让生成的代码含有现在的**<code>Headers</code>**</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/7.png" alt="" width="1058" height="645" loading="lazy" decoding="async"></div><p>　　这是生成后的各个语言的请求代码：</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/8.png" alt="" width="1057" height="643" loading="lazy" decoding="async"></div><h3 id="go-a9fb1c">Go语言代码：</h3>
+<pre><code class="language-go">package main
+
+import (
+ &quot;fmt&quot;
+ iconv &quot;github.com/djimenez/iconv-go&quot;
+ &quot;io/ioutil&quot;
+ &quot;net/http&quot;
+)
+
+func main() {
+
+ url := &quot;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&quot;
+
+ req, _ := http.NewRequest(&quot;GET&quot;, url, nil)
+
+ req.Header.Add(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1&quot;)
+ req.Header.Add(&quot;Accept&quot;, &quot;*/*&quot;)
+ req.Header.Add(&quot;Cache-Control&quot;, &quot;no-cache&quot;)
+ req.Header.Add(&quot;Postman-Token&quot;, &quot;8e009b45-0973-4c64-be43-7342da2bcc5b,0446163c-7c01-421b-bd56-4a8187e3c9b3&quot;)
+ req.Header.Add(&quot;Host&quot;, &quot;mobile.cfda.gov.cn&quot;)
+ // req.Header.Add(&quot;Accept-Encoding&quot;, &quot;gzip, deflate&quot;)      //取消gzip encoding
+ req.Header.Add(&quot;Cookie&quot;, &quot;JSESSIONID=99245F57E359A2881EBD1EDA9E75BAFC.7; tuNQaYE2WCOr80T=4sU7uW4noiWDTog1A1IdD.VVRdBBArEE5ZSbl37hgTWe6gx.QLxVYNWdVReT4XPzCIC7qHjmtSndaWwnxhVv_mQRA3n9kf0.trsFj2qw55V57mjUfo2yTF_hmmPirw6Y0weeFRH7jCiMaT9QjGjxpMHycRBhHlb5q9FTKj5_qiKVKc1oAwNR_uUzZEvadkSud2uL; tuNQaYE2WCOr80S=8fryRXIPeZaSuESt8nxE6bkC4p7Zv0kxEE.lK2DtuCkxUSYIoIcKbXymZkp6z5Iq&quot;)
+ req.Header.Add(&quot;Connection&quot;, &quot;keep-alive&quot;)
+ req.Header.Add(&quot;cache-control&quot;, &quot;no-cache&quot;)
+
+ res, _ := http.DefaultClient.Do(req)
+
+ defer res.Body.Close()
+ body, _ := ioutil.ReadAll(res.Body)
+ fmt.Println(&quot;body文本:\n&quot;, string(body))
+ out := make([]byte, len(body))
+ iconv.Convert(body, out, &quot;gb2312&quot;, &quot;utf-8&quot;)                 //gb2312转utf-8
+ fmt.Println(&quot;out文本:\n&quot;, string(out))
+
+}
+</code></pre>
+<p>Go语言版本的结果：</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/9.png" alt="" width="1000" height="773" loading="lazy" decoding="async"></div><h3 id="python-requests-33a687">Python requests代码：</h3>
+<pre><code class="language-python">import requests
+
+if __name__ == &quot;__main__&quot;:
+    url = &quot;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&quot;
+
+    payload = {}
+    headers = {
+        &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1&#39;,
+        &#39;Accept&#39;: &#39;*/*&#39;,
+        &#39;Cache-Control&#39;: &#39;no-cache&#39;,
+        &#39;Postman-Token&#39;: &#39;285772ec-24e5-48f4-8a18-bf50f8f657ec&#39;,
+        &#39;Host&#39;: &#39;mobile.cfda.gov.cn&#39;,
+        &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;,
+        &#39;Cookie&#39;: &#39;JSESSIONID=F85C3CADAAE170E8618A7DD43CBFD125.7; tuNQaYE2WCOr80T=4GSR08oCna1W64y.RAM5IombOlBwtGEUxxVanErVnNe4bzum1Mf9w_HdOQy3jZp4LkFrR.CYLXGZmcucJx1rkpptCEHf00dWsVCJrjRDb8g5Z7w4K2VhSfZdlbRxg1M86weYtOYbKz.SjkwOvg10haEkp2HpuPPv74Iqr5eUumbZcMotKHh3djBXVFDT8I_oOPsA; tuNQaYE2WCOr80S=Woyd5gh69qpABUJoSN6SynZGW3kyRxl0Jw49VLMWRXLZz0H5hy6Hg3Uy1GfWczcz&#39;,
+        &#39;Connection&#39;: &#39;keep-alive&#39;
+    }
+    response = requests.request(&quot;GET&quot;, url, headers=headers, data = payload)
+    print(response.text)
+</code></pre>
+<p>Python运行结果：</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/10.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div><h3 id="h-e56671">徐徐的办法</h3>
+<p>　　徐徐用Selenium模拟鼠标和键盘，右键然后点击A保存，把html代码保存到本地，如图：</p>
+<div align=center><img src="https://ririshihaori.com/2019/12/PythonCrawler/11.jpg" alt="" width="946" height="465" loading="lazy" decoding="async"></div><h3 id="update">Update</h3>
+<p>　　晚上旺财又告诉我他发现Firefox driver的无头模式可以用。。。(为什么Phantom和Chrome就不行呢),贴代码：</p>
+<pre><code class="language-python">    from selenium import webdriver
+    import time
+    from selenium.webdriver.firefox.options import Options
+    options = Options()
+    options.add_argument(&quot;headless&quot;)  # 无界面
+    options.add_argument(&quot;disable-gpu&quot;)
+    driver = webdriver.Firefox(options=options)
+    driver.get(&#39;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&#39;)
+    time.sleep(1)
+    print(driver.page_source)
+    driver.quit()
+</code></pre>
+]]></description>
+    </item>
+    <item>
+        <title>[持续更新]Leetcode刷题笔记</title>
+        <link>https://ririshihaori.com/posts/2019-12-leetcode-8a1b0d.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-12-leetcode-8a1b0d.html</guid>
+        <pubDate>Mon, 02 Dec 2019 16:23:55 GMT</pubDate>
+        <category>算法</category>
+        <category>技术</category>
+        <category>Leetcode</category>
+        <category>C++</category>
+        <description><![CDATA[<p>　　</p>
+<h2 id="1.-92fe18">1.位运算与比较运算的优先级</h2>
+<p>　　<a href="https://leetcode-cn.com/problems/can-i-win/" target="_blank" rel="noopener">题号464，我能赢吗</a>，两人轮流从给出的等差数列中取数（数列从1开始直到n，n为给出的值），取出的数之和超过某个给出的目标值游戏结束，最后一个取数的人胜利。
+作法主要是用递归模拟两个人的取数过程（因为假设两个人都足够聪明），用位运算模拟取数顺序（即两个人取数的情况一共有2^n种），由于题目规定n最大不超过20所以用一个数组来存所有可能的取数情况下的游戏结果。   </p>
+<pre><code class="language-C++">int dp[1 &lt;&lt; n] = {0};
+</code></pre>
+<p>　　按照这个思路实现了以后还是执行不对，debug最后发现是位运算和比较运算的优先级问题。问题出在这行代码：    </p>
+<pre><code class="language-C++">if (stat &amp; select != 0)
+</code></pre>
+<p>　　==和!=的优先级高于&amp;运算符，改成    </p>
+<pre><code class="language-C++">if ((stat &amp; select) != 0)
+</code></pre>
+<p>　　就好了。     </p>
+<p>　　(另外说到用位来存情况就想到了之前走心群里遇到的一道高中排列组合题，题目是10颗一样的糖，每天至少吃一颗，一共有几种吃法？
+泉哥的答案：C9_0 + C9_1 +...+ c9_9=2^9，(至今没想明白为啥= =)
+网上看到另一种思路：把10颗糖从左向右排成一列，第1天一定会吃第1颗糖，将它记为1，如果接下来的一颗糖和前一颗糖在同一天吃，就把这颗糖记为和前一颗糖相同的数字，即前一颗为1这一颗也为1，前一颗为0这一颗也为0，这样这列糖就可以表示为一个首位为1的10位二进制数，这样的数一共有2^9=512个，即为512种吃法。二进制真奇妙。😆)</p>
+<h2 id="2.-642115">2.双指针法解决链表问题</h2>
+<h3 id="h-98e9ba">环形链表</h3>
+<p>　　检查链表有没有环推荐双指针法，因为具有O(1)的空间复杂度，也可以用其他方法比如哈希表法或者集合大小法。<br>　　<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">环形链表Ⅱ题号142</a>，双指针法的算法步骤（题解里已经有数学证明）（前半部分和环形链表Ⅰ的解法相同）：</p>
+<ol>
+<li><p>设置一快一慢两个指针，slow移动一下fast移动两下。若<code>fast == nullptr</code>说明无环，若<code>fast == slow</code>说明fast <strong>套圈</strong> 了slow，链表存在环。</p>
+</li>
+<li><p>此时将fast置为head，slow维持不变，然后两指针分别同时移动，相遇点即为成环点。</p>
+</li>
+</ol>
+<h3 id="h-81b833">相交链表</h3>
+<p>　　<a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">相交链表</a>也可以用双指针法解决，具体做法：    </p>
+<ol>
+<li>分别设置两个指针p1p2，从两个头结点headA和headB处开始遍历。</li>
+<li>若p1遍历到headA所在链表的结尾，则把p1设置为headB，继续遍历；若p2遍历到headB所在链表的结尾，则把p2设置为headA继续遍历。</li>
+<li>两指针相遇点即为相交点。</li>
+</ol>
+<p>　　原理很简单，设A、B两个链表不相交的部分分别为a、b，相交部分为merge，则<code>a + merge + b = b + merge + a</code>，等号两侧分别为两个指针按照顺序走过的路径相加，因此相遇点就是相交点。</p>
+<h2 id="3.powxn">3.Pow(x,n)</h2>
+<p>踩坑过程:     </p>
+<pre><code>-&gt; 直接递归调用自身     
+-&gt; 一些例子导致栈溢出     
+-&gt; 改用循环处理       
+-&gt; ｎ可能为负数没考虑到        
+-&gt; ｎ为负数时，ｎ变成-n，x变为1/x       
+-&gt; 一些例子会报错： `runtime error: negation of -2147483648 cannot be represented in type &#39;int&#39;`，问题出在n变为-n时，正数和负数的最大表示范围不一样。         
+-&gt; 用long long类型变量N代替n：`long long N = n;`    
+-&gt; 2.00000 -2147483648的例子还是会超出时间限制 感受到了深深的恶意      
+-&gt; 向题解低头，用二分递归实现，简洁优雅卧槽
+</code></pre>
+<p>最终代码：</p>
+<pre><code class="language-C++">class Solution {
+public:
+    double myPow(double x, int n) {
+        if (n == 0) { return 1; }
+        if (n == 1) { return x; }
+        if (n == -1) { return 1 / x; }
+        double half = myPow(x, n / 2);
+        double rest = myPow(x, n % 2);
+        return rest * half * half;
+    }
+};
+</code></pre>
+<h4 id="h-bcb178">数值的整数次方： 快速幂的迭代写法</h4>
+<pre><code>class Solution {
+public:
+    double myPow(double x, int n) {
+        double res = 1;
+        int i = n;
+        while (i) {
+            if (i &amp; 1) res *= x;
+            x = x*x;
+            i /= 2;
+        }
+        return n &gt; 0 ? res : 1 / res;
+    }
+};
+</code></pre>
+<h2 id="4.offer-bb5af2">4.剑指offer 剪绳子 贪心算法</h2>
+<pre><code>class Solution {
+public:
+    int cuttingRope(int n) {
+        if (n == 2 || n == 3) return n-1;
+        if (n % 3 == 0) {
+            return pow(3, n / 3);                    //全部是3
+        }
+        if (n % 3 == 1) {                            //多余一个1
+            return pow(3, n / 3 - 1) * 2 * 2;        //取出一个3，和1组成2*2，因为1*3 &lt; 2*2
+        }              
+        if (n % 3 == 2) {                            //多余一个2
+            return pow(3, n / 3) * 2;
+        }
+        return -1;
+    }
+};
+</code></pre>
+<h2 id="5.offer-1-n-1-amp-n-b3857e">5.剑指offer 统计二进制中1的个数 (n - 1) &amp; n</h2>
+<p>将数字-1后与自己按位与，可以将最低位的1消除，可以这样操作的次数就是1的个数</p>
+<pre><code>class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int count = 0;
+        while (n) {
+            count++;
+            n = n - 1 &amp; n;
+        }
+        return count;
+    }
+};
+</code></pre>
+<h2 id="6.offer-1n-291939">6.剑指offer 打印从1到最大的n位数 （大数问题，使用字符串）</h2>
+<p>看作n位数每一位从1-9的全排列，输出时不输出高位0</p>
+<h2 id="7.-a27e86">7.字符串实现大数加法</h2>
+<pre><code>#include&lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+using namespace std;
+ 
+char s1[200],s2[200],sum[210];
+ 
+void add()
+{
+    int lena = strlen(s1);
+    int lenb = strlen(s2);
+    int maxlen = (lena &lt; lenb)? lenb : lena;
+ 
+    int carry = 0,k = 0;
+    while (lena-- &gt; 0 &amp;&amp; lenb-- &gt; 0) {  //低位对齐相加
+        int left = s1[lena] - &#39;0&#39;;
+        int right = s2[lenb] - &#39;0&#39;;
+        int s = left + right + carry;
+        carry = s / 10;
+        s %= 10;
+        sum[k++] = s + &#39;0&#39;;
+    }
+    if (lena &lt;= 0) {                    //不对齐的部分，s1比s2长时
+        while (lenb-- &gt; 0) {
+            int left = 0;
+            int right = s2[lenb] - &#39;0&#39;;
+            int s = left + right + carry;
+            carry = s / 10;
+            s %= 10;
+            sum[k++] = s + &#39;0&#39;;
+        }
+    }
+    else if (lenb &lt;= 0) {               //不对齐的部分，s2比s1长时
+        while (lena-- &gt; 0) {
+            int left = s1[lena] - &#39;0&#39;;
+            int right = 0;
+            int s = left + right + carry;
+            carry = s / 10;
+            s %= 10;
+            sum[k++] = s + &#39;0&#39;;
+        }
+    }
+    if (carry != 0)
+        sum[k++] = carry + &#39;0&#39;;
+    sum[k] = &#39;\0&#39;;
+    strrev(sum);
+}
+ 
+int main()
+{
+    cin &gt;&gt; s1 &gt;&gt; s2;
+    add();
+    cout &lt;&lt; &quot;result is &quot; &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2 id="8.-d3315f">8. 删除单链表节点</h2>
+<p>　　</p>
+<h4 id="offer-o1-listnode-headlistnode-ptobedeleted-834dd2">剑指offer O(1)时间 传入参数为<em>ListNode head和</em>ListNode pToBeDeleted</h4>
+<p>　　不用从头遍历到待删除的节点，只需要把待删除节点的下一个节点的值复制到待删除节点（覆盖），然后把待删除节点的next指向其下一个节点的下一个节点。
+　　尾节点仍需遍历。单个节点的链表需要设置头结点为空。</p>
+<h4 id="leetcode-on-listnode-head-int-val-4ac85b">Leetcode O(n)时间 传入参数为*ListNode head和 int val</h4>
+<p>　　设置dummy节点</p>
+<pre><code>class Solution {
+public:
+    ListNode* deleteNode(ListNode* head, int val) {
+        ListNode* dummy = new ListNode(0);
+        dummy-&gt;next = head;
+        ListNode* p = dummy;
+        while (p-&gt;next-&gt;val != val) p = p-&gt;next;
+        p-&gt;next = p-&gt;next-&gt;next;
+        return dummy-&gt;next;
+    }
+};
+</code></pre>
+<h2 id="9.offer-cf633f">9.剑指Offer 正则表达式匹配</h2>
+<p>.匹配任意字符 *表示之前的1个字符可以出现0~任意次</p>
+<p>解法:分情况递归</p>
+<pre><code>class Solution {
+public:
+    bool isMatch(string s, string p) {
+        if (p.empty()) {            //若模式串为空，则S必须为空，反之不成立
+            return s.empty();
+        }
+        if (p.size() &gt; 1 &amp;&amp; p[1] == &#39;*&#39;) { //模式串里有*，情况1：patter后移两个字符（即*前的字符在s中出现0次）情况2：patter不变，s后移一个字符
+            return isMatch(s, p.substr(2)) || (!s.empty() &amp;&amp; (s[0] == p[0] || p[0] == &#39;.&#39;) &amp;&amp; 
+            isMatch(s.substr(1), p));
+        }
+        //模式串里没有*，若匹配则各后移一个字符
+        return !s.empty() &amp;&amp; (s[0] == p[0] || p[0] == &#39;.&#39;) &amp;&amp; isMatch(s.substr(1), p.substr(1));
+    }
+};
+</code></pre>
+<h2 id="10.-ef5f59">10.判断一个二叉树是否对称(用递归解决)</h2>
+<p>也可以用剑指offer中比较两棵树的前序遍历和对称前序遍历(根-&gt;右节点-&gt;左节点)的序列。</p>
+<pre><code>class Solution {
+public:
+    bool isMirror(TreeNode* t1, TreeNode* t2) {
+        if (t1 == nullptr &amp;&amp; t2 == nullptr) return true;
+        if (t1 == nullptr || t2 == nullptr) return false;
+        return (t1-&gt;val == t2-&gt;val) &amp;&amp; isMirror(t1-&gt;left, t2-&gt;right) &amp;&amp; isMirror(t1-&gt;right, t2-&gt;left);
+    }
+
+    bool isSymmetric(TreeNode* root) {
+        return isMirror(root, root);
+    }
+};
+</code></pre>
+<h2 id="11.-min-b3822e">11. 包含min函数的栈</h2>
+<p>诀窍在于维护一个存放min记忆的栈,每次push都将当前时刻的最小值push进该栈.</p>
+<h2 id="12.-b6a3f9">12. 含有随机指针的链表的深拷贝</h2>
+<p>解法一: O(n)时间O(n)空间 利用哈希表</p>
+<pre><code>class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if (head == nullptr) return nullptr;
+        map&lt;Node*, Node*&gt; M;
+        Node* cur = head;
+        // 将所有节点加入Map
+        while (cur) {
+            Node* tmp = new Node(cur-&gt;val, nullptr, nullptr);
+            M[cur] = tmp;
+            cur = cur-&gt;next;
+        }
+        // 更新Map中value的所有指针
+        cur = head;
+        while (cur) {
+            M[cur]-&gt;random = M[cur-&gt;random];
+            M[cur]-&gt;next = M[cur-&gt;next];
+            cur = cur-&gt;next;
+        }
+        return M[head];
+    }
+};
+</code></pre>
+<p>解法二:O(n)时间O(1)空间 在每个节点后面紧接一个其复制</p>
+<pre><code>class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if (head == nullptr) {
+            return head;
+        }
+        Node* p = head;
+        while (p) {             // 每个节点后面插入一个值相同的节点
+            Node* q = new Node(p-&gt;val);
+            q-&gt;next = p-&gt;next;
+            p-&gt;next = q;
+            p = q-&gt;next;
+        }
+        p = head;
+        while (p) {             // 给复制进来的节点赋random值
+            p-&gt;next-&gt;random = p-&gt;random? p-&gt;random-&gt;next : nullptr;
+            p = p-&gt;next-&gt;next;
+        }
+        p = head;
+        Node* ret = head-&gt;next;
+        Node* q = ret;
+        while (q-&gt;next) {       // 奇数结点构成原始链表，偶数结点是新链表，返回偶数结点链表
+            p-&gt;next = q-&gt;next;
+            q-&gt;next = q-&gt;next-&gt;next;
+            p = p-&gt;next;
+            q = q-&gt;next;
+        }
+        p-&gt;next = nullptr;      // 退出时，将原链表尾节点置为NULL
+        return ret;
+    }
+};
+</code></pre>
+<h2 id="13.-1482c6">13.二叉搜索树转换为双向链表</h2>
+<p>对树进行中序遍历,同时更新指针.</p>
+<pre><code>class Solution {
+public:
+    void inTraval(Node* root) {
+        if (root == nullptr) return;
+        inTraval(root-&gt;left);
+        //-------------------------------------
+        if (last == nullptr) {          //说明此时刚刚开始进行中序遍历，遍历到最左边，最小的元素了。
+            head = root;          //找到了head
+            last = root;          //last将从这里开始向后移动
+        } else {
+            last-&gt;right = root;
+            root-&gt;left = last;
+            last = root;
+        }
+        //-------------------------------------
+        inTraval(root-&gt;right);
+
+    }
+    Node* treeToDoublyList(Node* root) {
+        if (root == nullptr) return head;
+        inTraval(root);
+        // 首尾相接
+        head-&gt;left = last;
+        last-&gt;right = head;
+        return head;
+    }
+private:
+    Node* last = nullptr;
+    Node* head = nullptr;
+};
+</code></pre>
+<h2 id="14.-a9153b">14.字符串的排列</h2>
+<p>用集合保存结果，将每一位字符与第一个字符交换位置，递归</p>
+<pre><code>class Solution {
+public:
+    vector&lt;string&gt; permutation(string s) {
+        set&lt;string&gt; res;
+        permutation(s, 0, res);
+        return vector&lt;string&gt;(res.begin(), res.end());
+    } 
+
+    void permutation(string s, int begin, set&lt;string&gt;&amp; res) {
+        if (s.size() == begin) {
+            res.insert(s);
+        }
+        for (int i = begin; i &lt; s.size(); i++) {
+            swap(s[i], s[begin]);
+            permutation(s, begin + 1, res);
+            swap(s[begin], s[i]);
+        }
+    }
+};
+</code></pre>
+<h2 id="15.-dc29a3">15. 数组中出现次数超过一半的数</h2>
+<ul>
+<li>剑指offer做法 基于partition函数</li>
+</ul>
+<pre><code>排序后中间的元素一定是出现超过一半的数字
+sort(nums.begin(),nums.end());
+return nums[nums.size()/2];
+</code></pre>
+<ul>
+<li>哈希表</li>
+</ul>
+<pre><code>unordered_map&lt;int,int&gt;mp;
+        for(auto it : nums){
+            mp[it]++;
+            if(mp[it]&gt;nums.size()/2) return it;
+        }
+        return 0;
+</code></pre>
+<ul>
+<li><p>Boyer-Moore 投票算法/消除法（这个太6了）       </p>
+<p>  如果我们把众数记为 +1 ，把其他数记为 -1 ，将它们全部加起来，显然和大于 0 ，从结果本身我们可以看出众数比其他数多。<br>我们维护一个计数器，如果遇到一个我们目前的候选众数，就将计数器加一，否则减一。只要计数器等于 0 ，我们就将 nums 中之前访问的数字全部 忘记 ，并把下一个数字当做候选的众数。直观上这个算法不是特别明显为何是对的，我们先看下面这个例子（竖线用来划分每次计数器归零的情况）              </p>
+<p>  [7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 7, 7, 7, 7]                    </p>
+<p>  首先，下标为 0 的 7 被当做众数的第一个候选。在下标为 5 处，计数器会变回0 。所以下标为 6 的 5 是下一个众数的候选者。由于这个例子中 7 是真正的众数，所以通过忽略掉前面的数字，我们忽略掉了同样多数目的众数和非众数。因此， 7 仍然是剩下数字中的众数。                </p>
+<p>  [7, 7, 5, 7, 5, 1 | 5, 7 | 5, 5, 7, 7 | 5, 5, 5, 5]               </p>
+<p>  现在，众数是 5 （在计数器归零的时候我们把候选从 7 变成了 5）。此时，我们的候选者并不是真正的众数，但是我们在 遗忘 前面的数字的时候，要去掉相同数目的众数和非众数（如果遗忘更多的非众数，会导致计数器变成负数）。                </p>
+<p>  因此，上面的过程说明了我们可以放心地遗忘前面的数字，并继续求解剩下数字中的众数。最后，总有一个后缀满足计数器是大于 0 的，此时这个后缀的众数就是整个数组的众数。            </p>
+<p>  时间复杂度：O(n)           </p>
+<p>  空间复杂度：O(1)</p>
+</li>
+</ul>
+<h2 id="16.-topk-ce7190">16. topK问题</h2>
+<ul>
+<li>快排 数据一次性读入内存，允许对原数组修改，时间复杂度O(n)</li>
+</ul>
+<pre><code>class Solution {
+private:
+    int partition(vector&lt;int&gt;&amp; arr,int start,int end){
+        //快速排序辅助函数
+        int l=start;
+        int r=end;
+        int q=arr[start];
+        
+        while(l&lt;r){
+            while(l&lt;r&amp;&amp;arr[r]&gt;=q)
+                r--;
+            while(l&lt;r&amp;&amp;arr[l]&lt;=q)
+                l++;
+            swap(arr[l],arr[r]);
+        }
+        swap(arr[start],arr[l]);
+        return l;
+    }
+public:
+    vector&lt;int&gt; getLeastNumbers(vector&lt;int&gt;&amp; arr, int k) {
+        vector&lt;int&gt; res;
+        if(k==0||arr.size()==0)
+            return res;       
+
+        //快速排序
+        int l=0;
+        int r=arr.size()-1;
+        int dx=partition(arr,l,r);
+        while(dx!=k-1){
+            if(dx&gt;k-1){
+                r=dx-1;
+                dx=partition(arr,l,r);
+            }
+            else if(dx&lt;k-1){
+                l=dx+1;
+                dx=partition(arr,l,r);
+            }
+        }
+        
+        for(int i=0;i&lt;k;i++){
+            res.push_back(arr[i]);
+        }
+        
+        return res;
+        
+    }
+};
+</code></pre>
+<ul>
+<li>最大堆 一次读入一个数据，时间复杂度O(nlogk),空间复杂度O(k)</li>
+</ul>
+<pre><code>class Solution {
+public:
+    vector&lt;int&gt; getLeastNumbers(vector&lt;int&gt;&amp; arr, int k) {
+        vector&lt;int&gt; res;
+        if (k == 0 || arr.size() == 0) {
+            return res;
+        }
+        priority_queue&lt;int&gt; q;
+        int i = 0;
+        for (; i &lt; k; i++) {
+            q.push(arr[i]);
+        }
+        for (; i &lt; arr.size(); i++) {
+            if (arr[i] &lt; q.top()) {
+                q.pop();
+                q.push(arr[i]);
+            }
+        }
+        while (!q.empty()) {
+            res.push_back(q.top());
+            q.pop();
+        }
+        return res;
+    }
+};
+</code></pre>
+<h2 id="17.-1n1-offer-fdeda4">17. 1~n中1出现的次数 剑指offer找规律</h2>
+<pre><code>class Solution {
+public:
+    int countDigitOne(int n) {
+        if(n &lt;= 0) return 0;
+        if(n &lt; 10) return 1;
+        string s = to_string(n);
+        int highNum = s[0] - &#39;0&#39;;
+        int size = s.size();
+        int withoutHigh = n - highNum * pow(10,size - 1);
+    // 1. 统计首位为1出现次数:
+    //    - 若n首位是1(如12345), 那么有 2346个
+    //    - 若n的首位U不是1(如23456), 那么有 10000个
+        int first = highNum == 1 ? withoutHigh + 1 :pow(10,size - 1);
+    // 统计其他位为1的出现次数
+    // 2. 大于 3456
+    //    - 可以划分为两个区间，例如对 23456 划分为
+    //      [10000, 19999], [3457, 9999]U[20001, 23456]
+    //    - 对任意一个区间，后面4个数字，选择其中一个为1，其他三个都可以在0~9中任意选择，因此一共有 2*4*10^3 个1 
+    int other = highNum * (size - 1) * pow(10, size - 2);
+    return first + other +countDigitOne(withoutHigh);
+    }
+};
+</code></pre>
+<h2 id="18.-626674">18. 最长不含重复字符的子字符串</h2>
+<ul>
+<li>动态规划</li>
+</ul>
+<p>定义dp[i][j]表示下标i到下标j的子串是否不含重复元素。            </p>
+<p>初始化：当i==j时，dp[i][j]是真（一个元素当然不重复）
+状态转移：dp[i][j]是真，则要求dp[i][j-1]是真，并且dp[i+1][j]也是真，这是显而易见的；
+其次还要求s[i]!=s[j]。因为当满足前两个条件时，s[i]、s[j]一定不在下标从i+1到j-1的子串中，如果这时再满足s[i]!=s[j]，那么dp[i][j]一定是真。
+因此状态转移方程为dp[i][j] = (dp[i][j-1] &amp;&amp; dp[i+1][j] &amp;&amp; s[i] != s[j]);
+动态规划代码如下：         </p>
+<pre><code>class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+    	size_t len = s.size();
+    	if (len == 0) return 0;
+    	int res = 1;
+        vector&lt;vector&lt;bool&gt; &gt; dp(len, vector&lt;bool&gt;(len, true));
+        for (int i = len - 2; i &gt;= 0; --i) {
+        	for (int j = i + 1; j &lt; len; ++j) {
+        		dp[i][j] = (dp[i][j-1] &amp;&amp; dp[i+1][j] &amp;&amp; s[i] != s[j]);
+        		if (dp[i][j] &amp;&amp; j - i + 1 &gt; res) res = j - i + 1;
+			}
+		}
+		return res;
+    }
+};
+</code></pre>
+<ul>
+<li>滑动窗口</li>
+</ul>
+<pre><code>class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int len = s.size();
+        if (len == 0) return 0;
+        int res = 1;
+        int i = 0, j = 0;   //  滑动窗口
+        map&lt;char, int&gt; m;
+        for (;j &lt; len; ++j) {
+            m[s[j]]++;
+            if (m[s[j]] == 1) {
+                if (j - i + 1 &gt; res) {
+                    res = j - i + 1;
+                    continue;
+                }
+            }
+            while(m[s[j]] &gt; 1) {  // 收缩窗口
+                m[s[i++]]--;
+            }
+        }
+        return res;
+    }
+};
+</code></pre>
+<h2 id="19.-e6ef44">19. 数组中数字出现的次数</h2>
+<ul>
+<li><p>除2个数字外，其余数字均出现2次         </p>
+<ol>
+<li>对所有数字异或,一样的数字抵消,出现一次的两个数字异或运算后必定不为 0;</li>
+<li>用x &amp; (-x)得到一个二进制位最右边一位为1的数字mask，也就是两者出现不等的地方</li>
+<li>maskmask 和数组的每个数字做与运算，等于 0 的分为一组，等于 maskmask 的分为一组，这同时也将两个不一样的数字分开了</li>
+</ol>
+<pre><code>class Solution {
+public:
+vector&lt;int&gt; singleNumbers(vector&lt;int&gt;&amp; nums) {
+    vector&lt;int&gt; res(2, 0);
+    int number = 0;
+    for (int num : nums) {
+        number ^= num;
+    }
+    int pos = number &amp; (-number);
+    for (int num : nums) {
+        if ((num &amp; pos) == pos) res[0] ^= num;
+        else res[1] ^= num;
+    }
+    return res;
+}
+};
+</code></pre>
+</li>
+<li><p>除1个数字外，其余数字均出现3次<br>　　记录每一位不为0的数字出现的次数，如果出现的次数对3取模为1，则说明只出现一次的数字此位也是1，将所有模3为1的位想加，得到最终结果</p>
+</li>
+</ul>
+<pre><code>class Solution {
+public:
+    int singleNumber(vector&lt;int&gt;&amp; nums) {
+        int res = 0;
+        for (int i = 0; i &lt; 32; i++) {
+            int cnt = 0;
+            for (int n : nums) {
+                if ((1 &lt;&lt; i) &amp; n) {
+                    cnt++;
+                }
+            }
+            if (cnt % 3) {
+                res += (1 &lt;&lt; i);
+            } 
+        }
+        return res;
+    }
+};
+</code></pre>
+<h2 id="20.-offer-n-ab4d26">20. 剑指offer n个骰子的点数 动态规划</h2>
+<p>把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。</p>
+<p><a href="https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/</a></p>
+<h2 id="21.-12...n-forwhileifelseswitchcaseabc-b3bb8d">21. 求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</h2>
+<pre><code>class Solution {
+public:
+    int sumNums(int n) {
+        n &amp;&amp; (n += sumNums(n-1));
+        return n;
+    }
+};
+</code></pre>
+<h2 id="21.-7926be">21. 位运算实现加法</h2>
+<pre><code>class Solution {
+public:
+    int add(int a, int b) {
+        int sum = 0, carry = 0;
+        do {
+            sum = a ^ b;
+            carry = (unsigned int)(a &amp; b) &lt;&lt; 1;     //C++不支持负值左移，需强制转换为无符号整数
+            a = sum;
+            b = carry;
+        } while (carry != 0);
+        return sum;
+    }
+};
+</code></pre>
+]]></description>
+    </item>
+    <item>
+        <title>双系统Ubuntu硬盘扩容+卸载Ubuntu系统</title>
+        <link>https://ririshihaori.com/posts/2019-12-ubuntu-c2dbcd.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-12-ubuntu-c2dbcd.html</guid>
+        <pubDate>Sun, 01 Dec 2019 16:23:55 GMT</pubDate>
+        <category>Linux</category>
+        <category>技术</category>
+        <category>Ubuntu</category>
+        <description><![CDATA[<p>　　开发板子需要安装Xilinx的Vivado安装环境，安装时发现需要win10专业版，家庭版不行，所以想着装到双系统的Ubuntu1604下，就去机房弄了块硬盘。</p>
+<h2 id="ubuntu-5f7946">双系统给Ubuntu扩容</h2>
+<ol>
+<li><p>win10下右键“计算机”-“管理”-“磁盘管理”,压缩卷并新建卷，选择按照NFTS格式格式化。</p>
+</li>
+<li><p>重启进入ubuntu，使用<code>df -h</code>查看ubuntu下磁盘挂载点，通过磁盘大小判断备用磁盘的名称，形如<code>/dev/sda2</code></p>
+</li>
+<li><p>使用<code>sudo umount /dev/sda2</code>解挂载</p>
+</li>
+<li><p>使用<code>mkfs -t ext4 /dev/sda2</code>将磁盘格式化为ext4格式</p>
+</li>
+<li><p>使用<code>ls -l /dev/disk/by-uuid</code>查询sda2对应的UUID，假设其为“abcd”</p>
+</li>
+<li><p>使用<code>sudo vi /etc/fstab</code>编辑fstab，在最后一行添加<code>UUID=abcd /home/open ext4 defaults 0 2</code></p>
+</li>
+<li><p>重启，发现已将磁盘挂载到<code>/home/open</code>下</p>
+</li>
+</ol>
+<h2 id="ubuntu-7b0a0f">双系统删除Ubuntu系统</h2>
+<p>　　。。。扩容了以后发现vivado只支持64位系统，之前装的时候不小心装成了32位的，还是删了Ubuntu系统直接换虚拟机算了。<br>　　但是不能直接清空硬盘分区，会导致启动后win10也进不去，需要按照步骤来。删之前先备份了下<code>/home</code>下的所有东西。</p>
+<ol>
+<li><p>首先<code>win + R</code>,然后输入<code>msinfo32</code>回车，查看系统信息中的<code>BIOS模式</code>来确认系统启动方式。(我这里是传统模式，即Legacy BIOS模式)。</p>
+</li>
+<li><p>若为Legacy模式，可以下载并运行MbrFix程序或用类似于分区助手的软件修复mbr。重启win10没有GNU GRUB的系统选择界面则说明修复成功。</p>
+</li>
+<li><p>之后就可以用分区助手或者右键&quot;计算机&quot;-“管理”-“磁盘管理”里面删除Ubuntu系统所在的硬盘分区了。</p>
+</li>
+</ol>
+]]></description>
+    </item>
+    <item>
+        <title>Python提取Win10锁屏Spotlight</title>
+        <link>https://ririshihaori.com/posts/2019-11-win10spotlight.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-11-win10spotlight.html</guid>
+        <pubDate>Wed, 27 Nov 2019 11:10:14 GMT</pubDate>
+        <category>Python</category>
+        <category>技术</category>
+        <description><![CDATA[<p>　　刚才看见Win10锁屏界面的星空图特别好看，想要下载下来发微博。查了一下知乎上的方法：    </p>
+<p>　　<code>win + r</code>然后在弹出的运行框中运行   </p>
+<p><code>%localappdata%\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets</code></p>
+<p>　　会弹出一个文件夹，貌似锁屏图片文件就是存在这个文件夹里，只不过文件都没有后缀，想要看得手动加.jpg才能打开看。         </p>
+<p>　　使用python实现，先查了一下用python怎么得到这个<code>%localappdata%</code>路径,具体实现:</p>
+<pre><code class="language-python">    import os 
+    localappdata = os.environ[&#39;LOCALAPPDATA&#39;]
+</code></pre>
+<p>　　有了路径然后就可以用pillow把图片转存出来。这是全部代码：     </p>
+<pre><code class="language-python">    import os 
+    from PIL import Image
+    from shutil import copy2
+
+    localappdata = os.environ[&#39;LOCALAPPDATA&#39;]
+    srcPath = fr&#39;{localappdata}\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets&#39;
+    destPath = fr&#39;{os.getcwd()}\pics&#39;
+
+    fileList = os.listdir(srcPath)
+    os.makedirs(destPath, exist_ok = True)
+    for item in fileList:
+        im=Image.open(srcPath + &#39;\\&#39; + item)
+        copy2(srcPath + &#39;\\&#39; + item, destPath + &#39;\\&#39; + item + &#39;.jpg&#39;)
+        print(&#39;成功拷到一个图片~~&#39;)
+</code></pre>
+<div align=center><img src="https://ririshihaori.com/2019/11/PythonWin10Spotlight/1.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>]]></description>
+    </item>
+    <item>
+        <title>MIT 6.824 Lab1实现</title>
+        <link>https://ririshihaori.com/posts/2019-11-6.824lab1.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-11-6.824lab1.html</guid>
+        <pubDate>Mon, 25 Nov 2019 16:23:55 GMT</pubDate>
+        <category>分布式系统</category>
+        <category>技术</category>
+        <category>Go</category>
+        <description><![CDATA[<p>　　本文实现MIT的<a href="https://pdos.csail.mit.edu/6.824/index.html" target="_blank" rel="noopener">分布式系统课程（6.824）</a>的配套实验一。<br>　　本实验将用go语言实现一个MapReduce库，MapReduce的概念可以参考<a href="http://static.googleusercontent.com/media/research.google.com/zh-CN//archive/mapreduce-osdi04.pdf" target="_blank" rel="noopener">Google的这篇论文</a>。　　　　　</p>
+<p>　　首先拉取实验代码的仓库</p>
+<pre><code>`git clone git://g.csail.mit.edu/6.824-golabs-2018 6.824`
+</code></pre>
+]]></description>
+    </item>
+    <item>
+        <title>Ubuntu16.04升级Python3.7</title>
+        <link>https://ririshihaori.com/posts/2019-11-ubuntupython-28ae9a.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-11-ubuntupython-28ae9a.html</guid>
+        <pubDate>Mon, 25 Nov 2019 16:23:55 GMT</pubDate>
+        <category>Linux</category>
+        <category>Python</category>
+        <category>技术</category>
+        <category>操作系统</category>
+        <category>Ubuntu</category>
+        <description><![CDATA[<p>Ubuntu16.04默认带的Python是2.7.12和3.5，升级到Python3.7的步骤如下：   </p>
+<p>第一步，增加ppa仓库:</p>
+<p><code>$sudo add-apt-repository ppa:jonathonf/python-3.7</code></p>
+<p>第二步，升级apt索引，更新python:</p>
+<p><code>$sudo apt-get update</code></p>
+<p><code>$sudo apt-get install python3.7</code></p>
+<p>第三步，更换系统默认的软链命令Python3到新的Python3.7:</p>
+<p><code>$sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1</code></p>
+<p><code>$sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2</code></p>
+<p>最后，update-alternatives命令可以修改系统默认命令的软链指向，通过以下命令，可以切换Python3的指向:</p>
+<p><code>$sudo update-alternatives --config python3</code></p>
+<p>查看python2 和 python3的版本:</p>
+<p><code>$python2 --version</code></p>
+<p><code>$python3 --verison</code></p>
+]]></description>
+    </item>
+    <item>
+        <title>Barrelfish操作系统 (1)系统介绍</title>
+        <link>https://ririshihaori.com/posts/2019-11-barrelfish-overview.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-11-barrelfish-overview.html</guid>
+        <pubDate>Sun, 24 Nov 2019 16:23:55 GMT</pubDate>
+        <category>操作系统</category>
+        <category>技术</category>
+        <category>Barrelfish</category>
+        <description><![CDATA[<p>　　网上貌似没有Barrelfish的中文文档，正好最近在写文献综述，所以这里整理一下，为以后想要研究这个系统的童鞋省一点时间。  </p>
+<h2 id="h-e05dce">简介</h2>
+<p>　　Barrelfish是微软剑桥研究院和苏黎世理工大学提出的一个面向异构、众核体系的操作系统，其旨在解决异构、众核体系结构上操作系统的可扩展性问题。系统基于<a href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E5%85%A7%E6%A0%B8" target="_blank" rel="noopener">微内核</a>和多内核(Multikernel)的思想设计。<br>　　多内核是指在每一个处理器核心上都运行一个操作系统内核实例，内核之间不共享任何内存（即使在有共享内存的硬件上），系统的其余部分是构建在这些内核之上的单核进程，可以视为一个分布式系统，系统节点之间基于显式的消息进行通信。即共享内存只用于显式的消息传递、数据传递以及动态启动其他内核时。用户级应用进程可以跨核部署并共享地址空间，但这个功能是由Barrelfish用户空间的运行时库提供的。下面是Barrelfish的架构示意图。其中的UMP(User Message Passing)和LMP(Local Message
+Passing)是Barrelfish内的两种消息通信方式，UMP是跨核的消息通信，LMP是核内消息通信。    </p>
+<div align=center><img src="https://ririshihaori.com/2019/11/BarrelfishOverview/1.png" alt="" width="680" height="772" loading="lazy" decoding="async"></div>    
+　　由于Barrelfish的内核兼容各种常见的架构，如x86、ARMv7、ARMv8，且可以实现核心的“热插拔”，所以其内核被称为CPU Driver（即可以理解为对不同CPU的驱动）。CPU Driver对Dispacher进行调度，处理中断、异常、trap、页错误等，维护权能（Capaability）数据，并提供基于权能的系统调用（Barrelfish的系统调用是建立在权能的基础上的，系统调用其实就是对各种不同类型的权能的invoke操作，之后会详细讲Barrelfish的权能系统）。    
+　　CPU driver对底层硬件进行抽象，利用Capability进行权限保护，并负责时钟中断和进程调度等操作系统最基本的功能。对于像线程调度，内存管理，文件系统等高级操作系统功能按照微内核的设计思想在用户层实现。每个核上的用户空间还运行着一个特殊的用户进程，名为Monitor。      
+　　Monitor主要维护了一份复制的系统状态，如页表和内存使用情况等，并使用一致性协议来保持系统状态的全局一致性。除此之外，Monitor还负责核内和核间的进程间通信的建立与维护。总之，可以把monitor理解为内核在用户空间的一个代理。    
+　　上面提到的Dispatcher概念借鉴于K42系统，相当于进程的概念，内核负责调度和运行一个个Dispatcher，Dispatcher则可以运行和调度自己内部的不同的线程。多个不同核上的负责同一个功能的共享虚拟内存空间的Dispatcher构成一个程序（Domain）,当然一个程序若只部署在一个核上，那它就只对应一个单核Dispatcher。Dispatcher可以被视作Domain在某个内核（CPU driver）的唯一实体，Dispatcher间通过特定的通信接口交换数据和信息。下面还是一个Barrelfish示意图。       <div align=center><img src="https://ririshihaori.com/2019/11/BarrelfishOverview/2.png" alt="" width="690" height="334" loading="lazy" decoding="async"></div> <h2 id="cpu-driver-293465">内核(CPU Driver)</h2>
+<p>　　CPU Driver是Barrelfish的内核，运行于Barrelfish所运行的机器上的单个处理器核心里，支持多种处理器架构。CPU Driver是单线程、不可抢占的，运行在关中断的模式下。可以认为它在连续地运行异常处理程序，比如中断(interrupt)、异常(fault)、来自用户空间的系统调用(system call)。如果没有可以运行的异常处理程序，它就执行一个用户空间的任务。    </p>
+<p>　　CPU Driver的功能包括:</p>
+<ul>
+<li>负责时钟中断和全部异常，并将其他高级中断转发到用户层</li>
+<li>调度本核上的所有用户进程(Dispatchers）</li>
+<li>基于Capabiltiy提供一组最基本的系统调用接口为用户应用和高级系统服务应用提供服务</li>
+<li>负责本核上的进程间通信</li>
+<li>对硬件的安全访问(MMU、APIC等等)</li>
+<li>对内存和内核对象的访问(基于capability(权能)实现)</li>
+<li>启动初始化过程和调起第一个用户进程</li>
+</ul>
+<p>  CPU Driver提供的系统调用：</p>
+  <div align=center><img src="https://ririshihaori.com/2019/11/BarrelfishOverview/3.png" alt="" width="638" height="232" loading="lazy" decoding="async"></div><p>　　CPU驱动程序不提供内核线程，原因有二。首先，Barrelfish提供给用户空间程序的处理器抽象是一个dispatcher，而不是线程（一个Dispatcher内可以有多个用户线程）。其次，由于内核是单线程的且不可抢占的，因此它仅为所有操作使用一个静态分配的堆栈。在执行完单个异常处理程序之后，将丢弃并重置此堆栈的内容。    </p>
+<p>　　Barrelfish目前提供两种在编译时指定的调度方式：</p>
+<ul>
+<li>轮转调度(RR)</li>
+<li>基于速率的最早截止期调度法(rate-based earliest deadline scheduler) (具有更好的实时性)</li>
+</ul>
+<h2 id="dispatcher-bfb89f">进程(Dispatcher)</h2>
+<p>　　Dispatcher是内核调度的单元，相当于Unix中进程的概念。一个应用程序(在Barrelfish里称为domain)可以分布在多个核上，在每个核上都有一个dispatcher。Dispatcher不能在核间迁移。<br>　　当内核根据调度结果决定运行某一个dispatcher时，内核需要“upcall”该dispatcher，系统从内核态进入用户态，之后与该dispatcher对应的用户级代码开始执行用户空间的线程调度，以及处理其他事件（比如来自内核的缺页错误、或者Domain间消息）。<br>　　内核为每个dispatcher维护一个DCB (dispatcher控制块)，如图所示，DCB里面包含了这个dispatcher的各种信息，包括</p>
+<ul>
+<li>CSpace（Capability空间，即所拥有的所有Capabiltiy，在内核中的形式是一个二级capability查询表）</li>
+<li>VSpace（页表，以vode类型的capability形式实现）</li>
+<li>一些调度参数</li>
+<li>指向用户空间dispacher结构体的指针（用于调度dispatcher内部的线程）</li>
+</ul>
+<div align=center><img src="https://ririshihaori.com/2019/11/BarrelfishOverview/4.png" alt="" width="683" height="404" loading="lazy" decoding="async"></div><p>　　每一个dispatcher可以有两种模式，分别是enabled和disabled，当处于enabled模式下时，该dispatcher运行dispatcher下的用户线程，当处于disabled模式下时，该dispatcher运行dispatcher自身代码（如管理TCB、运行线程队列中的线程）。<br>　　Dispatcher定义了一组upcall的接口，以供内核对自身进行调度。其中最主要的upcall是run()，当内核决定调度某个dispatcher时，它以指向该dispatcher的页表基址的capability为参数调用该dispatcher的run()，然后该dispatcher决定运行哪一个用户线程，恢复该线程的状态，并运行该线程。在dispatcher被run()之后，以及用户线程被执行之前，该dispatcher都是disable模式，在用户线程开始运行后，该dispatcher处于enabled模式。<br>　　当处于enabled模式下的disaptcher被抢占时，内核把所有寄存器状态存在该dispatcher的“enabled区域”（见上图），当该dispatcher之后重新被调度时，它可以从enabled区域恢复之前的寄存器状态，继续运行之前的用户线程，也可以调度另外一个用户线程来运行，但在执行另外一个用户线程之前必须先把之前的用户线程的寄存器状态存到TCB里。<br>　　当处于disabled模式下的dispatcher被抢占时，内核把所有寄存器状态存在该dispatcher的“disabled区域”（见上图）,当内核调度一个处于disabled模式下的dispatcher时，内核不会调用其run()类型的upcall，而是从disabled区域恢复之前的寄存器状态，允许之前被打断的dispatcher自身代码从被抢占处继续运行。</p>
+<h2 id="runtime-library-053bb1">运行时库(Runtime library)</h2>
+<p>　　Barrelfish提供两个基本的库:</p>
+<ul>
+<li>标准C库</li>
+<li>lib barrelfish</li>
+</ul>
+<p>　</p>
+<p>　　后者实现了以下系统功能:</p>
+<ul>
+<li>基于dispatcher的upcall的用户级线程调度</li>
+<li>基于memserver与其他进程间通信的内存管理(memserver是系统服务的dispatcher)</li>
+<li>capability管理(维护一个应用(domain)的全部cap)</li>
+<li>基于capability invocation(对不同类型cap的调用)实现虚拟内存空间的构建</li>
+<li>用户级缺页处理</li>
+<li>基于消息的通信,包括waitset机制的实现</li>
+</ul>
+<h2 id="capability-7ad98e">权能(Capability)</h2>
+<p>　　
+Capability可以看作是访问某种资源的令牌、凭证或票据，是提供给主体对资源实体具有特定权限的不可伪造的标志，在系统实现中至少必须包含两种信息：  </p>
+<ul>
+<li>它所指向的资源的实际地址</li>
+<li>它的拥有者对该资源所拥有的权限集合（即其拥有者可以对该资源执行什么样的操作）。</li>
+</ul>
+<p>　　基于Capability的访问控制机制有利于实现对系统安全范畴中权限细粒度化(fine-grained privilege)和最小特权原则(least privilege)的支持，即进程所能访问到的资源范围不应大于其完成任务所需要的资源的范围。     </p>
+<p>　　Barrelfish使用了基于Capability的访问控制机制,用来控制系统中进程对系统中物理内存、内核对象的操作。关于Capabiltiy系统的设计与实现可以参考<a href="http://www.ririshihaori.com/posts/2020/7/barrelfish_capabilities/" target="_blank" rel="noopener">这篇文章</a></p>
+]]></description>
+    </item>
+    <item>
+        <title>Python实现微博爬取+统计高频词</title>
+        <link>https://ririshihaori.com/posts/2019-11-90247f.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-11-90247f.html</guid>
+        <pubDate>Sat, 23 Nov 2019 05:57:11 GMT</pubDate>
+        <category>Python</category>
+        <category>技术</category>
+        <category>爬虫</category>
+        <description><![CDATA[<p>帮小乔爬了一下共青团中央的所有微博，做了一下高频词统计。</p>
+<h2 id="h-686420">爬取数据</h2>
+<p>爬数据用的github上别人的项目，地址是<a href="https://github.com/dataabc/weibo-crawler" target="_blank" rel="noopener">https://github.com/dataabc/weibo-crawler</a><br>爬之前需要设置好要爬的微博的微博id，以及时间范围、原创微博还是转发微博、是否爬图片、视频等选项。
+然后直接运行    </p>
+<p><code>python weibo.py</code>   </p>
+<p>这里把时间设置成1900-01-01，爬了共青团中央至2019-11-23的所有原创微博。<br>这是爬好的数据，一共有两万多条数据。   </p>
+<div align=center><img src="https://ririshihaori.com/2019/11/WeiboCrawler/1.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>   <h2 id="h-63b682">统计高频词</h2>
+<p>使用jieba分词并统计高频词频率<br>先把微博内容提取出来   </p>
+<pre><code class="language-python">    import csv
+    with open(&#39;3937348351.csv&#39;,&#39;r&#39; , encoding=&#39;utf-8&#39;) as csvfile:
+        reader = csv.DictReader(csvfile)
+        column = [row[&#39;正文&#39;] for row in reader]
+    with open(&quot;C:\\Users\\Lenovo\\Desktop\\词频统计\\in.txt&quot;, &quot;w&quot;, encoding=&#39;utf-8&#39;) as f:
+        f.write(&#39;&#39;.join(column))
+</code></pre>
+<p>然后使用jieba处理   </p>
+<pre><code class="language-python">    stop = input(&#39;stop路径: &#39;)
+    jieba.analyse.set_stop_words(stop)
+    file = input(&#39;输入文件路径: &#39;)
+    lines = open(file,encoding= &#39;utf8&#39;).read()
+    new = input(&#39;输出文件路径: &#39;)
+    newfile = open(new,&quot;w&quot;,encoding= &#39;utf8&#39;)
+    num=int(input(&#39;高频词个数: &#39;))
+    newfile.write(&quot;  &quot;.join(analyse.extract_tags(lines, topK=num, withWeight=False, allowPOS=())))
+    newfile.close()
+</code></pre>
+<p>高频词个数输入100，就可以得到共青团中央前100的高频词了，这是结果：   </p>
+<div align=center><img src="https://ririshihaori.com/2019/11/WeiboCrawler/2.png" alt="" width="654" height="438" loading="lazy" decoding="async"></div><h2 id="h-909d1d">生成词云</h2>
+<p>得到高频词后可以使用wordcloud生成词云：</p>
+<pre><code class="language-python">    from wordcloud import WordCloud
+    wc = WordCloud(
+        scale=64, #图片规模
+        background_color=&quot;white&quot;, #背景颜色
+        max_words=500, #显示最大词数
+        font_path=&quot;./simfang.ttf&quot;,  #使用字体
+        min_font_size=15, #字体大小
+        max_font_size=50, #字体大小
+        width=400  #图幅宽度
+    )
+    wc.generate(data)
+    wc.to_file(&quot;pic.png&quot;)
+</code></pre>
+<p>这是得到的结果：</p>
+<div align=center><img src="https://ririshihaori.com/2019/11/WeiboCrawler/3.png" alt="" width="1600" height="800" loading="lazy" decoding="async"></div><p>可以修改<code>scale</code>、<code>width</code>等参数生成不一样的图。这是结果：</p>
+<div align=center><img src="https://ririshihaori.com/2019/11/WeiboCrawler/4.jpg" alt="" width="1600" height="160" loading="lazy" decoding="async"></div>]]></description>
+    </item>
+    <item>
+        <title>Hello Again</title>
+        <link>https://ririshihaori.com/posts/2019-11-hello.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-11-hello.html</guid>
+        <pubDate>Wed, 20 Nov 2019 12:20:31 GMT</pubDate>
+        <category>博客</category>
+        <category>技术</category>
+        <category>hugo</category>
+        <description><![CDATA[<p>第三次搭博客了，从来没有养成写博客的习惯<br>今天看了<a href="https://www.xzywisdili.com/" target="_blank" rel="noopener">小徐的博客</a>很受震撼，决心向小徐学习😘，开始认真写博客，记录一下平时踩的坑和心路历程   </p>
+<p>博客这次用的是Hugo，先用apt-get安装了一下发现版本太老了，好多主题都用不了，发布的时候会报<code>function not found</code>的错误，所以remove后直接上github下了最新的dep包<br>下完以后可以用命令建一个网站也就是一个文件夹：   </p>
+<p><code>$hugo new site blog</code>    </p>
+<p>建好之后在content文件夹里面添加.md格式的src文件，然后改一下config文件就可以发布了   </p>
+<p><code>$hugo server --bind=0.0.0.0 --baseURL=http://www.ririshihaori.com -w -p 80</code>    </p>
+<p><code>--bind</code>好像设置成server ip 的话有点问题，因为阿里云的问题，所以设成0.0.0.0<br><code>-w</code>是监视src变化的选项，一有变化随时刷新
+<code>--baseURL</code>和<code>-p</code>设置地址和端口     </p>
+<p>主题用的是<a href="https://github.com/meibenny/elephants" target="_blank" rel="noopener">Elephants</a>，极简主义~😆</p>
+]]></description>
+    </item>
+    <item>
+        <title>寒武纪实习总结</title>
+        <link>https://ririshihaori.com/posts/2019-10-e0273c.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2019-10-e0273c.html</guid>
+        <pubDate>Thu, 24 Oct 2019 06:34:32 GMT</pubDate>
+        <category>实习</category>
+        <category>生活</category>
+        <description><![CDATA[<p>　　在寒武纪的实习结束已经快一个月了，在这总结记录一下3个月的实习生活。</p>
+<h2 id="h-1926fd">实习前</h2>
+<p>　　大概六月份左右，操作系统课程终于结束，不用每周再去沙河监考。同寝旺财从3月份开始每日加350的生活就让人羡慕嫉妒恨，终于可以在暑假心man安zhe理dao得shi实习一波了。<br>　　因为不想每天坐地铁通勤就投了致真大厦的寒武纪，还有量子银座的一家小无人机公司。事实证明这个决定是非常正确滴，每天十点起床，十点二十左右就能到公司打卡，甚至还能在路上7-11买个包子吃美滋滋。    </p>
+<div align=center><img src="https://ririshihaori.com/2019/10/Cambricon/1.jpg" alt="" width="1080" height="1440" loading="lazy" decoding="async"></div><p>　　面试的过程十分不堪回首，苏老师问的问题很多都没有回答上来，感觉自己确实准备得不是很充分，也算是长了一个教训，以后一定要先把Leetcode刷一遍再出来丢人。感谢寒武纪收留这么菜的我🙏    </p>
+<h2 id="h-b706cb">实习中</h2>
+<p>　　实习的岗位是软件部编译器组，负责人就是之前面试我的苏老师，组里的气氛很好，通过相处发现同事们都很优秀而且人很好，尤其是我们gdb小组的两位师兄和lcx同学，不仅永远耐心地回答我的萌新三连，还带我吃饭玩桌游，给我各种学习的建议，感恩🙏<br>　　虽然是中途加入gdb项目里来的，但这次也算是完整的参与了一个产品的一个功能版本的开发和发布，也是第一次实际在外面公司里实习，学到了很多新的工具和知识。日常使用的git、wiki就不说了，像jira、vnc、devdocs这些工具都是第一次接触，也是第一次在服务器环境中开发，总之磕磕绊绊踩了很多坑才算慢慢上路。<br>　　因为git命令使用不熟练有一次险些把本地的改动全丢掉了，幸好咏哲哥救我狗命说有<code>git reflog</code>可以回退命令到前几条命令的状态，可以说是吃一堑长一智了，git大法好，吃不完的后悔药。<br>　　还有，提交代码的时候才意识到代码的提交和review原来这么麻烦，要在jenkins上跑过全部例子没问题才可以给苏老师看，注释原来要写得这么规范(不仅要过lint还要过doxygen)，加上苏老师对代码性能的执着，可怜的我第一个patch交了两个星期才Merge进去 😓 不过有了第一次，之后的提交也就轻车熟路了~       </p>
+<div align=center><img src="https://ririshihaori.com/2019/10/Cambricon/2.jpg" alt="" width="1080" height="1440" loading="lazy" decoding="async"></div><p>　　具体的工作内容是这样的，寒武纪对标nv的CUDA推出了自己的BangC语言，两者的编译器都是在llvm的基础上开发，nv的叫nvcc，寒武纪的叫cncc。寒武纪还有自己的汇编器cnas，用来把cncc输出的中间级汇编代码MLISA(Machine Learning ISA)翻译成自己研发的板卡上跑的二进制。cngdb也是对标cuda gdb推出的调试工具，二者都是基于gdb开发出来的，之前的cngdb只能进行MLISA层面的调试，因为之前只有从MLISA代码经过cnas汇编器到casm指令这一过程的调试信息，没有从BangC代码到MLISA的调试信息。因此我需要把llvm(编译时开启<code>-g</code>和<code>-dwarf2</code>选项)吐出到.s文件里的调试信息(即从Bangc到MLISA的调试信息)与MLISA到指令的调试信息<strong>级联</strong>起来。类似于将某个变量在C代码中的名字与在汇编代码中的虚拟寄存器地址以及在底层指令的真实寄存器地址做一个级联。<br>　　听起来似乎挺简单的，但是实际实现起来有很多麻烦的事情，首先要实现一个parser把.s中的调试信息都读进来，做法是在cnas的parser里加东西(lex .ll文件里加词法规则，yacc .yy文件里加语法规则，梦回本科做编译的日子)，然后把读进来的调试信息按照从DWARF标准里抽象出来的数据结构存起来，好在有lcx大佬的dwarf框架可以复用。<br>　　DWARF是一种调试信息的组织形式的标准，可以被gdb识别并直接使用，里面的数据以一个个DIE(Debug Info Entry)的形式组织，这里不再赘述，感兴趣的话可以google一下dwarf。<br>　　实现的过程也遇到了各种坑，比如LEB128的编码格式的bug，以及与cx同学没沟通好导致的bug。总之一个刚开始写C++的人可能写出的各种奇妙bug我几乎都写出来过了hhhh。这是lcx的小黄鸭，每次我有bug了他会都用这个鸭子的口吻说『你改悔罢』</p>
+<div align=center><img src="https://ririshihaori.com/2019/10/Cambricon/3.png" alt="" width="1080" height="1440" loading="lazy" decoding="async"></div><p>　　总之，功夫不负有心人，到了八月中cngdb终于能够调试bangc程序辣。之后就是各种改bug、写测试、写PPT、写文档、改文档、写专利。每天和大哥们一起努力，日子过得十分充实。</p>
+<h2 id="h-6bf97e">实习后</h2>
+<p>　　感觉实习真的很锻炼人，不仅要求看代码、查资料的学习能力，还要求和别人沟通合作，统筹谋划的能力，这三个月真的学到了很多，也结识了很多优秀且善良的人，感恩各位，以后也要继续努力，争取早日成为能够独当一面的可靠的人~</p>
+<h2 id="update">Update</h2>
+<p>　　cngdb在github开源啦，lcx把我也加到Readme了😝。<br>　　上周师兄得了金键盘奖还请大家吃了饭，真好。            </p>
+<div align=center style='display: none'><img src="https://ftp.bmp.ovh/imgs/2019/12/32611c6950b7b0f9.jpg" alt="" loading="lazy" decoding="async"></div>]]></description>
+    </item>
+    <item>
+        <title>看完了「血色浪漫」</title>
+        <link>https://ririshihaori.com/posts/2018-6-a259bd.html</link>
+        <guid isPermaLink="true">https://ririshihaori.com/posts/2018-6-a259bd.html</guid>
+        <pubDate>Sat, 16 Jun 2018 12:20:31 GMT</pubDate>
+        <category>小说</category>
+        <category>生活</category>
+        <description><![CDATA[<p>　　最近写论文和毕设手册的同时，在B站看完了血色浪漫，很早以前就想看这部剧了，一方面是因为喜欢刘烨和刀郎，另一方面是最近在微博上刷到了不少北京、顽主这类题材的东西，与青春有关的日子里佟大为、羽凡他们拿过路人开涮的视频片断，还有王朔的时间轴传记。<br>　　印象中，小时候电视里很多频道都演过血色浪漫，因为每次看都是断断续续的，只看过几集，我一直以为这是一部刘烨和孙俪的感情戏，类似于后来出现的甜蜜蜜？这次有机会从头到尾看完，才发现这是一群人乃至一代人的故事。<br>　　我是开着弹幕看的，因为即使开了弹幕也不会挡到画面，没想到在B站看这么老的剧也有很多弹幕，很多弹幕对这部剧演员们的演技给了很高的评价。大部分弹幕都很有意思，傻吊网友们说话都很好玩，开着弹幕看还有一个好处，就是可以注意到很多自己忽略掉的细节，但是很容易被剧透，比如某人物刚一出场，就有弹幕说他死的时候可真感动如何如何，让人猝不及防，真的很蛋疼。另外，B站的版本是没有片头片尾的，中间好像有一集忘记剪掉片尾了，所以终于听到了熟悉的刀郎的声音。<a href="http://www.kugou.com/song/38jc577.html?frombaidu?frombaidu#hash=6B5BBB82D3DB560972B977EAA37A56B3&amp;album_id=0" target="_blank" rel="noopener">《新阿瓦尔古丽》</a>的曲子，词好像不一样，这首歌能让人回到03、04年。<br>
+　　不知道是台词还是演技的关系，还是那个时代的人说话就是那样的，有时候会让人觉得尬尬的。不过刘烨和孙俪真的好看啊，尤其是孙俪，戴上眼镜后简直美哭了。<br></p>
+<div align=center><img src="https://ririshihaori.com/2018/6/XueSeLangMan/1.jpg" alt="" width="1000" height="1073" loading="lazy" decoding="async"></div><p>　　这部剧让人印象深刻的配角角色很多，小混蛋、李奎勇、吴满囤，这些普通人的命运让人唏嘘，他们和高官的子女，所谓的大院子弟在那个混乱的年代形成的对比十分强烈。不论是哪个年代，哪种社会都存在阶级。想想如今的社会又何尝不是如此。弹幕里一直在刷郑桐舅舅，郑桐的演员叫马元，他妈妈名字叫习乾平，舅舅叫什么可想而知。他的阶层可以说是十分适合演这部剧里的小顽主之一了。   <br>
+　　说到命运，这部剧真的让人体会到了那个混乱的年代，人的命运在时代浪潮下的渺小。当兵还是当知青，可能因为家庭的原因就决定了。“讲成分又不唯成分论”这种绕口令式的说辞只是权力斗争下的产物吧。<br>
+　　毛主席说，让知识青年到乡下去，是让他们了解中国最底层人民的生活状态，在体验中学习，初衷是好的，但是实践起来的结果，至少在我看来是坏的，粮食被扣，女知青被村民亵渎，这些都是历史上真实发生过的事。郑桐和钟跃民聊天，说他人生中最难以忘怀的岁月就是当知青的岁月，他学到了很多，在我看来，他们是幸运儿，因为他们至少是“可以被教育好的子女”，所以可以当兵、上大学，离开陕北的穷山沟，可是那个时代的大部分人，只能在乡下扎根，在那里度过人生中最宝贵的岁月。下乡毁掉了很多人的一生，那是一个知识没有用处的时代，只是想想就觉得很绝望。<br>
+　　提到陕北，这部剧里的信天游真的好听啊，以往对陕北信天游的概念就是山丹丹花开红艳艳和阿宝，没想到信天游还有这么多形式和唱腔，而且没想到居然是龚琳娜唱的，没错就是唱忐忑和金箍棒的龚琳娜。<br>
+　　整部剧最喜欢开头他们在北京的那段，如果借用王小波在黄金时代里的说法，人生是一个缓慢受锤的过程，那时的生活还没有对他们下手，袁军偷自己家东西、袁郑合伙捉弄主任和他家老三，那时的他们是天真纯洁的，有时很中二，有时很混蛋，对一切东西都充满兴趣，充满活力。最讨厌的戏是秦岭和阔少的感情戏，真的很无聊，无聊到每次看到那里都要快进。<br></p>
+<div align=center><img src="https://ririshihaori.com/2018/6/XueSeLangMan/2.jpg" alt="" width="250" height="352" loading="lazy" decoding="async"></div>
+　　虽然主角是钟跃民，但是他主角光环也太耀眼了，而且我觉得无法理解钟跃民这种人，就算我能理解对于人生的一种“体验”的态度。可能就像郑桐和张海洋说的，这种人太少了，他永远向往另一种生活。很少有人能放下，放下爱自己的人，放下已经建立的功名成就。他却觉得这些东西都是可有可无的。中间有一段朋友们评价他，说他这种人会慢慢回归到社会主流中，我也以为他会和高玥安定下来，没想到结局他还是走了。
+　　我最喜欢张海洋，虽然一开始对他的印象不好，但是越看越欣赏他。我觉得他说话的腔调好听，有北京顽主的感觉，头脑不比钟跃民笨，但是骨子里有一种忠诚，不论是对于友情还是对爱情，比如跟随钟跃民转业，等待周晓白的接受。钟跃民这样的人太少了，或者说太理想化了，反倒显得不是很真实。不过还是很羡慕钟这种各种副本都刷过的人生啊。
+]]></description>
+    </item>
+</channel>
+</rss>

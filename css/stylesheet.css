@@ -1,8 +1,9 @@
 /* elephants — the original theme stylesheet (lkygithub/elephant-lky) */
 body {
-    /* LXGW WenKai Screen (霞鹜文楷 屏显版) comes from the jsDelivr subset build
-       linked in the page head. It covers both Latin and CJK, so the fallbacks
-       below only matter while the font is still in flight. */
+    /* LXGW WenKai Screen (霞鹜文楷 屏显版) is self-hosted from static/fonts/,
+       loaded by the stylesheet linked in the page head. It covers both Latin
+       and CJK, so the fallbacks below only matter while the font is still in
+       flight (the @font-face rules use font-display: swap). */
     font-family: 'LXGW WenKai Screen', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     color: black;
     margin: auto;

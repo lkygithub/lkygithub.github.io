@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
 
         <title>第一次提交golangci-lint报错</title>
         <meta name="description" content="第一次开发的分支代码直接提交到远程后，触发了gitlab的pipeline，先是报了lint的几个错误， 修改提交之后又报了unittest的错误。 之后在把本地分支push到远程分支之前可以先本地 golangci lint run ./... 过lint，再 go test …">
