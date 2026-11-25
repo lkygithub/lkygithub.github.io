@@ -122,6 +122,21 @@
             })();
         </script>
         <script>
+            // The webfont uses font-display: optional, so the browser never
+            // swaps fonts mid-view and the layout cannot jitter. The trade-off
+            // is that a hard refresh (cold cache) renders with the fallback
+            // and stays there. Recover here: load every slice the page needs
+            // in the background, then switch families once, in one clean step.
+            (function () {
+                if (!(document.fonts && document.fonts.check && document.fonts.load)) return;
+                var probe = '1em "LXGW WenKai Screen"';
+                if (document.fonts.check(probe, '永a')) return;
+                document.fonts.load(probe, document.body.textContent).then(function () {
+                    document.documentElement.classList.add('wenkai');
+                });
+            })();
+        </script>
+        <script>
             // A copy button per code block. navigator.clipboard needs HTTPS or
             // localhost, so fall back to the old execCommand path elsewhere.
             (function () {

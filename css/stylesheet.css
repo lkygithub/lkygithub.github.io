@@ -10,6 +10,13 @@ body {
     max-width: 50em;
 }
 
+/* Set by the loader script when the webfont missed the first paint (a hard
+   refresh): once every slice the page needs is in memory, this re-runs font
+   matching and the whole page switches in a single step. */
+html.wenkai body {
+    font-family: 'LXGW WenKai Screen', 'LXGW Fallback', sans-serif;
+}
+
 #page-title {
     text-align: center;
 }
