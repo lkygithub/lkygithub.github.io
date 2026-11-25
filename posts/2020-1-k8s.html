@@ -140,23 +140,22 @@ $PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml\&quot;&
 H=/var/lib/minikube/binaries/v1.16.2:$PATH kubeadm config images pull --config /var/tmp/minikube/kubeadm.yaml&quot;
 stdout: 
 stderr: failed to pull image &quot;k8s.gcr.io/kube-apiserver:v1.16.2&quot;: output: Error response from daemon: Get https://k8s.gc                  
-r.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
-</code></pre>
+r.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</code></pre>
 <p><strong>解决方式</strong>：
 <code># minikube start --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</code><br>或<br><code># minikube start --image-mirror-country=cn</code></p>
 <h3 id="h-0c726a">启动成功输出：</h3>
 <pre><code>➜  [/home/lky/tools] sudo minikube start --image-mirror-country=cn
 😄  minikube v1.6.2 on Ubuntu 16.04
-✨  Selecting &#39;none&#39; driver from user configuration (alternates: [])
+✨  Selecting 'none' driver from user configuration (alternates: [])
 🤹  Running on localhost (CPUs=2, Memory=3921MB, Disk=200494MB) ...
 ℹ️   OS release is Ubuntu 16.04.6 LTS
 ⚠️  VM is unable to access k8s.gcr.io, you may need to configure a proxy or set --image-repository
-🐳  Preparing Kubernetes v1.17.0 on Docker &#39;19.03.5&#39; ...
+🐳  Preparing Kubernetes v1.17.0 on Docker '19.03.5' ...
 🚜  Pulling images ...
 🚀  Launching Kubernetes ... 
 🤹  Configuring local host environment ...
 
-⚠️  The &#39;none&#39; driver provides limited isolation and may reduce system security and reliability.
+⚠️  The 'none' driver provides limited isolation and may reduce system security and reliability.
 ⚠️  For more information, see:
 👉  https://minikube.sigs.k8s.io/docs/reference/drivers/none/
 
@@ -168,16 +167,14 @@ r.io/v2/: net/http: request canceled while waiting for connection (Client.Timeou
 
 💡  This can also be done automatically by setting the env var CHANGE_MINIKUBE_NONE_USER=true
 ⌛  Waiting for cluster to come online ...
-🏄  Done! kubectl is now configured to use &quot;minikube&quot;
-</code></pre>
+🏄  Done! kubectl is now configured to use &quot;minikube&quot;</code></pre>
 <p><strong>可以使用</strong> <code>sudo kubectl cluster-info</code> <strong>查看单节点集群信息</strong>：</p>
 <pre><code>➜  [/home/lky/tools] sudo kubectl cluster-info
 [sudo] password for lky: 
 Kubernetes master is running at https://192.168.80.128:8443
 KubeDNS is running at https://192.168.80.128:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
-</code></pre>
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.</code></pre>
 <h1 id="kindk8s-047df9">使用kind构建单节点k8s集群</h1>
 <p>　　Kind, Kubernetes In Docker             </p>
 <p>　　项目地址：<a href="https://github.com/kubernetes-sigs/kind" target="_blank" rel="noopener">https://github.com/kubernetes-sigs/kind</a>                          </p>
@@ -185,8 +182,7 @@ To further debug and diagnose cluster problems, use &#39;kubectl cluster-info du
 安装运行需要下载外网镜像，可以按照[这篇教程](https://segmentfault.com/a/1190000018720465)里的方法创建一个
 kind.yaml切换一下镜像源，然后`kind create cluster --name moelove --config kind.yaml`
 或者设置终端代理（我用的是proxychains），设置好之后`proxychains zsh`即可。
-```
-</code></pre>
+```</code></pre>
 <ul>
 <li>通过源码安装<br><code>go get -u sigs.k8s.io/kind</code>                   </li>
 <li>通过二进制安装<br><code>wget -O /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/0.2.0/kind-linux-amd64 &amp;&amp; chmod +x /usr/local/bin/kind</code></li>
@@ -209,7 +205,7 @@ kubectl cluster-info
 Kubernetes master is running at https://localhost:32727
 KubeDNS is running at https://localhost:32727/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ➜  [/home/lky/Downloads] kubectl get nodes
 NAME                    STATUS   ROLES    AGE     VERSION
 lkytest-control-plane   Ready    master   3m23s   v1.13.4
@@ -273,8 +269,7 @@ Events:
   Normal  Started    50s   kubelet, lkytest-control-plane  Started container
 ➜  [/home/lky] kubectl get pods     
 NAME          READY   STATUS    RESTARTS   AGE
-kubia-pt77q   1/1     Running   0          4m7s
-</code></pre>
+kubia-pt77q   1/1     Running   0          4m7s</code></pre>
 <p><strong>创建负载均衡服务对外暴露pod</strong>
 （kind和minikube都不支持LoadBalancer类型服务，所以外部ip一直为pending）</p>
 <pre><code>➜  [/home/lky] kubectl expose rc kubia --type=LoadBalancer --name kubia-http
@@ -282,8 +277,7 @@ service/kubia-http exposed
 ➜  [/home/lky] kubectl get services                                         
 NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 kubernetes   ClusterIP      10.96.0.1       &lt;none&gt;        443/TCP          13m
-kubia-http   LoadBalancer   10.100.184.20   &lt;pending&gt;     8080:31142/TCP   25s
-</code></pre>
+kubia-http   LoadBalancer   10.100.184.20   &lt;pending&gt;     8080:31142/TCP   25s</code></pre>
 <p><strong>kind + kube-batch</strong></p>
 <p>kind创建集群        </p>
 <pre><code>➜  [/home/lky] sudo kind create cluster --name test1 --config kind-config.yaml
@@ -310,8 +304,7 @@ apiVersion: kind.sigs.k8s.io/v1alpha3
 nodes:
   - role: control-plane
   - role: worker
-  - role: worker
-</code></pre>
+  - role: worker</code></pre>
 <p>即创建一个三节点的集群。         </p>
 <p>然后进入kube-batch项目，首先make，然后创建rfd</p>
 <pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha1_podgroup.yaml                                                                                                
@@ -323,8 +316,7 @@ customresourcedefinition.apiextensions.k8s.io/queues.scheduling.incubator.k8s.io
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f scheduling_v1alpha2_queue.yaml 
 customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates] git:(master) ✗ kubectl apply -f default.yaml 
-queue.scheduling.incubator.k8s.io/default created
-</code></pre>
+queue.scheduling.incubator.k8s.io/default created</code></pre>
 <p>然后进入make生成的__output文件夹启动kube-batch</p>
 <pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/_output/bin] git:(master) ✗ ./kube-batch -h
 Usage of ./kube-batch:
@@ -359,8 +351,7 @@ I0112 16:35:11.429781   22529 event_handlers.go:203] Added pod &lt;kube-system/k
 I0112 16:35:11.429924   22529 event_handlers.go:203] Added pod &lt;kube-system/kube-scheduler-test1-contrl-plane&gt; into cache.
 ....
 ...
-..
-</code></pre>
+..</code></pre>
 <p>进入example文件夹启动一个job：</p>
 <pre><code>➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch] git:(master) ✗ cd example 
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/example] git:(master) ✗ ls
@@ -371,8 +362,7 @@ podgroup.scheduling.incubator.k8s.io/qj-1 created
 ➜  [/home/lky/go/src/github.com/kubernetes-sigs/kube-batch/example] git:(master) ✗ k get pods           
 NAME         READY   STATUS    RESTARTS   AGE
 qj-1-5vfjw   1/1     Running   0          22s
-qj-1-6g9xk   1/1     Running   0          22s
-</code></pre>
+qj-1-6g9xk   1/1     Running   0          22s</code></pre>
 <p>其中，job.yaml内容为：</p>
 <pre><code>apiVersion: batch/v1
 kind: Job
@@ -402,8 +392,7 @@ kind: PodGroup
 metadata:
   name: qj-1
 spec:
-  minMember: 2
-</code></pre>
+  minMember: 2</code></pre>
 <p>kube-batch把一组pod看成一个pod group。</p>
 <h1 id="pod">Pod</h1>
 <p>Pod是一组并置的容器，代表k8s中的基本构建模块。          </p>
@@ -507,7 +496,40 @@ spec:
                         pre.parentNode.insertBefore(wrap, pre);
                         wrap.appendChild(pre);
                         wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
                     })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
                 }
             })();
         </script>

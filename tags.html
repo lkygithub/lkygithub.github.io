@@ -137,7 +137,40 @@
                         pre.parentNode.insertBefore(wrap, pre);
                         wrap.appendChild(pre);
                         wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
                     })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
                 }
             })();
         </script>

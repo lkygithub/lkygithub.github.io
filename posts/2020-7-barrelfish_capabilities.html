@@ -85,16 +85,14 @@ struct cte {
 					- sizeof(struct delete_list)
 					- ROUND_UP(sizeof(struct capability), 8)
 					- ROUND_UP(sizeof(struct mdbnode), 8)];
-};
-</code></pre>
+};</code></pre>
 <p>　　由于每个slots是固定大小，所以定义了一些padding用来对齐大小。我们首先关注第一个成员cap，后两个成员mdbnode和delete_node暂时不管，后面会详细说明。                </p>
 <p>　　注意到其中的第一个成员cap的类型为capability类型的结构体，该结构体定义如下:      </p>
 <p>　　文件路径：build/armv8/include/barrelfish_kpi/capbits.h<br>(这个文件是由Hamlet————一种描述capability类型系统的DSL自动生成的)              </p>
 <p>　　在Hamlet中定义cap的类型和接口，然后自动生成部分capability相关的代码。对于Hamlet感兴趣的话，因为ETH自己暂时没有Hamlet相关的文档，可以看下System Research at Harvard的这个仓库：<br><strong><a href="https://github.com/Harvard-PRINCESS/Guppy/wiki/Hamlet-Tutorial" target="_blank" rel="noopener">https://github.com/Harvard-PRINCESS/Guppy/wiki/Hamlet-Tutorial</a></strong>                 </p>
 <pre><code>struct capability {union  capability_u u;
 				enum objtype type;
-				CapRights rights;};
-</code></pre>
+				CapRights rights;};</code></pre>
 <p>　　可以看到一个cap包含三个成员变量，分别是    </p>
 <ul>
 <li>一个用来保存<strong>具体类型的cap</strong>的联合体         </li>
@@ -151,8 +149,7 @@ struct cte {
 				struct  KernelControlBlock kernelcontrolblock;
 				struct  IPI ipi;
 				struct  ProcessManager processmanager;
-				struct  Domain domain;};
-</code></pre>
+				struct  Domain domain;};</code></pre>
 <p>　　可以看到这个联合体包含了Barrelfish系统中可能出现的<strong>所有类型</strong>的capability的结构体定义。由于不同体系结构的CPU的内核所需要的capability类型是不同的（比如可以看到上面很多名字中带x86、ARM、aarch64的cap类型），所以Barrelfish的开发者选择用Hamlet DSL来自动生成这部分代码。            </p>
 <p>　　下面对capability的类型系统作说明。</p>
 <h3 id="capability-f4ba85">对capability类型系统的解释：</h3>
@@ -176,8 +173,7 @@ struct L1CNode {lpaddr_t cnode;		// lpaddr 指 local physical address
 				CapRights rightsmask;
 				gensize_t allocated_bytes;};
 struct L2CNode {lpaddr_t cnode;
-				CapRights rightsmask;};
-</code></pre>
+				CapRights rightsmask;};</code></pre>
 <p>　　capability类型与类型之间是可以相互转换的，但是需要遵循一定的规则，barrelfish规定了一棵类似于树形的结构，来表示合法的<strong>类型转换路径</strong>,见下图：</p>
 <div align=center><img src="../2020/7/barrelfish_capability/retype.png" alt="" width="944" height="632" loading="lazy" decoding="async"></div><p>　　类型转换举例：</p>
 <p>　　比如最基础的类型是PhysAddr，所有其他类型都从该类型转换而来，因为所有的资源说白了都是一块内存，只不过里面保存的数据的类型不一样。        </p>
@@ -203,8 +199,7 @@ enum dispatcher_cmd {
 	DispatcherCmd_Vmwrite,          ///&lt; Execute vmwrite on the current and active VMCS
 	DispatcherCmd_Vmptrld,          ///&lt; Make VMCS clear and inactive
 	DispatcherCmd_Vmclear,          ///&lt; Make VMCS current and active 
-};
-</code></pre>
+};</code></pre>
 <ul>
 <li>对于VNode类型的cap（指向一段虚存），提供了以下类型的command：</li>
 </ul>
@@ -213,8 +208,7 @@ enum dispatcher_cmd {
 	VNodeCmd_Unmap,
 	VNodeCmd_Identify,   ///&lt; Return the physical address of the VNode
 	VNodeCmd_ModifyFlags,
-};
-</code></pre>
+};</code></pre>
 <ul>
 <li>对于CNode类型的cap（指向一段用来保存capability的内存，即指向某一个cap），提供了以下类型的command：</li>
 </ul>
@@ -231,8 +225,7 @@ enum cnode_cmd {
 	CNodeCmd_GetState,  ///&lt; Get distcap state for capability
 	CNodeCmd_GetSize,   ///&lt; Get Size of CNode, only applicable for L1 Cnode
 	CNodeCmd_Resize,    ///&lt; Resize CNode, only applicable for L1 Cnode
-};
-</code></pre>
+};</code></pre>
 <p>　　上述提供的对CNode的操作，其中Resize、GetSize都是针对CNode本身进行的操作，而Copy、Mint、Retype、Delete等都是针对这个CNode中的作为叶子节点的非CNode类型capability进行的操作。
 	可见对某一个cap进行某种操作时，需要对该cap所位于的CNode调用该操作。             </p>
 <p>　　所有对于cap的操作，都需要通过该cap所在的CNode调用。          </p>
@@ -307,8 +300,7 @@ Kernel-level
 	include/barrelfish_kpi/capabilities.h - required capabilities definitions
 	build/x86_64/capabilities/*.c - Hamlet capabilities output C</p>
 <pre><code>
-　　kernel目录下
-</code></pre>
+　　kernel目录下</code></pre>
 <p>kernel/include/capabilities.h<br>cte等数据结构的定义、内核中所需要用到的所有capability相关的函数的声明<br>kernel/include/cap_predicates.h<br>一些返回值为布尔类型的对cte或capability进行判断的函数<br>kernel/capabilities.c<br>内核中所有需要用到的capability相关函数的实现，包括cap创建、删除、索引等
 	两级树状CSpace的实现，各种cap操作的实现以及对cap系统的tracing支持<br>kernel/cap_delete.c
 	由于多内核的分布式特性，导致对capability的删除操作比较复杂，所以单独分离出来作为一个文件。</p>
@@ -330,8 +322,7 @@ usr/monitor/invocations.c
 <pre><code>
 
 
-	if目录下是各种消息接口定义，是用一种叫做flounder的DSL语言实现的，flounder实现的消息接口通过haskell实现的编译器可以生成相应的c代码，和capability有关的主要是monitor部分的消息接口：        
-</code></pre>
+	if目录下是各种消息接口定义，是用一种叫做flounder的DSL语言实现的，flounder实现的消息接口通过haskell实现的编译器可以生成相应的c代码，和capability有关的主要是monitor部分的消息接口：        </code></pre>
 <pre><code>if/monitor.if
 	/* for UMP/BMP cap tx */
 	message cap_send_request(
@@ -373,13 +364,11 @@ if/monitor_blocking.if
 	rpc get_arch_core_id(out uintptr id);
 	/* get cap that can be used to send IPIs */
 	rpc get_ipi_cap(out cap cap);
-	rpc forward_kcb_request(in coreid destination, in cap kcb, out errval err);
-</code></pre>
+	rpc forward_kcb_request(in coreid destination, in cap kcb, out errval err);</code></pre>
 <pre><code>
 
 
-### 2、接口分析
-</code></pre>
+### 2、接口分析</code></pre>
 
     </div>
     <nav class="post-nav">
@@ -479,7 +468,40 @@ if/monitor_blocking.if
                         pre.parentNode.insertBefore(wrap, pre);
                         wrap.appendChild(pre);
                         wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
                     })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
                 }
             })();
         </script>

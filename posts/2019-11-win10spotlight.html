@@ -60,25 +60,23 @@
 <p><code>%localappdata%\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets</code></p>
 <p>　　会弹出一个文件夹，貌似锁屏图片文件就是存在这个文件夹里，只不过文件都没有后缀，想要看得手动加.jpg才能打开看。         </p>
 <p>　　使用python实现，先查了一下用python怎么得到这个<code>%localappdata%</code>路径,具体实现:</p>
-<pre><code class="language-python">    import os 
-    localappdata = os.environ[&#39;LOCALAPPDATA&#39;]
-</code></pre>
+<pre><code class="language-python hljs">    <span class="hljs-keyword">import</span> os 
+    localappdata = os.environ[<span class="hljs-string">&#x27;LOCALAPPDATA&#x27;</span>]</code></pre>
 <p>　　有了路径然后就可以用pillow把图片转存出来。这是全部代码：     </p>
-<pre><code class="language-python">    import os 
-    from PIL import Image
-    from shutil import copy2
+<pre><code class="language-python hljs">    <span class="hljs-keyword">import</span> os 
+    <span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image
+    <span class="hljs-keyword">from</span> shutil <span class="hljs-keyword">import</span> copy2
 
-    localappdata = os.environ[&#39;LOCALAPPDATA&#39;]
-    srcPath = fr&#39;{localappdata}\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets&#39;
-    destPath = fr&#39;{os.getcwd()}\pics&#39;
+    localappdata = os.environ[<span class="hljs-string">&#x27;LOCALAPPDATA&#x27;</span>]
+    srcPath = <span class="hljs-string">fr&#x27;<span class="hljs-subst">{localappdata}</span>\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets&#x27;</span>
+    destPath = <span class="hljs-string">fr&#x27;<span class="hljs-subst">{os.getcwd()}</span>\pics&#x27;</span>
 
     fileList = os.listdir(srcPath)
-    os.makedirs(destPath, exist_ok = True)
-    for item in fileList:
-        im=Image.open(srcPath + &#39;\\&#39; + item)
-        copy2(srcPath + &#39;\\&#39; + item, destPath + &#39;\\&#39; + item + &#39;.jpg&#39;)
-        print(&#39;成功拷到一个图片~~&#39;)
-</code></pre>
+    os.makedirs(destPath, exist_ok = <span class="hljs-literal">True</span>)
+    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> fileList:
+        im=Image.<span class="hljs-built_in">open</span>(srcPath + <span class="hljs-string">&#x27;\\&#x27;</span> + item)
+        copy2(srcPath + <span class="hljs-string">&#x27;\\&#x27;</span> + item, destPath + <span class="hljs-string">&#x27;\\&#x27;</span> + item + <span class="hljs-string">&#x27;.jpg&#x27;</span>)
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;成功拷到一个图片~~&#x27;</span>)</code></pre>
 <div align=center><img src="../2019/11/PythonWin10Spotlight/1.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>
     </div>
     <nav class="post-nav">
@@ -178,7 +176,40 @@
                         pre.parentNode.insertBefore(wrap, pre);
                         wrap.appendChild(pre);
                         wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
                     })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
                 }
             })();
         </script>

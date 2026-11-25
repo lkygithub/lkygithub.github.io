@@ -72,40 +72,37 @@
 <p>这是爬好的数据，一共有两万多条数据。   </p>
 <div align=center><img src="../2019/11/WeiboCrawler/1.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div>   <h2 id="h-63b682">统计高频词</h2>
 <p>使用jieba分词并统计高频词频率<br>先把微博内容提取出来   </p>
-<pre><code class="language-python">    import csv
-    with open(&#39;3937348351.csv&#39;,&#39;r&#39; , encoding=&#39;utf-8&#39;) as csvfile:
+<pre><code class="language-python hljs">    <span class="hljs-keyword">import</span> csv
+    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;3937348351.csv&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span> , encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> csvfile:
         reader = csv.DictReader(csvfile)
-        column = [row[&#39;正文&#39;] for row in reader]
-    with open(&quot;C:\\Users\\Lenovo\\Desktop\\词频统计\\in.txt&quot;, &quot;w&quot;, encoding=&#39;utf-8&#39;) as f:
-        f.write(&#39;&#39;.join(column))
-</code></pre>
+        column = [row[<span class="hljs-string">&#x27;正文&#x27;</span>] <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader]
+    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;C:\\Users\\Lenovo\\Desktop\\词频统计\\in.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:
+        f.write(<span class="hljs-string">&#x27;&#x27;</span>.join(column))</code></pre>
 <p>然后使用jieba处理   </p>
-<pre><code class="language-python">    stop = input(&#39;stop路径: &#39;)
+<pre><code class="language-python hljs">    stop = <span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;stop路径: &#x27;</span>)
     jieba.analyse.set_stop_words(stop)
-    file = input(&#39;输入文件路径: &#39;)
-    lines = open(file,encoding= &#39;utf8&#39;).read()
-    new = input(&#39;输出文件路径: &#39;)
-    newfile = open(new,&quot;w&quot;,encoding= &#39;utf8&#39;)
-    num=int(input(&#39;高频词个数: &#39;))
-    newfile.write(&quot;  &quot;.join(analyse.extract_tags(lines, topK=num, withWeight=False, allowPOS=())))
-    newfile.close()
-</code></pre>
+    file = <span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;输入文件路径: &#x27;</span>)
+    lines = <span class="hljs-built_in">open</span>(file,encoding= <span class="hljs-string">&#x27;utf8&#x27;</span>).read()
+    new = <span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;输出文件路径: &#x27;</span>)
+    newfile = <span class="hljs-built_in">open</span>(new,<span class="hljs-string">&quot;w&quot;</span>,encoding= <span class="hljs-string">&#x27;utf8&#x27;</span>)
+    num=<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;高频词个数: &#x27;</span>))
+    newfile.write(<span class="hljs-string">&quot;  &quot;</span>.join(analyse.extract_tags(lines, topK=num, withWeight=<span class="hljs-literal">False</span>, allowPOS=())))
+    newfile.close()</code></pre>
 <p>高频词个数输入100，就可以得到共青团中央前100的高频词了，这是结果：   </p>
 <div align=center><img src="../2019/11/WeiboCrawler/2.png" alt="" width="654" height="438" loading="lazy" decoding="async"></div><h2 id="h-909d1d">生成词云</h2>
 <p>得到高频词后可以使用wordcloud生成词云：</p>
-<pre><code class="language-python">    from wordcloud import WordCloud
+<pre><code class="language-python hljs">    <span class="hljs-keyword">from</span> wordcloud <span class="hljs-keyword">import</span> WordCloud
     wc = WordCloud(
-        scale=64, #图片规模
-        background_color=&quot;white&quot;, #背景颜色
-        max_words=500, #显示最大词数
-        font_path=&quot;./simfang.ttf&quot;,  #使用字体
-        min_font_size=15, #字体大小
-        max_font_size=50, #字体大小
-        width=400  #图幅宽度
+        scale=<span class="hljs-number">64</span>, <span class="hljs-comment">#图片规模</span>
+        background_color=<span class="hljs-string">&quot;white&quot;</span>, <span class="hljs-comment">#背景颜色</span>
+        max_words=<span class="hljs-number">500</span>, <span class="hljs-comment">#显示最大词数</span>
+        font_path=<span class="hljs-string">&quot;./simfang.ttf&quot;</span>,  <span class="hljs-comment">#使用字体</span>
+        min_font_size=<span class="hljs-number">15</span>, <span class="hljs-comment">#字体大小</span>
+        max_font_size=<span class="hljs-number">50</span>, <span class="hljs-comment">#字体大小</span>
+        width=<span class="hljs-number">400</span>  <span class="hljs-comment">#图幅宽度</span>
     )
     wc.generate(data)
-    wc.to_file(&quot;pic.png&quot;)
-</code></pre>
+    wc.to_file(<span class="hljs-string">&quot;pic.png&quot;</span>)</code></pre>
 <p>这是得到的结果：</p>
 <div align=center><img src="../2019/11/WeiboCrawler/3.png" alt="" width="1600" height="800" loading="lazy" decoding="async"></div><p>可以修改<code>scale</code>、<code>width</code>等参数生成不一样的图。这是结果：</p>
 <div align=center><img src="../2019/11/WeiboCrawler/4.jpg" alt="" width="1600" height="160" loading="lazy" decoding="async"></div>
@@ -207,7 +204,40 @@
                         pre.parentNode.insertBefore(wrap, pre);
                         wrap.appendChild(pre);
                         wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
                     })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
                 }
             })();
         </script>

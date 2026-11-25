@@ -87,14 +87,11 @@
 <h2 id="1.-92fe18">1.位运算与比较运算的优先级</h2>
 <p>　　<a href="https://leetcode-cn.com/problems/can-i-win/" target="_blank" rel="noopener">题号464，我能赢吗</a>，两人轮流从给出的等差数列中取数（数列从1开始直到n，n为给出的值），取出的数之和超过某个给出的目标值游戏结束，最后一个取数的人胜利。</p>
 <p>作法主要是用递归模拟两个人的取数过程（因为假设两个人都足够聪明），用位运算模拟取数顺序（即两个人取数的情况一共有2^n种），由于题目规定n最大不超过20所以用一个数组来存所有可能的取数情况下的游戏结果。   </p>
-<pre><code class="language-C++">int dp[1 &lt;&lt; n] = {0};
-</code></pre>
+<pre><code class="language-c++ hljs"><span class="hljs-type">int</span> dp[<span class="hljs-number">1</span> &lt;&lt; n] = {<span class="hljs-number">0</span>};</code></pre>
 <p>　　按照这个思路实现了以后还是执行不对，debug最后发现是位运算和比较运算的优先级问题。问题出在这行代码：    </p>
-<pre><code class="language-C++">if (stat &amp; select != 0)
-</code></pre>
+<pre><code class="language-c++ hljs"><span class="hljs-keyword">if</span> (stat &amp; select != <span class="hljs-number">0</span>)</code></pre>
 <p>　　==和!=的优先级高于&amp;运算符，改成    </p>
-<pre><code class="language-C++">if ((stat &amp; select) != 0)
-</code></pre>
+<pre><code class="language-c++ hljs"><span class="hljs-keyword">if</span> ((stat &amp; select) != <span class="hljs-number">0</span>)</code></pre>
 <p>　　就好了。     </p>
 <p>　　(另外说到用位来存情况就想到了之前走心群里遇到的一道高中排列组合题，题目是10颗一样的糖，每天至少吃一颗，一共有几种吃法？</p>
 <p>泉哥的答案：C9_0 + C9_1 +...+ c9_9=2^9，(至今没想明白为啥= =)
@@ -124,24 +121,22 @@
 -&gt; 改用循环处理       
 -&gt; ｎ可能为负数没考虑到        
 -&gt; ｎ为负数时，ｎ变成-n，x变为1/x       
--&gt; 一些例子会报错： `runtime error: negation of -2147483648 cannot be represented in type &#39;int&#39;`，问题出在n变为-n时，正数和负数的最大表示范围不一样。         
+-&gt; 一些例子会报错： `runtime error: negation of -2147483648 cannot be represented in type 'int'`，问题出在n变为-n时，正数和负数的最大表示范围不一样。         
 -&gt; 用long long类型变量N代替n：`long long N = n;`    
 -&gt; 2.00000 -2147483648的例子还是会超出时间限制 感受到了深深的恶意      
--&gt; 向题解低头，用二分递归实现，简洁优雅卧槽
-</code></pre>
+-&gt; 向题解低头，用二分递归实现，简洁优雅卧槽</code></pre>
 <p>最终代码：</p>
-<pre><code class="language-C++">class Solution {
-public:
-    double myPow(double x, int n) {
-        if (n == 0) { return 1; }
-        if (n == 1) { return x; }
-        if (n == -1) { return 1 / x; }
-        double half = myPow(x, n / 2);
-        double rest = myPow(x, n % 2);
-        return rest * half * half;
+<pre><code class="language-c++ hljs"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-type">double</span> x, <span class="hljs-type">int</span> n)</span> </span>{
+        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) { <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; }
+        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) { <span class="hljs-keyword">return</span> x; }
+        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">-1</span>) { <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> / x; }
+        <span class="hljs-type">double</span> half = <span class="hljs-built_in">myPow</span>(x, n / <span class="hljs-number">2</span>);
+        <span class="hljs-type">double</span> rest = <span class="hljs-built_in">myPow</span>(x, n % <span class="hljs-number">2</span>);
+        <span class="hljs-keyword">return</span> rest * half * half;
     }
-};
-</code></pre>
+};</code></pre>
 <h4 id="h-bcb178">数值的整数次方： 快速幂的迭代写法</h4>
 <pre><code>class Solution {
 public:
@@ -155,8 +150,7 @@ public:
         }
         return n &gt; 0 ? res : 1 / res;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="4.offer-bb5af2">4.剑指offer 剪绳子 贪心算法</h2>
 <pre><code>class Solution {
 public:
@@ -173,8 +167,7 @@ public:
         }
         return -1;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="5.offer-1-n-1-amp-n-b3857e">5.剑指offer 统计二进制中1的个数 (n - 1) &amp; n</h2>
 <p>将数字-1后与自己按位与，可以将最低位的1消除，可以这样操作的次数就是1的个数</p>
 <pre><code>class Solution {
@@ -187,8 +180,7 @@ public:
         }
         return count;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="6.offer-1n-291939">6.剑指offer 打印从1到最大的n位数 （大数问题，使用字符串）</h2>
 <p>看作n位数每一位从1-9的全排列，输出时不输出高位0</p>
 <h2 id="7.-a27e86">7.字符串实现大数加法</h2>
@@ -207,36 +199,36 @@ void add()
  
     int carry = 0,k = 0;
     while (lena-- &gt; 0 &amp;&amp; lenb-- &gt; 0) {  //低位对齐相加
-        int left = s1[lena] - &#39;0&#39;;
-        int right = s2[lenb] - &#39;0&#39;;
+        int left = s1[lena] - '0';
+        int right = s2[lenb] - '0';
         int s = left + right + carry;
         carry = s / 10;
         s %= 10;
-        sum[k++] = s + &#39;0&#39;;
+        sum[k++] = s + '0';
     }
     if (lena &lt;= 0) {                    //不对齐的部分，s1比s2长时
         while (lenb-- &gt; 0) {
             int left = 0;
-            int right = s2[lenb] - &#39;0&#39;;
+            int right = s2[lenb] - '0';
             int s = left + right + carry;
             carry = s / 10;
             s %= 10;
-            sum[k++] = s + &#39;0&#39;;
+            sum[k++] = s + '0';
         }
     }
     else if (lenb &lt;= 0) {               //不对齐的部分，s2比s1长时
         while (lena-- &gt; 0) {
-            int left = s1[lena] - &#39;0&#39;;
+            int left = s1[lena] - '0';
             int right = 0;
             int s = left + right + carry;
             carry = s / 10;
             s %= 10;
-            sum[k++] = s + &#39;0&#39;;
+            sum[k++] = s + '0';
         }
     }
     if (carry != 0)
-        sum[k++] = carry + &#39;0&#39;;
-    sum[k] = &#39;\0&#39;;
+        sum[k++] = carry + '0';
+    sum[k] = '\0';
     strrev(sum);
 }
  
@@ -246,8 +238,7 @@ int main()
     add();
     cout &lt;&lt; &quot;result is &quot; &lt;&lt; sum &lt;&lt; endl;
     return 0;
-}
-</code></pre>
+}</code></pre>
 <h2 id="8.-d3315f">8. 删除单链表节点</h2>
 <h4 id="offer-o1-listnode-headlistnode-ptobedeleted-834dd2">剑指offer O(1)时间 传入参数为<em>ListNode head和</em>ListNode pToBeDeleted</h4>
 <p>　　不用从头遍历到待删除的节点，只需要把待删除节点的下一个节点的值复制到待删除节点（覆盖），然后把待删除节点的next指向其下一个节点的下一个节点。</p>
@@ -264,8 +255,7 @@ public:
         p-&gt;next = p-&gt;next-&gt;next;
         return dummy-&gt;next;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="9.offer-cf633f">9.剑指Offer 正则表达式匹配</h2>
 <p>.匹配任意字符 *表示之前的1个字符可以出现0~任意次</p>
 <p>解法:分情况递归</p>
@@ -275,15 +265,14 @@ public:
         if (p.empty()) {            //若模式串为空，则S必须为空，反之不成立
             return s.empty();
         }
-        if (p.size() &gt; 1 &amp;&amp; p[1] == &#39;*&#39;) { //模式串里有*，情况1：patter后移两个字符（即*前的字符在s中出现0次）情况2：patter不变，s后移一个字符
-            return isMatch(s, p.substr(2)) || (!s.empty() &amp;&amp; (s[0] == p[0] || p[0] == &#39;.&#39;) &amp;&amp; 
+        if (p.size() &gt; 1 &amp;&amp; p[1] == '*') { //模式串里有*，情况1：patter后移两个字符（即*前的字符在s中出现0次）情况2：patter不变，s后移一个字符
+            return isMatch(s, p.substr(2)) || (!s.empty() &amp;&amp; (s[0] == p[0] || p[0] == '.') &amp;&amp; 
             isMatch(s.substr(1), p));
         }
         //模式串里没有*，若匹配则各后移一个字符
-        return !s.empty() &amp;&amp; (s[0] == p[0] || p[0] == &#39;.&#39;) &amp;&amp; isMatch(s.substr(1), p.substr(1));
+        return !s.empty() &amp;&amp; (s[0] == p[0] || p[0] == '.') &amp;&amp; isMatch(s.substr(1), p.substr(1));
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="10.-ef5f59">10.判断一个二叉树是否对称(用递归解决)</h2>
 <p>也可以用剑指offer中比较两棵树的前序遍历和对称前序遍历(根-&gt;右节点-&gt;左节点)的序列。</p>
 <pre><code>class Solution {
@@ -297,8 +286,7 @@ public:
     bool isSymmetric(TreeNode* root) {
         return isMirror(root, root);
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="11.-min-b3822e">11. 包含min函数的栈</h2>
 <p>诀窍在于维护一个存放min记忆的栈,每次push都将当前时刻的最小值push进该栈.</p>
 <h2 id="12.-b6a3f9">12. 含有随机指针的链表的深拷贝</h2>
@@ -324,8 +312,7 @@ public:
         }
         return M[head];
     }
-};
-</code></pre>
+};</code></pre>
 <p>解法二:O(n)时间O(1)空间 在每个节点后面紧接一个其复制</p>
 <pre><code>class Solution {
 public:
@@ -357,8 +344,7 @@ public:
         p-&gt;next = nullptr;      // 退出时，将原链表尾节点置为NULL
         return ret;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="13.-1482c6">13.二叉搜索树转换为双向链表</h2>
 <p>对树进行中序遍历,同时更新指针.</p>
 <pre><code>class Solution {
@@ -390,8 +376,7 @@ public:
 private:
     Node* last = nullptr;
     Node* head = nullptr;
-};
-</code></pre>
+};</code></pre>
 <h2 id="14.-a9153b">14.字符串的排列</h2>
 <p>用集合保存结果，将每一位字符与第一个字符交换位置，递归</p>
 <pre><code>class Solution {
@@ -412,16 +397,14 @@ public:
             swap(s[begin], s[i]);
         }
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="15.-dc29a3">15. 数组中出现次数超过一半的数</h2>
 <ul>
 <li>剑指offer做法 基于partition函数</li>
 </ul>
 <pre><code>排序后中间的元素一定是出现超过一半的数字
 sort(nums.begin(),nums.end());
-return nums[nums.size()/2];
-</code></pre>
+return nums[nums.size()/2];</code></pre>
 <ul>
 <li>哈希表</li>
 </ul>
@@ -430,8 +413,7 @@ return nums[nums.size()/2];
             mp[it]++;
             if(mp[it]&gt;nums.size()/2) return it;
         }
-        return 0;
-</code></pre>
+        return 0;</code></pre>
 <ul>
 <li><p>Boyer-Moore 投票算法/消除法（这个太6了）       </p>
 <p>  如果我们把众数记为 +1 ，把其他数记为 -1 ，将它们全部加起来，显然和大于 0 ，从结果本身我们可以看出众数比其他数多。<br>我们维护一个计数器，如果遇到一个我们目前的候选众数，就将计数器加一，否则减一。只要计数器等于 0 ，我们就将 nums 中之前访问的数字全部 忘记 ，并把下一个数字当做候选的众数。直观上这个算法不是特别明显为何是对的，我们先看下面这个例子（竖线用来划分每次计数器归零的情况）              </p>
@@ -494,8 +476,7 @@ public:
         return res;
         
     }
-};
-</code></pre>
+};</code></pre>
 <ul>
 <li>最大堆 一次读入一个数据，时间复杂度O(nlogk),空间复杂度O(k)</li>
 </ul>
@@ -523,8 +504,7 @@ public:
         }
         return res;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="17.-1n1-offer-fdeda4">17. 1~n中1出现的次数 剑指offer找规律</h2>
 <pre><code>class Solution {
 public:
@@ -532,7 +512,7 @@ public:
         if(n &lt;= 0) return 0;
         if(n &lt; 10) return 1;
         string s = to_string(n);
-        int highNum = s[0] - &#39;0&#39;;
+        int highNum = s[0] - '0';
         int size = s.size();
         int withoutHigh = n - highNum * pow(10,size - 1);
     // 1. 统计首位为1出现次数:
@@ -547,8 +527,7 @@ public:
     int other = highNum * (size - 1) * pow(10, size - 2);
     return first + other +countDigitOne(withoutHigh);
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="18.-626674">18. 最长不含重复字符的子字符串</h2>
 <ul>
 <li>动态规划</li>
@@ -574,8 +553,7 @@ public:
 		}
 		return res;
     }
-};
-</code></pre>
+};</code></pre>
 <ul>
 <li>滑动窗口</li>
 </ul>
@@ -601,8 +579,7 @@ public:
         }
         return res;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="19.-e6ef44">19. 数组中数字出现的次数</h2>
 <ul>
 <li><p>除2个数字外，其余数字均出现2次         </p>
@@ -626,8 +603,7 @@ vector&lt;int&gt; singleNumbers(vector&lt;int&gt;&amp; nums) {
     }
     return res;
 }
-};
-</code></pre>
+};</code></pre>
 </li>
 <li><p>除1个数字外，其余数字均出现3次</p>
 </li>
@@ -650,8 +626,7 @@ public:
         }
         return res;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="20.-offer-n-ab4d26">20. 剑指offer n个骰子的点数 动态规划</h2>
 <p>把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。</p>
 <p><a href="https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/solution/nge-tou-zi-de-dian-shu-dong-tai-gui-hua-ji-qi-yo-3/</a></p>
@@ -662,8 +637,7 @@ public:
         n &amp;&amp; (n += sumNums(n-1));
         return n;
     }
-};
-</code></pre>
+};</code></pre>
 <h2 id="21.-7926be">21. 位运算实现加法</h2>
 <pre><code>class Solution {
 public:
@@ -677,8 +651,7 @@ public:
         } while (carry != 0);
         return sum;
     }
-};
-</code></pre>
+};</code></pre>
 
     </div>
     <nav class="post-nav">
@@ -778,7 +751,40 @@ public:
                         pre.parentNode.insertBefore(wrap, pre);
                         wrap.appendChild(pre);
                         wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
                     })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
                 }
             })();
         </script>

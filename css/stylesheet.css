@@ -92,7 +92,44 @@ body {
 
 .blog-post-content pre {
     overflow-x: auto;
+    background: #f6f6f6;
+    border-radius: 3px;
+    padding: 0.8em 1em;
 }
+
+.blog-post-content code {
+    background: #f6f6f6;
+    border-radius: 3px;
+    padding: 0.1em 0.3em;
+}
+
+.blog-post-content pre code {
+    background: none;
+    padding: 0;
+}
+
+/* ---- syntax highlighting ----
+   Classes are emitted by highlight.js at build time; no script runs in the
+   page. Two small palettes, roughly GitHub's, one per theme. */
+
+.hljs-comment, .hljs-quote { color: #6a737d; }
+.hljs-keyword, .hljs-selector-tag, .hljs-doctag, .hljs-deletion { color: #d73a49; }
+.hljs-string, .hljs-regexp, .hljs-addition { color: #032f62; }
+.hljs-number, .hljs-literal, .hljs-built_in, .hljs-type, .hljs-attr,
+.hljs-variable, .hljs-template-variable, .hljs-selector-attr { color: #005cc5; }
+.hljs-title, .hljs-section, .hljs-name, .hljs-selector-id, .hljs-selector-class { color: #6f42c1; }
+.hljs-meta, .hljs-symbol, .hljs-bullet { color: #e36209; }
+
+html.dark .hljs-comment, html.dark .hljs-quote { color: #8b949e; }
+html.dark .hljs-keyword, html.dark .hljs-selector-tag, html.dark .hljs-doctag,
+html.dark .hljs-deletion { color: #ff7b72; }
+html.dark .hljs-string, html.dark .hljs-regexp, html.dark .hljs-addition { color: #a5d6ff; }
+html.dark .hljs-number, html.dark .hljs-literal, html.dark .hljs-built_in,
+html.dark .hljs-type, html.dark .hljs-attr, html.dark .hljs-variable,
+html.dark .hljs-template-variable, html.dark .hljs-selector-attr { color: #79c0ff; }
+html.dark .hljs-title, html.dark .hljs-section, html.dark .hljs-name,
+html.dark .hljs-selector-id, html.dark .hljs-selector-class { color: #d2a8ff; }
+html.dark .hljs-meta, html.dark .hljs-symbol, html.dark .hljs-bullet { color: #ffa657; }
 
 /* ---- table of contents, long posts only ---- */
 
@@ -169,6 +206,51 @@ body {
 
 .copy-wrap:hover .copy-btn, .copy-btn:focus {
     opacity: 1;
+}
+
+/* The fence language, in the same corner as the copy button; it steps aside
+   when the button fades in. */
+.code-lang {
+    position: absolute;
+    top: 0.55em;
+    right: 0.7em;
+    color: #999;
+    font-size: 0.75em;
+    pointer-events: none;
+    transition: opacity 0.15s;
+}
+
+.copy-wrap:hover .code-lang {
+    opacity: 0;
+}
+
+/* ---- lightbox ----
+   The overlay is created by the script in the page footer. */
+
+.blog-post-content img {
+    cursor: zoom-in;
+}
+
+#lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.88);
+    cursor: zoom-out;
+}
+
+#lightbox.show {
+    display: flex;
+}
+
+#lightbox img {
+    max-width: 96vw;
+    max-height: 96vh;
+    width: auto;
+    height: auto;
 }
 
 /* ---- search ---- */

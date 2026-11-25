@@ -73,9 +73,8 @@
 <p>　　用<code>driver.save_screenshot(&#39;1.png&#39;)</code>截图也只能截到空白的图片。      </p>
 <p>　　后来去掉<code>#options.add_argument(&quot;--headless&quot;)</code>,弹出chrome浏览器的时候看了一下它的Cookie，发现比真实浏览器的少了一个名字叫<code>JSESSIONID</code>的Cookie，代码输出一下Cookie：<br><code>print(driver.get_cookies())</code>     </p>
 <p>　　发现确实只有后两个Cookie：    </p>
-<pre><code>    [{&#39;domain&#39;: &#39;mobile.cfda.gov.cn&#39;, &#39;expiry&#39;: 1892368214, &#39;httpOnly&#39;: False, &#39;name&#39;: &#39;tuNQaYE2WCOr80T&#39;, &#39;path&#39;: &#39;/&#39;, &#39;secure&#39;: False, &#39;value&#39;: &#39;44Kn.5S4Qs9FYazHg9cvpAh7RvvkX6CHCFFLnsNw3CWLTJqQ6uRw0fI8bg5vrYGQEX6hJa0J.RsRZXrnLpG9ViGS6qQB.h0ihFdotILVHmKWMi8rTSe4I7l24OjHVvISZagZFyCmw23._.vUSDK3RsDU47zozbhS.mSlLRCcnw4tiTC6vzgime927xft3LdtTnQXjiYoqH.ONQGdKHPdqzeGiwGMEjgoxEebyhgXrJn2tAr5hqtntejwrroOnMyvm77CXd8_V5QkuK5aINNj2DYlMrReJ7uKRLSx3FeepzkKvtT5WFd.hbAsVYU5eqbtb_Mq&#39;},        
-    {&#39;domain&#39;: &#39;mobile.cfda.gov.cn&#39;, &#39;expiry&#39;: 1892368213.81084, &#39;httpOnly&#39;: True, &#39;name&#39;: &#39;tuNQaYE2WCOr80S&#39;, &#39;path&#39;: &#39;/&#39;, &#39;secure&#39;: False, &#39;value&#39;: &#39;hPNhBHTwoBvnsQ5znkw4QCEmXQJ7.5vsBR2r8eDpRyWyiYBaMsjvKkr75trGzXPe&#39;}]
-</code></pre>
+<pre><code>    [{'domain': 'mobile.cfda.gov.cn', 'expiry': 1892368214, 'httpOnly': False, 'name': 'tuNQaYE2WCOr80T', 'path': '/', 'secure': False, 'value': '44Kn.5S4Qs9FYazHg9cvpAh7RvvkX6CHCFFLnsNw3CWLTJqQ6uRw0fI8bg5vrYGQEX6hJa0J.RsRZXrnLpG9ViGS6qQB.h0ihFdotILVHmKWMi8rTSe4I7l24OjHVvISZagZFyCmw23._.vUSDK3RsDU47zozbhS.mSlLRCcnw4tiTC6vzgime927xft3LdtTnQXjiYoqH.ONQGdKHPdqzeGiwGMEjgoxEebyhgXrJn2tAr5hqtntejwrroOnMyvm77CXd8_V5QkuK5aINNj2DYlMrReJ7uKRLSx3FeepzkKvtT5WFd.hbAsVYU5eqbtb_Mq'},        
+    {'domain': 'mobile.cfda.gov.cn', 'expiry': 1892368213.81084, 'httpOnly': True, 'name': 'tuNQaYE2WCOr80S', 'path': '/', 'secure': False, 'value': 'hPNhBHTwoBvnsQ5znkw4QCEmXQJ7.5vsBR2r8eDpRyWyiYBaMsjvKkr75trGzXPe'}]</code></pre>
 <p><br>　　这是真实浏览器的Cookie：</p>
 <div align=center><img src="../2019/12/PythonCrawler/3.png" alt="" width="1047" height="774" loading="lazy" decoding="async"></div><p>　　可能就是因为这个原因打不开浏览器。     </p>
 <p>　　后来试着去群里问了一下，感谢@姬大神还有群里的@耿欣大佬，他俩告诉我可以用**<a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a>**发请求，然后生成带<code>Header</code>的代码，如图，Postman能显示所有Cookie和Header信息,可以看到Header信息里，服务端用了<code>gzip</code>还有<code>gb2312</code>的编码格式(图3)：      </p>
@@ -84,80 +83,77 @@
 <div align=center><img src="../2019/12/PythonCrawler/6.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div><p>　　点击右上角的<strong>Code</strong>按钮可以生成各种版本的请求代码，生成之前可以设置一下 <code>Include Temporary Headers</code> 选项让生成的代码含有现在的**<code>Headers</code>**</p>
 <div align=center><img src="../2019/12/PythonCrawler/7.png" alt="" width="1058" height="645" loading="lazy" decoding="async"></div><p>　　这是生成后的各个语言的请求代码：</p>
 <div align=center><img src="../2019/12/PythonCrawler/8.png" alt="" width="1057" height="643" loading="lazy" decoding="async"></div><h3 id="go-a9fb1c">Go语言代码：</h3>
-<pre><code class="language-go">package main
+<pre><code class="language-go hljs"><span class="hljs-keyword">package</span> main
 
-import (
- &quot;fmt&quot;
- iconv &quot;github.com/djimenez/iconv-go&quot;
- &quot;io/ioutil&quot;
- &quot;net/http&quot;
+<span class="hljs-keyword">import</span> (
+ <span class="hljs-string">&quot;fmt&quot;</span>
+ iconv <span class="hljs-string">&quot;github.com/djimenez/iconv-go&quot;</span>
+ <span class="hljs-string">&quot;io/ioutil&quot;</span>
+ <span class="hljs-string">&quot;net/http&quot;</span>
 )
 
-func main() {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
 
- url := &quot;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&quot;
+ url := <span class="hljs-string">&quot;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&quot;</span>
 
- req, _ := http.NewRequest(&quot;GET&quot;, url, nil)
+ req, _ := http.NewRequest(<span class="hljs-string">&quot;GET&quot;</span>, url, <span class="hljs-literal">nil</span>)
 
- req.Header.Add(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1&quot;)
- req.Header.Add(&quot;Accept&quot;, &quot;*/*&quot;)
- req.Header.Add(&quot;Cache-Control&quot;, &quot;no-cache&quot;)
- req.Header.Add(&quot;Postman-Token&quot;, &quot;8e009b45-0973-4c64-be43-7342da2bcc5b,0446163c-7c01-421b-bd56-4a8187e3c9b3&quot;)
- req.Header.Add(&quot;Host&quot;, &quot;mobile.cfda.gov.cn&quot;)
- // req.Header.Add(&quot;Accept-Encoding&quot;, &quot;gzip, deflate&quot;)      //取消gzip encoding
- req.Header.Add(&quot;Cookie&quot;, &quot;JSESSIONID=99245F57E359A2881EBD1EDA9E75BAFC.7; tuNQaYE2WCOr80T=4sU7uW4noiWDTog1A1IdD.VVRdBBArEE5ZSbl37hgTWe6gx.QLxVYNWdVReT4XPzCIC7qHjmtSndaWwnxhVv_mQRA3n9kf0.trsFj2qw55V57mjUfo2yTF_hmmPirw6Y0weeFRH7jCiMaT9QjGjxpMHycRBhHlb5q9FTKj5_qiKVKc1oAwNR_uUzZEvadkSud2uL; tuNQaYE2WCOr80S=8fryRXIPeZaSuESt8nxE6bkC4p7Zv0kxEE.lK2DtuCkxUSYIoIcKbXymZkp6z5Iq&quot;)
- req.Header.Add(&quot;Connection&quot;, &quot;keep-alive&quot;)
- req.Header.Add(&quot;cache-control&quot;, &quot;no-cache&quot;)
+ req.Header.Add(<span class="hljs-string">&quot;User-Agent&quot;</span>, <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1&quot;</span>)
+ req.Header.Add(<span class="hljs-string">&quot;Accept&quot;</span>, <span class="hljs-string">&quot;*/*&quot;</span>)
+ req.Header.Add(<span class="hljs-string">&quot;Cache-Control&quot;</span>, <span class="hljs-string">&quot;no-cache&quot;</span>)
+ req.Header.Add(<span class="hljs-string">&quot;Postman-Token&quot;</span>, <span class="hljs-string">&quot;8e009b45-0973-4c64-be43-7342da2bcc5b,0446163c-7c01-421b-bd56-4a8187e3c9b3&quot;</span>)
+ req.Header.Add(<span class="hljs-string">&quot;Host&quot;</span>, <span class="hljs-string">&quot;mobile.cfda.gov.cn&quot;</span>)
+ <span class="hljs-comment">// req.Header.Add(&quot;Accept-Encoding&quot;, &quot;gzip, deflate&quot;)      //取消gzip encoding</span>
+ req.Header.Add(<span class="hljs-string">&quot;Cookie&quot;</span>, <span class="hljs-string">&quot;JSESSIONID=99245F57E359A2881EBD1EDA9E75BAFC.7; tuNQaYE2WCOr80T=4sU7uW4noiWDTog1A1IdD.VVRdBBArEE5ZSbl37hgTWe6gx.QLxVYNWdVReT4XPzCIC7qHjmtSndaWwnxhVv_mQRA3n9kf0.trsFj2qw55V57mjUfo2yTF_hmmPirw6Y0weeFRH7jCiMaT9QjGjxpMHycRBhHlb5q9FTKj5_qiKVKc1oAwNR_uUzZEvadkSud2uL; tuNQaYE2WCOr80S=8fryRXIPeZaSuESt8nxE6bkC4p7Zv0kxEE.lK2DtuCkxUSYIoIcKbXymZkp6z5Iq&quot;</span>)
+ req.Header.Add(<span class="hljs-string">&quot;Connection&quot;</span>, <span class="hljs-string">&quot;keep-alive&quot;</span>)
+ req.Header.Add(<span class="hljs-string">&quot;cache-control&quot;</span>, <span class="hljs-string">&quot;no-cache&quot;</span>)
 
  res, _ := http.DefaultClient.Do(req)
 
- defer res.Body.Close()
+ <span class="hljs-keyword">defer</span> res.Body.Close()
  body, _ := ioutil.ReadAll(res.Body)
- fmt.Println(&quot;body文本:\n&quot;, string(body))
- out := make([]byte, len(body))
- iconv.Convert(body, out, &quot;gb2312&quot;, &quot;utf-8&quot;)                 //gb2312转utf-8
- fmt.Println(&quot;out文本:\n&quot;, string(out))
+ fmt.Println(<span class="hljs-string">&quot;body文本:\n&quot;</span>, <span class="hljs-type">string</span>(body))
+ out := <span class="hljs-built_in">make</span>([]<span class="hljs-type">byte</span>, <span class="hljs-built_in">len</span>(body))
+ iconv.Convert(body, out, <span class="hljs-string">&quot;gb2312&quot;</span>, <span class="hljs-string">&quot;utf-8&quot;</span>)                 <span class="hljs-comment">//gb2312转utf-8</span>
+ fmt.Println(<span class="hljs-string">&quot;out文本:\n&quot;</span>, <span class="hljs-type">string</span>(out))
 
-}
-</code></pre>
+}</code></pre>
 <p>Go语言版本的结果：</p>
 <div align=center><img src="../2019/12/PythonCrawler/9.png" alt="" width="1000" height="773" loading="lazy" decoding="async"></div><h3 id="python-requests-33a687">Python requests代码：</h3>
-<pre><code class="language-python">import requests
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> requests
 
-if __name__ == &quot;__main__&quot;:
-    url = &quot;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&quot;
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    url = <span class="hljs-string">&quot;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&quot;</span>
 
     payload = {}
     headers = {
-        &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1&#39;,
-        &#39;Accept&#39;: &#39;*/*&#39;,
-        &#39;Cache-Control&#39;: &#39;no-cache&#39;,
-        &#39;Postman-Token&#39;: &#39;285772ec-24e5-48f4-8a18-bf50f8f657ec&#39;,
-        &#39;Host&#39;: &#39;mobile.cfda.gov.cn&#39;,
-        &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;,
-        &#39;Cookie&#39;: &#39;JSESSIONID=F85C3CADAAE170E8618A7DD43CBFD125.7; tuNQaYE2WCOr80T=4GSR08oCna1W64y.RAM5IombOlBwtGEUxxVanErVnNe4bzum1Mf9w_HdOQy3jZp4LkFrR.CYLXGZmcucJx1rkpptCEHf00dWsVCJrjRDb8g5Z7w4K2VhSfZdlbRxg1M86weYtOYbKz.SjkwOvg10haEkp2HpuPPv74Iqr5eUumbZcMotKHh3djBXVFDT8I_oOPsA; tuNQaYE2WCOr80S=Woyd5gh69qpABUJoSN6SynZGW3kyRxl0Jw49VLMWRXLZz0H5hy6Hg3Uy1GfWczcz&#39;,
-        &#39;Connection&#39;: &#39;keep-alive&#39;
+        <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1&#x27;</span>,
+        <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;*/*&#x27;</span>,
+        <span class="hljs-string">&#x27;Cache-Control&#x27;</span>: <span class="hljs-string">&#x27;no-cache&#x27;</span>,
+        <span class="hljs-string">&#x27;Postman-Token&#x27;</span>: <span class="hljs-string">&#x27;285772ec-24e5-48f4-8a18-bf50f8f657ec&#x27;</span>,
+        <span class="hljs-string">&#x27;Host&#x27;</span>: <span class="hljs-string">&#x27;mobile.cfda.gov.cn&#x27;</span>,
+        <span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>: <span class="hljs-string">&#x27;gzip, deflate&#x27;</span>,
+        <span class="hljs-string">&#x27;Cookie&#x27;</span>: <span class="hljs-string">&#x27;JSESSIONID=F85C3CADAAE170E8618A7DD43CBFD125.7; tuNQaYE2WCOr80T=4GSR08oCna1W64y.RAM5IombOlBwtGEUxxVanErVnNe4bzum1Mf9w_HdOQy3jZp4LkFrR.CYLXGZmcucJx1rkpptCEHf00dWsVCJrjRDb8g5Z7w4K2VhSfZdlbRxg1M86weYtOYbKz.SjkwOvg10haEkp2HpuPPv74Iqr5eUumbZcMotKHh3djBXVFDT8I_oOPsA; tuNQaYE2WCOr80S=Woyd5gh69qpABUJoSN6SynZGW3kyRxl0Jw49VLMWRXLZz0H5hy6Hg3Uy1GfWczcz&#x27;</span>,
+        <span class="hljs-string">&#x27;Connection&#x27;</span>: <span class="hljs-string">&#x27;keep-alive&#x27;</span>
     }
-    response = requests.request(&quot;GET&quot;, url, headers=headers, data = payload)
-    print(response.text)
-</code></pre>
+    response = requests.request(<span class="hljs-string">&quot;GET&quot;</span>, url, headers=headers, data = payload)
+    <span class="hljs-built_in">print</span>(response.text)</code></pre>
 <p>Python运行结果：</p>
 <div align=center><img src="../2019/12/PythonCrawler/10.png" alt="" width="1600" height="900" loading="lazy" decoding="async"></div><h3 id="h-e56671">徐徐的办法</h3>
 <p>　　徐徐用Selenium模拟鼠标和键盘，右键然后点击A保存，把html代码保存到本地，如图：</p>
 <div align=center><img src="../2019/12/PythonCrawler/11.jpg" alt="" width="946" height="465" loading="lazy" decoding="async"></div><h3 id="update">Update</h3>
 <p>　　晚上旺财又告诉我他发现Firefox driver的无头模式可以用。。。(为什么Phantom和Chrome就不行呢),贴代码：</p>
-<pre><code class="language-python">    from selenium import webdriver
-    import time
-    from selenium.webdriver.firefox.options import Options
+<pre><code class="language-python hljs">    <span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+    <span class="hljs-keyword">import</span> time
+    <span class="hljs-keyword">from</span> selenium.webdriver.firefox.options <span class="hljs-keyword">import</span> Options
     options = Options()
-    options.add_argument(&quot;headless&quot;)  # 无界面
-    options.add_argument(&quot;disable-gpu&quot;)
+    options.add_argument(<span class="hljs-string">&quot;headless&quot;</span>)  <span class="hljs-comment"># 无界面</span>
+    options.add_argument(<span class="hljs-string">&quot;disable-gpu&quot;</span>)
     driver = webdriver.Firefox(options=options)
-    driver.get(&#39;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&#39;)
-    time.sleep(1)
-    print(driver.page_source)
-    driver.quit()
-</code></pre>
+    driver.get(<span class="hljs-string">&#x27;http://mobile.cfda.gov.cn/datasearch/QueryRecord?tableId=25&amp;searchF=ID&amp;searchK=1&#x27;</span>)
+    time.sleep(<span class="hljs-number">1</span>)
+    <span class="hljs-built_in">print</span>(driver.page_source)
+    driver.quit()</code></pre>
 
     </div>
     <nav class="post-nav">
@@ -257,7 +253,40 @@ if __name__ == &quot;__main__&quot;:
                         pre.parentNode.insertBefore(wrap, pre);
                         wrap.appendChild(pre);
                         wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
                     })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
                 }
             })();
         </script>
