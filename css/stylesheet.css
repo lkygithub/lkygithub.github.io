@@ -1,10 +1,10 @@
 /* elephants — the original theme stylesheet (lkygithub/elephant-lky) */
 body {
-    /* LXGW WenKai Screen (霞鹜文楷 屏显版) is self-hosted from static/fonts/,
-       loaded by the stylesheet linked in the page head. It covers both Latin
-       and CJK, so the fallbacks below only matter while the font is still in
-       flight (the @font-face rules use font-display: swap). */
-    font-family: 'LXGW WenKai Screen', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    /* LXGW WenKai Screen (霞鹜文楷 屏显版) is self-hosted from static/fonts/.
+       'LXGW Fallback' is a local system font whose line metrics are
+       overridden (in the font stylesheet) to match WenKai exactly, so the
+       swap when the webfont arrives does not move a single line. */
+    font-family: 'LXGW WenKai Screen', 'LXGW Fallback', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     color: black;
     margin: auto;
     max-width: 50em;
