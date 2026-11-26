@@ -29,6 +29,22 @@ a {
     text-decoration: none;
 }
 
+/* Links inside a post body need to stand out from the prose around them, so
+   they keep an underline — a quiet one, offset and in a lighter shade. */
+.blog-post-content a {
+    text-decoration: underline;
+    text-decoration-color: #bbb;
+    text-underline-offset: 0.2em;
+}
+
+.blog-post-content a:hover {
+    text-decoration-color: currentColor;
+}
+
+html.dark .blog-post-content a {
+    text-decoration-color: #555;
+}
+
 #page-title a:hover, .post a:hover {
     text-decoration: underline;
 }
