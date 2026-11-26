@@ -2,17 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://ririshihaori.com/</loc>
-        <lastmod>2026-11-20</lastmod>
+        <lastmod>2026-11-26</lastmod>
     </url>
     <url>
         <loc>https://ririshihaori.com/archive.html</loc>
-        <lastmod>2026-11-20</lastmod>
+        <lastmod>2026-11-26</lastmod>
     </url>
     <url>
         <loc>https://ririshihaori.com/tags.html</loc>
     </url>
     <url>
         <loc>https://ririshihaori.com/search.html</loc>
+    </url>
+    <url>
+        <loc>https://ririshihaori.com/posts/2026-11-multus_conflist.html</loc>
+        <lastmod>2026-11-26</lastmod>
     </url>
     <url>
         <loc>https://ririshihaori.com/posts/2026-11-hello_from_2026.html</loc>
@@ -191,12 +195,20 @@
         <lastmod>2019-11-23</lastmod>
     </url>
     <url>
+        <loc>https://ririshihaori.com/tags/tag-ede447.html</loc>
+        <lastmod>2026-11-26</lastmod>
+    </url>
+    <url>
         <loc>https://ririshihaori.com/tags/tag-727190.html</loc>
         <lastmod>2019-10-24</lastmod>
     </url>
     <url>
         <loc>https://ririshihaori.com/tags/tag-046a89.html</loc>
         <lastmod>2019-12-03</lastmod>
+    </url>
+    <url>
+        <loc>https://ririshihaori.com/tags/tag-7ddbe1.html</loc>
+        <lastmod>2026-11-26</lastmod>
     </url>
     <url>
         <loc>https://ririshihaori.com/tags/tag-1fb529.html</loc>
@@ -229,6 +241,10 @@
     <url>
         <loc>https://ririshihaori.com/tags/hugo.html</loc>
         <lastmod>2019-11-20</lastmod>
+    </url>
+    <url>
+        <loc>https://ririshihaori.com/tags/kubernetes.html</loc>
+        <lastmod>2026-11-26</lastmod>
     </url>
     <url>
         <loc>https://ririshihaori.com/tags/leetcode.html</loc>

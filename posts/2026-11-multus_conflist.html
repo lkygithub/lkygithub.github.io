@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- The webfont is served from this site, not a CDN: jsDelivr is slow
+             or blocked from parts of mainland China, which left readers on the
+             fallback font. static/fonts/ holds the subset build. -->
+        <link href="../fonts/lxgw-wenkai-screen.css" rel="stylesheet">
+
+        <title>一个 CNI 配置文件后缀引发的排障记</title>
+        <meta name="description" content="前段时间排了一个容器网络问题，根因说出来特别朴素： 配置文件的后缀名写错了 。 背景 我们的多网卡 RoCE 配置用的是 Multus 文档里的一个省事用法： If NetworkAttachmentDefinition has no spec, multus find a fi…">
+        <link rel="canonical" href="https://ririshihaori.com/posts/2026-11-multus_conflist.html">
+        <link rel="alternate" type="application/rss+xml" title="日日是好日" href="../feed.xml">
+
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="一个 CNI 配置文件后缀引发的排障记">
+        <meta property="og:description" content="前段时间排了一个容器网络问题，根因说出来特别朴素： 配置文件的后缀名写错了 。 背景 我们的多网卡 RoCE 配置用的是 Multus 文档里的一个省事用法： If NetworkAttachmentDefinition has no spec, multus find a fi…">
+        <meta property="og:url" content="https://ririshihaori.com/posts/2026-11-multus_conflist.html">
+        <meta property="og:site_name" content="日日是好日">
+        <meta property="og:image" content="https://ririshihaori.com/cover.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <link href="../css/stylesheet.css" rel="stylesheet" >
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="../favicon.ico" rel="icon" type="image/x-icon">
+
+        <script>
+            // Pick the theme before the first paint so the page never flashes.
+            (function () {
+                var saved = null;
+                try { saved = localStorage.getItem('theme'); } catch (e) {}
+                var dark = saved
+                    ? saved === 'dark'
+                    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (dark) document.documentElement.classList.add('dark');
+            })();
+        </script>
+    </head>
+    <body>
+        <section id="page-title">
+            <h1><a href="../index.html">日日是好日</a></h1>
+            <nav id="site-nav">
+                <a href="../index.html">首页</a>
+                <a href="../archive.html">归档</a>
+                <a href="../tags.html">标签</a>
+                <a href="../search.html">搜索</a>
+                <button id="theme-toggle" type="button" title="切换深色/浅色"></button>
+            </nav>
+        </section>
+<section class="blog-post">
+    <h1>一个 CNI 配置文件后缀引发的排障记</h1>
+    <div class="blog-post-subheader">
+        November 26, 2026 · 约 616 字 · 2 分钟<span class="tag-list"><a href="../tags/kubernetes.html">Kubernetes</a><a href="../tags/tag-7ddbe1.html">网络</a><a href="../tags/tag-ede447.html">排障</a></span>
+    </div>
+    <details class="post-toc" open>
+        <summary>目录</summary>
+        <ul>
+            <li class="toc-h2"><a href="#h-8e1b94">背景</a></li>
+            <li class="toc-h2"><a href="#pod-2fdcd9">加个插件，Pod 起不来了</a></li>
+            <li class="toc-h2"><a href="#h-717367">翻源码，找到根因</a></li>
+        </ul>
+    </details>
+    <div class="blog-post-content">
+<p>前段时间排了一个容器网络问题，根因说出来特别朴素：<strong>配置文件的后缀名写错了</strong>。</p>
+<h2 id="h-8e1b94">背景</h2>
+<p>我们的多网卡 RoCE 配置用的是 Multus 文档里的一个省事用法：</p>
+<blockquote>
+<p>If NetworkAttachmentDefinition has no spec, multus find a file in defaultConfDir (&#39;/etc/cni/multus/net.d&#39;), with same name in the &#39;name&#39; field of CNI config.</p>
+</blockquote>
+<p><img src="../2026/11/multus/multus-doc.png" alt="Multus 官方文档中关于无 spec NAD 的说明" width="2102" height="1268" loading="lazy" decoding="async"></p>
+<p>NAD 不带 spec，只写个名字，Multus 自己去节点的 <code>/etc/cni/multus/net.d/</code> 下找同名 CNI 配置文件。换节点、换网卡、换网段都只改节点上的文件，NAD 不用动。这个用法跑了一年多，一直没出过事。</p>
+<h2 id="pod-2fdcd9">加个插件，Pod 起不来了</h2>
+<p>某天来了个临时需求：给容器内的多张 RoCE 网卡自动注入内核参数，于是在 CNI 配置里加了个 <strong>tuning 插件</strong>。这意味着配置文件要从「单个插件对象」改成「plugins 数组」。原来长这样：</p>
+<pre><code class="language-json hljs"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;cniVersion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0.3.1&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nac-1&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;macvlan&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;capabilities&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;ips&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;master&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;eth1&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;mode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bridge&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;ipam&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;whereabouts&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;range&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;192.168.10.0/24&quot;</span> <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p>改完长这样：</p>
+<pre><code class="language-json hljs"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;cniVersion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0.3.1&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nac-1&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;macvlan&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;capabilities&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;ips&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;master&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;eth1&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;mode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bridge&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;ipam&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;whereabouts&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;range&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;192.168.10.0/24&quot;</span> <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;tuning&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;sysctl&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;&lt;内核参数&gt;&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;值&gt;&quot;</span> <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p>看着没什么问题吧？结果 Pod 直接起不来，kubelet 事件里的报错是：</p>
+<pre><code class="language-text hljs">Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox ...
+plugin type=&quot;multus&quot; name=&quot;multus-cni-network&quot; failed (add):
+  ... err in GetCNIConfigFromFile: Error loading CNI config file
+  /etc/cni/multus/net.d/nac-1.conf: error parsing configuration: missing &#x27;type&#x27;</code></pre>
+<p>第一反应是「Multus 是不是不支持这种多插件写法」。但报错落在<strong>解析阶段</strong>——不是 IP 分配失败，也不是插件执行失败，而是配置文件本身没被正确识别。</p>
+<h2 id="h-717367">翻源码，找到根因</h2>
+<p>文档里没写清楚，只好去看 Multus 的源码。读配置文件的入口是 <code>GetCNIConfigFromFile</code>：</p>
+<p><img src="../2026/11/multus/getcniconfig.png" alt="Multus 源码中 GetCNIConfigFromFile 的后缀分支逻辑" width="2078" height="1714" loading="lazy" decoding="async"></p>
+<p>关键在后缀判断：只有 <strong><code>.conflist</code></strong> 走 <code>ConfListFromFile</code>，解析成 NetworkConfigList（内部是 Plugins 数组）；其余后缀走 <code>ConfFromFile</code>，按<strong>单个插件</strong>解析。</p>
+<p><img src="../2026/11/multus/networkconfiglist.png" alt="NetworkConfigList 结构体，Plugins 是一个数组" width="870" height="396" loading="lazy" decoding="async"></p>
+<p>真相大白：把 plugins 数组写进 <code>.conf</code> 文件，解析器按单插件去读，顶层自然没有 <code>type</code> 字段，正好就是那句 missing &#39;type&#39;。源码注释里还专门写了一句：</p>
+<blockquote>
+<p>Also catches the case where somebody put a conflist into a conf file.</p>
+</blockquote>
+<p>——看来踩这个坑的人不少。修复也就一句话：后缀改成 <code>.conflist</code>，完事。</p>
+<p>文档只告诉你用法存在，后缀规则这种边界条件只能去源码里找，该翻就翻。不过现在有了各种 AI 工具，把报错一贴可能几秒就给你指到那行源码了——以后不知道还有没有机会这样一行行翻代码古法 debug 了，且翻且珍惜。</p>
+<p>参考：<a href="https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/how-to-use.md#networkattachmentdefinition-with-cni-config-file" target="_blank" rel="noopener">Multus 官方文档 how-to-use</a></p>
+<hr>
+<p><em>本文由 agent 根据复盘文档整理。</em></p>
+
+    </div>
+    <nav class="post-nav">
+        <span></span>
+        <span><a href="2026-11-hello_from_2026.html">Hello from 2026 →</a></span>
+    </nav>
+    <div class="comments">
+        <script>
+            // Injected rather than hard-coded so data-theme matches the theme
+            // the reader actually chose, not just the system preference.
+            (function () {
+                var s = document.createElement('script');
+                s.src = 'https://giscus.app/client.js';
+                var data = {
+                    repo: 'lkygithub/lkygithub.github.io',
+                    'repo-id': 'MDEwOlJlcG9zaXRvcnkxMzExNzYwODA=',
+                    category: 'Announcements',
+                    'category-id': 'DIC_kwDOB9GWkM4DL1YA',
+                    mapping: 'pathname',
+                    strict: '1',
+                    'reactions-enabled': '1',
+                    'input-position': 'top',
+                    lang: 'zh-CN',
+                    theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+                };
+                for (var k in data) s.setAttribute('data-' + k, data[k]);
+                s.crossOrigin = 'anonymous';
+                s.async = true;
+                document.currentScript.parentNode.appendChild(s);
+            })();
+        </script>
+    </div>
+</section>
+        <script>
+            (function () {
+                var html = document.documentElement;
+                document.getElementById('theme-toggle').addEventListener('click', function () {
+                    var dark = html.classList.toggle('dark');
+                    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+                    // Keep the comment box in step with the page.
+                    var frame = document.querySelector('iframe.giscus-frame');
+                    if (frame) {
+                        frame.contentWindow.postMessage(
+                            { giscus: { setConfig: { theme: dark ? 'dark' : 'light' } } },
+                            'https://giscus.app'
+                        );
+                    }
+                });
+            })();
+        </script>
+        <script>
+            // The webfont uses font-display: optional, so the browser never
+            // swaps fonts mid-view and the layout cannot jitter. The trade-off
+            // is that a hard refresh (cold cache) renders with the fallback —
+            // and Chrome then refuses to ever apply that optional font on this
+            // page, even once loaded. So recovery goes through 'LXGW WenKai
+            // Late', a duplicate family over the same files: load every slice
+            // the page needs, then switch families once, in one clean step.
+            (function () {
+                if (!(document.fonts && document.fonts.check && document.fonts.load)) return;
+                if (document.fonts.check('1em "LXGW WenKai Screen"', '永a')) return;
+                document.fonts.load('1em "LXGW WenKai Late"', document.body.textContent).then(function () {
+                    document.documentElement.classList.add('wenkai');
+                });
+            })();
+        </script>
+        <script>
+            // A copy button per code block. navigator.clipboard needs HTTPS or
+            // localhost, so fall back to the old execCommand path elsewhere.
+            (function () {
+                var blocks = document.querySelectorAll('.blog-post-content pre');
+                for (var i = 0; i < blocks.length; i++) {
+                    (function (pre) {
+                        // Read the code before adding the button, or the label
+                        // would end up inside the copied text.
+                        var code = pre.textContent;
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'copy-btn';
+                        btn.textContent = '复制';
+                        btn.addEventListener('click', function () {
+                            var done = function () {
+                                btn.textContent = '已复制';
+                                setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                            };
+                            var fallback = function () {
+                                var ta = document.createElement('textarea');
+                                ta.value = code;
+                                ta.style.position = 'fixed';
+                                ta.style.opacity = '0';
+                                document.body.appendChild(ta);
+                                ta.select();
+                                try { document.execCommand('copy'); done(); }
+                                catch (e) { btn.textContent = '复制失败'; }
+                                document.body.removeChild(ta);
+                            };
+                            if (navigator.clipboard && window.isSecureContext) {
+                                navigator.clipboard.writeText(code).then(done, fallback);
+                            } else {
+                                fallback();
+                            }
+                        });
+                        var wrap = document.createElement('div');
+                        wrap.className = 'copy-wrap';
+                        pre.parentNode.insertBefore(wrap, pre);
+                        wrap.appendChild(pre);
+                        wrap.appendChild(btn);
+                        // Language tag from the fence, shown in the corner.
+                        var code = pre.querySelector('code');
+                        var m = code && code.className.match(/language-([\w+#-]+)/);
+                        if (m) {
+                            var lab = document.createElement('span');
+                            lab.className = 'code-lang';
+                            lab.textContent = m[1];
+                            wrap.appendChild(lab);
+                        }
+                    })(blocks[i]);
+                }
+            })();
+        </script>
+        <script>
+            // Click a post image to view it full screen; click again or press
+            // Esc to close. One shared overlay, no library.
+            (function () {
+                var imgs = document.querySelectorAll('.blog-post-content img');
+                if (!imgs.length) return;
+                var box = document.createElement('div');
+                box.id = 'lightbox';
+                var big = document.createElement('img');
+                box.appendChild(big);
+                document.body.appendChild(box);
+                var close = function () { box.classList.remove('show'); big.src = ''; };
+                box.addEventListener('click', close);
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') close();
+                });
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].addEventListener('click', function () {
+                        big.src = this.src;
+                        box.classList.add('show');
+                    });
+                }
+            })();
+        </script>
+    </body>
+</html>
