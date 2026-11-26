@@ -158,7 +158,7 @@ cmd/server/handler.go:88:21: G601: Implicit memory aliasing in for loop. (gosec)
         <link>https://ririshihaori.com/posts/2021-4-k8s_in_action.html</link>
         <guid isPermaLink="true">https://ririshihaori.com/posts/2021-4-k8s_in_action.html</guid>
         <pubDate>Wed, 21 Apr 2021 02:43:56 GMT</pubDate>
-        <category>K8S</category>
+        <category>Kubernetes</category>
         <category>技术</category>
         <description><![CDATA[<p>[^-^]:
 	# k8s in action读书笔记 </p>
@@ -245,7 +245,7 @@ cmd/server/handler.go:88:21: G601: Implicit memory aliasing in for loop. (gosec)
         <link>https://ririshihaori.com/posts/2021-4-k8s_informer.html</link>
         <guid isPermaLink="true">https://ririshihaori.com/posts/2021-4-k8s_informer.html</guid>
         <pubDate>Thu, 01 Apr 2021 02:43:56 GMT</pubDate>
-        <category>K8S</category>
+        <category>Kubernetes</category>
         <category>技术</category>
         <description><![CDATA[<p><a href="https://cloudnative.to/blog/client-go-informer-source-code/" target="_blank" rel="noopener">https://cloudnative.to/blog/client-go-informer-source-code/</a></p>
 ]]></description>
@@ -2848,7 +2848,7 @@ cannot take the address of m[&quot;x&quot;]</p>
         <link>https://ririshihaori.com/posts/2020-1-kube-batch.html</link>
         <guid isPermaLink="true">https://ririshihaori.com/posts/2020-1-kube-batch.html</guid>
         <pubDate>Thu, 09 Jan 2020 09:40:49 GMT</pubDate>
-        <category>K8S</category>
+        <category>Kubernetes</category>
         <category>技术</category>
         <description><![CDATA[<h1 id="1.-0adf3d">1.概述</h1>
 <p>　　kube-batch是k8s下面向高性能计算领域的批调度器。    </p>
@@ -3067,7 +3067,7 @@ for _, action := range pc.actions {
         <link>https://ririshihaori.com/posts/2020-1-k8s.html</link>
         <guid isPermaLink="true">https://ririshihaori.com/posts/2020-1-k8s.html</guid>
         <pubDate>Thu, 09 Jan 2020 05:32:38 GMT</pubDate>
-        <category>K8S</category>
+        <category>Kubernetes</category>
         <category>技术</category>
         <description><![CDATA[<h1 id="h-8e1b94">背景</h1>
 <p>应用程序发展趋势：     </p>
@@ -4382,7 +4382,7 @@ Passing)是Barrelfish内的两种消息通信方式，UMP是跨核的消息通�
         <link>https://ririshihaori.com/posts/2018-6-a259bd.html</link>
         <guid isPermaLink="true">https://ririshihaori.com/posts/2018-6-a259bd.html</guid>
         <pubDate>Sat, 16 Jun 2018 12:20:31 GMT</pubDate>
-        <category>小说</category>
+        <category>影视</category>
         <category>生活</category>
         <description><![CDATA[<p>　　最近写论文和毕设手册的同时，在B站看完了血色浪漫，很早以前就想看这部剧了，一方面是因为喜欢刘烨和刀郎，另一方面是最近在微博上刷到了不少北京、顽主这类题材的东西，与青春有关的日子里佟大为、羽凡他们拿过路人开涮的视频片断，还有王朔的时间轴传记。              </p>
 <p>　　印象中，小时候电视里很多频道都演过血色浪漫，因为每次看都是断断续续的，只看过几集，我一直以为这是一部刘烨和孙俪的感情戏，类似于后来出现的甜蜜蜜？这次有机会从头到尾看完，才发现这是一群人乃至一代人的故事。              </p>
